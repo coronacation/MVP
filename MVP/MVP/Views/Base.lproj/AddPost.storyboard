@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" secondItem="gU4-4g-YTt" secondAttribute="height" multiplier="1:1" id="1Py-dY-JB0"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="tRA-Be-zDV" kind="embed" id="E3v-AD-k1A"/>
+                                    <segue destination="tRA-Be-zDV" kind="embed" identifier="toPhotoSelectorVC" id="E3v-AD-k1A"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
