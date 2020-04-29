@@ -8,6 +8,12 @@
 
 import Foundation
 
+public struct DummyPost: Codable {
+    let postTitle: String
+    let postDescription: String
+}
+
+
 class Post {
     var title: String
     var description: String

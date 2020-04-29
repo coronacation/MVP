@@ -29,21 +29,44 @@ class AddPostViewController: UIViewController {
     //MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        guard let postDescription = descriptionTextView.text, !postDescription.isEmpty
+        guard let postDescription = descriptionTextView.text, !postDescription.isEmpty, let postTitle = titleTextField.text, !postTitle.isEmpty
             else { return }
         
         var ref: DocumentReference? = nil
-        ref = db.collection("Hypes").addDocument(data: [
+        ref = db.collection("PostsNoPhoto").addDocument(data: [
+            "postTitle": "\(postTitle)",
             "postDescription": "\(postDescription)"
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
+                self.presentErrorSavingPostAlert()
             } else {
                 print("Document added with ID: \(ref!.documentID)")
+                self.presentSavedAlert()
+                self.titleTextField.text = ""
+                self.descriptionTextView.text = ""
             }
         }
-        print("confirmed")
     }
+    
+    
+    func presentSavedAlert() {
+        let title = "Post saved"
+        let message = "Thank you for your generosity"
+        
+        let savedAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        savedAlert.addAction(UIAlertAction(title: "You're welcome", style: .default, handler: nil))
+        self.present(savedAlert, animated: true, completion: nil)
+    }
+    
+    func presentErrorSavingPostAlert() {
+           let title = "Post could not be saved"
+           let message = "Check your connectiong and try again later"
+           
+           let savedAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           savedAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+           self.present(savedAlert, animated: true, completion: nil)
+       }
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
