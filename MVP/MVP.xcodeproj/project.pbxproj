@@ -17,6 +17,7 @@
 		AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE502459E6B300C8D3A6 /* Post.swift */; };
 		AC48CE532459E6B300C8D3A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE512459E6B300C8D3A6 /* User.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
+		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620732458DE8F00B5D417 /* AddPostViewController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
 		D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92CB24537B470059110B /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 		AC48CE502459E6B300C8D3A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AC48CE512459E6B300C8D3A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D57620732458DE8F00B5D417 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				AC48CE502459E6B300C8D3A6 /* Post.swift */,
 				AC48CE512459E6B300C8D3A6 /* User.swift */,
+				ACEF808C245A149B009459FF /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
+				ACEF808D245A149B009459FF /* Category.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
 				AC48CE532459E6B300C8D3A6 /* User.swift in Sources */,
