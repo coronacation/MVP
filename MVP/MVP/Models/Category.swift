@@ -9,7 +9,7 @@
 import Foundation
 
 /// Category - Categories for Posts
-enum Category {
+enum Category: CaseIterable {
     case food
     case ppe
     case basicNeeds
@@ -18,7 +18,7 @@ enum Category {
     case education
     case childCare
     
-    /// text: returns a user-friendly string. Ex: food.text returns "food"
+    /// text returns a user-friendly string for a Category. Ex: food.text returns "food"
     var text: String {
         switch self {
         case .food:
@@ -36,5 +36,11 @@ enum Category {
         case .childCare:
             return "Child Care"
         }
+    }
+}
+
+extension Category {
+    static var allValuesAsStrings: [String] {
+        return Category.allCases.map { $0.text }
     }
 }
