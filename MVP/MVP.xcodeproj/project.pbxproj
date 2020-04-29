@@ -14,6 +14,7 @@
 		6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A672458D34200F69923 /* PostDetailViewController.swift */; };
 		6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A692458D64300F69923 /* Profile.storyboard */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
+		D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620732458DE8F00B5D417 /* AddPostViewController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
 		D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92CB24537B470059110B /* SceneDelegate.swift */; };
 		D5CF92D124537B470059110B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CF92CF24537B470059110B /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		6D4A8A6A2458D64300F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		8BCC7B77554AD8186970F80F /* Pods-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.debug.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D57620732458DE8F00B5D417 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CF92CB24537B470059110B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				6D4A8A652458D32700F69923 /* PostListTableViewController.swift */,
 				6D4A8A672458D34200F69923 /* PostDetailViewController.swift */,
+				D57620732458DE8F00B5D417 /* AddPostViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				6D4A8A662458D32700F69923 /* PostListTableViewController.swift in Sources */,
 				6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
+				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
