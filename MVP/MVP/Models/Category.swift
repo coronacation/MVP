@@ -9,14 +9,15 @@
 import Foundation
 
 /// Category - Categories for Posts
-enum Category: CaseIterable {
-    case food
-    case ppe
-    case basicNeeds
-    case housing
-    case employment
-    case education
-    case childCare
+enum Category: String, Codable {
+    case food = "food"
+    case ppe = "ppe"
+    case basicNeeds = "basicNeeds"
+    case housing = "housing"
+    case employment = "employment"
+    case education = "education"
+    case childCare = "childCare"
+    case other = "other"
     
     /// text returns a user-friendly string for a Category. Ex: food.text returns "food"
     var text: String {
@@ -35,11 +36,13 @@ enum Category: CaseIterable {
             return "Education"
         case .childCare:
             return "Child Care"
+        case .other:
+            return "Other"
         }
     }
 }
 
-extension Category {
+extension Category: CaseIterable {
     static var allValuesAsStrings: [String] {
         return Category.allCases.map { $0.text }
     }
