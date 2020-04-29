@@ -42,7 +42,7 @@
                                     <constraint firstAttribute="width" secondItem="gU4-4g-YTt" secondAttribute="height" multiplier="1:1" id="1Py-dY-JB0"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="tRA-Be-zDV" kind="embed" identifier="toPhotoSelectorVC" id="E3v-AD-k1A"/>
+                                    <segue destination="tRA-Be-zDV" kind="embed" id="E3v-AD-k1A"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="431.8840579710145" y="381.69642857142856"/>
         </scene>
-        <!--Photo Selector View Controller-->
+        <!--View Controller-->
         <scene sceneID="y03-Ug-nFC">
             <objects>
-                <viewController id="tRA-Be-zDV" customClass="PhotoSelectorViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tRA-Be-zDV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VrG-mu-lpO">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,9 +98,6 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyk-so-223">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
-                                <connections>
-                                    <action selector="selectPhotoButtonTapped:" destination="tRA-Be-zDV" eventType="touchUpInside" id="av6-fX-2DT"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -116,10 +113,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="izZ-3b-8h9"/>
                     </view>
-                    <connections>
-                        <outlet property="photoImageView" destination="A3Q-7y-7yu" id="s0P-DC-Qsv"/>
-                        <outlet property="selectPhotoButton" destination="Eyk-so-223" id="9U5-je-Hqd"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5Q-iv-G4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
