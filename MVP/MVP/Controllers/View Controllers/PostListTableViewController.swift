@@ -14,6 +14,8 @@ class PostListTableViewController: UITableViewController {
     var posts = [DummyPost]()
     var db: Firestore!
     
+    @IBOutlet weak var postSearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()

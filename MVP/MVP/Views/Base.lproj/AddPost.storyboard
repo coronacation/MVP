@@ -75,7 +75,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cGd-Hl-GMt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="zdd-Sk-bdG" userLabel="Add Post"/>
+                    <tabBarItem key="tabBarItem" title="Add Post" image="camera" catalog="system" id="zdd-Sk-bdG" userLabel="Add Post"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="L7X-AM-EYE" id="Jbr-tF-zBH"/>
                         <outlet property="titleTextField" destination="jUX-nf-1Hz" id="47L-Dp-2Z9"/>
@@ -128,5 +128,6 @@
     </scenes>
     <resources>
         <image name="addPhotoIcon-white-background" width="500" height="500"/>
+        <image name="camera" catalog="system" width="128" height="96"/>
     </resources>
 </document>
