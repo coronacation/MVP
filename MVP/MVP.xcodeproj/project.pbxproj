@@ -20,6 +20,11 @@
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
 		D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620732458DE8F00B5D417 /* AddPostViewController.swift */; };
+		D576207D245A448500B5D417 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576207C245A448500B5D417 /* ViewController.swift */; };
+		D5762080245A44D700B5D417 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576207F245A44D600B5D417 /* Utilities.swift */; };
+		D5762082245A44F500B5D417 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5762081245A44F500B5D417 /* SignUpViewController.swift */; };
+		D5762084245A456600B5D417 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5762083245A456600B5D417 /* LoginViewController.swift */; };
+		D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5762087245A677F00B5D417 /* TabBarViewController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
 		D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92CB24537B470059110B /* SceneDelegate.swift */; };
 		D5CF92D124537B470059110B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CF92CF24537B470059110B /* Main.storyboard */; };
@@ -42,6 +47,11 @@
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
 		D57620732458DE8F00B5D417 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		D576207C245A448500B5D417 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D576207F245A44D600B5D417 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		D5762081245A44F500B5D417 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D5762083245A456600B5D417 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D5762087245A677F00B5D417 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CF92CB24537B470059110B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +89,24 @@
 				F1873B08E8645ACC97E37AA2 /* Pods-MVP.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D576207B245A446300B5D417 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D576207C245A448500B5D417 /* ViewController.swift */,
+				D5762081245A44F500B5D417 /* SignUpViewController.swift */,
+				D5762083245A456600B5D417 /* LoginViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D576207E245A44C600B5D417 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D576207F245A44D600B5D417 /* Utilities.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		D5CF92BD24537B460059110B = {
@@ -151,6 +179,8 @@
 				D57620732458DE8F00B5D417 /* AddPostViewController.swift */,
 				6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */,
 				ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */,
+				D5762087245A677F00B5D417 /* TabBarViewController.swift */,
+				D576207B245A446300B5D417 /* Auth */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -176,6 +206,7 @@
 		D5CF92E324537BDD0059110B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D576207E245A44C600B5D417 /* Auth */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -299,15 +330,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5762084245A456600B5D417 /* LoginViewController.swift in Sources */,
 				6D4A8A662458D32700F69923 /* PostListTableViewController.swift in Sources */,
 				6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */,
 				6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
+				D576207D245A448500B5D417 /* ViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
+				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
 				ACEF808D245A149B009459FF /* Category.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
+				D5762082245A44F500B5D417 /* SignUpViewController.swift in Sources */,
+				D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */,
 				AC48CE532459E6B300C8D3A6 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -58,11 +58,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nXI-6T-g0V"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="OTV-zD-DT4" userLabel="Profile"/>
+                    <tabBarItem key="tabBarItem" title="Profile?" image="person" catalog="system" id="OTV-zD-DT4" userLabel="Profile"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMH-Ib-zAz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-488.40579710144931" y="930.80357142857133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="person" catalog="system" width="128" height="117"/>
+    </resources>
 </document>
