@@ -1,0 +1,249 @@
+//
+//  ChatViewController.swift
+//  MVP
+//
+//  Created by Theo Vora on 5/1/20.
+//  Copyright © 2020 coronacation. All rights reserved.
+//
+
+import InputBarAccessoryView
+import MessageKit
+import Firebase
+import FirebaseFirestore
+import SDWebImage
+
+class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, MessageCellDelegate { //InputBarAccessoryViewDelegate
+    
+    // MARK: - Properties
+    
+    var currentUser = Auth.auth().currentUser!
+    var currentUserdisplayName = Auth.auth().currentUser!.displayName ?? Auth.auth().currentUser!.email ?? "hacker"
+    
+    
+    // USER2 - the user that currentUser is chatting with
+    var user2Name: String?
+    var user2ImgUrl: String?
+    var user2UID: String?
+    
+    private var docReference: DocumentReference?
+    
+    var messages: [Message] = []
+    
+    
+    // MARK: - Lifecycle Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.user2UID = "iqsRveu1pVRy9AM0mwlszQYel5o2"
+        self.user2Name = "J-Dog"
+        //        self.title = user2Name ?? "Chat" // this overrides the tab bar item name
+        
+        messageInputBar.delegate = self
+        navigationItem.largeTitleDisplayMode = .never
+        maintainPositionOnKeyboardFrameChanged = true
+        messageInputBar.inputTextView.tintColor = .purple
+        messageInputBar.sendButton.setTitleColor(.systemBlue, for: .normal)
+        
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messageCellDelegate = self
+        
+        loadChat()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.becomeFirstResponder()
+    }
+    
+    
+    // MARK: - Custom messages handlers
+    
+    func createNewChat() {
+        let users = [self.currentUser.uid, self.user2UID]
+        let data: [String: Any] = [
+            "users":users
+        ]
+        
+        let db = Firestore.firestore().collection("Chats")
+        db.addDocument(data: data) { (error) in
+            if let error = error {
+                print("Unable to create chat! \(error)")
+                return
+            } else {
+                self.loadChat()
+            }
+        }
+    }
+    
+    func loadChat() {
+        
+        //Fetch all the chats which has current user in it
+        let db = Firestore.firestore().collection("Chats")
+            .whereField("users", arrayContains: Auth.auth().currentUser?.uid ?? "Not Found User 1")
+        
+        
+        db.getDocuments { (chatQuerySnap, error) in
+            
+            if let error = error {
+                print("Error: \(error)")
+                return
+            } else {
+                
+                //Count the no. of documents returned
+                guard let queryCount = chatQuerySnap?.documents.count else {
+                    return
+                }
+                
+                if queryCount == 0 {
+                    //If documents count is zero that means there is no chat available and we need to create a new instance
+                    self.createNewChat()
+                }
+                else if queryCount >= 1 {
+                    //Chat(s) found for currentUser
+                    for doc in chatQuerySnap!.documents {
+                        
+                        let chat = Chat(dictionary: doc.data())
+                        //Get the chat which has user2 id
+                        if (chat?.users.contains(self.user2UID!))! {
+                            
+                            self.docReference = doc.reference
+                            //fetch it's thread collection
+                            doc.reference.collection("thread")
+                                .order(by: "created", descending: false)
+                                .addSnapshotListener(includeMetadataChanges: true, listener: { (threadQuery, error) in
+                                    if let error = error {
+                                        print("Error: \(error)")
+                                        return
+                                    } else {
+                                        self.messages.removeAll()
+                                        for message in threadQuery!.documents {
+                                            
+                                            let msg = Message(dictionary: message.data())
+                                            self.messages.append(msg!)
+                                            print("Data: \(msg?.content ?? "No message found")")
+                                        }
+                                        self.messagesCollectionView.reloadData()
+                                        self.messagesCollectionView.scrollToBottom(animated: true)
+                                    }
+                                })
+                            return
+                        } //end of if
+                    } //end of for
+                    self.createNewChat()
+                } else {
+                    print("Let's hope this error never prints!")
+                }
+            }
+        }
+    }
+    
+    
+    private func insertNewMessage(_ message: Message) {
+        
+        messages.append(message)
+        messagesCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
+    }
+    
+    private func save(_ message: Message) {
+        
+        let data: [String: Any] = [
+            "content": message.content,
+            "created": message.created,
+            "id": message.id,
+            "senderID": message.senderID,
+            "senderName": message.senderName
+        ]
+        
+        docReference?.collection("thread").addDocument(data: data, completion: { (error) in
+            
+            if let error = error {
+                print("Error Sending message: \(error)")
+                return
+            }
+            
+            self.messagesCollectionView.scrollToBottom()
+            
+        })
+    }
+    
+    
+    // MARK: - MessagesDataSource
+    func currentSender() -> SenderType {
+        
+        return Sender(senderId: Auth.auth().currentUser!.uid, displayName: currentUserdisplayName)
+        
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        
+        return messages[indexPath.section]
+        
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        
+        if messages.count == 0 {
+            print("No messages to display")
+            return 0
+        } else {
+            return messages.count
+        }
+    }
+    
+    
+    // MARK: - MessagesLayoutDelegate
+    
+    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return .zero
+    }
+    
+    // MARK: - MessagesDisplayDelegate
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? .blue: .lightGray
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        
+        if message.sender.senderId == currentUser.uid {
+            SDWebImageManager.shared.loadImage(with: currentUser.photoURL, options: .highPriority, progress: nil) { (image, data, error, cacheType, isFinished, imageUrl) in
+                avatarView.image = image
+            }
+        } else {
+            SDWebImageManager.shared.loadImage(with: URL(string: user2ImgUrl!), options: .highPriority, progress: nil) { (image, data, error, cacheType, isFinished, imageUrl) in
+                avatarView.image = image
+            }
+        }
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        
+        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight: .bottomLeft
+        return .bubbleTail(corner, .curved)
+        
+    }
+}
+
+// MARK: - InputBarAccessoryViewDelegate
+
+extension ChatViewController: InputBarAccessoryViewDelegate {
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        
+        let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.uid, senderName: currentUserdisplayName)
+        
+        //messages.append(message)
+        insertNewMessage(message)
+        save(message)
+        
+        inputBar.inputTextView.text = ""
+        messagesCollectionView.reloadData()
+        messagesCollectionView.scrollToBottom(animated: true)
+    }
+}

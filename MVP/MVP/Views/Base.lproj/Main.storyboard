@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cAI-pW-l2o">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +20,7 @@
                         <segue destination="guz-K8-CiP" kind="relationship" relationship="viewControllers" id="QeR-x4-LF4"/>
                         <segue destination="8JS-Zp-ICn" kind="relationship" relationship="viewControllers" id="EvS-xK-18A"/>
                         <segue destination="J8b-dc-FaJ" kind="relationship" relationship="viewControllers" id="jFP-vL-1gf"/>
+                        <segue destination="PSo-L1-nbG" kind="relationship" relationship="viewControllers" id="FK7-SM-zA6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAN-jr-LFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -56,10 +57,20 @@
             </objects>
             <point key="canvasLocation" x="4006" y="404"/>
         </scene>
+        <!--Chat-->
+        <scene sceneID="wNP-OM-rUt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="PSo-L1-nbG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Rpa-jK-lCc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xxi-Es-a7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4251" y="404"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="dQA-4S-VbL">
             <objects>
-                <viewController id="z1I-jc-LE5" customClass="ViewController" customModule="login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z1I-jc-LE5" customClass="ViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PO6-up-eR8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +122,7 @@
         <!--Login View Controller-->
         <scene sceneID="pGt-Go-Aq7">
             <objects>
-                <viewController id="hqv-zN-8mW" customClass="LoginViewController" customModule="login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hqv-zN-8mW" customClass="LoginViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KSb-Vg-Zkd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +186,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="EbW-Yf-eHe">
             <objects>
-                <viewController id="nUJ-vy-iQk" customClass="SignUpViewController" customModule="login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nUJ-vy-iQk" customClass="SignUpViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dd0-z4-PlZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
