@@ -29,7 +29,6 @@ class TestPostCategoryViewController: UIViewController, UIPickerViewDataSource, 
         setupCategoryPicker()
     }
     
-    
     // MARK: - UIPickerView
     
     func setupCategoryPicker() {

@@ -10,7 +10,7 @@
         <!--Profile-->
         <scene sceneID="vrd-Dt-ROF">
             <objects>
-                <viewController title="Profile" id="yhR-of-ihK" sceneMemberID="viewController">
+                <viewController title="Profile" id="yhR-of-ihK" customClass="ProfileViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iDL-TG-j9W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,6 +43,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekz-Al-hN5">
+                                <rect key="frame" x="155" y="766" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete Account"/>
+                                <connections>
+                                    <action selector="deleteAccountButtonTapped:" destination="yhR-of-ihK" eventType="touchUpInside" id="pId-nh-SMc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -59,6 +67,9 @@
                         <viewLayoutGuide key="safeArea" id="nXI-6T-g0V"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile?" image="person" catalog="system" id="OTV-zD-DT4" userLabel="Profile"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="mxw-EK-Gcb" id="VTP-Tg-Ihw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMH-Ib-zAz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,7 +31,6 @@
                                     <constraint firstAttribute="height" constant="242" id="UHs-8r-oOb"/>
                                     <constraint firstAttribute="width" constant="240" id="Z51-5P-Aak"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -57,8 +56,16 @@
                                     <action selector="saveButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="2dI-tG-8hg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-bi-Ye4">
+                                <rect key="frame" x="129" y="314" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save photo test button"/>
+                                <connections>
+                                    <action selector="dummySavePhotoButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="h8V-Ej-MLf"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="L7X-AM-EYE" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="87" id="3D9-Uw-ddh"/>
                             <constraint firstItem="jUX-nf-1Hz" firstAttribute="top" secondItem="gU4-4g-YTt" secondAttribute="bottom" constant="40" id="5LA-Yi-JG6"/>

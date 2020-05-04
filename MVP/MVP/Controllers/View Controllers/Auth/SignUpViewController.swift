@@ -111,6 +111,13 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
+    
+    
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+     navigationController?.popViewController(animated: true)
+    }
+    
     func transitionToHome() {
         
         let tabBarViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
