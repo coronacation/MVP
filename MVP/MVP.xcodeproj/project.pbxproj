@@ -20,6 +20,7 @@
 		AC48CE532459E6B300C8D3A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE512459E6B300C8D3A6 /* User.swift */; };
 		AC9135BE245CCC68006562AA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BD245CCC68006562AA /* ChatViewController.swift */; };
 		AC9135C0245CCD5C006562AA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BF245CCD5C006562AA /* Chat.swift */; };
+		AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135C1245E626F006562AA /* ChatListTableViewController.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
@@ -51,6 +52,7 @@
 		AC48CE512459E6B300C8D3A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC9135BD245CCC68006562AA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AC9135BF245CCD5C006562AA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		AC9135C1245E626F006562AA /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				D5762087245A677F00B5D417 /* TabBarViewController.swift */,
 				D576207B245A446300B5D417 /* Auth */,
 				AC9135BD245CCC68006562AA /* ChatViewController.swift */,
+				AC9135C1245E626F006562AA /* ChatListTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				D576207D245A448500B5D417 /* ViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
+				AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
 				ACEF808D245A149B009459FF /* Category.swift in Sources */,
 				AC9135BE245CCC68006562AA /* ChatViewController.swift in Sources */,

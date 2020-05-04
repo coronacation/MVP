@@ -35,8 +35,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.user2UID = "iqsRveu1pVRy9AM0mwlszQYel5o2"
-        self.user2Name = "J-Dog"
+        //        self.user2Name = "J-Dog"
+//        self.user2UID = "iqsRveu1pVRy9AM0mwlszQYel5o2"
+        
+        self.user2Name = "Test2"
+        self.user2UID = "kIIEtZhu2HXFSjLxd5cck3vQTXV2"
+        
         //        self.title = user2Name ?? "Chat" // this overrides the tab bar item name
         
         messageInputBar.delegate = self
