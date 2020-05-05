@@ -57,5 +57,12 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    
+    @IBAction func alreadyAUserButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
 

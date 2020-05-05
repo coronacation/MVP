@@ -27,6 +27,37 @@ class AddPostViewController: UIViewController {
     }
     
     //MARK: - Actions
+    
+    
+    @IBAction func dummySavePhotoButtonTapped(_ sender: Any) {
+          
+        guard let selectedImage = selectedImage else {return}
+        
+        guard let imageData = selectedImage.jpegData(compressionQuality: 0.6) else {return}
+        
+               let storageReference = Storage.storage().reference()
+               let currentUser = Auth.auth().currentUser
+               let postImageRef = storageReference.child("users").child(currentUser!.uid).child("\(currentUser!.uid)-profileImage.jpg")
+               
+               let uploadMetaData = StorageMetadata()
+               uploadMetaData.contentType = "image/jpeg"
+               
+               postImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
+                   
+                   if error != nil
+                   {
+                       print("Error took place \(String(describing: error?.localizedDescription))")
+                       return
+                   } else {
+                       
+                    //   self.userProfileImageView.image = UIImage(data: imageData)
+                       
+                       print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                   }
+               }
+    }
+    
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let postDescription = descriptionTextView.text, !postDescription.isEmpty, let postTitle = titleTextField.text, !postTitle.isEmpty
