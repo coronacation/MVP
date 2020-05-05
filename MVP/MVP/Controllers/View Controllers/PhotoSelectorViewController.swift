@@ -6,7 +6,9 @@
 //  Copyright © 2020 JoshuaBaatz. All rights reserved.
 //
 
-import UIKit.UIImage
+import UIKit
+import Photos
+import AVFoundation
 
 protocol PhotoSelectorViewControllerDelegate: class {
     func photoSelectorViewControllerSelected(image: UIImage)
@@ -37,10 +39,10 @@ class PhotoSelectorViewController: UIViewController {
         }
         
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
-            self.openCamera()
+            self.checkCameraAuthorization()
         }
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
-            self.openGallery()
+            self.checkPhotoLibraryAuthorization()
         }
         alert.addAction(cancelAction)
         alert.addAction(cameraAction)
@@ -61,9 +63,11 @@ extension PhotoSelectorViewController: UIImagePickerControllerDelegate, UINaviga
     
     func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = UIImagePickerController.SourceType.camera
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.camera
+                self.imagePicker.allowsEditing = false
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "No Camera Access", message: "Please allow access to the camera to use this feature.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
@@ -74,9 +78,11 @@ extension PhotoSelectorViewController: UIImagePickerControllerDelegate, UINaviga
     
     func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            imagePicker.allowsEditing = true
-            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-            self.present(imagePicker, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                self.imagePicker.allowsEditing = true
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "No Photo Access", message: "Please allow access to photos to use this feature.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
@@ -95,4 +101,51 @@ extension PhotoSelectorViewController: UIImagePickerControllerDelegate, UINaviga
         }
         picker.dismiss(animated: true, completion: nil)
     }//end of imagePickerController func
+    
+    func checkCameraAuthorization() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.openCamera()
+                }
+            }
+            break
+        case .restricted, .denied:
+            presentDeniedAlert()
+            break
+        case .authorized:
+            openCamera()
+        @unknown default:
+            print("Default case for AVCaptureDevice.authorizationStatus()")
+        }
+    }//end of checkCameraAuthorization func
+    
+    func checkPhotoLibraryAuthorization() {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization( { status in
+                if (status == PHAuthorizationStatus.authorized) {
+                    self.openGallery()
+                }
+            })
+            break
+        case .restricted, .denied:
+            presentDeniedAlert()
+            break
+        case .authorized:
+            openGallery()
+        @unknown default:
+            print("Default case for AVCaptureDevice.authorizationStatus()")
+        }
+    }//end of checkPhotoLibraryAuthorization func
+    
+    func presentDeniedAlert() {
+        let alert = UIAlertController(title: "Access Denied", message: "Check your permission or restriction settings and try again.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }//end of presentDeniedAlert func
 }//end of PhotoSelectorViewController extension

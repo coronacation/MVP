@@ -14,7 +14,7 @@
 		6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A672458D34200F69923 /* PostDetailViewController.swift */; };
 		6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A692458D64300F69923 /* Profile.storyboard */; };
 		6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */; };
-		6D9A0E21246094AB00245184 /* ExploreMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* ExploreMapViewController.swift */; };
+		6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* MapViewController.swift */; };
 		AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE502459E6B300C8D3A6 /* Post.swift */; };
 		AC48CE532459E6B300C8D3A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE512459E6B300C8D3A6 /* User.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
@@ -41,7 +41,7 @@
 		6D4A8A672458D34200F69923 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		6D4A8A6A2458D64300F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
-		6D9A0E20246094AB00245184 /* ExploreMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapViewController.swift; sourceTree = "<group>"; };
+		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8BCC7B77554AD8186970F80F /* Pods-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.debug.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 		AC48CE502459E6B300C8D3A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AC48CE512459E6B300C8D3A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */,
 				ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */,
 				D5762087245A677F00B5D417 /* TabBarViewController.swift */,
-				6D9A0E20246094AB00245184 /* ExploreMapViewController.swift */,
+				6D9A0E20246094AB00245184 /* MapViewController.swift */,
 				D576207B245A446300B5D417 /* Auth */,
 			);
 			path = "View Controllers";
@@ -346,7 +346,7 @@
 				6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */,
 				6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
-				6D9A0E21246094AB00245184 /* ExploreMapViewController.swift in Sources */,
+				6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */,
 				D576207D245A448500B5D417 /* ViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
@@ -518,7 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QY69PUF72;
+				DEVELOPMENT_TEAM = 66J9D7PXPT;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QY69PUF72;
+				DEVELOPMENT_TEAM = 66J9D7PXPT;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

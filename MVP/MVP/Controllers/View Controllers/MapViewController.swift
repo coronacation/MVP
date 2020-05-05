@@ -1,5 +1,5 @@
 //
-//  ExploreMapViewController.swift
+//  MapViewController.swift
 //  MVP
 //
 //  Created by Anthroman on 5/4/20.
@@ -9,7 +9,7 @@
 import MapKit
 import CoreLocation
 
-class ExploreMapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -62,13 +62,13 @@ class ExploreMapViewController: UIViewController, MKMapViewDelegate {
             mapView.showsUserLocation = true
             centerViewOnUserLocation()
         case .denied:
-            //alert instructing them how to turn on permissions
+            presentDeniedAlert()
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
-            //alert letting them know access for the user is restricted
+            presentRestrictedAlert()
             break
         case .authorizedAlways:
             break
@@ -79,8 +79,28 @@ class ExploreMapViewController: UIViewController, MKMapViewDelegate {
 }
 
 // must ask permission to use location-finder
-extension ExploreMapViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         checkLocationAuthorization()
+    }
+}
+
+extension MapViewController {
+    func presentDeniedAlert() {
+        let alert = UIAlertController(title: "Access Denied", message: "Check your permission settings and try again.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }
+    
+    func presentRestrictedAlert() {
+        let alert = UIAlertController(title: "Access Restricted", message: "Permissions (i.e. Parental Controls) have been disabled for this user.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
     }
 }
