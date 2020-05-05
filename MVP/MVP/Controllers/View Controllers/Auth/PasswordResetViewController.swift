@@ -16,7 +16,6 @@ class PasswordResetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
@@ -34,7 +33,6 @@ class PasswordResetViewController: UIViewController {
             
             }
         }
-        
     }
     
     func showError(_ message:String) {
@@ -46,5 +44,4 @@ class PasswordResetViewController: UIViewController {
     @IBAction func exitButtonTapped(_ sender: Any) {
      navigationController?.popViewController(animated: true)
     }
-    
 }

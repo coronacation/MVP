@@ -42,6 +42,8 @@ class AddPostViewController: UIViewController {
                let uploadMetaData = StorageMetadata()
                uploadMetaData.contentType = "image/jpeg"
                
+        
+        
                postImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
                    
                    if error != nil
@@ -50,23 +52,33 @@ class AddPostViewController: UIViewController {
                        return
                    } else {
                        
-                    //   self.userProfileImageView.image = UIImage(data: imageData)
-                       
-                       print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                    //   self.userProfleImageView.image = UIImage(data: imageData)
+                    print("Storage ref: \(String(describing: uploadedImageMeta?.storageReference))")
+                    print("name: \(String(describing: uploadedImageMeta?.storageReference?.name))")
+
+                    print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                    }
                }
     }
-    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let postDescription = descriptionTextView.text, !postDescription.isEmpty, let postTitle = titleTextField.text, !postTitle.isEmpty
             else { return }
         
+let currentUser = Auth.auth().currentUser
+   //     let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d/Y"
+        let formattedDate = dateFormatter.string(from: Date())
+        
         var ref: DocumentReference? = nil
-        ref = db.collection("PostsNoPhoto").addDocument(data: [
+        ref = db.collection("postsV1").addDocument(data: [
             "postTitle": "\(postTitle)",
-            "postDescription": "\(postDescription)"
+            "postDescription": "\(postDescription)",
+            "postUser": "\(currentUser!.uid)",
+            "postCreatedTimestamp": "\(formattedDate)"
+     //       "postImageURL" : "\()"
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
