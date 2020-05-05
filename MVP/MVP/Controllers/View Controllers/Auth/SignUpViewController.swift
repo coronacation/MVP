@@ -111,9 +111,6 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
-    
-    
-    
     @IBAction func loginButtonTapped(_ sender: Any) {
      navigationController?.popViewController(animated: true)
     }
@@ -124,7 +121,5 @@ class SignUpViewController: UIViewController {
         
         view.window?.rootViewController = tabBarViewController
         view.window?.makeKeyAndVisible()
-        
     }
-    
 }

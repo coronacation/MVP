@@ -10,21 +10,37 @@ import UIKit
 
 class PostDetailViewController: UIViewController {
 
+    //outlets
+    @IBOutlet weak var postUserNameLabel: UILabel!
+    @IBOutlet weak var postUserImage: UIImageView!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postTitleLabel: UILabel!
+    @IBOutlet weak var postDescriptionLabel: UILabel!
+    @IBOutlet weak var postTimestampLabel: UILabel!
+    
+    var post: DummyPost?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+setUpViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setUpViews() {
+        
+        if let userUID = self.post?.userUID, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp {
+            
+            postUserNameLabel.text = "Posted by: \(userUID)"
+            postTitleLabel.text = "Title: \(postTitle)"
+            postDescriptionLabel.text = self.post?.postDescription
+            postTimestampLabel.text = "Posted on \(postCreatedTimestamp)"
+        }
     }
-    */
-
+    
+    @IBAction func messageUserButtonTapped(_ sender: Any) {
+        print("message user tapped")
+    }
+    
+    @IBAction func reportPostButtonTapped(_ sender: Any) {
+        print("report tapped")
+    }
 }
