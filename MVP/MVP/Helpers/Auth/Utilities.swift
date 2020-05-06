@@ -51,7 +51,6 @@ class Utilities {
     }
 }
 
-
 struct Constants {
     
     struct Storyboard {

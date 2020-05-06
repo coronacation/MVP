@@ -9,6 +9,16 @@
 import UIKit
 import CoreLocation
 
+struct CurrentUser {
+    var firstName: String
+    var lastName: String
+    var email: String
+    let userUID: String
+    
+    //will be adding profile photo
+    
+}
+
 class User {
   
     var firstName: String
@@ -31,5 +41,4 @@ class User {
         self.lastName = lastName
         self.email = email
     }
-    
 }

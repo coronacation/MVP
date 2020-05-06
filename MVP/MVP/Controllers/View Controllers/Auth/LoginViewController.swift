@@ -8,9 +8,10 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -30,11 +31,13 @@ class LoginViewController: UIViewController {
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(loginButton)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        
-        // TODO: Validate Text Fields
+        print("login function running")
         
         // Create cleaned versions of the text field
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -47,9 +50,32 @@ class LoginViewController: UIViewController {
                 // Couldn't sign in
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
+                print("error signing in")
             }
             else {
-                
+                print("user authenticated")
+                //set CurrentUserController.shared.currentUser to whichever user just logged in
+                let db = Firestore.firestore()
+                let usersRef = db.collection("usersV2")
+                if let userUID = Auth.auth().currentUser?.uid {
+                    print("UID grabbed: \(userUID)")
+                    
+                    usersRef.whereField("uid", isEqualTo: userUID).getDocuments { (querySnapshot, error) in
+                        if let error = error {
+                            print("Error assign current user: \(error)")
+                        }      else {
+                            print("docments grabbed")
+                            
+                            for document in querySnapshot!.documents {
+                                
+                                let currentUser = CurrentUser(firstName: document.data()["firstName"] as! String, lastName: document.data()["lastName"] as! String, email: document.data()["email"] as! String, userUID: document.data()["uid"] as! String)
+                                
+                                CurrentUserController.shared.currentUser = currentUser
+                                print("first document grabbed")
+                            }
+                        }
+                    }
+                }
                 let tabBarViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
                 
                 self.view.window?.rootViewController = tabBarViewController
@@ -63,3 +89,12 @@ class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            return emailTextField.resignFirstResponder()
+        } else {
+            return passwordTextField.resignFirstResponder()
+        }
+    }
+}

@@ -28,7 +28,7 @@ class PostListTableViewController: UITableViewController {
     
     func loadData() {
         
-        db.collection("postsV1").getDocuments() { (querySnapshot, error) in
+        db.collection("postsV2").getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             }
@@ -38,7 +38,7 @@ class PostListTableViewController: UITableViewController {
                 for document in querySnapshot!.documents {
                     
         let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
-                                  userUID: document.data()["postUser"] as! String, postDocumentID: "\(document.documentID)",
+                                  userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
                     postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String)
                     
                     self.posts.append(dummyPost)

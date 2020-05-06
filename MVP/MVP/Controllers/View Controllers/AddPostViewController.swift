@@ -24,6 +24,7 @@ class AddPostViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleTextField.delegate = self
     }
     
     //MARK: - Actions
@@ -71,12 +72,14 @@ let currentUser = Auth.auth().currentUser
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d/Y"
         let formattedDate = dateFormatter.string(from: Date())
+        guard let currentUserFirstName = CurrentUserController.shared.currentUser?.firstName else {return}
         
         var ref: DocumentReference? = nil
-        ref = db.collection("postsV1").addDocument(data: [
+        ref = db.collection("postsV2").addDocument(data: [
             "postTitle": "\(postTitle)",
             "postDescription": "\(postDescription)",
-            "postUser": "\(currentUser!.uid)",
+            "postUserUID": "\(currentUser!.uid)",
+            "postUserFirstName": "\(currentUserFirstName)",
             "postCreatedTimestamp": "\(formattedDate)"
      //       "postImageURL" : "\()"
         ]) { err in
@@ -127,3 +130,23 @@ extension AddPostViewController: PhotoSelectorViewControllerDelegate {
         selectedImage = image
     }
 }//end of AddPostTVC photoSelector extension
+
+
+
+//this dismisses the keyboard when enter is pressed on an iphone
+extension AddPostViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+    }
+}
+
+
+//trying to get the same thing for the textview but haven't figured it our yet
+//extension AddPostViewController: UITextViewDelegate {
+//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+//        <#code#>
+//    }
+//}
+
+
+

@@ -328,7 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MLp-s4-ACJ"/>
                     <connections>
-                        <outlet property="emailPasswordTextField" destination="Rc6-so-0Vb" id="1J8-RS-FRS"/>
+                        <outlet property="emailTextField" destination="Rc6-so-0Vb" id="1J8-RS-FRS"/>
                         <outlet property="errorLabel" destination="zsF-PV-naR" id="02j-3V-rrA"/>
                     </connections>
                 </viewController>

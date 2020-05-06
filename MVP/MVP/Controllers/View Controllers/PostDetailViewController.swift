@@ -9,7 +9,7 @@
 import UIKit
 
 class PostDetailViewController: UIViewController {
-
+    
     //outlets
     @IBOutlet weak var postUserNameLabel: UILabel!
     @IBOutlet weak var postUserImage: UIImageView!
@@ -22,14 +22,14 @@ class PostDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-setUpViews()
+        setUpViews()
     }
     
     func setUpViews() {
         
-        if let userUID = self.post?.userUID, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp {
+        if let postUserFirstName = self.post?.postUserFirstName, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp {
             
-            postUserNameLabel.text = "Posted by: \(userUID)"
+            postUserNameLabel.text = "Posted by: \(postUserFirstName)"
             postTitleLabel.text = "Title: \(postTitle)"
             postDescriptionLabel.text = self.post?.postDescription
             postTimestampLabel.text = "Posted on \(postCreatedTimestamp)"

@@ -28,6 +28,7 @@
 		D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5762087245A677F00B5D417 /* TabBarViewController.swift */; };
 		D57620B92460B79200B5D417 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620B82460B79100B5D417 /* PasswordResetViewController.swift */; };
 		D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620BA2460C0C000B5D417 /* ProfileViewController.swift */; };
+		D57620BF246209E100B5D417 /* CurrentUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620BE246209E100B5D417 /* CurrentUserController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
 		D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92CB24537B470059110B /* SceneDelegate.swift */; };
 		D5CF92D124537B470059110B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CF92CF24537B470059110B /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		D5762087245A677F00B5D417 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D57620B82460B79100B5D417 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		D57620BA2460C0C000B5D417 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D57620BE246209E100B5D417 /* CurrentUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserController.swift; sourceTree = SOURCE_ROOT; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CF92CB24537B470059110B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		D5CF92E124537BB20059110B /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D57620BE246209E100B5D417 /* CurrentUserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
 				6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */,
+				D57620BF246209E100B5D417 /* CurrentUserController.swift in Sources */,
 				D576207D245A448500B5D417 /* ViewController.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
