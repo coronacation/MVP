@@ -14,7 +14,6 @@
 		6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A672458D34200F69923 /* PostDetailViewController.swift */; };
 		6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A692458D64300F69923 /* Profile.storyboard */; };
 		6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */; };
-		6D950D7B246210F3009A7B5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D950D7A246210F3009A7B5F /* GoogleService-Info.plist */; };
 		6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* MapViewController.swift */; };
 		AC23ABC7245A82F9002D7764 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC23ABC6245A82F9002D7764 /* Chat.storyboard */; };
 		AC23ABCB245A8C0C002D7764 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23ABCA245A8C0C002D7764 /* Message.swift */; };
@@ -50,8 +49,6 @@
 		6D4A8A672458D34200F69923 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		6D4A8A6A2458D64300F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
-		6D950D79246202B3009A7B5F /* MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MVP.entitlements; sourceTree = "<group>"; };
-		6D950D7A246210F3009A7B5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8BCC7B77554AD8186970F80F /* Pods-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.debug.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 		AC23ABC6245A82F9002D7764 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -159,14 +156,13 @@
 		D5CF92C824537B470059110B /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				6D950D79246202B3009A7B5F /* MVP.entitlements */,
 				D5CF92E224537BBC0059110B /* Views */,
 				D5CF92DF24537B9B0059110B /* Controllers */,
 				D5CF92DE24537B910059110B /* Models */,
 				D5CF92E324537BDD0059110B /* Helpers */,
 				D5CF92DD24537B870059110B /* Resources */,
+				AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */,
 				D5CF92D724537B570059110B /* Info.plist */,
-				6D950D7A246210F3009A7B5F /* GoogleService-Info.plist */,
 			);
 			path = MVP;
 			sourceTree = "<group>";
@@ -312,11 +308,11 @@
 			files = (
 				D5CF92D624537B570059110B /* LaunchScreen.storyboard in Resources */,
 				6D4A8A612458D05500F69923 /* Home.storyboard in Resources */,
+				AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */,
 				D5CF92D324537B570059110B /* Assets.xcassets in Resources */,
 				6D4A8A642458D07600F69923 /* AddPost.storyboard in Resources */,
 				6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */,
 				D5CF92D124537B470059110B /* Main.storyboard in Resources */,
-				6D950D7B246210F3009A7B5F /* GoogleService-Info.plist in Resources */,
 				AC23ABC7245A82F9002D7764 /* Chat.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,7 +549,6 @@
 			baseConfigurationReference = 8BCC7B77554AD8186970F80F /* Pods-MVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MVP/MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QY69PUF72;
 				INFOPLIST_FILE = MVP/Info.plist;
@@ -573,7 +568,6 @@
 			baseConfigurationReference = F1873B08E8645ACC97E37AA2 /* Pods-MVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MVP/MVP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QY69PUF72;
