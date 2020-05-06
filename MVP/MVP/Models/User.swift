@@ -15,8 +15,14 @@ struct CurrentUser {
     var email: String
     let userUID: String
     
-    //will be adding profile photo
+    var fullName: String {
+        get {
+            return firstName + " " + lastName
+        }
+    }
     
+    //will be adding profile photo
+    var photoURL: URL = URL(string: "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png")!
 }
 
 class User {
