@@ -14,17 +14,18 @@ class ChatListTableViewController: UITableViewController {
     
     // MARK: - Properties
     
-    var conversations = [String]() // an array of user names. for now.
-    
+    var currentUser = Auth.auth().currentUser!
+    var userUids: [String] = []
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadConversations()
+        self.loadConversations()
     }
     
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,14 +34,14 @@ class ChatListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return userUids.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = conversations[indexPath.row]
+        cell.textLabel?.text = userUids[indexPath.row]
         
         return cell
     }
@@ -49,9 +50,32 @@ class ChatListTableViewController: UITableViewController {
     // MARK: - Helper Functions
     
     func loadConversations() {
-        conversations.append("Tester 8")
+        let query = Firestore.firestore().collection("Chats")
+            .whereField("users", arrayContains: currentUser.uid)
         
-    }
+        query.getDocuments { (convoQuerySnapshot, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            } else {
+                
+                guard let snapshot = convoQuerySnapshot,
+                    !snapshot.isEmpty
+                    else { return }
+                
+                
+                for doc in snapshot.documents {
+                    guard let chat = Chat(dictionary: doc.data()),
+                    let otherUserUid = chat.fetchOtherUserUid()
+                        else { return }
+                    
+                    print("appending " + otherUserUid)
+                    self.userUids.append(otherUserUid)
+                }
+                self.tableView.reloadData()
+            } // end else
+        }
+    } // end loadConversations
     
     
     /*
@@ -80,11 +104,11 @@ class ChatListTableViewController: UITableViewController {
         if segue.identifier == "toChatVC" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 //                let destinationVC = segue.destination as? ChatViewController
-                let _ = segue.destination as? ChatViewController
+                let destinationVC = segue.destination as? ChatViewController
                 else { return }
             
-            //            let chat = conversations[indexPath.row]
-            let _ = conversations[indexPath.row]
+            let user2uid = userUids[indexPath.row]
+            destinationVC.user2UID = user2uid
         }
     }
     

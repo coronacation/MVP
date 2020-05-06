@@ -22,7 +22,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     // USER2 - the user that currentUser is chatting with
     var user2Name: String?
     var user2ImgUrl: String?
-    var user2UID: String?
+    var user2UID: String? {
+        didSet {
+            user2Name = String(user2UID!.prefix(7))
+        }
+    }
     
     private var docReference: DocumentReference?
     
@@ -34,9 +38,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.user2Name = "Tester8"
-        self.user2UID = "7hf3hJeLPLXYk3D4I7IPEE8X9fv2"
-                
+        self.user2ImgUrl = "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
+        
+//        self.user2Name = "Abigail"
+//        self.user2UID = "1hYi1aKFAGfzap7fUGxcA2GJIZF3"
+        
+//        self.user2Name = "Theo"
+//        self.user2UID = "MLzB7miXJFhUhm7dcpJNvaSDPJx2"
+        
+        navigationItem.title = user2Name
         messageInputBar.delegate = self
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -62,7 +72,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     func createNewChat() {
         let users = [self.currentUser.userUID, self.user2UID]
         let data: [String: Any] = [
-            "users":users
+            "users":users //,
+            // "offer":"I have 12 cloth masks"
         ]
         
         let db = Firestore.firestore().collection("Chats")

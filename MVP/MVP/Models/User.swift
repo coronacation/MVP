@@ -26,7 +26,7 @@ struct CurrentUser {
 }
 
 class User {
-  
+    var uid: String
     var firstName: String
     var lastName: String
     var email: String
@@ -42,7 +42,14 @@ class User {
 //    var streetAddress: String?
     var location: CLLocation?
     
-    init(firstName: String, lastName: String, email: String) {
+    var fullName: String {
+        get {
+            return firstName + " " + lastName
+        }
+    }
+    
+    init(uid: String, firstName: String, lastName: String, email: String) {
+        self.uid = uid
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
