@@ -11,7 +11,7 @@ import FirebaseAuth
 import Firebase
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -34,6 +34,11 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(emailTextField)
         Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(signUpButton)
+        
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        lastNameTextField.delegate = self
+        firstNameTextField.delegate = self
     }
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
@@ -58,7 +63,7 @@ class SignUpViewController: UIViewController {
         
         return nil
     }
-
+    
     @IBAction func signUpTapped(_ sender: Any) {
         
         // Validate the fields
@@ -90,13 +95,15 @@ class SignUpViewController: UIViewController {
                     // User was created successfully, now store the first name and last name
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName, "uid": authResult!.user.uid ]) { (error) in
+                    db.collection("usersV2").addDocument(data: ["firstName":firstName, "lastName":lastName, "uid": authResult!.user.uid, "email":email ]) { (error) in
                         
                         if error != nil {
                             // Show error message
                             self.showError("Error saving user data")
                         }
                     }
+                    
+                    CurrentUserController.shared.setCurrentUserFromSignUp(firstName: firstName, lastName: lastName, email: email, userUID: authResult!.user.uid)
                     
                     // Transition to the home screen
                     self.transitionToHome()
@@ -111,11 +118,8 @@ class SignUpViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
-    
-    
-    
     @IBAction func loginButtonTapped(_ sender: Any) {
-     navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     func transitionToHome() {
@@ -124,7 +128,19 @@ class SignUpViewController: UIViewController {
         
         view.window?.rootViewController = tabBarViewController
         view.window?.makeKeyAndVisible()
-        
     }
-    
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            return emailTextField.resignFirstResponder()
+        } else if textField == passwordTextField {
+            return passwordTextField.resignFirstResponder()
+        } else if textField == firstNameTextField {
+            return firstNameTextField.resignFirstResponder()
+        } else {
+            return lastNameTextField.resignFirstResponder()
+        }
+    }
 }

@@ -24,6 +24,7 @@ class AddPostViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleTextField.delegate = self
     }
     
     //MARK: - Actions
@@ -42,6 +43,8 @@ class AddPostViewController: UIViewController {
                let uploadMetaData = StorageMetadata()
                uploadMetaData.contentType = "image/jpeg"
                
+        
+        
                postImageRef.putData(imageData, metadata: uploadMetaData) { (uploadedImageMeta, error) in
                    
                    if error != nil
@@ -50,23 +53,35 @@ class AddPostViewController: UIViewController {
                        return
                    } else {
                        
-                    //   self.userProfileImageView.image = UIImage(data: imageData)
-                       
-                       print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
+                    //   self.userProfleImageView.image = UIImage(data: imageData)
+                    print("Storage ref: \(String(describing: uploadedImageMeta?.storageReference))")
+                    print("name: \(String(describing: uploadedImageMeta?.storageReference?.name))")
+
+                    print("Meta data of uploaded image \(String(describing: uploadedImageMeta))")
                    }
                }
     }
-    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
         guard let postDescription = descriptionTextView.text, !postDescription.isEmpty, let postTitle = titleTextField.text, !postTitle.isEmpty
             else { return }
         
+let currentUser = Auth.auth().currentUser
+   //     let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d/Y"
+        let formattedDate = dateFormatter.string(from: Date())
+        guard let currentUserFirstName = CurrentUserController.shared.currentUser?.firstName else {return}
+        
         var ref: DocumentReference? = nil
-        ref = db.collection("PostsNoPhoto").addDocument(data: [
+        ref = db.collection("postsV2").addDocument(data: [
             "postTitle": "\(postTitle)",
-            "postDescription": "\(postDescription)"
+            "postDescription": "\(postDescription)",
+            "postUserUID": "\(currentUser!.uid)",
+            "postUserFirstName": "\(currentUserFirstName)",
+            "postCreatedTimestamp": "\(formattedDate)"
+     //       "postImageURL" : "\()"
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -115,3 +130,23 @@ extension AddPostViewController: PhotoSelectorViewControllerDelegate {
         selectedImage = image
     }
 }//end of AddPostTVC photoSelector extension
+
+
+
+//this dismisses the keyboard when enter is pressed on an iphone
+extension AddPostViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextField.resignFirstResponder()
+    }
+}
+
+
+//trying to get the same thing for the textview but haven't figured it our yet
+//extension AddPostViewController: UITextViewDelegate {
+//    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+//        <#code#>
+//    }
+//}
+
+
+

@@ -11,8 +11,11 @@ import Foundation
 public struct DummyPost: Codable {
     let postTitle: String
     let postDescription: String
+    let userUID: String
+    let postUserFirstName: String
+    let postDocumentID: String
+    let postCreatedTimestamp: String
 }
-
 
 class Post {
     var title: String

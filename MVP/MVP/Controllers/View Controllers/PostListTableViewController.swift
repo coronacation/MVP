@@ -28,7 +28,7 @@ class PostListTableViewController: UITableViewController {
     
     func loadData() {
         
-        db.collection("PostsNoPhoto").getDocuments() { (querySnapshot, error) in
+        db.collection("postsV2").getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             }
@@ -37,7 +37,9 @@ class PostListTableViewController: UITableViewController {
                 self.posts = []
                 for document in querySnapshot!.documents {
                     
-                    let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String, postDescription: document.data()["postDescription"] as! String)
+        let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
+                                  userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
+                    postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String)
                     
                     self.posts.append(dummyPost)
                 }
@@ -67,15 +69,18 @@ class PostListTableViewController: UITableViewController {
         return cell
     }
     
-    /*
+    
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "toPostDetailVC" {
+            if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+                let post = posts[indexPath.row]
+                destinationVC.post = post
+            }
+        }
      }
-     */
+     
     
 }
 

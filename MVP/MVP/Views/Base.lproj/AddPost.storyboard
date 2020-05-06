@@ -44,18 +44,6 @@
                                     <segue destination="tRA-Be-zDV" kind="embed" identifier="toPhotoSelectorVC" id="E3v-AD-k1A"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
-                                <rect key="frame" x="180" y="734" width="54" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="ZJn-Qn-ixl"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="54" id="uhY-o7-WCt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="2dI-tG-8hg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-bi-Ye4">
                                 <rect key="frame" x="129" y="314" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,21 +52,27 @@
                                     <action selector="dummySavePhotoButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="h8V-Ej-MLf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
+                                <rect key="frame" x="324" y="320" width="54" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="2dI-tG-8hg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="L7X-AM-EYE" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="87" id="3D9-Uw-ddh"/>
                             <constraint firstItem="jUX-nf-1Hz" firstAttribute="top" secondItem="gU4-4g-YTt" secondAttribute="bottom" constant="40" id="5LA-Yi-JG6"/>
                             <constraint firstItem="cGd-Hl-GMt" firstAttribute="trailing" secondItem="jUX-nf-1Hz" secondAttribute="trailing" constant="135" id="64I-jc-Gu0"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="top" secondItem="L7X-AM-EYE" secondAttribute="bottom" constant="68" id="8VR-HM-9cT"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="180" id="8ab-nf-WGn"/>
                             <constraint firstItem="jUX-nf-1Hz" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="135" id="G1h-Nd-X4n"/>
                             <constraint firstItem="cGd-Hl-GMt" firstAttribute="trailing" secondItem="L7X-AM-EYE" secondAttribute="trailing" constant="87" id="cvq-xG-BTW"/>
                             <constraint firstItem="gU4-4g-YTt" firstAttribute="top" secondItem="cGd-Hl-GMt" secondAttribute="top" constant="28" id="iPq-Kf-jTC"/>
                             <constraint firstItem="L7X-AM-EYE" firstAttribute="top" secondItem="jUX-nf-1Hz" secondAttribute="bottom" constant="38" id="q7m-KK-tTU"/>
                             <constraint firstItem="gU4-4g-YTt" firstAttribute="width" secondItem="BBT-UE-Ae7" secondAttribute="width" multiplier="0.57971" id="vZ2-SP-F7D"/>
                             <constraint firstItem="gU4-4g-YTt" firstAttribute="centerX" secondItem="BBT-UE-Ae7" secondAttribute="centerX" id="w8Q-ed-74M"/>
-                            <constraint firstItem="cGd-Hl-GMt" firstAttribute="trailing" secondItem="3Xf-fE-dGt" secondAttribute="trailing" constant="180" id="zvd-Ej-tbB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cGd-Hl-GMt"/>
                     </view>
