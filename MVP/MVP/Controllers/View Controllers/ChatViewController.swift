@@ -20,13 +20,16 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     
     
     // USER2 - the user that currentUser is chatting with
-    var user2Name: String?
+    var user2Object: User?
     var user2ImgUrl: String?
     var user2UID: String? {
         didSet {
-            user2Name = String(user2UID!.prefix(7))
+            guard let user2UID = user2UID else { return }
+            user2Name = String(user2UID.prefix(7))
         }
     }
+    
+    var user2Name: String? // TO-DO: delete this when user2Object works
     
     private var docReference: DocumentReference?
     
