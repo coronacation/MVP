@@ -23,7 +23,6 @@
 		AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135C1245E626F006562AA /* ChatListTableViewController.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
 		ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE1883524646F2E008CC86A /* UserExtension.swift */; };
-		ACE1883824647129008CC86A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE1883724647129008CC86A /* UserController.swift */; };
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
 		D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620732458DE8F00B5D417 /* AddPostViewController.swift */; };
@@ -62,7 +61,6 @@
 		AC9135C1245E626F006562AA /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACE1883524646F2E008CC86A /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
-		ACE1883724647129008CC86A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
 		B4FC19AE417711957313A323 /* Pods-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.release.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				D57620BE246209E100B5D417 /* CurrentUserController.swift */,
-				ACE1883724647129008CC86A /* UserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -379,7 +376,6 @@
 				AC23ABCB245A8C0C002D7764 /* Message.swift in Sources */,
 				6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */,
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
-				ACE1883824647129008CC86A /* UserController.swift in Sources */,
 				6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */,
 				D57620BF246209E100B5D417 /* CurrentUserController.swift in Sources */,
 				D576207D245A448500B5D417 /* ViewController.swift in Sources */,

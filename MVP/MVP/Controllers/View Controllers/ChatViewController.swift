@@ -49,7 +49,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
 //        self.user2Name = "Theo"
 //        self.user2UID = "MLzB7miXJFhUhm7dcpJNvaSDPJx2"
         
-        navigationItem.title = user2Name
+        navigationItem.title = user2Object?.firstName
         messageInputBar.delegate = self
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true

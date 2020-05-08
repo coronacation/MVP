@@ -35,14 +35,14 @@ class ChatListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return userUids.count
+        return users.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = userUids[indexPath.row]
+        cell.textLabel?.text = users[indexPath.row].firstName
         
         return cell
     }
@@ -84,14 +84,14 @@ class ChatListTableViewController: UITableViewController {
         
         let group = DispatchGroup()
         
-        group.enter()
         for otherUserUid in userUids {
+            group.enter()
             User.getBy(uid: otherUserUid, completion: { (user) in
                 self.users.append(user)
                 print("Chat List appended: \(user.firstName)")
+                group.leave()
             })
         }
-        group.leave()
                 
         group.notify(queue: .main) {
             print("~~Reloading Chat List tableview~~")
@@ -129,11 +129,10 @@ class ChatListTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? ChatViewController
                 else { return }
             
+            let user2 = users[indexPath.row]
             let user2uid = userUids[indexPath.row]
             
-            UserController.shared.fetchUser(fromUid: user2uid)
-            destinationVC.user2Object = UserController.shared.userToReturn
-            
+            destinationVC.user2Object = user2
             destinationVC.user2UID = user2uid
         }
     }
