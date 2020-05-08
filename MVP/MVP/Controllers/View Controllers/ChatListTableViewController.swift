@@ -52,7 +52,7 @@ class ChatListTableViewController: UITableViewController {
     
     func loadConversations() {
         let query = Firestore.firestore().collection("Chats")
-            .whereField("users", arrayContains: currentUser.uid)
+            .whereField("userUids", arrayContains: currentUser.uid)
         
         query.getDocuments { (convoQuerySnapshot, error) in
             if let error = error {
@@ -67,9 +67,10 @@ class ChatListTableViewController: UITableViewController {
                 
                 for doc in snapshot.documents {
                     guard let chat = Chat(dictionary: doc.data()),
-                    let otherUserUid = chat.fetchOtherUserUid()
+                    let otherUserUid = chat.otherUserUid
                         else { return }
                     
+//                    self.chatRefs.append(doc.reference)
                     self.userUids.append(otherUserUid)
                 }
                 print("Finished loadConversations()")

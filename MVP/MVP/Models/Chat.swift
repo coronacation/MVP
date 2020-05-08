@@ -7,29 +7,43 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 struct Chat {
-    var users: [String] // user1, user2
+    var userUids: [String]
+    
     var dictionary: [String: Any] {
-        return ["users": users]
+        
+        return [
+            "userUids": userUids
+        ]
+        
+    }
+    
+    var otherUserUid: String? {
+        guard let currentUserUid = CurrentUserController.shared.currentUser?.userUID,
+            userUids.contains(currentUserUid)
+            else { return nil }
+        
+        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
+        return otherUserUid
     }
 }
 
 extension Chat {
     
     init?(dictionary: [String:Any]) {
-        guard let chatUsers = dictionary["users"] as? [String] else {return nil}
-        self.init(users: chatUsers)
+        guard let userUids = dictionary["userUids"] as? [String] else {return nil}
+        
+        self.init(userUids: userUids)
     }
     
-    func fetchOtherUserUid() -> String? {
-        let currentUserUid = Auth.auth().currentUser!.uid
-        guard users.contains(currentUserUid) else { return nil }
-        
-        let otherUserUid = users[0] == currentUserUid ? users[1] : users[0]
-        return otherUserUid
-    }
+    //    func fetchOtherUserUid() -> String? {
+    //        let currentUserUid = Auth.auth().currentUser!.uid // TO-DO: replace with call to CurrentUserController
+    //        guard userUids.contains(currentUserUid) else { return nil }
+    //
+    //        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
+    //        return otherUserUid
+    //    }
     
     //    func fetchOtherUser() -> User? {
     //        let currentUserUid = Auth.auth().currentUser!.uid

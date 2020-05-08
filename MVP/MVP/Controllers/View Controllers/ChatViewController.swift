@@ -24,7 +24,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     var user2ImgUrl: String?
     
     
-    private var docReference: DocumentReference?
+    private var chatDocReference: DocumentReference?
     
     var messages: [Message] = []
     
@@ -64,7 +64,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         guard let user2 = user2Object else { return }
         let users = [self.currentUser.userUID, user2.uid]
         let data: [String: Any] = [
-            "users":users //,
+            "userUids":users //,
             // "offer":"I have 12 cloth masks"
         ]
         
@@ -85,7 +85,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         
         //Fetch all the chats which has current user in it
         let db = Firestore.firestore().collection("Chats")
-            .whereField("users", arrayContains: Auth.auth().currentUser?.uid ?? "Not Found User 1")
+            .whereField("userUids", arrayContains: Auth.auth().currentUser?.uid ?? "Not Found User 1")
         
         
         db.getDocuments { (chatQuerySnap, error) in
@@ -110,9 +110,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
                         
                         let chat = Chat(dictionary: doc.data())
                         //Get the chat which has user2 id
-                        if (chat?.users.contains(user2.uid))! {
+                        if (chat?.userUids.contains(user2.uid))! {
                             
-                            self.docReference = doc.reference
+                            self.chatDocReference = doc.reference
                             //fetch it's thread collection
                             doc.reference.collection("thread")
                                 .order(by: "created", descending: false)
@@ -164,12 +164,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
             "senderName": currentUser.fullName
         ]
         
-        docReference?.collection("thread").addDocument(data: data, completion: { (error) in
+        var ref: DocumentReference? = nil
+        
+        ref = chatDocReference?.collection("thread").addDocument(data: data, completion: { (error) in
             
             if let error = error {
                 print("Error Sending message: \(error)")
                 return
             }
+            
             
             self.messagesCollectionView.scrollToBottom()
             
@@ -241,7 +244,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.userUID, senderName: currentUser.fullName)
         
-        //messages.append(message)
         insertNewMessage(message)
         save(message)
         

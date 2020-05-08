@@ -14,6 +14,7 @@
 		6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A692458D64300F69923 /* Profile.storyboard */; };
 		6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */; };
 		6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* MapViewController.swift */; };
+		AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */; };
 		AC23ABC7245A82F9002D7764 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC23ABC6245A82F9002D7764 /* Chat.storyboard */; };
 		AC23ABCB245A8C0C002D7764 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23ABCA245A8C0C002D7764 /* Message.swift */; };
 		AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE502459E6B300C8D3A6 /* Post.swift */; };
@@ -22,6 +23,7 @@
 		AC9135C0245CCD5C006562AA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BF245CCD5C006562AA /* Chat.swift */; };
 		AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135C1245E626F006562AA /* ChatListTableViewController.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
+		ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047AF24660868002F2CA3 /* ChatListItem.swift */; };
 		ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE1883524646F2E008CC86A /* UserExtension.swift */; };
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
@@ -52,6 +54,7 @@
 		6D4A8A6A2458D64300F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
 		AC23ABC6245A82F9002D7764 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		AC23ABCA245A8C0C002D7764 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AC48CE502459E6B300C8D3A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		AC9135BF245CCD5C006562AA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		AC9135C1245E626F006562AA /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACD047AF24660868002F2CA3 /* ChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItem.swift; sourceTree = "<group>"; };
 		ACE1883524646F2E008CC86A /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				ACEF808C245A149B009459FF /* Category.swift */,
 				AC23ABCA245A8C0C002D7764 /* Message.swift */,
 				AC9135BF245CCD5C006562AA /* Chat.swift */,
+				ACD047AF24660868002F2CA3 /* ChatListItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			children = (
 				D576207E245A44C600B5D417 /* Auth */,
 				ACE1883524646F2E008CC86A /* UserExtension.swift */,
+				AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -381,12 +387,14 @@
 				D576207D245A448500B5D417 /* ViewController.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
+				ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
 				AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
 				ACEF808D245A149B009459FF /* Category.swift in Sources */,
 				AC9135BE245CCC68006562AA /* ChatViewController.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
+				AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */,
 				ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */,
 				AC9135C0245CCD5C006562AA /* Chat.swift in Sources */,
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
