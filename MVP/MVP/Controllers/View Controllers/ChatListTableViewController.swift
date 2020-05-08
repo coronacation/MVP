@@ -130,10 +130,8 @@ class ChatListTableViewController: UITableViewController {
                 else { return }
             
             let user2 = users[indexPath.row]
-            let user2uid = userUids[indexPath.row]
             
             destinationVC.user2Object = user2
-            destinationVC.user2UID = user2uid
         }
     }
     

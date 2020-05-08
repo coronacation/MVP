@@ -22,14 +22,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     // USER2 - the user that currentUser is chatting with
     var user2Object: User?
     var user2ImgUrl: String?
-    var user2UID: String? {
-        didSet {
-            guard let user2UID = user2UID else { return }
-            user2Name = String(user2UID.prefix(7))
-        }
-    }
     
-    var user2Name: String? // TO-DO: delete this when user2Object works
     
     private var docReference: DocumentReference?
     
@@ -43,11 +36,6 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         
         self.user2ImgUrl = "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
         
-//        self.user2Name = "Abigail"
-//        self.user2UID = "1hYi1aKFAGfzap7fUGxcA2GJIZF3"
-        
-//        self.user2Name = "Theo"
-//        self.user2UID = "MLzB7miXJFhUhm7dcpJNvaSDPJx2"
         
         navigationItem.title = user2Object?.firstName
         messageInputBar.delegate = self
@@ -73,7 +61,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     // MARK: - Custom messages handlers
     
     func createNewChat() {
-        let users = [self.currentUser.userUID, self.user2UID]
+        guard let user2 = user2Object else { return }
+        let users = [self.currentUser.userUID, user2.uid]
         let data: [String: Any] = [
             "users":users //,
             // "offer":"I have 12 cloth masks"
@@ -91,6 +80,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     }
     
     func loadChat() {
+        guard let user2 = user2Object else { return }
+        
         
         //Fetch all the chats which has current user in it
         let db = Firestore.firestore().collection("Chats")
@@ -119,7 +110,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
                         
                         let chat = Chat(dictionary: doc.data())
                         //Get the chat which has user2 id
-                        if (chat?.users.contains(self.user2UID!))! {
+                        if (chat?.users.contains(user2.uid))! {
                             
                             self.docReference = doc.reference
                             //fetch it's thread collection
