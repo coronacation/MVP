@@ -23,7 +23,7 @@ class ChatListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadConversations()
+//        self.loadConversations()
     }
     
 
@@ -35,14 +35,14 @@ class ChatListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return users.count
+        return ChatListController.shared.chats.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = users[indexPath.row].firstName
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUser.firstName
         
         return cell
     }
@@ -130,7 +130,7 @@ class ChatListTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? ChatViewController
                 else { return }
             
-            let user2 = users[indexPath.row]
+            let user2 = ChatListController.shared.chats[indexPath.row].otherUser
             
             destinationVC.user2Object = user2
         }
