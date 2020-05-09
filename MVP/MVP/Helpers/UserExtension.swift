@@ -32,7 +32,6 @@ extension User {
                 print("Could not get user: \(error.debugDescription)")
                 return
             }
-            print("getBy user: \(user.firstName)")
             completion(user)
         }
     }

@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class ChatListController {
+    
+    // MARK: - Constants
+    
+    private let chatsCollection = Firestore.firestore().collection("Chats")
+    
     
     // MARK: - Shared Instance
     
@@ -17,28 +23,42 @@ class ChatListController {
     
     // MARK: - Properties
     
+    var currentUser: CurrentUser? {
+        didSet {
+            guard let userUID = currentUser?.userUID else { return }
+            self.fetchChatsOfCurrentUser(userUID)
+        }
+    }
     var chats: [ChatListItem] = []
     
     
     // MARK: - CRUD
     
-//    func loadChats() {
-//        print("Starting loadChats()")
-//        
-//        let group = DispatchGroup()
-//        
-//        for chatRef in chatRefs {
-//            group.enter()
-//            Chat.getBy(docRef: chatRef, completion: { (chat) in
-//                self.chats.append(chat)
-//                print("Chat List appended: \(String(describing: chat.otherUserUid))")
-//                group.leave()
-//            })
-//        }
-//                
-//        group.notify(queue: .main) {
-//            print("~~Reloading Chat List tableview~~")
-//            self.tableView.reloadData()
-//        }
-//    }
+    func fetchChatsOfCurrentUser(_ currentUserUID: String) {
+        let query = chatsCollection
+            .whereField("userUids", arrayContains: currentUserUID)
+        
+        query.getDocuments { (convoQuerySnapshot, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            } else {
+                
+                guard let snapshot = convoQuerySnapshot,
+                    !snapshot.isEmpty
+                    else { return }
+                
+                
+                for doc in snapshot.documents {
+                    guard let chat = Chat(dictionary: doc.data()) else { return }
+                    
+                    ChatListItem.createWith(chat: chat, chatRef: doc.reference) { (chatListItem) in
+                        self.chats.append(chatListItem)
+                        print("#ChatListController 5. appended ChatListItem")
+                        
+                    }
+                } //end for
+            } // end else
+        }
+    } // end fetchChatsOfCurrentUser
 }

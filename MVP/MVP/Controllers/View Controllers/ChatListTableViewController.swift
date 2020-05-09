@@ -81,7 +81,7 @@ class ChatListTableViewController: UITableViewController {
     
     /// Do *not* move the call to constructUsers() to viewDidLoad. The call to constructUsers from loadConversations is necessary to preserve order of execution.
     func constructUsers() {
-        print("Starting constructUsers()")
+        print("#ChatListTVC Starting constructUsers()")
         
         let group = DispatchGroup()
         
