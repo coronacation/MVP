@@ -12,7 +12,11 @@ class CurrentUserController {
     
     static let shared = CurrentUserController()
     
-    var currentUser: CurrentUser?
+    var currentUser: CurrentUser? {
+        didSet {
+            ChatListController.shared.currentUser = self.currentUser
+        }
+    }
     
     //this function sets the current user once they create a new account
     func setCurrentUserFromSignUp(firstName: String, lastName: String, email: String, userUID: String) {

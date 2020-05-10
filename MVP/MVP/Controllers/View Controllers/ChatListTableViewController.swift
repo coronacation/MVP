@@ -16,13 +16,14 @@ class ChatListTableViewController: UITableViewController {
     
     var currentUser = Auth.auth().currentUser!
     var userUids: [String] = []
+    var users: [User] = []
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadConversations()
+//        self.loadConversations()
     }
     
 
@@ -34,24 +35,24 @@ class ChatListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return userUids.count
+        return ChatListController.shared.chats.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = userUids[indexPath.row]
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUser.firstName
         
         return cell
     }
     
     
-    // MARK: - Helper Functions
+    // MARK: - Conversations data source
     
     func loadConversations() {
         let query = Firestore.firestore().collection("Chats")
-            .whereField("users", arrayContains: currentUser.uid)
+            .whereField("userUids", arrayContains: currentUser.uid)
         
         query.getDocuments { (convoQuerySnapshot, error) in
             if let error = error {
@@ -66,16 +67,38 @@ class ChatListTableViewController: UITableViewController {
                 
                 for doc in snapshot.documents {
                     guard let chat = Chat(dictionary: doc.data()),
-                    let otherUserUid = chat.fetchOtherUserUid()
+                    let otherUserUid = chat.otherUserUid
                         else { return }
                     
-                    print("appending " + otherUserUid)
+//                    self.chatRefs.append(doc.reference)
                     self.userUids.append(otherUserUid)
                 }
-                self.tableView.reloadData()
+                print("Finished loadConversations()")
+                self.constructUsers()
             } // end else
         }
     } // end loadConversations
+    
+    /// Do *not* move the call to constructUsers() to viewDidLoad. The call to constructUsers from loadConversations is necessary to preserve order of execution.
+    func constructUsers() {
+        print("#ChatListTVC Starting constructUsers()")
+        
+        let group = DispatchGroup()
+        
+        for otherUserUid in userUids {
+            group.enter()
+            User.getBy(uid: otherUserUid, completion: { (user) in
+                self.users.append(user)
+                print("Chat List appended: \(user.firstName)")
+                group.leave()
+            })
+        }
+                
+        group.notify(queue: .main) {
+            print("~~Reloading Chat List tableview~~")
+            self.tableView.reloadData()
+        }
+    }
     
     
     /*
@@ -107,8 +130,9 @@ class ChatListTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? ChatViewController
                 else { return }
             
-            let user2uid = userUids[indexPath.row]
-            destinationVC.user2UID = user2uid
+            let user2 = ChatListController.shared.chats[indexPath.row].otherUser
+            
+            destinationVC.user2Object = user2
         }
     }
     

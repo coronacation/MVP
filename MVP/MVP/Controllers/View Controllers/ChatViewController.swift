@@ -20,15 +20,11 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     
     
     // USER2 - the user that currentUser is chatting with
-    var user2Name: String?
+    var user2Object: User?
     var user2ImgUrl: String?
-    var user2UID: String? {
-        didSet {
-            user2Name = String(user2UID!.prefix(7))
-        }
-    }
     
-    private var docReference: DocumentReference?
+    
+    private var chatDocReference: DocumentReference?
     
     var messages: [Message] = []
     
@@ -40,13 +36,8 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
         
         self.user2ImgUrl = "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
         
-//        self.user2Name = "Abigail"
-//        self.user2UID = "1hYi1aKFAGfzap7fUGxcA2GJIZF3"
         
-//        self.user2Name = "Theo"
-//        self.user2UID = "MLzB7miXJFhUhm7dcpJNvaSDPJx2"
-        
-        navigationItem.title = user2Name
+        navigationItem.title = user2Object?.firstName
         messageInputBar.delegate = self
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -70,9 +61,10 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     // MARK: - Custom messages handlers
     
     func createNewChat() {
-        let users = [self.currentUser.userUID, self.user2UID]
+        guard let user2 = user2Object else { return }
+        let users = [self.currentUser.userUID, user2.uid]
         let data: [String: Any] = [
-            "users":users //,
+            "userUids":users //,
             // "offer":"I have 12 cloth masks"
         ]
         
@@ -88,10 +80,12 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
     }
     
     func loadChat() {
+        guard let user2 = user2Object else { return }
+        
         
         //Fetch all the chats which has current user in it
         let db = Firestore.firestore().collection("Chats")
-            .whereField("users", arrayContains: Auth.auth().currentUser?.uid ?? "Not Found User 1")
+            .whereField("userUids", arrayContains: Auth.auth().currentUser?.uid ?? "Not Found User 1")
         
         
         db.getDocuments { (chatQuerySnap, error) in
@@ -116,9 +110,9 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
                         
                         let chat = Chat(dictionary: doc.data())
                         //Get the chat which has user2 id
-                        if (chat?.users.contains(self.user2UID!))! {
+                        if (chat?.userUids.contains(user2.uid))! {
                             
-                            self.docReference = doc.reference
+                            self.chatDocReference = doc.reference
                             //fetch it's thread collection
                             doc.reference.collection("thread")
                                 .order(by: "created", descending: false)
@@ -170,12 +164,15 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
             "senderName": currentUser.fullName
         ]
         
-        docReference?.collection("thread").addDocument(data: data, completion: { (error) in
+        var ref: DocumentReference? = nil
+        
+        ref = chatDocReference?.collection("thread").addDocument(data: data, completion: { (error) in
             
             if let error = error {
                 print("Error Sending message: \(error)")
                 return
             }
+            
             
             self.messagesCollectionView.scrollToBottom()
             
@@ -247,7 +244,6 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.userUID, senderName: currentUser.fullName)
         
-        //messages.append(message)
         insertNewMessage(message)
         save(message)
         
