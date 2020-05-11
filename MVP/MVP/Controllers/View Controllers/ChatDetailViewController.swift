@@ -1,5 +1,5 @@
 //
-//  ChatViewController.swift
+//  ChatDetailViewController.swift
 //  MVP
 //
 //  Created by Theo Vora on 5/1/20.
@@ -12,7 +12,7 @@ import Firebase
 import FirebaseFirestore
 import SDWebImage
 
-class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, MessageCellDelegate { //InputBarAccessoryViewDelegate
+class ChatDetailViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, MessageCellDelegate { //InputBarAccessoryViewDelegate
     
     // MARK: - Properties
     
@@ -238,7 +238,7 @@ class ChatViewController: MessagesViewController, MessagesDataSource, MessagesLa
 
 // MARK: - InputBarAccessoryViewDelegate
 
-extension ChatViewController: InputBarAccessoryViewDelegate {
+extension ChatDetailViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         

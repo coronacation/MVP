@@ -127,7 +127,7 @@ class ChatListTableViewController: UITableViewController {
         if segue.identifier == "toChatVC" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 //                let destinationVC = segue.destination as? ChatViewController
-                let destinationVC = segue.destination as? ChatViewController
+                let destinationVC = segue.destination as? ChatDetailViewController
                 else { return }
             
             let user2 = ChatListController.shared.chats[indexPath.row].otherUser

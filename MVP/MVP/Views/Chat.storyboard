@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="-1642" y="49"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat Detail View Controller-->
         <scene sceneID="FTv-K7-GeJ">
             <objects>
-                <viewController id="47v-cc-bZS" customClass="ChatViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="47v-cc-bZS" customClass="ChatDetailViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aMX-Js-4Gb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
