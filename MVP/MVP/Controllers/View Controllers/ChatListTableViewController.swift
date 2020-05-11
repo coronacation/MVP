@@ -12,18 +12,11 @@ import FirebaseFirestore
 
 class ChatListTableViewController: UITableViewController {
     
-    // MARK: - Properties
-    
-    var currentUser = Auth.auth().currentUser!
-    var userUids: [String] = []
-    var users: [User] = []
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.loadConversations()
     }
     
 
@@ -49,57 +42,7 @@ class ChatListTableViewController: UITableViewController {
     
     
     // MARK: - Conversations data source
-    
-    func loadConversations() {
-        let query = Firestore.firestore().collection("Chats")
-            .whereField("userUids", arrayContains: currentUser.uid)
         
-        query.getDocuments { (convoQuerySnapshot, error) in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            } else {
-                
-                guard let snapshot = convoQuerySnapshot,
-                    !snapshot.isEmpty
-                    else { return }
-                
-                
-                for doc in snapshot.documents {
-                    guard let chat = Chat(dictionary: doc.data()),
-                    let otherUserUid = chat.otherUserUid
-                        else { return }
-                    
-//                    self.chatRefs.append(doc.reference)
-                    self.userUids.append(otherUserUid)
-                }
-                print("Finished loadConversations()")
-                self.constructUsers()
-            } // end else
-        }
-    } // end loadConversations
-    
-    /// Do *not* move the call to constructUsers() to viewDidLoad. The call to constructUsers from loadConversations is necessary to preserve order of execution.
-    func constructUsers() {
-        print("#ChatListTVC Starting constructUsers()")
-        
-        let group = DispatchGroup()
-        
-        for otherUserUid in userUids {
-            group.enter()
-            User.getBy(uid: otherUserUid, completion: { (user) in
-                self.users.append(user)
-                print("Chat List appended: \(user.firstName)")
-                group.leave()
-            })
-        }
-                
-        group.notify(queue: .main) {
-            print("~~Reloading Chat List tableview~~")
-            self.tableView.reloadData()
-        }
-    }
-    
     
     /*
      // Override to support editing the table view.
