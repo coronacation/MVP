@@ -28,7 +28,7 @@ class PostListTableViewController: UITableViewController {
     
     func loadData() {
         
-        db.collection("postsV2").getDocuments() { (querySnapshot, error) in
+        db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             }
@@ -37,13 +37,16 @@ class PostListTableViewController: UITableViewController {
                 self.posts = []
                 for document in querySnapshot!.documents {
                     
-        let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
-                                  userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                    postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String)
+                    let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
+                                              userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
                     
                     self.posts.append(dummyPost)
                 }
                 self.tableView.reloadData()
+                
+                print("\n\nCOUNT OF POSTS: \(self.posts.count)\n\n")
+                
             }
         }
     }
@@ -58,29 +61,28 @@ class PostListTableViewController: UITableViewController {
         return posts.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        162
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
         
         let post = posts[indexPath.row]
-        
-        cell.textLabel?.text = post.postTitle
-        cell.detailTextLabel?.text = post.postDescription
+        cell.post = post
         
         return cell
     }
     
+    // MARK: - Navigation
     
-     // MARK: - Navigation
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPostDetailVC" {
             if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
                 let post = posts[indexPath.row]
                 destinationVC.post = post
             }
         }
-     }
-     
-    
+    }
 }
 
