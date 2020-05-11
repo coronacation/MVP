@@ -10,8 +10,6 @@
 		6D27DA7F2469C4FE00DBDEA2 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D27DA7E2469C4FE00DBDEA2 /* Colors.xcassets */; };
 		6D27DA812469C7BA00DBDEA2 /* CurrentUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D27DA802469C7B900DBDEA2 /* CurrentUserController.swift */; };
 		6D27DA842469C84100DBDEA2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D27DA822469C84100DBDEA2 /* Home.storyboard */; };
-		6D27DA882469CB7000DBDEA2 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D27DA862469C90A00DBDEA2 /* Roboto-Bold.ttf */; };
-		6D27DA892469CB7300DBDEA2 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D27DA872469C91400DBDEA2 /* Roboto-Regular.ttf */; };
 		6D4A8A642458D07600F69923 /* AddPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A622458D07600F69923 /* AddPost.storyboard */; };
 		6D4A8A662458D32700F69923 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A652458D32700F69923 /* PostListTableViewController.swift */; };
 		6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A672458D34200F69923 /* PostDetailViewController.swift */; };
@@ -59,8 +57,6 @@
 		6D27DA7E2469C4FE00DBDEA2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		6D27DA802469C7B900DBDEA2 /* CurrentUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserController.swift; sourceTree = "<group>"; };
 		6D27DA832469C84100DBDEA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
-		6D27DA862469C90A00DBDEA2 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../../../../../Desktop/roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		6D27DA872469C91400DBDEA2 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../../../../Desktop/roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		6D4A8A632458D07600F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddPost.storyboard; sourceTree = "<group>"; };
 		6D4A8A652458D32700F69923 /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		6D4A8A672458D34200F69923 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +77,8 @@
 		ACD047AF24660868002F2CA3 /* ChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItem.swift; sourceTree = "<group>"; };
 		ACD047B324661C33002F2CA3 /* ChatListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
 		ACE1883524646F2E008CC86A /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
+		ACE1C9C9246A1C2200AA0B2D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		ACE1C9CA246A1C2200AA0B2D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
 		B4FC19AE417711957313A323 /* Pods-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.release.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,8 +134,8 @@
 		6D27DA852469C8DD00DBDEA2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				6D27DA862469C90A00DBDEA2 /* Roboto-Bold.ttf */,
-				6D27DA872469C91400DBDEA2 /* Roboto-Regular.ttf */,
+				ACE1C9C9246A1C2200AA0B2D /* Roboto-Bold.ttf */,
+				ACE1C9CA246A1C2200AA0B2D /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -351,9 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D27DA7F2469C4FE00DBDEA2 /* Colors.xcassets in Resources */,
-				6D27DA892469CB7300DBDEA2 /* Roboto-Regular.ttf in Resources */,
 				D5CF92D624537B570059110B /* LaunchScreen.storyboard in Resources */,
-				6D27DA882469CB7000DBDEA2 /* Roboto-Bold.ttf in Resources */,
 				AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */,
 				6D27DA842469C84100DBDEA2 /* Home.storyboard in Resources */,
 				D5CF92D324537B570059110B /* Assets.xcassets in Resources */,
