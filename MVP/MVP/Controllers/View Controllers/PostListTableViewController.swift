@@ -19,7 +19,6 @@ class PostListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
-        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +40,21 @@ class PostListTableViewController: UITableViewController {
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
                         postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
                     
+//                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
+//                                 DispatchQueue.main.async {
+//                                     switch result {
+//                                     case .success(let image):
+//                                         dummyPost.postUIImage = image
+//                                        print("success pulling image/n")
+//                                     case .failure(let error):
+//                                         print(error.errorDescription!)
+//                                         dummyPost.postUIImage = #imageLiteral(resourceName: "noImageAvailable")
+//                                     }
+//                                 }
+//                             }
+                    
                     self.posts.append(dummyPost)
+                    
                 }
                 self.tableView.reloadData()
                 
@@ -52,10 +65,6 @@ class PostListTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count

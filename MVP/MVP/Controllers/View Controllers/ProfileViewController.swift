@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController {
 
@@ -32,7 +33,34 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func deleteAccountButtonTapped(_ sender: Any) {
-        //present alert controller with warning that this action cannot be undone
+        presentDeleteAccountAlert()
+            }
+    
+    func presentDeleteAccountAlert() {
         
+        let title = "Are you sure you want to delete your account?"
+        let message = "This action cannot be undone. You will lose all data from your account."
+        let cancelActionTitle = "Cancel"
+         let deleteActionTitle = "Delete Account"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: cancelActionTitle, style: .default, handler: nil))
+     alert.addAction(UIAlertAction(title: deleteActionTitle, style: .cancel, handler: { (_) in
+    
+         let user = Auth.auth().currentUser
+
+         user?.delete { error in
+           if let error = error {
+             print("error deleting account")
+             print(error.localizedDescription)
+           } else {
+             print("account deleted")
+           }
+         }
+         
+     }))
+        self.present(alert, animated: true, completion: nil)
     }
+
+    
 }

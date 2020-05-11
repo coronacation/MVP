@@ -14,6 +14,7 @@ struct CurrentUser {
     var lastName: String
     var email: String
     let userUID: String
+    var location: CLLocation? = nil
     
     var fullName: String {
         get {

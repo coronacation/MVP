@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        print("login function running")
         
         // Create cleaned versions of the text field
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -64,14 +63,12 @@ class LoginViewController: UIViewController {
                         if let error = error {
                             print("Error assign current user: \(error)")
                         }      else {
-                            print("docments grabbed")
                             
                             for document in querySnapshot!.documents {
                                 
                                 let currentUser = CurrentUser(firstName: document.data()["firstName"] as! String, lastName: document.data()["lastName"] as! String, email: document.data()["email"] as! String, userUID: document.data()["uid"] as! String)
                                 
                                 CurrentUserController.shared.currentUser = currentUser
-                                print("first document grabbed")
                             }
                         }
                     }
