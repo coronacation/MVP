@@ -27,12 +27,26 @@ class PostDetailViewController: UIViewController {
     
     func setUpViews() {
         
-        if let postUserFirstName = self.post?.postUserFirstName, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp {
+        if let postUserFirstName = self.post?.postUserFirstName, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp, let urlString = self.post?.postImageURL {
+            
+            loadImage(url: URL(string: urlString)!)
             
             postUserNameLabel.text = "Posted by: \(postUserFirstName)"
             postTitleLabel.text = "Title: \(postTitle)"
             postDescriptionLabel.text = self.post?.postDescription
             postTimestampLabel.text = "Posted on \(postCreatedTimestamp)"
+        }
+    }
+    
+    func loadImage(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.postImage.image = image
+                    }
+                }
+            }
         }
     }
     
