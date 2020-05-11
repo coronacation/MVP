@@ -28,7 +28,9 @@ extension ChatListItem {
         if let otherUserUID = chat.otherUserUid {
             print("#ChatListItem 1. getting user")
             User.getBy(uid: otherUserUID) { (user) in
-                print("#ChatListItem 2. got \(user.firstName)")
+                print("#ChatListItem 2. appending \(user.firstName) to User Dictionary ")
+                
+                ChatListController.shared.addUser(user)
                 
                 print("#ChatListItem 3. creating ChatListItem")
                 let chatListItem = ChatListItem(

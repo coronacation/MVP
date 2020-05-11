@@ -160,8 +160,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
             "content": message.content,
             "created": message.created,
             "id": message.id,
-            "senderID": message.senderID,
-            "senderName": currentUser.fullName
+            "senderID": message.senderID
         ]
         
         var ref: DocumentReference? = nil
@@ -242,7 +241,10 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
-        let message = Message(id: UUID().uuidString, content: text, created: Timestamp(), senderID: currentUser.userUID, senderName: currentUser.fullName)
+        let message = Message(id: UUID().uuidString,
+                              content: text,
+                              created: Timestamp(),
+                              senderID: currentUser.userUID)
         
         insertNewMessage(message)
         save(message)

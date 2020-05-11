@@ -25,11 +25,16 @@ class ChatListController {
     
     var currentUser: CurrentUser? {
         didSet {
-            guard let userUID = currentUser?.userUID else { return }
+            guard let currentUser = currentUser else { return }
+            let userUID = currentUser.userUID
             self.fetchChatsOfCurrentUser(userUID)
+            usersDictionary[userUID] = currentUser.firstName
         }
     }
     var chats: [ChatListItem] = []
+    
+    /// usersDictionary enables fast lookup of a user's firstName. key = UID. value = firstName.
+    var usersDictionary: [String:String] = [:]
     
     
     // MARK: - CRUD
@@ -61,4 +66,8 @@ class ChatListController {
             } // end else
         }
     } // end fetchChatsOfCurrentUser
+    
+    func addUser(_ user: User) {
+        usersDictionary[user.uid] = user.firstName
+    }
 }
