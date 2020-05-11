@@ -44,14 +44,6 @@
                                     <segue destination="tRA-Be-zDV" kind="embed" identifier="toPhotoSelectorVC" id="E3v-AD-k1A"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-bi-Ye4">
-                                <rect key="frame" x="129" y="314" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save photo test button"/>
-                                <connections>
-                                    <action selector="dummySavePhotoButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="h8V-Ej-MLf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
                                 <rect key="frame" x="324" y="320" width="54" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

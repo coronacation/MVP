@@ -6,15 +6,32 @@
 //  Copyright © 2020 coronacation. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public struct DummyPost: Codable {
+public class DummyPost {
     let postTitle: String
     let postDescription: String
     let userUID: String
     let postUserFirstName: String
     let postDocumentID: String
     let postCreatedTimestamp: String
+    let category: String
+    let postImageURL: String
+    let postFlaggedCount: Int
+    var postUIImage: UIImage = #imageLiteral(resourceName: "loading")
+    
+    init(postTitle: String, postDescription: String, userUID: String, postUserFirstName: String, postDocumentID: String,
+         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int) {
+        self.postTitle = postTitle
+        self.postDescription = postDescription
+        self.userUID = userUID
+        self.postUserFirstName = postUserFirstName
+        self.postDocumentID = postDocumentID
+        self.postCreatedTimestamp = postCreatedTimestamp
+        self.category = category
+        self.postImageURL = postImageURL
+        self.postFlaggedCount = postFlaggedCount
+    }
 }
 
 class Post {
