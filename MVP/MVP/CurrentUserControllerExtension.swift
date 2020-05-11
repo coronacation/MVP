@@ -1,0 +1,64 @@
+//
+//  CurrentUserControllerExtension.swift
+//  MVP
+//
+//  Created by Anthroman on 5/10/20.
+//  Copyright © 2020 coronacation. All rights reserved.
+//
+
+import Foundation
+import CoreLocation
+import MapKit
+
+ extension CurrentUserController {
+
+     // Generate a random location between 0.5 and 1.5 km of user
+    func generateRandomLocationForUser() -> MKPointAnnotation {
+        let annotation = MKPointAnnotation()
+/*
+        annotation.coordinate = generateRandomCoordinatesForUser()
+*/
+
+         // annotation.title = "Username"
+        // annotation.subtitle = "Goods Being Offered"
+        
+        return annotation
+        // Note: Caller must add the annotation to the map using mapView.addAnnotation(//annotation's variable//)
+    }
+/*
+    func generateRandomCoordinatesForUser() -> CLLocationCoordinate2D {
+        // Get the user's longitude and latitude coordinates
+
+        let currentLong = currentUser.location.coordinate.longitude
+        let currentLat = currentUser.location.coordinate.latitude
+
+        // 1 kilometer = 0.00900900900901° So, 1 Meter = 0.00900900900901 / 1000
+        let meterCord = 0.00900900900901 / 1000
+
+        // Generate random meters between the maximum and minimum meters
+        let randomMeters = UInt(arc4random_uniform(1000) + 500)
+
+        // Generate random numbers for different directions from center
+        let randomPM = arc4random_uniform(6)
+
+        // Convert the distance in meters to coordinates by multiplying the number of meters with 1 meter coordinate
+        let metersCordN = meterCord * Double(randomMeters)
+
+        // Generate the random coordinates
+        switch randomPM {
+        case 0:
+            return CLLocationCoordinate2D(latitude: currentLat + metersCordN, longitude: currentLong + metersCordN)
+        case 1:
+            return CLLocationCoordinate2D(latitude: currentLat - metersCordN, longitude: currentLong - metersCordN)
+        case 2:
+            return CLLocationCoordinate2D(latitude: currentLat + metersCordN, longitude: currentLong - metersCordN)
+        case 3:
+            return CLLocationCoordinate2D(latitude: currentLat - metersCordN, longitude: currentLong + metersCordN)
+        case 4:
+            return CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong - metersCordN)
+        default:
+            return CLLocationCoordinate2D(latitude: currentLat - metersCordN, longitude: currentLong)
+        }
+    }
+*/
+}
