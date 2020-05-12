@@ -16,7 +16,6 @@ struct ChatListItem {
     var chat: Chat
     var lastMsg: String
     var lastTime: String
-    //    var lastTimestamp: Timestamp
 }
 
 extension ChatListItem {
@@ -37,8 +36,8 @@ extension ChatListItem {
                     chatRef: chatRef,
                     otherUser: user,
                     chat: chat,
-                    lastMsg: "",
-                    lastTime: "")
+                    lastMsg: chat.lastMsg ?? "",
+                    lastTime: chat.lastTime?.description ?? "")
                 print("#ChatListItem 4. ChatListItem created!")
                 completion(chatListItem)
             }

@@ -17,6 +17,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     // MARK: - Properties
     
     var currentUser = CurrentUserController.shared.currentUser!
+    var chatListItem: ChatListItem?
     
     
     // USER2 - the user that currentUser is chatting with
@@ -154,7 +155,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         }
     }
     
-    private func save(_ message: Message) {
+    private func save(_ message: Message, completion: @escaping (DocumentReference, String, Timestamp) -> Void) {
         
         let data: [String: Any] = [
             "content": message.content,
@@ -172,8 +173,8 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
                 return
             }
             
-            
             self.messagesCollectionView.scrollToBottom()
+            completion(ref!, message.content, message.created)
             
         })
     }
@@ -247,7 +248,14 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
                               senderID: currentUser.userUID)
         
         insertNewMessage(message)
-        save(message)
+//        save(message, completion: )
+        save(message) { (lastMsgDocRef, message, timestamp) in
+            // save lastMsgDocRef in Chat document in Firestore
+            
+            guard let chatListItem = self.chatListItem else { return }
+            
+            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: message, messageTime: timestamp)
+        }
         
         inputBar.inputTextView.text = ""
         messagesCollectionView.reloadData()

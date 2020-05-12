@@ -70,4 +70,26 @@ class ChatListController {
     func addUser(_ user: User) {
         usersDictionary[user.uid] = user.firstName
     }
+    
+    func updateLastMsg(chatListItem: ChatListItem, lastMsgDocRef: DocumentReference, messageText: String, messageTime: Timestamp) {
+        
+        // update local ChatListItem
+        var tempItem = chatListItem
+        tempItem.lastMsg = messageText
+        tempItem.lastTime = messageTime.description
+        
+        
+        // update Firestore
+        
+        let chatRef = chatListItem.chatRef
+        let data: [String : Any] = [ "lastMsgDocRef" : lastMsgDocRef,
+                                     "lastMsg" : messageText,
+                                     "lastTime" : messageTime ]
+        
+        chatRef.updateData(data) { (error) in
+            if let error = error {
+                print("#ChatListItem: Error in updateLastMsg: \(error)")
+            }
+        }
+    }
 }

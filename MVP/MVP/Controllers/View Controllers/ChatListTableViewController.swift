@@ -37,6 +37,8 @@ class ChatListTableViewController: UITableViewController {
         
         cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUser.firstName
         
+        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].lastMsg
+        
         return cell
     }
     
@@ -75,7 +77,10 @@ class ChatListTableViewController: UITableViewController {
             
             let user2 = ChatListController.shared.chats[indexPath.row].otherUser
             
+            let chatListItem = ChatListController.shared.chats[indexPath.row]
+            
             destinationVC.user2Object = user2
+            destinationVC.chatListItem = chatListItem
         }
     }
     

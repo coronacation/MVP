@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 struct Chat {
     var userUids: [String]
+    var lastMsgDocRef: DocumentReference?
+    var lastMsg: String?
+    var lastTime: Timestamp?
     
     var dictionary: [String: Any] {
         
@@ -31,10 +35,19 @@ struct Chat {
 
 extension Chat {
     
+    /// Initializer for Chat objects coming from Firestore
+    /// - Parameter dictionary: key/value pairs of a chat object. With Firestore, you can simply pass in DocumentRef.data().
     init?(dictionary: [String:Any]) {
         guard let userUids = dictionary["userUids"] as? [String] else {return nil}
         
-        self.init(userUids: userUids)
+        let lastMsgDocRef = dictionary["lastMsgDocRef"] as? DocumentReference ?? nil
+        let lastMsg = dictionary["lastMsg"] as? String ?? nil
+        let lastTime = dictionary["lastMsg"] as? Timestamp ?? nil
+        
+        self.init(userUids: userUids,
+                  lastMsgDocRef: lastMsgDocRef,
+                  lastMsg: lastMsg,
+                  lastTime: lastTime)
     }
     
     //    func fetchOtherUserUid() -> String? {
