@@ -249,12 +249,12 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
         
         insertNewMessage(message)
 //        save(message, completion: )
-        save(message) { (lastMsgDocRef, message, timestamp) in
+        save(message) { (lastMsgDocRef, messageText, timestamp) in
             // save lastMsgDocRef in Chat document in Firestore
             
             guard let chatListItem = self.chatListItem else { return }
             
-            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: message, messageTime: timestamp)
+            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: messageText, messageTime: timestamp)
         }
         
         inputBar.inputTextView.text = ""
