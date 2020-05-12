@@ -7,6 +7,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile-->
         <scene sceneID="vrd-Dt-ROF">
@@ -95,7 +103,7 @@
         <!--Item-->
         <scene sceneID="q2k-dD-T7J">
             <objects>
-                <viewController id="SEA-NY-l5g" customClass="OwnerProfileViewController" customModule="WeShareStoryboards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SEA-NY-l5g" customClass="OwnerProfileViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2w-Io-8oS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,7 +512,7 @@
         <!--Account Support View Controller-->
         <scene sceneID="wuG-Hp-UMJ">
             <objects>
-                <viewController id="A8d-gP-i8X" customClass="Account_SupportViewController" customModule="WeShareStoryboards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="A8d-gP-i8X" customClass="Account_SupportViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fgr-aB-KZX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
