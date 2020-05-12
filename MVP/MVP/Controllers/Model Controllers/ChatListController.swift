@@ -13,7 +13,8 @@ class ChatListController {
     
     // MARK: - Constants
     
-    private let chatsCollection = Firestore.firestore().collection("Chats")
+    //    private let chatsCollection = Firestore.firestore().collection("Chats")
+    private let chatsCollection = Firestore.firestore().collection("ChatsV2")
     
     
     // MARK: - Shared Instance
@@ -38,6 +39,34 @@ class ChatListController {
     
     
     // MARK: - CRUD
+    
+    func createNewChat(withUid: String) {
+        
+        // 1. get uids of both users
+        
+        guard let currentUserUid = currentUser?.userUID else { return }
+        
+        
+        // 2. Build the structure for this ChatListItem Object
+        
+        let data: [String: Any] = [
+            "offer":"I have 12 cloth masks",
+            "lastMsg":"Hello world"
+        ]
+        
+        // 3. Add one document for each user in the db under Chats
+        
+        let chatDocRef = chatsCollection.addDocument(data: data) { (error) in
+            if let error = error {
+                print("#ChatListController: Unable to create chat! \(error)")
+                return
+            } else {
+                print("Document created?")
+                // 4. Create a document in db under Threads
+//                ThreadController.shared.createThread(chatDocRef: chatDocRef)
+            }
+        }
+    }
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {
         let query = chatsCollection

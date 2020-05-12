@@ -19,6 +19,17 @@ class ChatListTableViewController: UITableViewController {
         
     }
     
+    // MARK: - IBAction
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        
+        ChatListController.shared.createNewChat(withUid: "MLzB7miXJFhUhm7dcpJNvaSDPJx2") // Theo
+        
+//        ChatListController.shared.createNewChat(withUid: "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail 1hYi1aKFAGfzap7fUGxcA2GJIZF3
+        
+//        ChatListController.shared.createNewChat(withUid: "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
+    }
+    
 
     // MARK: - Table view data source
     
