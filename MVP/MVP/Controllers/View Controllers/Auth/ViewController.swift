@@ -27,3 +27,15 @@ class ViewController: UIViewController {
         Utilities.styleHollowButton(loginButton)
     }
 }
+
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+     
+        
+        return true
+        
+        
+    }
+}
+
