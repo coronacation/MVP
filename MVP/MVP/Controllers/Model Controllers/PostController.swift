@@ -9,6 +9,7 @@
 import UIKit
 
 class PostController: Codable {
+
     
     static func fetchPostImage(stringURL: String, completion: @escaping (Result<UIImage, PostError>) -> Void) {
         
@@ -36,5 +37,12 @@ class PostController: Codable {
         }.resume()
     }
     
+    
+    
+    
+    
+    static func updatePost(postID: String) {
+        
+    }
     
 }

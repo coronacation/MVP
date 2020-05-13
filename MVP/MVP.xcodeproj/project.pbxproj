@@ -43,6 +43,11 @@
 		D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5762087245A677F00B5D417 /* TabBarViewController.swift */; };
 		D57620B92460B79200B5D417 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620B82460B79100B5D417 /* PasswordResetViewController.swift */; };
 		D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620BA2460C0C000B5D417 /* ProfileViewController.swift */; };
+		D5A21D43246A420C002058A7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE1C9C9246A1C2200AA0B2D /* Roboto-Bold.ttf */; };
+		D5A21D44246A421D002058A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE1C9CA246A1C2200AA0B2D /* Roboto-Regular.ttf */; };
+		D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */; };
+		D5A21D4B246B3645002058A7 /* MyPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */; };
+		D5A21D4E246B5FF0002058A7 /* MyPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
 		D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92CB24537B470059110B /* SceneDelegate.swift */; };
 		D5CF92D124537B470059110B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5CF92CF24537B470059110B /* Main.storyboard */; };
@@ -93,6 +98,9 @@
 		D5762087245A677F00B5D417 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D57620B82460B79100B5D417 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		D57620BA2460C0C000B5D417 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsListTableViewController.swift; sourceTree = "<group>"; };
+		D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewCell.swift; sourceTree = "<group>"; };
+		D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDetailViewController.swift; sourceTree = "<group>"; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CF92CB24537B470059110B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +174,47 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		D5A21D45246B3546002058A7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */,
+				6D5EB986246A150C00579B00 /* OwnerProfileViewController.swift */,
+				6D5EB984246A150500579B00 /* Account+SupportViewController.swift */,
+				D57620BA2460C0C000B5D417 /* ProfileViewController.swift */,
+				D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */,
+				D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D5A21D46246B3566002058A7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				6D4A8A652458D32700F69923 /* PostListTableViewController.swift */,
+				6D4A8A672458D34200F69923 /* PostDetailViewController.swift */,
+				6D9A0E20246094AB00245184 /* MapViewController.swift */,
+				D56D79752468F20C00265021 /* PostTableViewCell.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		D5A21D47246B357D002058A7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AC9135BD245CCC68006562AA /* ChatViewController.swift */,
+				AC9135C1245E626F006562AA /* ChatListTableViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		D5A21D4C246B366D002058A7 /* AddPost */ = {
+			isa = PBXGroup;
+			children = (
+				D57620732458DE8F00B5D417 /* AddPostViewController.swift */,
+			);
+			path = AddPost;
+			sourceTree = "<group>";
+		};
 		D5CF92BD24537B460059110B = {
 			isa = PBXGroup;
 			children = (
@@ -236,20 +285,14 @@
 		D5CF92E024537BA40059110B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6D5EB986246A150C00579B00 /* OwnerProfileViewController.swift */,
-				6D5EB984246A150500579B00 /* Account+SupportViewController.swift */,
-				6D4A8A652458D32700F69923 /* PostListTableViewController.swift */,
-				6D4A8A672458D34200F69923 /* PostDetailViewController.swift */,
-				D57620732458DE8F00B5D417 /* AddPostViewController.swift */,
+				D5A21D46246B3566002058A7 /* Feed */,
+				D5A21D4C246B366D002058A7 /* AddPost */,
+				D5A21D45246B3546002058A7 /* Profile */,
+				D5A21D47246B357D002058A7 /* Chat */,
+				D576207B245A446300B5D417 /* Auth */,
 				6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */,
 				ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */,
 				D5762087245A677F00B5D417 /* TabBarViewController.swift */,
-				6D9A0E20246094AB00245184 /* MapViewController.swift */,
-				D57620BA2460C0C000B5D417 /* ProfileViewController.swift */,
-				D576207B245A446300B5D417 /* Auth */,
-				AC9135BD245CCC68006562AA /* ChatViewController.swift */,
-				AC9135C1245E626F006562AA /* ChatListTableViewController.swift */,
-				D56D79752468F20C00265021 /* PostTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -349,7 +392,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D27DA7F2469C4FE00DBDEA2 /* Colors.xcassets in Resources */,
+				D5A21D44246A421D002058A7 /* Roboto-Regular.ttf in Resources */,
 				D5CF92D624537B570059110B /* LaunchScreen.storyboard in Resources */,
+				D5A21D43246A420C002058A7 /* Roboto-Bold.ttf in Resources */,
 				AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */,
 				6D27DA842469C84100DBDEA2 /* Home.storyboard in Resources */,
 				D5CF92D324537B570059110B /* Assets.xcassets in Resources */,
@@ -424,6 +469,7 @@
 				6D5EB987246A150C00579B00 /* OwnerProfileViewController.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
+				D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */,
 				ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
 				AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */,
@@ -432,6 +478,7 @@
 				AC9135BE245CCC68006562AA /* ChatViewController.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
 				ACD047B424661C34002F2CA3 /* ChatListController.swift in Sources */,
+				D5A21D4E246B5FF0002058A7 /* MyPostDetailViewController.swift in Sources */,
 				AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */,
 				6D27DA812469C7BA00DBDEA2 /* CurrentUserController.swift in Sources */,
 				ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */,
@@ -439,6 +486,7 @@
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
 				D5762082245A44F500B5D417 /* SignUpViewController.swift in Sources */,
 				D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */,
+				D5A21D4B246B3645002058A7 /* MyPostsTableViewCell.swift in Sources */,
 				AC48CE532459E6B300C8D3A6 /* User.swift in Sources */,
 				D56D79722468F15200265021 /* PostController.swift in Sources */,
 			);
