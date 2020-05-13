@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import MapKit
+import CoreLocation
 
 class PostListViewController: UIViewController {
     
@@ -17,12 +19,28 @@ class PostListViewController: UIViewController {
     @IBOutlet weak var postSearchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\n\nview did load ")
         db = Firestore.firestore()
+        checkLocationServices()
         table.delegate = self
         table.dataSource = self
         
+        print("\n\nUser location before: \(String(describing: CurrentUserController.shared.currentUser?.location))")
+        
+        if let location = locationManager.location {
+            CurrentUserController.shared.setCurrentUserLocation(location: location)
+        }
+        
+        print("\n\nUser location after: \(String(describing: CurrentUserController.shared.currentUser?.location))")
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("\n\nUser location after appear: \(String(describing: CurrentUserController.shared.currentUser?.location))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +86,6 @@ class PostListViewController: UIViewController {
         }
     }
     
- 
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -100,5 +117,87 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
              }
          }
      }
-    
 }
+
+extension PostListViewController {
+    
+     func checkLocationServices() {
+            if CLLocationManager.locationServicesEnabled() {
+                setupLocationManager()
+                checkLocationAuthorization()
+            } else {
+                locationServicesDisabledAlert()
+            }
+        }
+        
+        func setupLocationManager() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        }
+        
+        func checkLocationAuthorization() {
+            switch CLLocationManager.authorizationStatus() {
+            case .authorizedWhenInUse:
+                centerViewOnUserLocation()
+            case .denied:
+                presentDeniedAlert()
+                break
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                break
+            case .restricted:
+                presentRestrictedAlert()
+                break
+            case .authorizedAlways:
+                centerViewOnUserLocation()
+            @unknown default:
+                print("Default case for CLLocationManager.authorizationStatus()")
+            }
+        }//end of checkLocationAuthorization func
+
+        func centerViewOnUserLocation() {
+            if let location = locationManager.location?.coordinate {
+                let region = MKCoordinateRegion.init(center: location, latitudinalMeters: 40000, longitudinalMeters: 40000)
+            }
+        }//end of centerViewOnUserLocation func
+    }//end of MapViewController
+
+extension PostListViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        checkLocationAuthorization()
+        
+        let userLocation :CLLocation = locations[0] as CLLocation
+
+        CurrentUserController.shared.setCurrentUserLocation(location: userLocation)
+    }
+}//end of extension
+
+extension PostListViewController {
+    
+     func locationServicesDisabledAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled", message: "Check your location service settings and try again.", preferredStyle: .alert)
+
+         let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+
+         alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }//end of locationServicesDisabledAlert func
+    
+    func presentDeniedAlert() {
+        let alert = UIAlertController(title: "Access Denied", message: "Check your permission settings and try again.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }//end of presentDenied Alert func
+    
+    func presentRestrictedAlert() {
+        let alert = UIAlertController(title: "Access Restricted", message: "Permissions (i.e. Parental Controls) have been disabled for this user.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }//end of presentRestrictedAlert func
+}//end of extension

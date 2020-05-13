@@ -103,6 +103,11 @@ extension MapViewController {
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         checkLocationAuthorization()
+        
+        let userLocation :CLLocation = locations[0] as CLLocation
+
+        CurrentUserController.shared.setCurrentUserLocation(location: userLocation)
+
     }
 }//end of extension
 

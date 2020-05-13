@@ -14,7 +14,19 @@ struct CurrentUser {
     var lastName: String
     var email: String
     let userUID: String
-    var location: CLLocation? = nil
+   var longitude: Double?
+   var latitude: Double?
+
+   var location: CLLocation? {
+       get {
+       guard let longitude = longitude, let latitude = latitude else { return nil}
+        return CLLocation(latitude: latitude, longitude: longitude)
+       } set {
+        longitude = newValue?.coordinate.longitude
+        latitude = newValue?.coordinate.latitude
+       }
+   }
+//    var location: CLLocation? = nil
     
     var fullName: String {
         get {

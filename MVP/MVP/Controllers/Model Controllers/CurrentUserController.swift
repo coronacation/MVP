@@ -20,6 +20,10 @@ class CurrentUserController {
         }
     }
     
+//    func isWithinDistance(of distance: Double, from user: User) -> Bool {
+//        return (self.userLocation.distance(from: user.userLocation)) < distance
+//    }
+    
     //this function sets the current user once they create a new account
     func setCurrentUserFromSignUp(firstName: String, lastName: String, email: String, userUID: String) {
         self.currentUser = CurrentUser(firstName: firstName, lastName: lastName, email: email, userUID: userUID)
@@ -30,11 +34,18 @@ class CurrentUserController {
         self.currentUser = CurrentUser(firstName: firstName, lastName: lastName, email: email, userUID: userUID)
     }
     
+    func setCurrentUserLocation(location: CLLocation) {
+      
+        print("\n\n setCurrentUser func running!!")
+        print(location.coordinate.latitude)
+        self.currentUser?.location = location
+    }
+    
          // Generate a random location between 0.5 and 1.5 km of user
         func generateRandomLocationForUser() -> MKPointAnnotation {
             let annotation = MKPointAnnotation()
     
-   //         annotation.coordinate = generateRandomCoordinatesForUser()
+      //      annotation.coordinate = generateRandomCoordinatesForUser()
 
               annotation.title = "Username"
              annotation.subtitle = "Goods Being Offered"
@@ -43,15 +54,13 @@ class CurrentUserController {
             // Note: Caller must add the annotation to the map using mapView.addAnnotation(//annotation's variable//)
         }
     
-    
-    /*
-        func generateRandomCoordinatesForUser() -> CLLocationCoordinate2D {
+        func generateRandomCoordinatesForUser() -> CLLocationCoordinate2D? {
             // Get the user's longitude and latitude coordinates
-
             
-            let currentLong = currentUser.location.coordinate.longitude
+            guard let currentUser = currentUser, let location = currentUser.location else {return nil}
             
-            let currentLat = currentUser.location.coordinate.latitude
+            let currentLong = location.coordinate.longitude
+            let currentLat = location.coordinate.latitude
 
             // 1 kilometer = 0.00900900900901° So, 1 Meter = 0.00900900900901 / 1000
             let meterCord = 0.00900900900901 / 1000
@@ -81,6 +90,5 @@ class CurrentUserController {
                 return CLLocationCoordinate2D(latitude: currentLat - metersCordN, longitude: currentLong)
             }
         }
-     */
 }
 
