@@ -33,6 +33,7 @@ class ChatListController {
         }
     }
     var chats: [ChatListItem] = []
+    var listener: ListenerRegistration? = nil
     
     /// usersDictionary enables fast lookup of a user's firstName. key = UID. value = firstName.
     var usersDictionary: [String:String] = [:]
@@ -70,6 +71,35 @@ class ChatListController {
         }
         
         completion(chatDocRef)
+    }
+    
+    func startListener() {
+        guard let currentUserUid = currentUser?.userUID else { return }
+        
+        self.listener = chatsCollection.document(currentUserUid)
+            .collection("conversations").whereField("blocked", isEqualTo: false)
+            .addSnapshotListener { (querySnapshot, error) in
+                guard let snapshot = querySnapshot else {
+                    print("#ChatListController: Error fetching conversations: \(error!)")
+                    return
+                }
+                
+                snapshot.documentChanges.forEach { (diff) in
+                    switch diff.type {
+                    case .added:
+                        print("New chat: \(diff.document.data())")
+                    case .modified:
+                        print("Modified chat: \(diff.document.data())")
+                    case .removed:
+                        print("Removed chat: \(diff.document.data())")
+                    }
+                }
+        }
+    }
+    
+    func stopListener() {
+        guard let listener = listener else { return }
+        listener.remove()
     }
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {

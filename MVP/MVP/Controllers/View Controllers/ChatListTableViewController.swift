@@ -16,14 +16,21 @@ class ChatListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ChatListController.shared.startListener()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ChatListController.shared.stopListener()
     }
     
     // MARK: - IBAction
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        let postTitle = "I have 12 cloth masks"
+        let postTitle = "Hairspray"
         let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
 //        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
