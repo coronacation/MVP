@@ -40,18 +40,18 @@ class PostListTableViewController: UITableViewController {
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
                         postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
                     
-//                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
-//                                 DispatchQueue.main.async {
-//                                     switch result {
-//                                     case .success(let image):
-//                                         dummyPost.postUIImage = image
-//                                        print("success pulling image/n")
-//                                     case .failure(let error):
-//                                         print(error.errorDescription!)
-//                                         dummyPost.postUIImage = #imageLiteral(resourceName: "noImageAvailable")
-//                                     }
-//                                 }
-//                             }
+                    //                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
+                    //                                 DispatchQueue.main.async {
+                    //                                     switch result {
+                    //                                     case .success(let image):
+                    //                                         dummyPost.postUIImage = image
+                    //                                        print("success pulling image/n")
+                    //                                     case .failure(let error):
+                    //                                         print(error.errorDescription!)
+                    //                                         dummyPost.postUIImage = #imageLiteral(resourceName: "noImageAvailable")
+                    //                                     }
+                    //                                 }
+                    //                             }
                     
                     self.posts.append(dummyPost)
                     
@@ -65,7 +65,6 @@ class PostListTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -84,7 +83,6 @@ class PostListTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPostDetailVC" {
             if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
@@ -94,4 +92,3 @@ class PostListTableViewController: UITableViewController {
         }
     }
 }
-

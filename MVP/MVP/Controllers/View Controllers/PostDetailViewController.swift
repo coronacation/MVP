@@ -10,21 +10,33 @@ import UIKit
 
 class PostDetailViewController: UIViewController {
     
-    //outlets
+    //MARK: - Outlets
     @IBOutlet weak var postUserNameLabel: UILabel!
     @IBOutlet weak var postUserImage: UIImageView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postTitleLabel: UILabel!
-    @IBOutlet weak var postDescriptionLabel: UILabel!
+    @IBOutlet weak var postDescriptionTextView: UITextView!
     @IBOutlet weak var postTimestampLabel: UILabel!
     
+    //MARK: - Properties
     var post: DummyPost?
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
     }
     
+    //MARK: - Actions
+    @IBAction func messageUserButtonTapped(_ sender: Any) {
+        print("message user tapped")
+    }
+    
+    @IBAction func reportPostButtonTapped(_ sender: Any) {
+        print("report tapped")
+    }
+    
+    //MARK: - Helpers
     func setUpViews() {
         
         if let postUserFirstName = self.post?.postUserFirstName, let postTitle = self.post?.postTitle, let postCreatedTimestamp = self.post?.postCreatedTimestamp, let urlString = self.post?.postImageURL {
@@ -33,7 +45,7 @@ class PostDetailViewController: UIViewController {
             
             postUserNameLabel.text = "Posted by: \(postUserFirstName)"
             postTitleLabel.text = "Title: \(postTitle)"
-            postDescriptionLabel.text = self.post?.postDescription
+            postDescriptionTextView.text = self.post?.postDescription
             postTimestampLabel.text = "Posted on \(postCreatedTimestamp)"
         }
     }
@@ -48,13 +60,5 @@ class PostDetailViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    @IBAction func messageUserButtonTapped(_ sender: Any) {
-        print("message user tapped")
-    }
-    
-    @IBAction func reportPostButtonTapped(_ sender: Any) {
-        print("report tapped")
     }
 }
