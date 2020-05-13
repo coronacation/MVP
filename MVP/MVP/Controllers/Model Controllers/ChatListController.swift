@@ -30,7 +30,7 @@ class ChatListController {
         didSet {
             guard let currentUser = currentUser else { return }
             let userUID = currentUser.userUID
-            self.fetchChatsOfCurrentUser(userUID)
+//            self.fetchChatsOfCurrentUser(userUID)
             usersDictionary[userUID] = currentUser.firstName
         }
     }
@@ -74,11 +74,11 @@ class ChatListController {
         completion(chatDocRef)
     }
     
-    func startListener() {
+    func startListener( completion: @escaping () -> Void ) {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-            .collection("conversations").whereField("blocked", isEqualTo: false)
+            .collection("conversations").order(by: "offer", descending: true)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -98,19 +98,22 @@ class ChatListController {
                         print("Removed chat: \(diff.document.data())")
                     }
                 }
+                completion()
         }
     }
     
     func stopListener() {
         guard let listener = listener else { return }
         listener.remove()
+        self.chats = []
+        print("#ChatListController stopped listening")
     }
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         chatsCollection.document(currentUserUid)
-        .collection("conversations").whereField("blocked", isEqualTo: false)
+        .collection("conversations")
             .getDocuments { (convoQuerySnapshot, error) in
                 if let error = error {
                     print("Error: \(error)")
@@ -133,7 +136,7 @@ class ChatListController {
                         
                         self.chats.append(chat)
                     } //end for
-                    print("1. fetchChatsOfCurrentUser complete")
+                    print("#fetchChatsOfCurrentUser 1. Built chats")
                 } // end else
         }
     } // end fetchChatsOfCurrentUser

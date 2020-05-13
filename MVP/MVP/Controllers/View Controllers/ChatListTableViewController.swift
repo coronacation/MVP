@@ -37,7 +37,9 @@ class ChatListTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ChatListController.shared.startListener()
+        ChatListController.shared.startListener {
+            self.tableView.reloadData()            
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
