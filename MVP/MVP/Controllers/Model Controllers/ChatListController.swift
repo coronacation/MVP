@@ -40,33 +40,47 @@ class ChatListController {
     
     // MARK: - CRUD
     
-    func createNewChat(withUid: String) {
+    func createNewChat(postOwnerUid: String, postText: String = "I have 12 cloth masks") {
         
-        // 1. get uids of both users
+        // 1. get currentUser's UID
         
         guard let currentUserUid = currentUser?.userUID else { return }
         
         
-        // 2. Build the structure for this ChatListItem Object
+        // 2. Add chat document for currentUser in the db under Chats
+        // 2.1 Do not send postOwner a message yet until currentUser actually sends a message
+        
+        addChat(userUid: currentUserUid, postOwnerUid: postOwnerUid, offerTitle: postText)
+//        addChat(userUid: postOwnerUid, offerTitle: postText) // poster
+    }
+    
+    private func addChat(userUid: String, postOwnerUid: String, offerTitle: String) {
+        
+        // 3. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
-            "offer":"I have 12 cloth masks",
-            "lastMsg":"Hello world"
+            "offer": offerTitle,
+            "offerOwner": postOwnerUid,
+            "blocked": false,
         ]
         
-        // 3. Add one document for each user in the db under Chats
         
-        let chatDocRef = chatsCollection.addDocument(data: data) { (error) in
+        // 4. Name the document after the currentUser's UID
+        let chatDocRef = chatsCollection.document(userUid)
+            .collection("conversations")
+            .addDocument(data: data)
+            .setData(data) { (error) in
             if let error = error {
                 print("#ChatListController: Unable to create chat! \(error)")
                 return
             } else {
-                print("Document created?")
+                print("Doc created!")
                 // 4. Create a document in db under Threads
-//                ThreadController.shared.createThread(chatDocRef: chatDocRef)
+                //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
             }
         }
     }
+    
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {
         let query = chatsCollection
