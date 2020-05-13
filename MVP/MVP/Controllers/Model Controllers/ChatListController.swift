@@ -55,6 +55,7 @@ class ChatListController {
             "offer": postText,
             "offerOwner": postOwnerUid,
             "blocked": false,
+            "otherUserUid": currentUserUid
         ]
         
         // 3. Add chat document for currentUser in the db under Chats
@@ -119,7 +120,10 @@ class ChatListController {
                     
                     
                     for doc in snapshot.documents {
-                        guard let chat = Chat(dictionary: doc.data()) else { return }
+                        guard let chat = Chat(dictionary: doc.data()) else {
+                            print("#fetchChatsOfCurrentUser failed to init Chat")
+                            return
+                        }
                         
                         self.chats.append(chat)
                     } //end for
