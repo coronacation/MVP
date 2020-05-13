@@ -12,16 +12,14 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var datePostedLabel: UILabel!
     
     var post: DummyPost? {
         didSet{
             guard let post = post else {return}
             titleLabel.text = post.postTitle
-            descriptionLabel?.text = post.postDescription
-            categoryLabel.text = "Category: \(post.category)"
+            descriptionTextView?.text = post.postDescription
             datePostedLabel.text = post.postCreatedTimestamp
             
             PostController.fetchDrinkImage2(post: post) { (result) in
