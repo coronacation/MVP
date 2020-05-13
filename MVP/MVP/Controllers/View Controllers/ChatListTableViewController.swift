@@ -23,11 +23,26 @@ class ChatListTableViewController: UITableViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        ChatListController.shared.createNewChat(postOwnerUid: "MLzB7miXJFhUhm7dcpJNvaSDPJx2") // Theo
+        let postTitle = "I have 12 cloth masks"
+        let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
+//        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
+//        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
         
-//        ChatListController.shared.createNewChat(postOwnerUid: "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail 1hYi1aKFAGfzap7fUGxcA2GJIZF3
-        
-//        ChatListController.shared.createNewChat(postOwnerUid: "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
+        ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
+            // 1. create new ChatList Item
+            
+            print(docRef.documentID)
+            
+            // 2. append it to the local array
+            
+            
+            
+            // 3. Create a document in db under Threads
+            //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
+            
+            
+            // 4. Segue to the ChatDetailVC and set the convo title
+        }
     }
     
 

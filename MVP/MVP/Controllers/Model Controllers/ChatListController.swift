@@ -40,47 +40,37 @@ class ChatListController {
     
     // MARK: - CRUD
     
-    func createNewChat(postOwnerUid: String, postText: String = "I have 12 cloth masks") {
+    func createNewChat( postOwnerUid: String,
+                        postText: String,
+                        completion: @escaping (DocumentReference) -> Void ) {
         
         // 1. get currentUser's UID
         
         guard let currentUserUid = currentUser?.userUID else { return }
         
-        
-        // 2. Add chat document for currentUser in the db under Chats
-        // 2.1 Do not send postOwner a message yet until currentUser actually sends a message
-        
-        addChat(userUid: currentUserUid, postOwnerUid: postOwnerUid, offerTitle: postText)
-//        addChat(userUid: postOwnerUid, offerTitle: postText) // poster
-    }
-    
-    private func addChat(userUid: String, postOwnerUid: String, offerTitle: String) {
-        
-        // 3. Build the structure for this ChatListItem Object
+        // 2. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
-            "offer": offerTitle,
+            "offer": postText,
             "offerOwner": postOwnerUid,
             "blocked": false,
         ]
         
+        // 3. Add chat document for currentUser in the db under Chats
+        // 3.1 Do not send postOwner a message yet until currentUser actually sends a message
+        // 3.2 Name the document after the currentUser's UID
         
-        // 4. Name the document after the currentUser's UID
-        let chatDocRef = chatsCollection.document(userUid)
+        let chatDocRef: DocumentReference = chatsCollection.document(currentUserUid)
             .collection("conversations")
-            .addDocument(data: data)
-            .setData(data) { (error) in
-            if let error = error {
-                print("#ChatListController: Unable to create chat! \(error)")
-                return
-            } else {
-                print("Doc created!")
-                // 4. Create a document in db under Threads
-                //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
-            }
+            .addDocument(data: data) { (error) in
+                if let error = error {
+                    print("#ChatListController: Unable to create chat! \(error)")
+                    return
+                }
         }
+        
+        completion(chatDocRef)
     }
-    
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {
         let query = chatsCollection
