@@ -395,5 +395,8 @@
         <namedColor name="deepPurple">
             <color red="0.12549019607843137" green="0.070588235294117646" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="deepPurple">
+            <color red="0.12549019607843137" green="0.070588235294117646" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
