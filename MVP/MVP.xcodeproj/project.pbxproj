@@ -15,7 +15,6 @@
 		6D4A8A682458D34200F69923 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4A8A672458D34200F69923 /* PostDetailViewController.swift */; };
 		6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4A8A692458D64300F69923 /* Profile.storyboard */; };
 		6D5EB985246A150500579B00 /* Account+SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5EB984246A150500579B00 /* Account+SupportViewController.swift */; };
-		6D5EB987246A150C00579B00 /* OwnerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5EB986246A150C00579B00 /* OwnerProfileViewController.swift */; };
 		6D877E392459F4EE004C860D /* PhotoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */; };
 		6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* MapViewController.swift */; };
 		AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */; };
@@ -66,7 +65,6 @@
 		6D4A8A672458D34200F69923 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		6D4A8A6A2458D64300F69923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		6D5EB984246A150500579B00 /* Account+SupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+SupportViewController.swift"; sourceTree = "<group>"; };
-		6D5EB986246A150C00579B00 /* OwnerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwnerProfileViewController.swift; sourceTree = "<group>"; };
 		6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorViewController.swift; sourceTree = "<group>"; };
 		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */,
-				6D5EB986246A150C00579B00 /* OwnerProfileViewController.swift */,
 				6D5EB984246A150500579B00 /* Account+SupportViewController.swift */,
 				D57620BA2460C0C000B5D417 /* ProfileViewController.swift */,
 				D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */,

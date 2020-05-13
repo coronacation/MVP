@@ -34,7 +34,7 @@
         <!--Item-->
         <scene sceneID="q2k-dD-T7J">
             <objects>
-                <viewController id="SEA-NY-l5g" customClass="OwnerProfileViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SEA-NY-l5g" customClass="ProfileViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2w-Io-8oS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,16 +49,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="bQ9-dg-qda">
-                                                        <rect key="frame" x="0.0" y="149" width="375" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(full name)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3L-Ki-ocm">
-                                                        <rect key="frame" x="196" y="384" width="149" height="24"/>
+                                                        <rect key="frame" x="196" y="187" width="149" height="24"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOH-7t-NKJ">
-                                                        <rect key="frame" x="60" y="156" width="158" height="26"/>
+                                                        <rect key="frame" x="60" y="72" width="158" height="26"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Basic Information">
                                                                 <attributes>
@@ -71,13 +71,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-Lq-sxE">
-                                                        <rect key="frame" x="218.5" y="187.5" width="103.5" height="103.5"/>
+                                                        <rect key="frame" x="218.5" y="68.5" width="103.5" height="103.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="ncb-Lq-sxE" secondAttribute="height" multiplier="1:1" id="NYa-2P-E90"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bTj-UC-5Zn">
-                                                        <rect key="frame" x="60" y="183" width="140" height="66"/>
+                                                        <rect key="frame" x="60" y="99" width="140" height="66"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vk2-hr-mRb">
                                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="22"/>
@@ -117,28 +117,28 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="hal-ux-I95">
-                                                        <rect key="frame" x="332.5" y="95.5" width="22.5" height="22.5"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gear" translatesAutoresizingMaskIntoConstraints="NO" id="hal-ux-I95">
+                                                        <rect key="frame" x="332.5" y="42.5" width="22.5" height="22.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tao-LG-B64" userLabel="Settings Button">
-                                                        <rect key="frame" x="332.5" y="95.5" width="22.5" height="22.5"/>
+                                                        <rect key="frame" x="332.5" y="42.5" width="22.5" height="22.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="tao-LG-B64" secondAttribute="height" multiplier="1:1" id="xAB-I7-1EZ"/>
                                                         </constraints>
                                                         <connections>
-                                                            <action selector="settingsButtonPressed:" destination="SEA-NY-l5g" eventType="touchUpInside" id="3qm-jJ-DAy"/>
+                                                            <action selector="settingsButtonPressed:" destination="SEA-NY-l5g" eventType="touchUpInside" id="Vb4-Kj-qv9"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_alt-24px" translatesAutoresizingMaskIntoConstraints="NO" id="Juy-8w-Cvf">
-                                                        <rect key="frame" x="304.5" y="299" width="25" height="22.5"/>
+                                                        <rect key="frame" x="304.5" y="144.5" width="25" height="22.5"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x11-lS-h1f" userLabel="Camera Button">
-                                                        <rect key="frame" x="304.5" y="299" width="25" height="22.5"/>
+                                                        <rect key="frame" x="304.5" y="144.5" width="25" height="22.5"/>
                                                         <state key="normal" title="Button"/>
                                                         <connections>
-                                                            <action selector="addPhotoButtonPressed:" destination="SEA-NY-l5g" eventType="touchUpInside" id="rxN-pl-4ni"/>
+                                                            <action selector="addPhotoButtonPressed:" destination="SEA-NY-l5g" eventType="touchUpInside" id="25h-UX-7lk"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -217,7 +217,7 @@
                                                         </segments>
                                                         <color key="tintColor" name="DeepPurple"/>
                                                         <connections>
-                                                            <action selector="segmentedControlButtonTapped:" destination="SEA-NY-l5g" eventType="valueChanged" id="edP-qn-K1b"/>
+                                                            <action selector="segmentedControlButtonTapped:" destination="SEA-NY-l5g" eventType="valueChanged" id="pF3-Ul-hhc"/>
                                                         </connections>
                                                     </segmentedControl>
                                                 </subviews>
@@ -237,27 +237,27 @@
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myPostCell" id="BJV-Fs-MZ8" customClass="MyPostsTableViewCell" customModule="MVP" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="375" height="163"/>
+                                                                <rect key="frame" x="0.0" y="28" width="375" height="165.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BJV-Fs-MZ8" id="Zuc-QK-qlr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="163"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="165.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rBr-7T-T2v">
-                                                                            <rect key="frame" x="15" y="22" width="348" height="119"/>
+                                                                            <rect key="frame" x="15" y="22" width="348" height="121.5"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2IV-TY-Udv">
-                                                                                    <rect key="frame" x="16" y="8.5" width="38.5" height="38.5"/>
+                                                                                    <rect key="frame" x="16" y="9.5" width="38.5" height="38.5"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" secondItem="2IV-TY-Udv" secondAttribute="height" multiplier="1:1" id="hRz-tV-0dw"/>
                                                                                     </constraints>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JW-3l-5jb">
-                                                                                    <rect key="frame" x="0.0" y="84.5" width="79" height="14.5"/>
+                                                                                    <rect key="frame" x="0.0" y="86" width="79" height="15"/>
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="(timestamp)">
                                                                                             <attributes>
-                                                                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                                                                <font key="NSFont" metaFont="label"/>
                                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                             </attributes>
                                                                                         </fragment>
@@ -265,19 +265,19 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Offer Title)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOs-an-5k5">
-                                                                                    <rect key="frame" x="96" y="9" width="126" height="28"/>
+                                                                                    <rect key="frame" x="96" y="9.5" width="126" height="28.5"/>
                                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
                                                                                     <color key="textColor" name="DeepPurple"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(category)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFO-p6-LDU">
-                                                                                    <rect key="frame" x="101" y="37.5" width="95" height="15.5"/>
+                                                                                    <rect key="frame" x="101" y="38" width="95" height="16"/>
                                                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                                                     <color key="textColor" name="DeepPurple"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qc0-Uz-emM">
-                                                                                    <rect key="frame" x="101" y="66.5" width="242" height="47.5"/>
+                                                                                    <rect key="frame" x="101" y="68" width="242" height="48.5"/>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -386,17 +386,17 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="aFr-Gs-LKR"/>
                     <connections>
-                        <outlet property="ageLabel" destination="vk2-hr-mRb" id="cNw-7a-Grj"/>
+                        <outlet property="ageLabel" destination="vk2-hr-mRb" id="4GV-AN-JaJ"/>
                         <outlet property="backgroundDesign" destination="bQ9-dg-qda" id="jLq-06-Sms"/>
-                        <outlet property="bioLabel" destination="eai-AU-bdZ" id="JAv-lP-CoY"/>
-                        <outlet property="containerView" destination="Erv-7J-QbZ" id="YaZ-OA-xi6"/>
-                        <outlet property="fullNameLabel" destination="n3L-Ki-ocm" id="eOd-6r-GRe"/>
-                        <outlet property="locationLabel" destination="V7g-uV-cSG" id="kid-65-Fjb"/>
-                        <outlet property="profilePicture" destination="ncb-Lq-sxE" id="8TD-UP-dNe"/>
-                        <outlet property="scrollView" destination="KHo-Hw-gHn" id="UT2-C6-xg9"/>
-                        <outlet property="segmentedControl" destination="f1A-XD-NpA" id="5Gz-s4-jfh"/>
-                        <outlet property="tableView" destination="DTF-f3-N1Q" id="WTA-er-N6G"/>
-                        <outlet property="workLabel" destination="PLv-kD-YPD" id="V9B-Ua-5rW"/>
+                        <outlet property="bioLabel" destination="eai-AU-bdZ" id="sCO-ZG-dqf"/>
+                        <outlet property="containerView" destination="Erv-7J-QbZ" id="2Lj-tP-0dZ"/>
+                        <outlet property="fullNameLabel" destination="n3L-Ki-ocm" id="DHI-uO-82P"/>
+                        <outlet property="locationLabel" destination="V7g-uV-cSG" id="pTe-T4-i3S"/>
+                        <outlet property="profilePicture" destination="ncb-Lq-sxE" id="yrx-Gs-5d8"/>
+                        <outlet property="scrollView" destination="KHo-Hw-gHn" id="8T9-Pk-gAM"/>
+                        <outlet property="segmentedControl" destination="f1A-XD-NpA" id="J6e-IB-oYk"/>
+                        <outlet property="tableView" destination="DTF-f3-N1Q" id="d3d-AC-8Iv"/>
+                        <outlet property="workLabel" destination="PLv-kD-YPD" id="HhQ-If-zNH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnt-aL-Fuz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1026,7 +1026,7 @@
         <image name="Default avatar" width="60" height="60"/>
         <image name="Ellipse" width="375" height="213"/>
         <image name="Fulfilled Checkmark" width="34" height="24"/>
-        <image name="Group" width="20" height="20"/>
+        <image name="Gear" width="20" height="20"/>
         <image name="Picture Placeholder" width="233" height="134"/>
         <image name="Subtract" width="375" height="300"/>
         <image name="camera_alt-24px" width="30" height="30"/>
