@@ -89,6 +89,9 @@ class ChatListController {
                     switch diff.type {
                     case .added:
                         print("New chat: \(diff.document.data())")
+                        if let chat = Chat(dictionary: diff.document.data()) {
+                            self.chats.append(chat)
+                        }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
                     case .removed:
@@ -116,7 +119,10 @@ class ChatListController {
                     
                     guard let snapshot = convoQuerySnapshot,
                         !snapshot.isEmpty
-                        else { return }
+                        else {
+                            print("#fetchChatsOfCurrentUser no chats found.")
+                            return
+                    }
                     
                     
                     for doc in snapshot.documents {

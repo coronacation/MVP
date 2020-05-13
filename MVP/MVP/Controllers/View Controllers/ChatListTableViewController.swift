@@ -12,6 +12,24 @@ import FirebaseFirestore
 
 class ChatListTableViewController: UITableViewController {
     
+    // MARK: - Mock Data
+    
+    let mockOffers: [String] = [ "Hairspray",
+                                 "Toilet paper",
+                                 "Rice",
+                                 "Hand santizer",
+                                 "Canned beans",
+                                 "Face masks",
+                                 "N95",
+                                 "Lightsaber"
+    ]
+    var randomOffer: String {
+        get {
+            guard let offer = self.mockOffers.randomElement() else { return "offer fail" }
+            return offer
+        }
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -32,10 +50,16 @@ class ChatListTableViewController: UITableViewController {
         
         // TO-DO: When wired up with final storyboard, make sure to send DocRef of Post so user can tap on it from Chat
         
-        let postTitle = "Face Masks"
+        let postTitle = randomOffer
         let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
 //        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
+        
+        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
+            postOwnerUid != currentUserUID else {
+                print("Nice try, troll. You can't message yourself.")
+                return
+        }
         
         ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
             // 1. create new ChatList Item
@@ -44,7 +68,7 @@ class ChatListTableViewController: UITableViewController {
             
             // 2. append it to the local array
             
-            
+            self.tableView.reloadData()
             
             // 3. Create a document in db under Threads
             //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
