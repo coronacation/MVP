@@ -9,28 +9,62 @@
 import UIKit
 import FirebaseFirestore
 
-struct Chat {
+class Chat {
     var offer: String
     var offerOwner: String
-    var blocked: Bool
+    var blocked: Bool = false
+    var blockedByUid: String
+    var otherUserUid: String {
+        didSet {
+            User.getBy(uid: otherUserUid) { (user) in
+                self.otherUser = user
+            }
+        }
+    }
+    var otherUser: User?
     //    var lastMsg: String?
     //    var lastMsgDate: Date
+    
+    
+    
+    /// Default Initializer
+    /// - Parameters:
+    ///   - offer: Post Title
+    ///   - offerOwner: Name of the user who made the Post
+    ///   - blocked: true or false
+    ///   - blockedByUid: UID of the user who initiated the block
+    ///   - otherUserUid: UID of the user who is interested in the Post
+    init(offer: String,
+         offerOwner: String,
+         blocked: Bool,
+         blockedByUid: String,
+         otherUserUid: String) {
+        self.offer = offer
+        self.offerOwner = offerOwner
+        self.blocked = blocked
+        self.blockedByUid = blockedByUid
+        self.otherUserUid = otherUserUid
+    }
 }
 
 extension Chat {
     
     /// Initializer for Chat objects coming from Firestore
     /// - Parameter dictionary: key/value pairs of a chat object. With Firestore, you can simply pass in DocumentRef.data().
-    init?(dictionary: [String:Any]) {
+    convenience init?(dictionary: [String:Any]) {
         
         guard let offer = dictionary["offer"] as? String,
             let offerOwner = dictionary["offerOwner"] as? String,
-            let blocked = dictionary["blocked"] as? Bool
+            let blocked = dictionary["blocked"] as? Bool,
+            let blockedByUid = dictionary["blockedByUid"] as? String,
+            let otherUserUid = dictionary["otherUserUid"] as? String
             else { return nil }
         
         self.init(offer: offer,
                   offerOwner: offerOwner,
-                  blocked: blocked)
+                  blocked: blocked,
+                  blockedByUid: blockedByUid,
+                  otherUserUid: otherUserUid)
     }
     
 }
