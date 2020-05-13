@@ -10,27 +10,11 @@ import UIKit
 import FirebaseFirestore
 
 struct Chat {
-    var userUids: [String]
-    var lastMsgDocRef: DocumentReference?
-    var lastMsg: String?
-    var lastTime: Timestamp?
-    
-    var dictionary: [String: Any] {
-        
-        return [
-            "userUids": userUids
-        ]
-        
-    }
-    
-    var otherUserUid: String? {
-        guard let currentUserUid = CurrentUserController.shared.currentUser?.userUID,
-            userUids.contains(currentUserUid)
-            else { return nil }
-        
-        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
-        return otherUserUid
-    }
+    var offer: String
+    var offerOwner: String
+    var blocked: Bool
+    //    var lastMsg: String?
+    //    var lastMsgDate: Date
 }
 
 extension Chat {
@@ -38,53 +22,16 @@ extension Chat {
     /// Initializer for Chat objects coming from Firestore
     /// - Parameter dictionary: key/value pairs of a chat object. With Firestore, you can simply pass in DocumentRef.data().
     init?(dictionary: [String:Any]) {
-        guard let userUids = dictionary["userUids"] as? [String] else {return nil}
         
-        let lastMsgDocRef = dictionary["lastMsgDocRef"] as? DocumentReference ?? nil
-        let lastMsg = dictionary["lastMsg"] as? String ?? nil
-        let lastTime = dictionary["lastMsg"] as? Timestamp ?? nil
+        guard let offer = dictionary["offer"] as? String,
+            let offerOwner = dictionary["offerOwner"] as? String,
+            let blocked = dictionary["blocked"] as? Bool
+            else { return nil }
         
-        self.init(userUids: userUids,
-                  lastMsgDocRef: lastMsgDocRef,
-                  lastMsg: lastMsg,
-                  lastTime: lastTime)
+        self.init(offer: offer,
+                  offerOwner: offerOwner,
+                  blocked: blocked)
     }
     
-    //    func fetchOtherUserUid() -> String? {
-    //        let currentUserUid = Auth.auth().currentUser!.uid // TO-DO: replace with call to CurrentUserController
-    //        guard userUids.contains(currentUserUid) else { return nil }
-    //
-    //        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
-    //        return otherUserUid
-    //    }
-    
-    //    func fetchOtherUser() -> User? {
-    //        let currentUserUid = Auth.auth().currentUser!.uid
-    //        guard users.contains(currentUserUid) else { return nil }
-    //
-    //        let otherUserUid = users[0] == currentUserUid ? users[1] : users[0]
-    //
-    //        var userToReturn: User? = nil
-    //
-    //        let group = DispatchGroup()
-    //
-    //        group.enter()
-    //        User.fetchUser(fromUid: otherUserUid) { (result) in
-    //            switch result {
-    //
-    //            case .success(let user):
-    //                userToReturn = user
-    //                print("Inside closure. Got this user: " + userToReturn!.firstName)
-    //                group.leave()
-    //            case .failure(let error):
-    //                print(error.errorDescription!)
-    //            }
-    //        }
-    //        //        print("Outside closure. Got this user: " + userToReturn.firstName)
-    //
-    //        group.notify(queue: .main) {
-    //            return userToReturn
-    //        }
-    //    }
 }
 

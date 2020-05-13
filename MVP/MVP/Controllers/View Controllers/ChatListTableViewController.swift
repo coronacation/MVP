@@ -30,7 +30,9 @@ class ChatListTableViewController: UITableViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         
-        let postTitle = "Hairspray"
+        // TO-DO: When wired up with final storyboard, make sure to send DocRef of Post so user can tap on it from Chat
+        
+        let postTitle = "Face Masks"
         let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
 //        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
@@ -68,9 +70,9 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUser.firstName
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].offerOwner
         
-        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].lastMsg
+        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
         
         return cell
     }
@@ -108,12 +110,12 @@ class ChatListTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? ChatDetailViewController
                 else { return }
             
-            let user2 = ChatListController.shared.chats[indexPath.row].otherUser
+//            let user2 = ChatListController.shared.chats[indexPath.row].
             
-            let chatListItem = ChatListController.shared.chats[indexPath.row]
+//            let chatListItem = ChatListController.shared.chats[indexPath.row]
             
-            destinationVC.user2Object = user2
-            destinationVC.chatListItem = chatListItem
+//            destinationVC.user2Object = user2
+//            destinationVC.chatListItem = chatListItem
         }
     }
     

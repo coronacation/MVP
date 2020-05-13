@@ -24,6 +24,8 @@ class ChatListController {
     
     // MARK: - Properties
     
+    var chats: [Chat] = []
+    var listener: ListenerRegistration? = nil
     var currentUser: CurrentUser? {
         didSet {
             guard let currentUser = currentUser else { return }
@@ -32,8 +34,6 @@ class ChatListController {
             usersDictionary[userUID] = currentUser.firstName
         }
     }
-    var chats: [ChatListItem] = []
-    var listener: ListenerRegistration? = nil
     
     /// usersDictionary enables fast lookup of a user's firstName. key = UID. value = firstName.
     var usersDictionary: [String:String] = [:]
@@ -103,30 +103,28 @@ class ChatListController {
     }
     
     func fetchChatsOfCurrentUser(_ currentUserUID: String) {
-        let query = chatsCollection
-            .whereField("userUids", arrayContains: currentUserUID)
+        guard let currentUserUid = currentUser?.userUID else { return }
         
-        query.getDocuments { (convoQuerySnapshot, error) in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            } else {
-                
-                guard let snapshot = convoQuerySnapshot,
-                    !snapshot.isEmpty
-                    else { return }
-                
-                
-                for doc in snapshot.documents {
-                    guard let chat = Chat(dictionary: doc.data()) else { return }
+        chatsCollection.document(currentUserUid)
+        .collection("conversations").whereField("blocked", isEqualTo: false)
+            .getDocuments { (convoQuerySnapshot, error) in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                } else {
                     
-                    ChatListItem.createWith(chat: chat, chatRef: doc.reference) { (chatListItem) in
-                        self.chats.append(chatListItem)
-                        print("#ChatListController 5. appended ChatListItem")
+                    guard let snapshot = convoQuerySnapshot,
+                        !snapshot.isEmpty
+                        else { return }
+                    
+                    
+                    for doc in snapshot.documents {
+                        guard let chat = Chat(dictionary: doc.data()) else { return }
                         
-                    }
-                } //end for
-            } // end else
+                        self.chats.append(chat)
+                    } //end for
+                    print("1. fetchChatsOfCurrentUser complete")
+                } // end else
         }
     } // end fetchChatsOfCurrentUser
     
