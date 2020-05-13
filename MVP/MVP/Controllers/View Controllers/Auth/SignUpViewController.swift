@@ -26,18 +26,12 @@ class SignUpViewController: UIViewController {
     
     func setUpElements() {
         // Hide the error label
-        errorLabel.alpha = 0
+   //     errorLabel.alpha = 0
         // Style the elements
-        
-        Utilities.styleTextField(firstNameTextField)
-        Utilities.styleTextField(lastNameTextField)
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(signUpButton)
         
         passwordTextField.delegate = self
         emailTextField.delegate = self
-        lastNameTextField.delegate = self
+      //  lastNameTextField.delegate = self
         firstNameTextField.delegate = self
     }
     
@@ -46,7 +40,7 @@ class SignUpViewController: UIViewController {
         
         // Check that all fields are filled in
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+           // lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             
@@ -78,7 +72,8 @@ class SignUpViewController: UIViewController {
             
             // Create cleaned versions of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = "lastName"
+        //    let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
@@ -113,7 +108,6 @@ class SignUpViewController: UIViewController {
     }
     
     func showError(_ message:String) {
-        
         errorLabel.text = message
         errorLabel.alpha = 1
     }
