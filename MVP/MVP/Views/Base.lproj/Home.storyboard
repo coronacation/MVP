@@ -13,10 +13,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Post List Table View Controller-->
+        <!--Post List View Controller-->
         <scene sceneID="amI-lg-oC9">
             <objects>
-                <viewController id="dtd-Bn-gbQ" customClass="PostListTableViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dtd-Bn-gbQ" customClass="PostListViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P9A-LS-K55">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="postSearchBar" destination="zPx-Ca-PdT" id="ue6-hZ-pZu"/>
+                        <outlet property="table" destination="Cu3-GA-lDs" id="sii-Ui-Pfu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHM-HT-FIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

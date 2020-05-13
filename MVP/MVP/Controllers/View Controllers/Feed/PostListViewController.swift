@@ -9,16 +9,20 @@
 import UIKit
 import Firebase
 
-class PostListTableViewController: UITableViewController {
+class PostListViewController: UIViewController {
     
     var posts = [DummyPost]()
     var db: Firestore!
     
     @IBOutlet weak var postSearchBar: UISearchBar!
+    @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
+        table.delegate = self
+        table.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +60,7 @@ class PostListTableViewController: UITableViewController {
                     self.posts.append(dummyPost)
                     
                 }
-                self.tableView.reloadData()
+                self.table.reloadData()
                 
                 print("\n\nCOUNT OF POSTS: \(self.posts.count)\n\n")
                 
@@ -64,31 +68,37 @@ class PostListTableViewController: UITableViewController {
         }
     }
     
+ 
+}
+
+extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
+      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return posts.count
+     }
+     
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         162
+     }
+     
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
+         
+         let post = posts[indexPath.row]
+         cell.post = post
+         
+         return cell
+     }
+     
+     // MARK: - Navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         if segue.identifier == "toPostDetailVC" {
+             if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = table.indexPathForSelectedRow {
+                 let post = posts[indexPath.row]
+                 destinationVC.post = post
+             }
+         }
+     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        162
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
-        
-        let post = posts[indexPath.row]
-        cell.post = post
-        
-        return cell
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPostDetailVC" {
-            if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
-                let post = posts[indexPath.row]
-                destinationVC.post = post
-            }
-        }
-    }
 }
