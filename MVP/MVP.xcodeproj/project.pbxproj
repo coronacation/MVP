@@ -463,7 +463,6 @@
 				6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */,
 				6D5EB985246A150500579B00 /* Account+SupportViewController.swift in Sources */,
 				D56D79742468F1AD00265021 /* PostError.swift in Sources */,
-				6D5EB987246A150C00579B00 /* OwnerProfileViewController.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
 				D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */,
@@ -655,7 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9U46PJ4YSS;
+				DEVELOPMENT_TEAM = 66J9D7PXPT;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -675,7 +674,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9U46PJ4YSS;
+				DEVELOPMENT_TEAM = 66J9D7PXPT;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
