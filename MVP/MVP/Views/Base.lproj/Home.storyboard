@@ -22,15 +22,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="CIU-wW-WOJ">
-                                <rect key="frame" x="0.0" y="-41" width="375" height="244"/>
+                                <rect key="frame" x="0.0" y="-47" width="375" height="244"/>
                             </imageView>
                             <searchBar contentMode="redraw" placeholder="Try &quot;Cleaning Supplies&quot;" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-Ca-PdT">
-                                <rect key="frame" x="27.5" y="73.5" width="320" height="40"/>
+                                <rect key="frame" x="27.5" y="66.5" width="320" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cu3-GA-lDs">
-                                <rect key="frame" x="0.0" y="203" width="375" height="464"/>
+                                <rect key="frame" x="0.0" y="197" width="375" height="421"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="postCell" rowHeight="136" id="Mwp-Do-XJf" customClass="PostTableViewCell" customModule="MVP" customModuleProvider="target">
@@ -145,6 +145,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NDp-gI-UjA"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="Home Purple" selectedImage="Home Gold" id="z8P-Q2-Y1Z" userLabel="Home Tab"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="postSearchBar" destination="zPx-Ca-PdT" id="ue6-hZ-pZu"/>
                         <outlet property="table" destination="Cu3-GA-lDs" id="sii-Ui-Pfu"/>
@@ -152,9 +154,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHM-HT-FIq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309.5999999999999" y="-269.41529235382313"/>
+            <point key="canvasLocation" x="2222" y="-269"/>
         </scene>
-        <!--Item-->
+        <!--Post Detail View Controller-->
         <scene sceneID="ELs-Jd-2oz">
             <objects>
                 <viewController id="IEm-vN-Het" customClass="PostDetailViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -360,7 +362,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kXa-1R-acQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="kH8-zc-yO4"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home Purple" selectedImage="Home Gold" id="kH8-zc-yO4" userLabel="Home Tab"/>
                     <navigationItem key="navigationItem" id="FMB-6Q-ci5"/>
                     <connections>
                         <outlet property="postDescriptionTextView" destination="y7J-9f-U1S" id="JPh-zD-ya7"/>
@@ -380,6 +382,8 @@
         <image name="Default avatar" width="60" height="60"/>
         <image name="Ellipse" width="375" height="213"/>
         <image name="Group 12" width="30" height="30"/>
+        <image name="Home Gold" width="39" height="44"/>
+        <image name="Home Purple" width="40" height="46"/>
         <image name="Light Ellipse" width="375" height="203"/>
         <image name="Picture Placeholder" width="233" height="134"/>
         <image name="pencil_black" width="18" height="24"/>
