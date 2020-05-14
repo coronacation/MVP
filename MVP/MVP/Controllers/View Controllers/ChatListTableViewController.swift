@@ -30,10 +30,22 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
+    
+    // MARK: - Properties
+    
+    /// Landing pad for tapping on Message button in PostDetailVC
+    var post: DummyPost?
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let post = post {
+            print("hey we got a post from PostDetail")
+            print(post.postTitle)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

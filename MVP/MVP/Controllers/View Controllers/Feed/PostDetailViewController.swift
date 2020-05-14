@@ -43,6 +43,8 @@ class PostDetailViewController: UIViewController {
         
         print("#messageUserButtonTapped - \(post.postTitle)")
         print(post.postDocumentID)
+        
+        transitionToChat(post: post)
     }
     
     @IBAction func reportPostButtonTapped(_ sender: Any) {
@@ -73,5 +75,20 @@ class PostDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func transitionToChat(post: DummyPost) {
+        let destinationStoryboard = UIStoryboard(name: "Chat", bundle: nil)
+        
+        guard let destinationVC = destinationStoryboard.instantiateViewController(identifier: "chatTableVC") as? ChatListTableViewController
+            else {
+                print("#postDetailViewController transitionToChat cannot find destinationVC")
+                return
+        }
+        
+        destinationVC.post = post
+        
+        view.window?.rootViewController = destinationVC
+        view.window?.makeKeyAndVisible()
     }
 }

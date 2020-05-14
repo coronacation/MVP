@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7b1-EW-iOr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Chat-->
         <scene sceneID="dr7-PL-7ef">
             <objects>
-                <tableViewController id="C1G-1s-3Vx" customClass="ChatListTableViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="chatTableVC" id="C1G-1s-3Vx" customClass="ChatListTableViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X8W-TI-eaL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
         <!--Chat-->
         <scene sceneID="dpk-iL-JsC">
             <objects>
-                <navigationController id="7b1-EW-iOr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chatNavController" id="7b1-EW-iOr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" image="bubble.left" catalog="system" id="EXd-zJ-ByE" userLabel="Chat"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y5t-uW-qma">
@@ -83,7 +83,7 @@
         <!--Chat Detail View Controller-->
         <scene sceneID="FTv-K7-GeJ">
             <objects>
-                <viewController id="47v-cc-bZS" customClass="ChatDetailViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatDetailVC" id="47v-cc-bZS" customClass="ChatDetailViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aMX-Js-4Gb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
