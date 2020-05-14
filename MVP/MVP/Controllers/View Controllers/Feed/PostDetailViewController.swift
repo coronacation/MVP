@@ -29,7 +29,27 @@ class PostDetailViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func messageUserButtonTapped(_ sender: Any) {
-        print("message user tapped")
+        
+        print("#messageUserButtonTapped")
+        
+        // unwrap post
+        guard let post = post else { return }
+        
+        
+        // guard against a user messaging his own post
+        let postOwnerUid = post.userUID
+        
+        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
+            postOwnerUid != currentUserUID else {
+                print("Nice try, troll. You can't message yourself.")
+                return
+        }
+        
+        // TODO: prevent user from spamming postOwner
+        //      Counter-point: Maybe that's what the Block User function is for?
+        
+        // present AlertController
+        presentNewMessageAlert(post: post)
     }
     
     @IBAction func reportPostButtonTapped(_ sender: Any) {
@@ -60,5 +80,19 @@ class PostDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func presentNewMessageAlert(post: DummyPost) {
+        let alert = UIAlertController(title: "Send a message", message: "Press Send to let \(post.postUserFirstName) know that you're interested in this offer. If it's available, you'll receive a reply from them in the Messages tab.", preferredStyle: .alert)
+        
+        let sendButton = UIAlertAction(title: "Send", style: .default) { (_) in
+            print("#presentNewMessageAlert will send \(post.postDocumentID)")
+        }
+        alert.addAction(sendButton)
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
     }
 }
