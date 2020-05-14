@@ -20,12 +20,13 @@
 		AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */; };
 		AC23ABC7245A82F9002D7764 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC23ABC6245A82F9002D7764 /* Chat.storyboard */; };
 		AC23ABCB245A8C0C002D7764 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23ABCA245A8C0C002D7764 /* Message.swift */; };
+		AC24CD1D246DBD8A00119EA5 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */; };
+		AC24CD1E246DBD8A00119EA5 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */; };
+		AC24CD1F246DBD8A00119EA5 /* ChatNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24CD1C246DBD8A00119EA5 /* ChatNavigationController.swift */; };
 		AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE502459E6B300C8D3A6 /* Post.swift */; };
 		AC48CE532459E6B300C8D3A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE512459E6B300C8D3A6 /* User.swift */; };
 		AC81A0F0246AFFA500BFCB06 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81A0EF246AFFA500BFCB06 /* DateHelper.swift */; };
-		AC9135BE245CCC68006562AA /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BD245CCC68006562AA /* ChatDetailViewController.swift */; };
 		AC9135C0245CCD5C006562AA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BF245CCD5C006562AA /* Chat.swift */; };
-		AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135C1245E626F006562AA /* ChatListTableViewController.swift */; };
 		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
 		ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047AF24660868002F2CA3 /* ChatListItem.swift */; };
 		ACD047B424661C34002F2CA3 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047B324661C33002F2CA3 /* ChatListController.swift */; };
@@ -71,12 +72,13 @@
 		AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
 		AC23ABC6245A82F9002D7764 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		AC23ABCA245A8C0C002D7764 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDetailViewController.swift; path = Chat/ChatDetailViewController.swift; sourceTree = "<group>"; };
+		AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatListTableViewController.swift; path = Chat/ChatListTableViewController.swift; sourceTree = "<group>"; };
+		AC24CD1C246DBD8A00119EA5 /* ChatNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatNavigationController.swift; path = Chat/ChatNavigationController.swift; sourceTree = "<group>"; };
 		AC48CE502459E6B300C8D3A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AC48CE512459E6B300C8D3A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AC81A0EF246AFFA500BFCB06 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		AC9135BD245CCC68006562AA /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		AC9135BF245CCD5C006562AA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		AC9135C1245E626F006562AA /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACD047AF24660868002F2CA3 /* ChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItem.swift; sourceTree = "<group>"; };
 		ACD047B324661C33002F2CA3 /* ChatListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
@@ -197,8 +199,9 @@
 		D5A21D47246B357D002058A7 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				AC9135BD245CCC68006562AA /* ChatDetailViewController.swift */,
-				AC9135C1245E626F006562AA /* ChatListTableViewController.swift */,
+				AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */,
+				AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */,
+				AC24CD1C246DBD8A00119EA5 /* ChatNavigationController.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -462,21 +465,21 @@
 				D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */,
 				6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */,
 				6D5EB985246A150500579B00 /* Account+SupportViewController.swift in Sources */,
+				AC24CD1D246DBD8A00119EA5 /* ChatDetailViewController.swift in Sources */,
 				D56D79742468F1AD00265021 /* PostError.swift in Sources */,
-				6D5EB987246A150C00579B00 /* OwnerProfileViewController.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
 				D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */,
 				ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
-				AC9135C2245E626F006562AA /* ChatListTableViewController.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
+				AC24CD1E246DBD8A00119EA5 /* ChatListTableViewController.swift in Sources */,
 				ACEF808D245A149B009459FF /* Category.swift in Sources */,
-				AC9135BE245CCC68006562AA /* ChatDetailViewController.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
 				ACD047B424661C34002F2CA3 /* ChatListController.swift in Sources */,
 				D5A21D4E246B5FF0002058A7 /* MyPostDetailViewController.swift in Sources */,
 				AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */,
+				AC24CD1F246DBD8A00119EA5 /* ChatNavigationController.swift in Sources */,
 				6D27DA812469C7BA00DBDEA2 /* CurrentUserController.swift in Sources */,
 				ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */,
 				AC9135C0245CCD5C006562AA /* Chat.swift in Sources */,
