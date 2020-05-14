@@ -12,6 +12,7 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,45 +20,13 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
     }
     
-    func setUpElements() {
-        // Hide the error label
-   //     errorLabel.alpha = 0
-        // Style the elements
-        
-        passwordTextField.delegate = self
-        emailTextField.delegate = self
-      //  lastNameTextField.delegate = self
-        firstNameTextField.delegate = self
-    }
-    
-    // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
-    func validateFields() -> String? {
-        
-        // Check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-           // lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            
-            return "Please fill in all fields."
-        }
-        
-        // Check if the password is secure
-        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if Utilities.isPasswordValid(cleanedPassword) == false {
-            // Password isn't secure enough
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
-        
-        return nil
-    }
-    
+    //MARK: - Actions
     @IBAction func signUpTapped(_ sender: Any) {
         
         // Validate the fields
@@ -73,7 +42,7 @@ class SignUpViewController: UIViewController {
             // Create cleaned versions of the data
             let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastName = "lastName"
-        //    let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            //    let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
@@ -101,29 +70,63 @@ class SignUpViewController: UIViewController {
                     CurrentUserController.shared.setCurrentUserFromSignUp(firstName: firstName, lastName: lastName, email: email, userUID: authResult!.user.uid)
                     
                     // Transition to the home screen
-                    self.transitionToHome()
                 }
             }
         }
+        segueToWelcomeView(sender: sender as! UIButton)
+    }//end of signupTapped func
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion:nil)
     }
+    
+    //MARK: - Helpers
+    func setUpElements() {
+        // Hide the error label
+        //     errorLabel.alpha = 0
+        // Style the elements
+        
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        //  lastNameTextField.delegate = self
+        firstNameTextField.delegate = self
+    }//end of setUpElements func
+    
+    // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
+    func validateFields() -> String? {
+        
+        // Check that all fields are filled in
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            // lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields."
+        }
+        
+        // Check if the password is secure
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if Utilities.isPasswordValid(cleanedPassword) == false {
+            // Password isn't secure enough
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+        }
+        
+        return nil
+    }//end of validateFields func
     
     func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
     
-    @IBAction func loginButtonTapped(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+    //MARK: - Navigation
+    func segueToWelcomeView(sender:UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: "informationSheet1")
+        self.present(linkingVC, animated: true)
     }
-    
-    func transitionToHome() {
-        
-        let tabBarViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
-        
-        view.window?.rootViewController = tabBarViewController
-        view.window?.makeKeyAndVisible()
-    }
-}
+}//end of SignupViewController
 
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

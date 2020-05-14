@@ -32,15 +32,12 @@ class PasswordResetViewController: UIViewController {
                 self.showError("Password reset email sent!")
             }
         }
-    }
+        self.presentingViewController?.dismiss(animated: false, completion:nil)
+    }//end of resetPasswordButtonTapped func
     
     func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1
-    }
-    
-    @IBAction func exitButtonTapped(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
     }
 }
 
