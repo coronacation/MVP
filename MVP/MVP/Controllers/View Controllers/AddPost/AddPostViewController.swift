@@ -8,6 +8,8 @@
 
 import UIKit.UIImage
 import Firebase
+import AVFoundation
+import Photos
 
 class AddPostViewController: UIViewController {
     
@@ -18,6 +20,7 @@ class AddPostViewController: UIViewController {
     //MARK: - Properties
     let db = Firestore.firestore()
     
+    let imagePicker = UIImagePickerController()
     //landing pad for image grabbed in PhotoSelector, use this for saving to the cloud
     var selectedImage: UIImage?
     
@@ -28,7 +31,6 @@ class AddPostViewController: UIViewController {
     }
     
     //MARK: - Actions
-    
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let postDescription = descriptionTextView.text, !postDescription.isEmpty, let postTitle = titleTextField.text, !postTitle.isEmpty
             else { return }
@@ -53,6 +55,27 @@ class AddPostViewController: UIViewController {
         }
     }
     
+    @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Add a photo", message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.imagePicker.dismiss(animated: true, completion: nil)
+        }
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
+            self.checkCameraAuthorization()
+        }
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (_) in
+            self.checkPhotoLibraryAuthorization()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(cameraAction)
+        alert.addAction(photoLibraryAction)
+        
+        present(alert, animated: true, completion: nil)
+    }//end of addPhotoButtonTapped func
+    
+    //MARK: - Helpers
     func grabImageURLAndSavePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String) {
         
         guard let imageData = selectedImage!.jpegData(compressionQuality: 0.6) else {return}
@@ -79,11 +102,12 @@ class AddPostViewController: UIViewController {
                 }
             }
         }
-    }
+    }//end of grabImageURLAndSavePost func
     
     func presentAddPhotoNudgeBeforeSave() {
     }
     
+    //MARK: - TODO: Create a DateFormatterExtension file?
     func timestamp() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d/Y"
@@ -92,7 +116,7 @@ class AddPostViewController: UIViewController {
         return formattedDate
     }
     
-    //move to PostController file
+    //MARK: - TODO: move to PostController file
     func savePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String, imageURL: String = "http://sjd.law.wfu.edu/files/2020/01/No-Photo-Available.jpg") {
         
         let currentUser = Auth.auth().currentUser
@@ -128,7 +152,7 @@ class AddPostViewController: UIViewController {
                 self.clearFieldsAfterPostSaved()
             }
         }
-    }
+    }//end of savePost func
     
     func clearFieldsAfterPostSaved() {
         
@@ -147,7 +171,7 @@ class AddPostViewController: UIViewController {
         let savedAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         savedAlert.addAction(UIAlertAction(title: "You're welcome", style: .default, handler: nil))
         self.present(savedAlert, animated: true, completion: nil)
-    }
+    }//end of presentSavedAlert func
     
     func presentErrorSavingPostAlert() {
         let title = "Post could not be saved"
@@ -156,26 +180,106 @@ class AddPostViewController: UIViewController {
         let savedAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         savedAlert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(savedAlert, animated: true, completion: nil)
-    }
+    }//end of presentErrorSavingPostAlert func
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPhotoSelectorVC" {
-            let destinationVC = segue.destination as? PhotoSelectorViewController
-            destinationVC?.delegate = self
+            
+            //MARK: - TODO: Setup segue to send post info
+            
+            let destinationVC = segue.destination // as? VCName
         }
     }//end of prepare(for segue:) func
 }//end of AddPostVC
 
 //MARK: - AddPostTVC extension
-extension AddPostViewController: PhotoSelectorViewControllerDelegate {
+extension AddPostViewController: UIImagePickerControllerDelegate {
     
-    func photoSelectorViewControllerSelected(image: UIImage) {
-        selectedImage = image
-    }
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            DispatchQueue.main.async {
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.camera
+                self.imagePicker.allowsEditing = false
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "No Camera Access", message: "Please allow access to the camera to use this feature.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }//end of openCamera func
+    
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            DispatchQueue.main.async {
+                self.imagePicker.allowsEditing = true
+                self.imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: "No Photo Access", message: "Please allow access to photos to use this feature.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Back", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }//end of openGallery func
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            selectedImage = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }//end of imagePickerController func
+    
+    func checkCameraAuthorization() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.openCamera()
+                }
+            }
+            break
+        case .restricted, .denied:
+            presentDeniedAlert()
+            break
+        case .authorized:
+            openCamera()
+        @unknown default:
+            print("Default case for AVCaptureDevice.authorizationStatus()")
+        }
+    }//end of checkCameraAuthorization func
+    
+    func checkPhotoLibraryAuthorization() {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization( { status in
+                if (status == PHAuthorizationStatus.authorized) {
+                    self.openGallery()
+                }
+            })
+            break
+        case .restricted, .denied:
+            presentDeniedAlert()
+            break
+        case .authorized:
+            openGallery()
+        @unknown default:
+            print("Default case for AVCaptureDevice.authorizationStatus()")
+        }
+    }//end of checkPhotoLibraryAuthorization func
+    
+    func presentDeniedAlert() {
+        let alert = UIAlertController(title: "Access Denied", message: "Check your permission or restriction settings and try again.", preferredStyle: .alert)
+        
+        let dismissButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(dismissButton)
+        self.present(alert, animated: true)
+    }//end of presentDeniedAlert func
 }//end of AddPostTVC photoSelector extension
-
-
 
 //this dismisses the keyboard when enter is pressed on an iphone
 extension AddPostViewController: UITextFieldDelegate {
