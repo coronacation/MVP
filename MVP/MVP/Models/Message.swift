@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
 import MessageKit
 
 struct Message {
@@ -16,7 +16,6 @@ struct Message {
     var content: String
     var created: Timestamp
     var senderID: String
-    var senderName: String
     
     var dictionary: [String: Any] {
         
@@ -24,8 +23,7 @@ struct Message {
             "id": id,
             "content": content,
             "created": created,
-            "senderID": senderID,
-            "senderName":senderName]
+            "senderID": senderID]
         
     }
 }
@@ -36,19 +34,18 @@ extension Message {
         guard let id = dictionary["id"] as? String,
             let content = dictionary["content"] as? String,
             let created = dictionary["created"] as? Timestamp,
-            let senderID = dictionary["senderID"] as? String,
-            let senderName = dictionary["senderName"] as? String
+            let senderID = dictionary["senderID"] as? String
             else {return nil}
         
-        self.init(id: id, content: content, created: created, senderID: senderID, senderName:senderName)
+        self.init(id: id, content: content, created: created, senderID: senderID)
         
     }
 }
 
 extension Message: MessageType {
-    
     var sender: SenderType {
-        return Sender(senderId: senderID, displayName: senderName)
+        let firstName = ChatListController.shared.usersDictionary[senderID] ?? "unknown name"
+        return Sender(senderId: senderID, displayName: firstName)
     }
     
     var messageId: String {

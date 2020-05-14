@@ -16,32 +16,33 @@ struct ChatListItem {
     var chat: Chat
     var lastMsg: String
     var lastTime: String
-    //    var lastTimestamp: Timestamp
 }
 
 extension ChatListItem {
     
-    static func createWith( chat: Chat,
-                            chatRef: DocumentReference,
-                            completion: @escaping (ChatListItem) -> Void ) {
-        
-        if let otherUserUID = chat.otherUserUid {
-            print("#ChatListItem 1. getting user")
-            User.getBy(uid: otherUserUID) { (user) in
-                print("#ChatListItem 2. got \(user.firstName)")
-                
-                print("#ChatListItem 3. creating ChatListItem")
-                let chatListItem = ChatListItem(
-                    chatRef: chatRef,
-                    otherUser: user,
-                    chat: chat,
-                    lastMsg: "",
-                    lastTime: "")
-                print("#ChatListItem 4. ChatListItem created!")
-                completion(chatListItem)
-            }
-        } else {
-            print("ERROR: #ChatListItem failed to get otherUser.")
-        }
-    }
+//    static func createWith( chat: Chat,
+//                            chatRef: DocumentReference,
+//                            completion: @escaping (ChatListItem) -> Void ) {
+//
+//        if let otherUserUID = chat.otherUserUid {
+//            print("#ChatListItem 1. getting user")
+//            User.getBy(uid: otherUserUID) { (user) in
+//                print("#ChatListItem 2. appending \(user.firstName) to User Dictionary ")
+//
+//                ChatListController.shared.addUser(user)
+//
+//                print("#ChatListItem 3. creating ChatListItem")
+//                let chatListItem = ChatListItem(
+//                    chatRef: chatRef,
+//                    otherUser: user,
+//                    chat: chat,
+//                    lastMsg: chat.lastMsg ?? "",
+//                    lastTime: chat.lastTime?.description ?? "")
+//                print("#ChatListItem 4. ChatListItem created!")
+//                completion(chatListItem)
+//            }
+//        } else {
+//            print("ERROR: #ChatListItem failed to get otherUser.")
+//        }
+//    }
 }

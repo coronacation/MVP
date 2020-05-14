@@ -7,71 +7,66 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-struct Chat {
-    var userUids: [String]
-    
-    var dictionary: [String: Any] {
-        
-        return [
-            "userUids": userUids
-        ]
-        
+class Chat {
+    var offer: String
+    var offerOwner: String
+    var blocked: Bool = false
+    var blockedByUid: String?
+    var otherUserUid: String {
+        didSet {
+            User.getBy(uid: otherUserUid) { (user) in
+                self.otherUser = user
+            }
+        }
     }
+    var otherUser: User?
+    //    var lastMsg: String?
+    //    var lastMsgDate: Date
     
-    var otherUserUid: String? {
-        guard let currentUserUid = CurrentUserController.shared.currentUser?.userUID,
-            userUids.contains(currentUserUid)
-            else { return nil }
-        
-        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
-        return otherUserUid
+    
+    
+    /// Default Initializer
+    /// - Parameters:
+    ///   - offer: Post Title
+    ///   - offerOwner: Name of the user who made the Post
+    ///   - blocked: true or false
+    ///   - blockedByUid: UID of the user who initiated the block
+    ///   - otherUserUid: UID of the user who is interested in the Post
+    init(offer: String,
+         offerOwner: String,
+         blocked: Bool,
+         blockedByUid: String? = nil,
+         otherUserUid: String) {
+        self.offer = offer
+        self.offerOwner = offerOwner
+        self.blocked = blocked
+        self.blockedByUid = blockedByUid
+        self.otherUserUid = otherUserUid
     }
 }
 
 extension Chat {
     
-    init?(dictionary: [String:Any]) {
-        guard let userUids = dictionary["userUids"] as? [String] else {return nil}
+    /// Initializer for Chat objects coming from Firestore
+    /// - Parameter dictionary: key/value pairs of a chat object. With Firestore, you can simply pass in DocumentRef.data().
+    convenience init?(dictionary: [String:Any]) {
         
-        self.init(userUids: userUids)
+        guard let offer = dictionary["offer"] as? String,
+            let offerOwner = dictionary["offerOwner"] as? String,
+            let blocked = dictionary["blocked"] as? Bool,
+            let otherUserUid = dictionary["otherUserUid"] as? String
+            else { return nil }
+        
+        let blockedByUid = blocked ? dictionary["blockedByUid"] as? String : nil
+        
+        self.init(offer: offer,
+                  offerOwner: offerOwner,
+                  blocked: blocked,
+                  blockedByUid: blockedByUid,
+                  otherUserUid: otherUserUid)
     }
     
-    //    func fetchOtherUserUid() -> String? {
-    //        let currentUserUid = Auth.auth().currentUser!.uid // TO-DO: replace with call to CurrentUserController
-    //        guard userUids.contains(currentUserUid) else { return nil }
-    //
-    //        let otherUserUid = userUids[0] == currentUserUid ? userUids[1] : userUids[0]
-    //        return otherUserUid
-    //    }
-    
-    //    func fetchOtherUser() -> User? {
-    //        let currentUserUid = Auth.auth().currentUser!.uid
-    //        guard users.contains(currentUserUid) else { return nil }
-    //
-    //        let otherUserUid = users[0] == currentUserUid ? users[1] : users[0]
-    //
-    //        var userToReturn: User? = nil
-    //
-    //        let group = DispatchGroup()
-    //
-    //        group.enter()
-    //        User.fetchUser(fromUid: otherUserUid) { (result) in
-    //            switch result {
-    //
-    //            case .success(let user):
-    //                userToReturn = user
-    //                print("Inside closure. Got this user: " + userToReturn!.firstName)
-    //                group.leave()
-    //            case .failure(let error):
-    //                print(error.errorDescription!)
-    //            }
-    //        }
-    //        //        print("Outside closure. Got this user: " + userToReturn.firstName)
-    //
-    //        group.notify(queue: .main) {
-    //            return userToReturn
-    //        }
-    //    }
 }
 

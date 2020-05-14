@@ -12,18 +12,72 @@ import FirebaseFirestore
 
 class ChatListTableViewController: UITableViewController {
     
-    // MARK: - Properties
+    // MARK: - Mock Data
     
-    var currentUser = Auth.auth().currentUser!
-    var userUids: [String] = []
-    var users: [User] = []
+    let mockOffers: [String] = [ "Hairspray",
+                                 "Toilet paper",
+                                 "Rice",
+                                 "Hand santizer",
+                                 "Canned beans",
+                                 "Face masks",
+                                 "N95",
+                                 "Lightsaber"
+    ]
+    var randomOffer: String {
+        get {
+            guard let offer = self.mockOffers.randomElement() else { return "offer fail" }
+            return offer
+        }
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ChatListController.shared.startListener {
+            self.tableView.reloadData()            
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ChatListController.shared.stopListener()
+    }
+    
+    // MARK: - IBAction
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
         
-//        self.loadConversations()
+        // TO-DO: When wired up with final storyboard, make sure to send DocRef of Post so user can tap on it from Chat
+        
+        let postTitle = randomOffer
+        let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
+//        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
+//        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
+        
+        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
+            postOwnerUid != currentUserUID else {
+                print("Nice try, troll. You can't message yourself.")
+                return
+        }
+        
+        ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
+            // 1. create new ChatList Item
+            
+            print(docRef.documentID)
+            
+            // 2. append it to the local array
+            
+            self.tableView.reloadData()
+            
+            // 3. Create a document in db under Threads
+            //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
+            
+            
+            // 4. Segue to the ChatDetailVC and set the convo title
+        }
     }
     
 
@@ -42,64 +96,16 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUser.firstName
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].offerOwner
+        
+        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
         
         return cell
     }
     
     
     // MARK: - Conversations data source
-    
-    func loadConversations() {
-        let query = Firestore.firestore().collection("Chats")
-            .whereField("userUids", arrayContains: currentUser.uid)
         
-        query.getDocuments { (convoQuerySnapshot, error) in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            } else {
-                
-                guard let snapshot = convoQuerySnapshot,
-                    !snapshot.isEmpty
-                    else { return }
-                
-                
-                for doc in snapshot.documents {
-                    guard let chat = Chat(dictionary: doc.data()),
-                    let otherUserUid = chat.otherUserUid
-                        else { return }
-                    
-//                    self.chatRefs.append(doc.reference)
-                    self.userUids.append(otherUserUid)
-                }
-                print("Finished loadConversations()")
-                self.constructUsers()
-            } // end else
-        }
-    } // end loadConversations
-    
-    /// Do *not* move the call to constructUsers() to viewDidLoad. The call to constructUsers from loadConversations is necessary to preserve order of execution.
-    func constructUsers() {
-        print("#ChatListTVC Starting constructUsers()")
-        
-        let group = DispatchGroup()
-        
-        for otherUserUid in userUids {
-            group.enter()
-            User.getBy(uid: otherUserUid, completion: { (user) in
-                self.users.append(user)
-                print("Chat List appended: \(user.firstName)")
-                group.leave()
-            })
-        }
-                
-        group.notify(queue: .main) {
-            print("~~Reloading Chat List tableview~~")
-            self.tableView.reloadData()
-        }
-    }
-    
     
     /*
      // Override to support editing the table view.
@@ -127,12 +133,15 @@ class ChatListTableViewController: UITableViewController {
         if segue.identifier == "toChatVC" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 //                let destinationVC = segue.destination as? ChatViewController
-                let destinationVC = segue.destination as? ChatViewController
+                let destinationVC = segue.destination as? ChatDetailViewController
                 else { return }
             
-            let user2 = ChatListController.shared.chats[indexPath.row].otherUser
+//            let user2 = ChatListController.shared.chats[indexPath.row].
             
-            destinationVC.user2Object = user2
+//            let chatListItem = ChatListController.shared.chats[indexPath.row]
+            
+//            destinationVC.user2Object = user2
+//            destinationVC.chatListItem = chatListItem
         }
     }
     
