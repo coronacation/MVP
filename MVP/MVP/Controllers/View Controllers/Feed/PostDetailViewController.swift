@@ -29,22 +29,27 @@ class PostDetailViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func messageUserButtonTapped(_ sender: Any) {
+        
+        print("#messageUserButtonTapped")
+        
         // unwrap post
         guard let post = post else { return }
         
-        let postOwnerUid = post.userUID
         
         // guard against a user messaging his own post
+        let postOwnerUid = post.userUID
+        
         guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
             postOwnerUid != currentUserUID else {
                 print("Nice try, troll. You can't message yourself.")
                 return
         }
         
-        print("#messageUserButtonTapped - \(post.postTitle)")
-        print(post.postDocumentID)
+        // TODO: prevent user from spamming postOwner
+        //      Counter-point: Maybe that's what the Block User function is for?
         
-        transitionToChat(post: post)
+        // present AlertController
+        presentNewMessageAlert(post: post)
     }
     
     @IBAction func reportPostButtonTapped(_ sender: Any) {
@@ -77,18 +82,17 @@ class PostDetailViewController: UIViewController {
         }
     }
     
-    func transitionToChat(post: DummyPost) {
-        let destinationStoryboard = UIStoryboard(name: "Chat", bundle: nil)
+    func presentNewMessageAlert(post: DummyPost) {
+        let alert = UIAlertController(title: "Send a message", message: "Press Send to let \(post.postUserFirstName) know that you're interested in this offer. If it's available, you'll receive a reply from them in the Messages tab.", preferredStyle: .alert)
         
-        guard let destinationVC = destinationStoryboard.instantiateViewController(identifier: "chatTableVC") as? ChatListTableViewController
-            else {
-                print("#postDetailViewController transitionToChat cannot find destinationVC")
-                return
+        let sendButton = UIAlertAction(title: "Send", style: .default) { (_) in
+            print("#presentNewMessageAlert will send \(post.postDocumentID)")
         }
+        alert.addAction(sendButton)
         
-        destinationVC.post = post
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelButton)
         
-        view.window?.rootViewController = destinationVC
-        view.window?.makeKeyAndVisible()
+        present(alert, animated: true)
     }
 }
