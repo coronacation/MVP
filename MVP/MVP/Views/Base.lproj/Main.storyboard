@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cAI-pW-l2o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z1I-jc-LE5">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -20,6 +20,7 @@
         <scene sceneID="49Q-pZ-MRm">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarVC" id="bLk-j4-CfS" customClass="TabBarViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8uQ-Ik-sDh"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QCI-F1-uSu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -34,7 +35,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAN-jr-LFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2298" y="1021"/>
+            <point key="canvasLocation" x="2375" y="1021"/>
         </scene>
         <!--Home-->
         <scene sceneID="QfK-aD-jeA">
@@ -81,46 +82,46 @@
             <objects>
                 <viewController id="z1I-jc-LE5" customClass="LoginViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PO6-up-eR8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-9v-uqT">
-                                <rect key="frame" x="0.0" y="0.0" width="395.5" height="291"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light_Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="abh-8o-oqa">
-                                <rect key="frame" x="-5" y="356" width="405.5" height="291"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWV-tf-A1A" userLabel="Email underline">
-                                <rect key="frame" x="65.5" y="377.5" width="264.5" height="2"/>
+                                <rect key="frame" x="62" y="389.5" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-Lq-K3l" userLabel="Email Icon">
-                                <rect key="frame" x="66.5" y="359.5" width="20" height="17"/>
+                                <rect key="frame" x="63.5" y="370.5" width="18.5" height="17.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ddjacobsen17@yahoo.com" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-UZ-iyE">
-                                <rect key="frame" x="94" y="358" width="236" height="18.5"/>
+                                <rect key="frame" x="95" y="369.5" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password124*" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D28-IF-CDO">
-                                <rect key="frame" x="97.5" y="408.5" width="236" height="18.5"/>
+                                <rect key="frame" x="95" y="421" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-Vu-Zq5" userLabel="Password Underline">
-                                <rect key="frame" x="62" y="428" width="271.5" height="2"/>
+                                <rect key="frame" x="62" y="441" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Padlock" translatesAutoresizingMaskIntoConstraints="NO" id="x17-d7-gjK">
-                                <rect key="frame" x="65.5" y="401.5" width="21.5" height="24.5"/>
+                                <rect key="frame" x="62.5" y="414" width="20" height="25"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvx-vI-wQz">
-                                <rect key="frame" x="113" y="481.5" width="169.5" height="39"/>
+                                <rect key="frame" x="109" y="496.5" width="157" height="40"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Sign In">
@@ -131,7 +132,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsL-bA-qz7">
-                                <rect key="frame" x="113" y="551" width="169.5" height="38.5"/>
+                                <rect key="frame" x="109" y="568" width="157" height="40"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Create Account">
@@ -142,7 +143,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Ct-YZD">
-                                <rect key="frame" x="101" y="592" width="193.5" height="20.5"/>
+                                <rect key="frame" x="98" y="610.5" width="179" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
@@ -153,7 +154,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-JS-cye">
-                                <rect key="frame" x="62.5" y="438" width="270.5" height="38"/>
+                                <rect key="frame" x="62.5" y="451.5" width="250" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -224,24 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJj-Mp-Jgz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="185"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="SNy-Rt-e8J">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="cAI-pW-l2o" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MRi-Vn-a20">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="z1I-jc-LE5" kind="relationship" relationship="rootViewController" id="6I0-xc-uh1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="far-vR-N8w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1202" y="213"/>
+            <point key="canvasLocation" x="-178" y="663"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="qsQ-nN-xA6">
@@ -331,7 +315,7 @@
                                     <color key="titleColor" name="mediumPurple"/>
                                 </state>
                                 <connections>
-                                    <segue destination="z1I-jc-LE5" kind="show" id="3I6-rC-PZI"/>
+                                    <action selector="loginButtonTapped:" destination="5pt-be-R9P" eventType="touchUpInside" id="AE2-Vc-B2b"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-dc-QZt">
@@ -417,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N15-Ku-M0f" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="-589"/>
+            <point key="canvasLocation" x="630" y="213"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="B9C-Xd-UJY">
@@ -550,15 +534,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-ag-T4Y">
-                                <rect key="frame" x="143" y="524" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back to login"/>
-                                <connections>
-                                    <action selector="exitButtonTapped:" destination="V5e-Dc-063" eventType="touchUpInside" id="0Xj-ai-GDd"/>
-                                    <segue destination="z1I-jc-LE5" kind="show" id="gYe-iK-krR"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -601,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3K-Ld-b41" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-969" y="954"/>
+            <point key="canvasLocation" x="-178" y="1460"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="civ-92-Iz7">
@@ -667,6 +642,9 @@
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" name="gold"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bLk-j4-CfS" kind="show" id="iqd-7n-jTY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -765,6 +743,9 @@
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" name="gold"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bLk-j4-CfS" kind="show" id="Usf-jt-BPK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1057,6 +1038,9 @@
                                                         <state key="normal" title="Next">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="bLk-j4-CfS" kind="show" id="rpD-kn-SY3"/>
+                                                        </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fourth Dot" translatesAutoresizingMaskIntoConstraints="NO" id="lyf-rZ-OPa">
                                                         <rect key="frame" x="159.5" y="43.5" width="56" height="8"/>
@@ -1106,7 +1090,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3I6-rC-PZI"/>
+        <segue reference="rpD-kn-SY3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Email" width="20" height="18"/>
