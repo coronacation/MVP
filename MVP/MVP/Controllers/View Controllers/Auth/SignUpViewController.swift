@@ -69,15 +69,15 @@ class SignUpViewController: UIViewController {
                     
                     CurrentUserController.shared.setCurrentUserFromSignUp(firstName: firstName, lastName: lastName, email: email, userUID: authResult!.user.uid)
                     
-                    // Transition to the home screen
+                    // Transition to the welcome screen
+                    self.segueToWelcomeView(sender: sender as! UIButton)
                 }
             }
         }
-        segueToWelcomeView(sender: sender as! UIButton)
     }//end of signupTapped func
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion:nil)
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Helpers
@@ -122,9 +122,8 @@ class SignUpViewController: UIViewController {
     
     //MARK: - Navigation
     func segueToWelcomeView(sender:UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "informationSheet1")
-        self.present(linkingVC, animated: true)
+        guard let vc = storyboard?.instantiateViewController(identifier: "WelcomeScreen1") else {return}
+        navigationController?.pushViewController(vc, animated: true)
     }
 }//end of SignupViewController
 
