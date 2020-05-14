@@ -57,11 +57,6 @@ class ChatListTableViewController: UITableViewController {
 //        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
         
-        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
-            postOwnerUid != currentUserUID else {
-                print("Nice try, troll. You can't message yourself.")
-                return
-        }
         
         ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
             // 1. create new ChatList Item

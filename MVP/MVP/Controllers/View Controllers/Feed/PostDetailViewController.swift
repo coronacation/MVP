@@ -29,7 +29,20 @@ class PostDetailViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func messageUserButtonTapped(_ sender: Any) {
-        print("message user tapped")
+        // unwrap post
+        guard let post = post else { return }
+        
+        let postOwnerUid = post.userUID
+        
+        // guard against a user messaging his own post
+        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
+            postOwnerUid != currentUserUID else {
+                print("Nice try, troll. You can't message yourself.")
+                return
+        }
+        
+        print("#messageUserButtonTapped - \(post.postTitle)")
+        print(post.postDocumentID)
     }
     
     @IBAction func reportPostButtonTapped(_ sender: Any) {
