@@ -21,7 +21,6 @@ extension Chat {
                     print("Could not get chat: \(error.debugDescription)")
                     return
             }
-            print("getBydocRef chat: \(String(describing: chat.userUids.first))")
             completion(chat)
         }
     }
