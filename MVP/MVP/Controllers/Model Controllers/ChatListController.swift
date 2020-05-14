@@ -78,7 +78,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-            .collection("conversations").order(by: "offer", descending: true)
+            .collection("conversations").order(by: "offer", descending: false)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -90,7 +90,7 @@ class ChatListController {
                     case .added:
                         print("New chat: \(diff.document.data())")
                         if let chat = Chat(dictionary: diff.document.data()) {
-                            self.chats.append(chat)
+                            self.chats.insert(chat, at: 0)
                         }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
