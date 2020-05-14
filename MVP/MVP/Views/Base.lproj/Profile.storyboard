@@ -242,7 +242,7 @@
                                                                                     <attributedString key="attributedText">
                                                                                         <fragment content="(timestamp)">
                                                                                             <attributes>
-                                                                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                                                                <font key="NSFont" metaFont="menu" size="10"/>
                                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                             </attributes>
                                                                                         </fragment>
@@ -449,7 +449,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Pencil_2480052 1" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-1k-1Df">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-1k-1Df">
                                                 <rect key="frame" x="139.5" y="16" width="16" height="15.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="FXw-1k-1Df" secondAttribute="height" multiplier="1:1" id="BbC-87-Azj"/>
@@ -1000,7 +1000,7 @@
         <image name="Subtract" width="375" height="300"/>
         <image name="camera_alt-24px" width="30" height="30"/>
         <image name="camera_black" width="30" height="30"/>
-        <image name="noun_Pencil_2480052 1" width="18" height="24"/>
+        <image name="pencil" width="18" height="24"/>
         <image name="pencil_black" width="18" height="24"/>
         <image name="report-24px 1" width="30" height="30"/>
         <namedColor name="DeepPurple">
