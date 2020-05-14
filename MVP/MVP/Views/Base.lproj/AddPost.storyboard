@@ -13,120 +13,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Add Post-->
-        <scene sceneID="FnH-jJ-Vuq">
-            <objects>
-                <viewController title="Add Post" id="KL2-PS-vDo" customClass="AddPostViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BBT-UE-Ae7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jUX-nf-1Hz">
-                                <rect key="frame" x="135" y="285.5" width="105" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="Z6u-ti-ZYP"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="144" id="ypP-83-pax"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L7X-AM-EYE">
-                                <rect key="frame" x="87" y="357.5" width="201" height="242"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="242" id="UHs-8r-oOb"/>
-                                    <constraint firstAttribute="width" constant="240" id="Z51-5P-Aak"/>
-                                </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gU4-4g-YTt">
-                                <rect key="frame" x="79" y="28" width="217" height="217.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="gU4-4g-YTt" secondAttribute="height" multiplier="1:1" id="1Py-dY-JB0"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="tRA-Be-zDV" kind="embed" identifier="toPhotoSelectorVC" id="E3v-AD-k1A"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xf-fE-dGt">
-                                <rect key="frame" x="160.5" y="312.5" width="54" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="KL2-PS-vDo" eventType="touchUpInside" id="2dI-tG-8hg"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="L7X-AM-EYE" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="87" id="3D9-Uw-ddh"/>
-                            <constraint firstItem="jUX-nf-1Hz" firstAttribute="top" secondItem="gU4-4g-YTt" secondAttribute="bottom" constant="40" id="5LA-Yi-JG6"/>
-                            <constraint firstItem="cGd-Hl-GMt" firstAttribute="trailing" secondItem="jUX-nf-1Hz" secondAttribute="trailing" constant="135" id="64I-jc-Gu0"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="height" secondItem="BBT-UE-Ae7" secondAttribute="height" multiplier="0.0629685" id="8iy-ZC-gld"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="centerX" secondItem="cGd-Hl-GMt" secondAttribute="centerX" id="CqG-Mf-Yo3"/>
-                            <constraint firstItem="jUX-nf-1Hz" firstAttribute="leading" secondItem="cGd-Hl-GMt" secondAttribute="leading" constant="135" id="G1h-Nd-X4n"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="centerY" secondItem="cGd-Hl-GMt" secondAttribute="centerY" id="JDi-PZ-ixa"/>
-                            <constraint firstItem="cGd-Hl-GMt" firstAttribute="trailing" secondItem="L7X-AM-EYE" secondAttribute="trailing" constant="87" id="cvq-xG-BTW"/>
-                            <constraint firstItem="gU4-4g-YTt" firstAttribute="top" secondItem="cGd-Hl-GMt" secondAttribute="top" constant="28" id="iPq-Kf-jTC"/>
-                            <constraint firstItem="3Xf-fE-dGt" firstAttribute="width" secondItem="BBT-UE-Ae7" secondAttribute="width" multiplier="0.144" id="mhg-D4-Yll"/>
-                            <constraint firstItem="L7X-AM-EYE" firstAttribute="top" secondItem="jUX-nf-1Hz" secondAttribute="bottom" constant="38" id="q7m-KK-tTU"/>
-                            <constraint firstItem="gU4-4g-YTt" firstAttribute="width" secondItem="BBT-UE-Ae7" secondAttribute="width" multiplier="0.57971" id="vZ2-SP-F7D"/>
-                            <constraint firstItem="gU4-4g-YTt" firstAttribute="centerX" secondItem="BBT-UE-Ae7" secondAttribute="centerX" id="w8Q-ed-74M"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cGd-Hl-GMt"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Add Post" image="camera" catalog="system" id="zdd-Sk-bdG" userLabel="Add Post"/>
-                    <connections>
-                        <outlet property="descriptionTextView" destination="L7X-AM-EYE" id="Jbr-tF-zBH"/>
-                        <outlet property="titleTextField" destination="jUX-nf-1Hz" id="47L-Dp-2Z9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wP7-7l-RMl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1057" y="-377"/>
-        </scene>
-        <!--Photo Selector View Controller-->
-        <scene sceneID="y03-Ug-nFC">
-            <objects>
-                <viewController id="tRA-Be-zDV" customClass="PhotoSelectorViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VrG-mu-lpO">
-                        <rect key="frame" x="0.0" y="0.0" width="217" height="217.5"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhotoIcon-white-background" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-7y-7yu">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyk-so-223">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
-                                <connections>
-                                    <action selector="selectPhotoButtonTapped:" destination="tRA-Be-zDV" eventType="touchUpInside" id="Q28-Ye-e15"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Eyk-so-223" firstAttribute="leading" secondItem="VrG-mu-lpO" secondAttribute="leading" id="DWy-hH-X1A"/>
-                            <constraint firstItem="Eyk-so-223" firstAttribute="top" secondItem="VrG-mu-lpO" secondAttribute="top" id="LLg-I6-DaX"/>
-                            <constraint firstItem="A3Q-7y-7yu" firstAttribute="top" secondItem="VrG-mu-lpO" secondAttribute="top" id="Ole-P1-pny"/>
-                            <constraint firstAttribute="bottom" secondItem="Eyk-so-223" secondAttribute="bottom" id="XMJ-cu-wv5"/>
-                            <constraint firstItem="A3Q-7y-7yu" firstAttribute="leading" secondItem="VrG-mu-lpO" secondAttribute="leading" id="aak-9e-GD8"/>
-                            <constraint firstAttribute="trailing" secondItem="A3Q-7y-7yu" secondAttribute="trailing" id="b4V-Ch-bqD"/>
-                            <constraint firstAttribute="trailing" secondItem="Eyk-so-223" secondAttribute="trailing" id="oF3-8x-8RY"/>
-                            <constraint firstAttribute="bottom" secondItem="A3Q-7y-7yu" secondAttribute="bottom" id="omS-Ry-BUk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="izZ-3b-8h9"/>
-                    </view>
-                    <connections>
-                        <outlet property="photoImageView" destination="A3Q-7y-7yu" id="CT6-4T-MsV"/>
-                        <outlet property="selectPhotoButton" destination="Eyk-so-223" id="YEW-tf-9mW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5Q-iv-G4E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1847" y="-378"/>
-        </scene>
         <!--Item-->
         <scene sceneID="7Nf-RZ-aOh">
             <objects>
@@ -275,10 +161,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="height" secondItem="AY5-sf-0cR" secondAttribute="height" multiplier="0.835938" id="pMw-e4-ZiN"/>
-                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="centerX" secondItem="AY5-sf-0cR" secondAttribute="centerX" id="q8O-1D-iH4"/>
-                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="width" secondItem="AY5-sf-0cR" secondAttribute="width" multiplier="0.497333" id="tRO-dn-46j"/>
-                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="centerY" secondItem="AY5-sf-0cR" secondAttribute="centerY" id="x5e-MC-w19"/>
+                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="width" secondItem="AY5-sf-0cR" secondAttribute="width" multiplier="0.497333" id="0L1-wK-SQU"/>
+                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="height" secondItem="AY5-sf-0cR" secondAttribute="height" multiplier="0.835938" id="52S-lB-Eqs"/>
+                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="centerX" secondItem="AY5-sf-0cR" secondAttribute="centerX" id="khh-aV-S5H"/>
+                                    <constraint firstItem="oyt-Ze-hRG" firstAttribute="centerY" secondItem="AY5-sf-0cR" secondAttribute="centerY" id="yHd-Ex-i0j"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmq-rF-s0V">
@@ -345,7 +231,7 @@
         <!--Item-->
         <scene sceneID="cFk-ja-uGL">
             <objects>
-                <viewController id="Z4K-Bf-QON" sceneMemberID="viewController">
+                <viewController id="Z4K-Bf-QON" customClass="AddPostViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LdZ-hh-tyb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,6 +332,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3V-aH-biL" userLabel="camera button">
                                         <rect key="frame" x="331" y="121" width="30" height="30"/>
+                                        <connections>
+                                            <action selector="addPhotoButtonTapped:" destination="Z4K-Bf-QON" eventType="touchUpInside" id="hqs-uI-ad1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -578,8 +467,6 @@
         <image name="Ellipse" width="375" height="213"/>
         <image name="Fulfilled Checkmark" width="34" height="24"/>
         <image name="Picture Placeholder" width="233" height="134"/>
-        <image name="addPhotoIcon-white-background" width="500" height="500"/>
-        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="camera_black" width="30" height="30"/>
         <image name="pencil_black" width="18" height="24"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
