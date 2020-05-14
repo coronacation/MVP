@@ -29,8 +29,8 @@
                     <connections>
                         <segue destination="guz-K8-CiP" kind="relationship" relationship="viewControllers" id="QeR-x4-LF4"/>
                         <segue destination="8JS-Zp-ICn" kind="relationship" relationship="viewControllers" id="EvS-xK-18A"/>
-                        <segue destination="J8b-dc-FaJ" kind="relationship" relationship="viewControllers" id="jFP-vL-1gf"/>
                         <segue destination="PSo-L1-nbG" kind="relationship" relationship="viewControllers" id="FK7-SM-zA6"/>
+                        <segue destination="J8b-dc-FaJ" kind="relationship" relationship="viewControllers" id="jFP-vL-1gf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAN-jr-LFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -41,7 +41,7 @@
         <scene sceneID="QfK-aD-jeA">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="guz-K8-CiP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YFP-eC-EW5"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home Purple" selectedImage="Home Gold" id="YFP-eC-EW5" userLabel="Home Tab"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKM-ln-UCI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,7 +51,7 @@
         <scene sceneID="NBj-pp-TYV">
             <objects>
                 <viewControllerPlaceholder storyboardName="AddPost" id="8JS-Zp-ICn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZME-BK-H7j"/>
+                    <tabBarItem key="tabBarItem" title="" image="Add Offer Purple" selectedImage="Add Offer Gold" id="ZME-BK-H7j" userLabel="Add Offer Tab"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lft-kk-0Om" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,17 +61,17 @@
         <scene sceneID="XmV-Xy-hEa">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="J8b-dc-FaJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="n8R-C6-omI"/>
+                    <tabBarItem key="tabBarItem" title="" image="Profile Purple" selectedImage="Profile Gold" id="n8R-C6-omI" userLabel="Profile Tab"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2t-bt-hy7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2733" y="1476"/>
+            <point key="canvasLocation" x="2526" y="1476"/>
         </scene>
         <!--Chat-->
         <scene sceneID="wNP-OM-rUt">
             <objects>
                 <viewControllerPlaceholder storyboardName="Chat" id="PSo-L1-nbG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Rpa-jK-lCc"/>
+                    <tabBarItem key="tabBarItem" title="" image="Messages Purple" selectedImage="Messages Gold" id="Rpa-jK-lCc" userLabel="Messages Tab"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxi-Es-a7i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1114,13 +1114,21 @@
         <segue reference="iqd-7n-jTY"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Add Offer Gold" width="64" height="44"/>
+        <image name="Add Offer Purple" width="60" height="44"/>
         <image name="Email" width="20" height="18"/>
         <image name="First Dot" width="56" height="8"/>
         <image name="Fourth Dot" width="56" height="8"/>
+        <image name="Home Gold" width="39" height="44"/>
+        <image name="Home Purple" width="40" height="46"/>
         <image name="Light_Subtract" width="372" height="300"/>
         <image name="Man Climbing Graph" width="200" height="200"/>
+        <image name="Messages Gold" width="66" height="44"/>
+        <image name="Messages Purple" width="66" height="44"/>
         <image name="Padlock" width="20" height="25"/>
         <image name="Phone_Peeps" width="167" height="132"/>
+        <image name="Profile Gold" width="44" height="44"/>
+        <image name="Profile Purple" width="44" height="44"/>
         <image name="Second Dot" width="56" height="8"/>
         <image name="Subtract" width="375" height="300"/>
         <image name="Third Dot" width="56" height="8"/>
