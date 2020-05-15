@@ -41,7 +41,9 @@ class ChatListController {
     
     // MARK: - CRUD
     
-    func firstMessage(regarding post: DummyPost, firstMessage: String){
+    func firstMessage( regarding post: DummyPost,
+                       firstMessage: String,
+                       completion: @escaping (Bool) -> Void ){
         
         // 1. get currentUser's UID
         guard let currentUserUid = currentUser?.userUID else { return }
@@ -54,7 +56,7 @@ class ChatListController {
         alreadyMessaged(regarding: post, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
             if alreadySentMsg {
                 print("#firstMessage: you can't message again")
-                return
+                completion(false)
             } else {
                 print("#firstMessage: no existing message. you can continue")
                 
@@ -66,6 +68,7 @@ class ChatListController {
                 self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID) {
                     print("#createNewChat for post Owner")
                 }
+                completion(true)
             }
         })
         

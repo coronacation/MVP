@@ -122,13 +122,30 @@ extension PostDetailViewController: UITextFieldDelegate {
             
             guard let firstMessage = alert.textFields?.first?.text, !firstMessage.isEmpty else { return }
             
-            ChatListController.shared.firstMessage(regarding: post, firstMessage: firstMessage)
+            ChatListController.shared.firstMessage(regarding: post, firstMessage: firstMessage) { (success) in
+                self.showMessageResultAlert(success)
+            }
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(sendButton)
         alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+    }
+    
+    func showMessageResultAlert(_ result: Bool) {
+        
+        let alertTitle = result ? "Success" : "Wait"
+        
+        let alertMessage = result ? "Your message was sent." : "You've already sent a message. Please wait until the other person replies. You'll see their reply in the Message tab."
+                
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(okButton)
         
         present(alert, animated: true)
     }
