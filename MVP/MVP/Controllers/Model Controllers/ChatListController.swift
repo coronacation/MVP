@@ -55,18 +55,21 @@ class ChatListController {
         // if alreadyMessaged(regarding: post, fromUserUID: currentUserUid)
         alreadyMessaged(regarding: post, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
             if alreadySentMsg {
-                print("#firstMessage: you can't message again")
+                // print("#firstMessage: you can't message again")
                 completion(false)
             } else {
-                print("#firstMessage: no existing message. you can continue")
                 
-                // createChats for each user
-                self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID) {
-                    print("#createNewChat for currentUser who is interested in post")
+                // create Thread
+                ChatThreadController.shared.createThread(senderUID: currentUserUid, text: firstMessage) { (threadDocID) in
+                    print("#alreadyMessaged threadDocID: " + threadDocID)
                 }
                 
+                // create Chat for currentUser
+                self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID) {
+                }
+                
+                //create Chat for post Owner
                 self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID) {
-                    print("#createNewChat for post Owner")
                 }
                 completion(true)
             }

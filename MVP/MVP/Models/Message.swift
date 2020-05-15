@@ -24,7 +24,12 @@ struct Message {
             "content": content,
             "created": created,
             "senderID": senderID]
-        
+    }
+    
+    var createdDate: Date {
+        get {
+            return created.dateValue()
+        }
     }
 }
 
