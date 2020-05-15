@@ -35,7 +35,7 @@ class PostTableViewCell: UITableViewCell {
                     case .failure(let error):
                         print("failed")
 
-                        print(error.errorDescription)
+                        print("\(String(describing: error.errorDescription))")
                 }
             }
             

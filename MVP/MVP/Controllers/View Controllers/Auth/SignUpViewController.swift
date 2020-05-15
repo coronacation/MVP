@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
     //MARK: - Lifecycle
@@ -85,7 +84,6 @@ class SignUpViewController: UIViewController {
         // Hide the error label
         //     errorLabel.alpha = 0
         // Style the elements
-        
         passwordTextField.delegate = self
         emailTextField.delegate = self
         //  lastNameTextField.delegate = self
