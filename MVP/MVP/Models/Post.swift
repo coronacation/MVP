@@ -57,3 +57,27 @@ class Post {
     // maybe add in the firebase UID for the initializer
     
 }
+
+extension DummyPost: SearchableRecord {
+    
+    func matches(searchTerm: String) -> Bool {
+        
+        if postTitle.lowercased().contains(searchTerm.lowercased()) {
+            return true
+        } else {
+            return false
+        }
+    }
+}//End of extension
+
+extension Post: SearchableRecord {
+    
+    func matches(searchTerm: String) -> Bool {
+        
+        if title.lowercased().contains(searchTerm.lowercased()) {
+            return true
+        } else {
+            return false
+        }
+    }
+}//End of extension

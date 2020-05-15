@@ -30,10 +30,22 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
+    
+    // MARK: - Properties
+    
+    /// Landing pad for tapping on Message button in PostDetailVC
+    var post: DummyPost?
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let post = post {
+            print("hey we got a post from PostDetail")
+            print(post.postTitle)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,11 +69,6 @@ class ChatListTableViewController: UITableViewController {
 //        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
         
-        guard let currentUserUID = CurrentUserController.shared.currentUser?.userUID,
-            postOwnerUid != currentUserUID else {
-                print("Nice try, troll. You can't message yourself.")
-                return
-        }
         
         ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
             // 1. create new ChatList Item

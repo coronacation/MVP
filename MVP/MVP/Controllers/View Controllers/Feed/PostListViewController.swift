@@ -13,18 +13,29 @@ import CoreLocation
 
 class PostListViewController: UIViewController {
     
-    var myPosts = [DummyPost]()
-    var db: Firestore!
-    
+    //MARK: - Outlets
+
     @IBOutlet weak var postSearchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
+    //MARK: - Properties
+    var posts = [DummyPost]()
+    var db: Firestore!
     let locationManager = CLLocationManager()
     
+    var resultsArray: [SearchableRecord] = []
+    var isSearching = false
+    var dataSource: [SearchableRecord] {
+        return isSearching ? resultsArray : posts
+    }
+    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
         checkLocationServices()
+        postSearchBar.delegate = self
+        postSearchBar.autocapitalizationType = UITextAutocapitalizationType.none
         table.delegate = self
         table.dataSource = self
         
@@ -34,11 +45,14 @@ class PostListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if CurrentUserController.shared.currentUser != nil {
-            loadData()
+        loadData()
+        DispatchQueue.main.async {
+            self.resultsArray = self.posts
+            self.table.reloadData()
         }
     }
     
+    //MARK: - Helpers
     func loadData() {
      //   print(CurrentUserController.shared.currentUser?.location! as Any)
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
@@ -47,7 +61,7 @@ class PostListViewController: UIViewController {
             }
                 
             else {
-                self.myPosts = []
+                self.posts = []
                 for document in querySnapshot!.documents {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
@@ -67,23 +81,56 @@ class PostListViewController: UIViewController {
                     //                                 }
                     //                             }
                     
-                    self.myPosts.append(dummyPost)
+                    self.posts.append(dummyPost)
                 }
                 self.table.reloadData()
                 
-                print("\n\nCOUNT OF POSTS: \(self.myPosts.count)\n\n")
+                print("\n\nCOUNT OF POSTS: \(self.posts.count)\n\n")
                 
             }
         }
     }
+}
+
+extension PostListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !searchText.isEmpty {
+            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
+            table.reloadData()
+        } else {
+            resultsArray = posts
+            table.reloadData()
+        }
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resultsArray = posts
+        table.reloadData()
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearching = false
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        isSearching = false
+    }
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return myPosts.count
+         return posts.count
      }
      
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,7 +140,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
          
-         let post = myPosts[indexPath.row]
+         let post = posts[indexPath.row]
          cell.post = post
          
          return cell
@@ -103,7 +150,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "toPostDetailVC" {
              if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = table.indexPathForSelectedRow {
-                 let post = myPosts[indexPath.row]
+                 let post = posts[indexPath.row]
                  destinationVC.post = post
              }
          }

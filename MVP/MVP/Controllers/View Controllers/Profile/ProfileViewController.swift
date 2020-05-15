@@ -31,7 +31,6 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
-//loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -187,8 +186,8 @@ func presentSettingsActionSheet() {
         
         let actionSheet = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
             
-            actionSheet.addAction(UIAlertAction(title: "Log out", style: .default, handler: { (_) in
-               
+            actionSheet.addAction(UIAlertAction(title: "Log out", style: .default, handler: { [weak self] (_) in
+                self?.logout()
             }))
             
             actionSheet.addAction(UIAlertAction(title: "Delete account", style: .destructive, handler: { [weak self] (_) in
@@ -198,5 +197,20 @@ func presentSettingsActionSheet() {
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(actionSheet, animated: true)
+    }
+    
+    func logout(){
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        present(loginVC, animated: true, completion: nil)
+        self.tabBarController?.view.removeFromSuperview()
     }
 }//End of extension
