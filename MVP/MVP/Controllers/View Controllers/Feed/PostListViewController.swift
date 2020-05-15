@@ -13,19 +13,29 @@ import CoreLocation
 
 class PostListViewController: UIViewController {
     
-    var posts = [DummyPost]()
-    var db: Firestore!
-    
+    //MARK: - Outlets
     @IBOutlet weak var postSearchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
+    //MARK: - Properties
+    var posts = [DummyPost]()
+    var db: Firestore!
     let locationManager = CLLocationManager()
     
+    var resultsArray: [SearchableRecord] = []
+    var isSearching = false
+    var dataSource: [SearchableRecord] {
+        return isSearching ? resultsArray : posts
+    }
+    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\n\nview did load ")
         db = Firestore.firestore()
         checkLocationServices()
+        postSearchBar.delegate = self
+        postSearchBar.autocapitalizationType = UITextAutocapitalizationType.none
         table.delegate = self
         table.dataSource = self
         
@@ -36,7 +46,6 @@ class PostListViewController: UIViewController {
         }
         
         print("\n\nUser location after: \(String(describing: CurrentUserController.shared.currentUser?.location))")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,8 +54,13 @@ class PostListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
+        DispatchQueue.main.async {
+            self.resultsArray = self.posts
+            self.table.reloadData()
+        }
     }
     
+    //MARK: - Helpers
     func loadData() {
         
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
@@ -85,7 +99,40 @@ class PostListViewController: UIViewController {
             }
         }
     }
+}
+
+extension PostListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if !searchText.isEmpty {
+            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
+            table.reloadData()
+        } else {
+            resultsArray = posts
+            table.reloadData()
+        }
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resultsArray = posts
+        table.reloadData()
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearching = false
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        isSearching = false
+    }
 }
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
