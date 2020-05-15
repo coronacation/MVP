@@ -43,38 +43,46 @@ class ChatListController {
     
     func firstMessage(regarding post: DummyPost, firstMessage: String){
         
+        // 1. get currentUser's UID
+        guard let currentUserUid = currentUser?.userUID else { return }
+        
         // grab post properties
         let postOwnerUID = post.userUID, postID = post.postDocumentID
         
-        createNewChat(postOwnerUID: postOwnerUID, postID: postID) {
-            print("#createNewChat success")
+        // createChats for each user
+        createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID) {
+            print("#createNewChat for currentUser who is interested in post")
+        }
+        
+        createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID) {
+            print("#createNewChat for post Owner")
         }
         
         // updateLastMsg
         
     }
     
-    func createNewChat( postOwnerUID: String,
+    func createNewChat( chatOwnerUID: String,
+                        otherUserUID: String,
+                        postOwnerUID: String,
                         postID: String,
                         completion: @escaping () -> Void) {
         
-        // 1. get currentUser's UID
         
-        guard let currentUserUid = currentUser?.userUID else { return }
         
         // 2. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
             "postOwnerUID": postOwnerUID,
             "blocked": false,
-            "otherUserUID": currentUserUid
+            "otherUserUID": otherUserUID
         ]
         
         // 3. Add chat document for currentUser in the db under Chats
         // 3.1 Do not send postOwner a message yet until currentUser actually sends a message
         // 3.2 Name the document after the currentUser's UID
         
-        chatsCollection.document(currentUserUid)
+        chatsCollection.document(chatOwnerUID)
             .collection("posts").document(postID)
             .setData(data, merge: false, completion: { (error) in
                 if let error = error {
