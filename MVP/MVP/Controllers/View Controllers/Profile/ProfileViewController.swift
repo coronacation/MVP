@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -26,6 +25,7 @@ class ProfileViewController: UIViewController {
     //MARK: - Properties
     var myPosts = [DummyPost]()
     var db: Firestore!
+    var selectedImage: UIImage?
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -41,9 +41,6 @@ class ProfileViewController: UIViewController {
     //MARK: - Actions
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
         presentSettingsActionSheet()
-    }
-    
-    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
     }
     
     @IBAction func segmentedControlButtonTapped(_ sender: UISegmentedControl) {
@@ -155,6 +152,12 @@ class ProfileViewController: UIViewController {
     }//end of scrollViewDidScroll func
 }//end of ProfileViewController
 
+extension ProfileViewController: PhotoSelectorViewControllerDelegate {
+    func photoSelectorViewControllerSelected(image: UIImage) {
+        selectedImage = image
+    }
+}
+
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     
@@ -177,6 +180,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let myPost = myPosts[indexPath.row]
                 destinationVC.myPost = myPost
             }
+        }
+        
+        if segue.identifier == "toPhotoSelectorVC" {
+            let photoSelector = segue.destination as? PhotoSelectorViewController
+            photoSelector?.delegate = self
         }
     }//end of prepare(for segue)
 }//end of TableView extension
@@ -207,10 +215,13 @@ func presentSettingsActionSheet() {
             print(error.localizedDescription)
         }
         
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
+        guard let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as? LoginViewController,
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        
+        appDelegate.window?.rootViewController = loginVC
+        
+        loginVC.modalPresentationStyle = .fullScreen
+        
         present(loginVC, animated: true, completion: nil)
-        self.tabBarController?.view.removeFromSuperview()
     }
 }//End of extension

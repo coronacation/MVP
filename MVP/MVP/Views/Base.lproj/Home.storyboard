@@ -170,7 +170,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="Ad6-Ls-Oao">
                                 <rect key="frame" x="0.0" y="-33" width="375" height="236.5"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="nEe-3o-nkJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="nEe-3o-nkJ" customClass="RoundImageView" customModule="MVP" customModuleProvider="target">
                                 <rect key="frame" x="136" y="61" width="103.5" height="103.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nEe-3o-nkJ" secondAttribute="height" multiplier="1:1" id="xBC-Or-QUY"/>
