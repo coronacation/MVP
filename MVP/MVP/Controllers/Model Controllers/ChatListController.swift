@@ -41,6 +41,14 @@ class ChatListController {
     
     // MARK: - CRUD
     
+    func firstMessage(regarding post: DummyPost, firstMessage: String){
+        guard let currentUser = currentUser else { return }
+        
+        print(currentUser.firstName + " is interested in " + post.postTitle)
+        
+        print("first message: \(firstMessage)")
+    }
+    
     func createNewChat( postOwnerUid: String,
                         postText: String,
                         completion: @escaping (DocumentReference) -> Void ) {

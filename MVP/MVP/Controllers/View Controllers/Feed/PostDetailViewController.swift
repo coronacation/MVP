@@ -30,8 +30,6 @@ class PostDetailViewController: UIViewController {
     //MARK: - Actions
     @IBAction func messageUserButtonTapped(_ sender: Any) {
         
-        print("#messageUserButtonTapped")
-        
         // unwrap post
         guard let post = post else { return }
         
@@ -121,7 +119,10 @@ extension PostDetailViewController: UITextFieldDelegate {
         }
         
         let sendButton = UIAlertAction(title: "Send", style: .default) { (_) in
-            print("#presentNewMessageAlert will send \(post.postDocumentID)")
+            
+            guard let firstMessage = alert.textFields?.first?.text, !firstMessage.isEmpty else { return }
+            
+            ChatListController.shared.firstMessage(regarding: post, firstMessage: firstMessage)
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
