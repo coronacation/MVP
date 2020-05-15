@@ -16,6 +16,9 @@ class AddPostViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var currentUserNameLabel: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var currentUserProfileImageView: UIImageView!
     
     //MARK: - Properties
     let db = Firestore.firestore()
@@ -28,6 +31,11 @@ class AddPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleTextField.delegate = self
+        setUpViews()
+    }
+    
+    func setUpViews()  {
+        currentUserNameLabel.text = CurrentUserController.shared.currentUser?.firstName
     }
     
     //MARK: - Actions
@@ -125,7 +133,7 @@ class AddPostViewController: UIViewController {
         dateFormatter.dateFormat = "M/d/Y"
         let formattedDate = dateFormatter.string(from: Date())
         
-        guard let currentUserFirstName = CurrentUserController.shared.currentUser?.firstName else {return}
+        guard let currentUserFirstName = CurrentUserController.shared.currentUser?.firstName, let currentUserLatitude = CurrentUserController.shared.currentUser?.latitude, let currentUserLongitude = CurrentUserController.shared.currentUser?.longitude else {return}
         
         var ref: DocumentReference? = nil
         
@@ -134,6 +142,8 @@ class AddPostViewController: UIViewController {
             "postDescription": "\(postDescription)",
             "postUserUID": "\(currentUser!.uid)",
             "postUserFirstName": "\(currentUserFirstName)",
+            "postUserLatitude": currentUserLatitude,
+            "postUserLongitude": currentUserLongitude,
             "postCreatedTimestamp": "\(formattedDate)",
             "postImageURL" : "\(imageURL)",
             "category": "none",
@@ -163,6 +173,12 @@ class AddPostViewController: UIViewController {
         self.titleTextField.text = ""
         self.descriptionTextView.text = ""
     }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        self.titleTextField.text = ""
+        self.descriptionTextView.text = ""
+    }
+    
     
     func presentSavedAlert() {
         let title = "Post saved"

@@ -69,16 +69,25 @@ class LoginViewController: UIViewController {
                                 let currentUser = CurrentUser(firstName: document.data()["firstName"] as! String, lastName: document.data()["lastName"] as! String, email: document.data()["email"] as! String, userUID: document.data()["uid"] as! String)
                                 
                                 CurrentUserController.shared.currentUser = currentUser
+                                print("\n\nCurrentUser set. API call complete")
+                                self.transitionToHome()
                             }
                         }
                     }
                 }
-                let tabBarViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
-                
-                self.view.window?.rootViewController = tabBarViewController
-                self.view.window?.makeKeyAndVisible()
             }
         }
+    }
+    
+    func transitionToHome() {
+        let tabBarViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
+        
+        self.view.window?.rootViewController = tabBarViewController
+        self.view.window?.makeKeyAndVisible()
+    }
+    
+    @IBAction func alreadyAUserButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -35,10 +35,7 @@ class CurrentUserController {
     }
     
     func setCurrentUserLocation(location: CLLocation) {
-      
-        print("\n\n setCurrentUser func running!!")
-        print(location.coordinate.latitude)
-        self.currentUser?.location = location
+              self.currentUser?.location = location
     }
     
          // Generate a random location between 0.5 and 1.5 km of user

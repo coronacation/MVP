@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Post List View Controller-->
+        <!--Home-->
         <scene sceneID="amI-lg-oC9">
             <objects>
                 <viewController id="dtd-Bn-gbQ" customClass="PostListViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,6 +121,7 @@
                                             <outlet property="datePostedLabel" destination="HOF-vT-mwn" id="9RE-aP-HX8"/>
                                             <outlet property="descriptionTextView" destination="X42-iB-GZL" id="yTf-AQ-LlZ"/>
                                             <outlet property="postImage" destination="pxf-Nv-r8R" id="bmY-fa-gUD"/>
+                                            <outlet property="postUserFirstName" destination="aJ8-WD-M4w" id="4g2-Tg-Fyi"/>
                                             <outlet property="titleLabel" destination="mEq-1v-7aE" id="qwC-VA-3ix"/>
                                             <segue destination="IEm-vN-Het" kind="show" identifier="toPostDetailVC" id="7nL-I7-htg"/>
                                         </connections>
@@ -145,7 +146,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NDp-gI-UjA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Home Purple" selectedImage="Home Gold" id="z8P-Q2-Y1Z" userLabel="Home Tab"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="z8P-Q2-Y1Z" userLabel="Home Tab">
+                        <color key="badgeColor" name="mediumPurple"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="postSearchBar" destination="zPx-Ca-PdT" id="ue6-hZ-pZu"/>
@@ -156,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="2222" y="-269"/>
         </scene>
-        <!--Post Detail View Controller-->
+        <!--Home-->
         <scene sceneID="ELs-Jd-2oz">
             <objects>
                 <viewController id="IEm-vN-Het" customClass="PostDetailViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,7 +185,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOU-cE-QuJ">
                                 <rect key="frame" x="328" y="58" width="30" height="30"/>
                                 <connections>
-                                    <action selector="reportPostButtonTapped:" destination="IEm-vN-Het" eventType="touchUpInside" id="Ad8-xW-wXg"/>
+                                    <action selector="reportPostButtonTapped:" destination="IEm-vN-Het" eventType="touchUpInside" id="2QP-2h-rSI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Offer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FqC-F3-wtl">
@@ -236,9 +239,6 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil_black" translatesAutoresizingMaskIntoConstraints="NO" id="Mvu-Iw-uz2">
-                                        <rect key="frame" x="337" y="9.5" width="18" height="18.5"/>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7J-9f-U1S">
                                         <rect key="frame" x="16.5" y="47.5" width="303" height="55"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -255,21 +255,17 @@
                                     <constraint firstItem="RLr-LD-ZXz" firstAttribute="leading" secondItem="aHA-zk-xfh" secondAttribute="leading" id="81H-T2-lKz"/>
                                     <constraint firstItem="aHA-zk-xfh" firstAttribute="centerY" secondItem="MTg-jJ-OSv" secondAttribute="centerY" multiplier="0.19" id="98X-yf-2Q0"/>
                                     <constraint firstItem="RLr-LD-ZXz" firstAttribute="centerY" secondItem="MTg-jJ-OSv" secondAttribute="centerY" multiplier="0.53" id="CEb-mh-po3"/>
-                                    <constraint firstItem="Mvu-Iw-uz2" firstAttribute="centerY" secondItem="MTg-jJ-OSv" secondAttribute="centerY" multiplier="0.3" id="Ftu-dQ-zrP"/>
                                     <constraint firstItem="krq-Db-8tm" firstAttribute="centerX" secondItem="MTg-jJ-OSv" secondAttribute="centerX" multiplier="1.505" id="Ha2-Ph-reP"/>
                                     <constraint firstItem="uMD-Jy-tjh" firstAttribute="centerX" secondItem="krq-Db-8tm" secondAttribute="centerX" id="Jfr-BD-Izf"/>
-                                    <constraint firstItem="Mvu-Iw-uz2" firstAttribute="centerX" secondItem="MTg-jJ-OSv" secondAttribute="centerX" multiplier="1.845" id="Ldj-6n-n53"/>
                                     <constraint firstItem="y7J-9f-U1S" firstAttribute="width" secondItem="MTg-jJ-OSv" secondAttribute="width" multiplier="0.808" id="Pet-b3-b4W"/>
                                     <constraint firstItem="aHA-zk-xfh" firstAttribute="height" secondItem="MTg-jJ-OSv" secondAttribute="height" multiplier="0.160643" id="STq-Bi-k2i"/>
                                     <constraint firstItem="krq-Db-8tm" firstAttribute="centerY" secondItem="MTg-jJ-OSv" secondAttribute="centerY" multiplier="0.2" id="VC0-0J-LzW"/>
                                     <constraint firstItem="uMD-Jy-tjh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RLr-LD-ZXz" secondAttribute="trailing" constant="8" symbolic="YES" id="W8p-W5-EtE"/>
                                     <constraint firstItem="krq-Db-8tm" firstAttribute="height" secondItem="MTg-jJ-OSv" secondAttribute="height" multiplier="0.08125" id="Wcc-EI-RP4"/>
-                                    <constraint firstItem="Mvu-Iw-uz2" firstAttribute="width" secondItem="MTg-jJ-OSv" secondAttribute="width" multiplier="0.048" id="eaS-gU-0z3"/>
                                     <constraint firstItem="RLr-LD-ZXz" firstAttribute="height" secondItem="MTg-jJ-OSv" secondAttribute="height" multiplier="0.124498" id="hRg-Bs-9hQ"/>
                                     <constraint firstItem="y7J-9f-U1S" firstAttribute="leading" secondItem="aHA-zk-xfh" secondAttribute="leading" id="knK-t2-rom"/>
                                     <constraint firstItem="uMD-Jy-tjh" firstAttribute="top" secondItem="krq-Db-8tm" secondAttribute="bottom" id="lNH-tg-wtq"/>
                                     <constraint firstItem="RLr-LD-ZXz" firstAttribute="width" secondItem="MTg-jJ-OSv" secondAttribute="width" multiplier="0.272" id="pgm-az-l27"/>
-                                    <constraint firstItem="Mvu-Iw-uz2" firstAttribute="height" secondItem="MTg-jJ-OSv" secondAttribute="height" multiplier="0.146875" id="taX-Zq-rgi"/>
                                     <constraint firstItem="uMD-Jy-tjh" firstAttribute="height" secondItem="MTg-jJ-OSv" secondAttribute="height" multiplier="0.08125" id="toS-p2-fE8"/>
                                     <constraint firstItem="krq-Db-8tm" firstAttribute="width" secondItem="MTg-jJ-OSv" secondAttribute="width" multiplier="0.221333" id="twf-tc-Or2"/>
                                     <constraint firstItem="y7J-9f-U1S" firstAttribute="centerY" secondItem="MTg-jJ-OSv" secondAttribute="centerY" multiplier="1.2" id="u3T-EH-0vn"/>
@@ -362,7 +358,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kXa-1R-acQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Home Purple" selectedImage="Home Gold" id="kH8-zc-yO4" userLabel="Home Tab"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="kH8-zc-yO4" userLabel="Home Tab"/>
                     <navigationItem key="navigationItem" id="FMB-6Q-ci5"/>
                     <connections>
                         <outlet property="postDescriptionTextView" destination="y7J-9f-U1S" id="JPh-zD-ya7"/>
@@ -382,13 +378,14 @@
         <image name="Default avatar" width="60" height="60"/>
         <image name="Ellipse" width="375" height="213"/>
         <image name="Group 12" width="30" height="30"/>
-        <image name="Home Gold" width="39" height="44"/>
-        <image name="Home Purple" width="40" height="46"/>
         <image name="Light Ellipse" width="375" height="203"/>
         <image name="Picture Placeholder" width="233" height="134"/>
-        <image name="pencil_black" width="18" height="24"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <namedColor name="deepPurple">
             <color red="0.12549019607843137" green="0.070588235294117646" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mediumPurple">
+            <color red="0.70588235294117652" green="0.65490196078431373" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -19,9 +19,11 @@ public class DummyPost {
     let postImageURL: String
     let postFlaggedCount: Int
     var postUIImage: UIImage = #imageLiteral(resourceName: "loading")
+    let postLongitude: Double
+    let postLatitude: Double
     
     init(postTitle: String, postDescription: String, userUID: String, postUserFirstName: String, postDocumentID: String,
-         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int) {
+         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double) {
         self.postTitle = postTitle
         self.postDescription = postDescription
         self.userUID = userUID
@@ -31,6 +33,8 @@ public class DummyPost {
         self.category = category
         self.postImageURL = postImageURL
         self.postFlaggedCount = postFlaggedCount
+        self.postLongitude = postLongitude
+        self.postLatitude = postLatitude
     }
 }
 

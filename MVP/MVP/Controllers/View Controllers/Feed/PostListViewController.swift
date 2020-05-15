@@ -14,6 +14,7 @@ import CoreLocation
 class PostListViewController: UIViewController {
     
     //MARK: - Outlets
+
     @IBOutlet weak var postSearchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     
@@ -31,7 +32,6 @@ class PostListViewController: UIViewController {
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\n\nview did load ")
         db = Firestore.firestore()
         checkLocationServices()
         postSearchBar.delegate = self
@@ -39,17 +39,9 @@ class PostListViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         
-        print("\n\nUser location before: \(String(describing: CurrentUserController.shared.currentUser?.location))")
-        
         if let location = locationManager.location {
             CurrentUserController.shared.setCurrentUserLocation(location: location)
         }
-        
-        print("\n\nUser location after: \(String(describing: CurrentUserController.shared.currentUser?.location))")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("\n\nUser location after appear: \(String(describing: CurrentUserController.shared.currentUser?.location))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +54,7 @@ class PostListViewController: UIViewController {
     
     //MARK: - Helpers
     func loadData() {
-        
+     //   print(CurrentUserController.shared.currentUser?.location! as Any)
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -74,7 +66,7 @@ class PostListViewController: UIViewController {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double)
                     
                     //                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
                     //                                 DispatchQueue.main.async {
@@ -90,7 +82,6 @@ class PostListViewController: UIViewController {
                     //                             }
                     
                     self.posts.append(dummyPost)
-                    
                 }
                 self.table.reloadData()
                 

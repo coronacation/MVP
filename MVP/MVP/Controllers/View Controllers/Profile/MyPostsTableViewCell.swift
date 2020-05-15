@@ -24,7 +24,7 @@ class MyPostsTableViewCell: UITableViewCell {
             myPostCategoryLabel.text = "Category: \(myPost.category)"
             myPostTimestampLabel.text = myPost.postCreatedTimestamp
             
-            PostController.fetchDrinkImage2(post: myPost) { (result) in
+            PostController.shared.fetchDrinkImage2(post: myPost) { (result) in
                 switch result {
                     case .success(let image):
                         print("success")

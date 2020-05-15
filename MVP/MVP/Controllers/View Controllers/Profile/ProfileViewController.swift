@@ -34,10 +34,9 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
         setUpViews()
+        loadData()
     }
-    
     
     //MARK: - Actions
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
@@ -89,19 +88,21 @@ class ProfileViewController: UIViewController {
     }
     
     func loadData() {
-        
+        print("\n\nprofile load data running")
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
+            print("\n in completion")
             if let error = error {
                 print("Error getting documents: \(error)")
             }
                 
             else {
+                print("\nprofile load data ELSE running")
                 self.myPosts = []
                 for document in querySnapshot!.documents {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double)
                     
                     
                     self.myPosts.append(dummyPost)
@@ -109,7 +110,7 @@ class ProfileViewController: UIViewController {
                 }
                 self.tableView.reloadData()
                 
-                print("\n\nCOUNT OF POSTS: \(self.myPosts.count)\n\n")
+                print("\n\nCOUNT OF MYPOSTS: \(self.myPosts.count)\n\n")
                 
             }
         }//end of db.collection.getDocuments func
