@@ -61,17 +61,20 @@ class ChatListController {
                 
                 // create Thread
                 ChatThreadController.shared.createThread(senderUID: currentUserUid, text: firstMessage) { (threadDocID) in
-                    print("#alreadyMessaged threadDocID: " + threadDocID)
+                    print("#alreadyMessaged received threadDocID: " + threadDocID)
+                    
+                    // create Chat for currentUser
+                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) {
+                    }
+                    
+                    //create Chat for post Owner
+                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) {
+                    }
+                    
+                    completion(true)
                 }
                 
-                // create Chat for currentUser
-                self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID) {
-                }
                 
-                //create Chat for post Owner
-                self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID) {
-                }
-                completion(true)
             }
         })
         
@@ -85,6 +88,7 @@ class ChatListController {
                         otherUserUID: String,
                         postOwnerUID: String,
                         postID: String,
+                        threadID: String,
                         completion: @escaping () -> Void) {
         
         
@@ -94,7 +98,8 @@ class ChatListController {
         let data: [String: Any] = [
             "postOwnerUID": postOwnerUID,
             "blocked": false,
-            "otherUserUID": otherUserUID
+            "otherUserUID": otherUserUID,
+            "threadID": threadID
         ]
         
         // 3. Add chat document for currentUser in the db under Chats
