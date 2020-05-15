@@ -42,16 +42,21 @@ class ChatListController {
     // MARK: - CRUD
     
     func firstMessage(regarding post: DummyPost, firstMessage: String){
-        guard let currentUser = currentUser else { return }
         
-        print(currentUser.firstName + " is interested in " + post.postTitle)
+        // grab post properties
+        let postOwnerUID = post.userUID, postID = post.postDocumentID
         
-        print("first message: \(firstMessage)")
+        createNewChat(postOwnerUID: postOwnerUID, postID: postID) {
+            print("#createNewChat success")
+        }
+        
+        // updateLastMsg
+        
     }
     
-    func createNewChat( postOwnerUid: String,
-                        postText: String,
-                        completion: @escaping (DocumentReference) -> Void ) {
+    func createNewChat( postOwnerUID: String,
+                        postID: String,
+                        completion: @escaping () -> Void) {
         
         // 1. get currentUser's UID
         
@@ -60,8 +65,7 @@ class ChatListController {
         // 2. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
-            "offer": postText,
-            "offerOwner": postOwnerUid,
+            "postOwnerUID": postOwnerUID,
             "blocked": false,
             "otherUserUid": currentUserUid
         ]
@@ -70,16 +74,15 @@ class ChatListController {
         // 3.1 Do not send postOwner a message yet until currentUser actually sends a message
         // 3.2 Name the document after the currentUser's UID
         
-        let chatDocRef: DocumentReference = chatsCollection.document(currentUserUid)
-            .collection("conversations")
-            .addDocument(data: data) { (error) in
+        chatsCollection.document(currentUserUid)
+            .collection("posts").document(postID)
+            .setData(data, merge: false, completion: { (error) in
                 if let error = error {
                     print("#ChatListController: Unable to create chat! \(error)")
                     return
                 }
-        }
-        
-        completion(chatDocRef)
+                completion()
+            })
     }
     
     func startListener( completion: @escaping () -> Void ) {
