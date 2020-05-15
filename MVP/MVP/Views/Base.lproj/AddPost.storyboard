@@ -24,7 +24,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="aSu-zw-lNb">
                                 <rect key="frame" x="0.0" y="-40.5" width="375" height="244"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="X80-2B-WWZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="X80-2B-WWZ" customClass="RoundImageView" customModule="MVP" customModuleProvider="target">
                                 <rect key="frame" x="136" y="56" width="103.5" height="103.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="X80-2B-WWZ" secondAttribute="height" multiplier="1:1" id="Vxf-Gx-KcJ"/>
@@ -240,7 +240,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse" translatesAutoresizingMaskIntoConstraints="NO" id="513-wL-Nk8">
                                 <rect key="frame" x="0.0" y="-40.5" width="375" height="244"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="n6H-RD-04w">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="n6H-RD-04w" customClass="RoundImageView" customModule="MVP" customModuleProvider="target">
                                 <rect key="frame" x="136" y="56" width="103.5" height="103.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n6H-RD-04w" secondAttribute="height" multiplier="1:1" id="cf2-i3-pX4"/>

@@ -12,30 +12,19 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
     }
     
-    func setUpElements() {
-        
-        // Hide the error label
-        errorLabel.alpha = 0
-        
-        // Style the elements
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(loginButton)
-        
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-    }
-    
+    //MARK: - Actions
     @IBAction func loginTapped(_ sender: Any) {
         
         // Create cleaned versions of the text field
@@ -79,6 +68,25 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func alreadyAUserButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: - Helpers
+    func setUpElements() {
+        
+        // Hide the error label
+        errorLabel.alpha = 0
+        
+        // Style the elements
+        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(passwordTextField)
+        Utilities.styleFilledButton(loginButton)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
     func transitionToHome() {
         let tabBarViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarViewController) as? TabBarViewController
         
@@ -86,9 +94,6 @@ class LoginViewController: UIViewController {
         self.view.window?.makeKeyAndVisible()
     }
     
-    @IBAction func alreadyAUserButtonTapped(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
