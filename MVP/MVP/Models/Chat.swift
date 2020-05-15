@@ -14,9 +14,9 @@ class Chat {
     var offerOwner: String
     var blocked: Bool = false
     var blockedByUid: String?
-    var otherUserUid: String {
+    var otherUserUID: String {
         didSet {
-            User.getBy(uid: otherUserUid) { (user) in
+            User.getBy(uid: otherUserUID) { (user) in
                 self.otherUser = user
             }
         }
@@ -33,17 +33,17 @@ class Chat {
     ///   - offerOwner: Name of the user who made the Post
     ///   - blocked: true or false
     ///   - blockedByUid: UID of the user who initiated the block
-    ///   - otherUserUid: UID of the user who is interested in the Post
+    ///   - otherUserUID: UID of the user who is interested in the Post
     init(offer: String,
          offerOwner: String,
          blocked: Bool,
          blockedByUid: String? = nil,
-         otherUserUid: String) {
+         otherUserUID: String) {
         self.offer = offer
         self.offerOwner = offerOwner
         self.blocked = blocked
         self.blockedByUid = blockedByUid
-        self.otherUserUid = otherUserUid
+        self.otherUserUID = otherUserUID
     }
 }
 
@@ -56,7 +56,7 @@ extension Chat {
         guard let offer = dictionary["offer"] as? String,
             let offerOwner = dictionary["offerOwner"] as? String,
             let blocked = dictionary["blocked"] as? Bool,
-            let otherUserUid = dictionary["otherUserUid"] as? String
+            let otherUserUID = dictionary["otherUserUID"] as? String
             else { return nil }
         
         let blockedByUid = blocked ? dictionary["blockedByUid"] as? String : nil
@@ -65,7 +65,7 @@ extension Chat {
                   offerOwner: offerOwner,
                   blocked: blocked,
                   blockedByUid: blockedByUid,
-                  otherUserUid: otherUserUid)
+                  otherUserUID: otherUserUID)
     }
     
 }

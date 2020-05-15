@@ -24,7 +24,7 @@ extension ChatListItem {
 //                            chatRef: DocumentReference,
 //                            completion: @escaping (ChatListItem) -> Void ) {
 //
-//        if let otherUserUID = chat.otherUserUid {
+//        if let otherUserUID = chat.otherUserUID {
 //            print("#ChatListItem 1. getting user")
 //            User.getBy(uid: otherUserUID) { (user) in
 //                print("#ChatListItem 2. appending \(user.firstName) to User Dictionary ")

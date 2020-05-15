@@ -70,21 +70,21 @@ class ChatListTableViewController: UITableViewController {
 //        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
         
         
-        ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
-            // 1. create new ChatList Item
-            
-            print(docRef.documentID)
-            
-            // 2. append it to the local array
-            
-            self.tableView.reloadData()
-            
-            // 3. Create a document in db under Threads
-            //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
-            
-            
-            // 4. Segue to the ChatDetailVC and set the convo title
-        }
+//        ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
+//            // 1. create new ChatList Item
+//            
+//            print(docRef.documentID)
+//            
+//            // 2. append it to the local array
+//            
+//            self.tableView.reloadData()
+//            
+//            // 3. Create a document in db under Threads
+//            //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
+//            
+//            
+//            // 4. Segue to the ChatDetailVC and set the convo title
+//        }
     }
     
 

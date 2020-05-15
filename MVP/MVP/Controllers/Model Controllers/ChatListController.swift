@@ -30,7 +30,7 @@ class ChatListController {
         didSet {
             guard let currentUser = currentUser else { return }
             let userUID = currentUser.userUID
-//            self.fetchChatsOfCurrentUser(userUID)
+            //            self.fetchChatsOfCurrentUser(userUID)
             usersDictionary[userUID] = currentUser.firstName
         }
     }
@@ -41,45 +41,72 @@ class ChatListController {
     
     // MARK: - CRUD
     
-    func firstMessage(regarding post: DummyPost, firstMessage: String){
-        guard let currentUser = currentUser else { return }
-        
-        print(currentUser.firstName + " is interested in " + post.postTitle)
-        
-        print("first message: \(firstMessage)")
-    }
-    
-    func createNewChat( postOwnerUid: String,
-                        postText: String,
-                        completion: @escaping (DocumentReference) -> Void ) {
+    func firstMessage( regarding post: DummyPost,
+                       firstMessage: String,
+                       completion: @escaping (Bool) -> Void ){
         
         // 1. get currentUser's UID
-        
         guard let currentUserUid = currentUser?.userUID else { return }
+        
+        // grab post properties
+        let postOwnerUID = post.userUID, postID = post.postDocumentID
+        
+        // check for existing message to prevent spam
+        // if alreadyMessaged(regarding: post, fromUserUID: currentUserUid)
+        alreadyMessaged(regarding: post, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
+            if alreadySentMsg {
+                print("#firstMessage: you can't message again")
+                completion(false)
+            } else {
+                print("#firstMessage: no existing message. you can continue")
+                
+                // createChats for each user
+                self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID) {
+                    print("#createNewChat for currentUser who is interested in post")
+                }
+                
+                self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID) {
+                    print("#createNewChat for post Owner")
+                }
+                completion(true)
+            }
+        })
+        
+        
+        
+        // TO-DO: updateLastMsg
+        
+    }
+    
+    func createNewChat( chatOwnerUID: String,
+                        otherUserUID: String,
+                        postOwnerUID: String,
+                        postID: String,
+                        completion: @escaping () -> Void) {
+        
+        
         
         // 2. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
-            "offer": postText,
-            "offerOwner": postOwnerUid,
+            "postOwnerUID": postOwnerUID,
             "blocked": false,
-            "otherUserUid": currentUserUid
+            "otherUserUID": otherUserUID
         ]
         
         // 3. Add chat document for currentUser in the db under Chats
         // 3.1 Do not send postOwner a message yet until currentUser actually sends a message
         // 3.2 Name the document after the currentUser's UID
         
-        let chatDocRef: DocumentReference = chatsCollection.document(currentUserUid)
-            .collection("conversations")
-            .addDocument(data: data) { (error) in
+        chatsCollection.document(chatOwnerUID)
+            .collection("posts").document(postID)
+            .setData(data, merge: false, completion: { (error) in
                 if let error = error {
                     print("#ChatListController: Unable to create chat! \(error)")
                     return
                 }
-        }
-        
-        completion(chatDocRef)
+                completion()
+            })
     }
     
     func startListener( completion: @escaping () -> Void ) {
@@ -121,7 +148,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         chatsCollection.document(currentUserUid)
-        .collection("conversations")
+            .collection("conversations")
             .getDocuments { (convoQuerySnapshot, error) in
                 if let error = error {
                     print("Error: \(error)")
@@ -171,6 +198,23 @@ class ChatListController {
         chatRef.updateData(data) { (error) in
             if let error = error {
                 print("#ChatListItem: Error in updateLastMsg: \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    func alreadyMessaged( regarding post: DummyPost,
+                          fromUserUID: String,
+                          completion: @escaping (Bool) -> Void ) {
+        
+        let postID = post.postDocumentID
+        
+        chatsCollection.document(fromUserUID).collection("posts").document(postID).getDocument { (docSnapshot, error) in
+            if let error = error {
+                print("#alreadyMessaged error: \(error)")
+            } else {
+                completion(docSnapshot!.exists)
             }
         }
     }
