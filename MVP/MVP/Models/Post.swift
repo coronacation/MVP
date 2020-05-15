@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 public class DummyPost {
     let postTitle: String
@@ -21,9 +22,10 @@ public class DummyPost {
     var postUIImage: UIImage = #imageLiteral(resourceName: "loading")
     let postLongitude: Double
     let postLatitude: Double
+    let postCLLocation: CLLocation
     
     init(postTitle: String, postDescription: String, userUID: String, postUserFirstName: String, postDocumentID: String,
-         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double) {
+         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double, postCLLocation: CLLocation) {
         self.postTitle = postTitle
         self.postDescription = postDescription
         self.userUID = userUID
@@ -35,6 +37,7 @@ public class DummyPost {
         self.postFlaggedCount = postFlaggedCount
         self.postLongitude = postLongitude
         self.postLatitude = postLatitude
+        self.postCLLocation = postCLLocation
     }
 }
 

@@ -297,8 +297,8 @@
                                             <action selector="addPhotoButtonTapped:" destination="Z4K-Bf-QON" eventType="touchUpInside" id="hqs-uI-ad1"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImageAvailable" translatesAutoresizingMaskIntoConstraints="NO" id="rld-A6-E2m">
-                                        <rect key="frame" x="254" y="29" width="74" height="65"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noPhotoSelected" translatesAutoresizingMaskIntoConstraints="NO" id="rld-A6-E2m">
+                                        <rect key="frame" x="244" y="8" width="84" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
@@ -416,7 +416,7 @@
         <image name="Fulfilled Checkmark" width="34" height="24"/>
         <image name="Picture Placeholder" width="233" height="134"/>
         <image name="camera_black" width="30" height="30"/>
-        <image name="noImageAvailable" width="1152" height="1440"/>
+        <image name="noPhotoSelected" width="640" height="640"/>
         <image name="pencil_black" width="18" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="32" height="32"/>

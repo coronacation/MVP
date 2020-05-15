@@ -30,12 +30,17 @@ class AddPostViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         titleTextField.delegate = self
         setUpViews()
     }
     
     func setUpViews()  {
         currentUserNameLabel.text = CurrentUserController.shared.currentUser?.firstName
+        if selectedImage != nil {
+            postImageView?.image = selectedImage
+            print("\npostImageView assigned")
+        }
     }
     
     //MARK: - Actions
@@ -55,10 +60,12 @@ class AddPostViewController: UIViewController {
         
         if selectedImage == nil {
             
-            //presentAddPhotoNudgeBeforeSave()
+            print("\nsaving post with no selected image")
             
             savePost(postTitle: postTitle, postDescription: postDescription, postUserUID: postUserUID, postUserFirstName: currentUserFirstName, postCreatedTimestamp: postCreatedTimestamp)
         } else {
+            print("saving post with selected image")
+
             grabImageURLAndSavePost(postTitle: postTitle, postDescription: postDescription, postUserUID: postUserUID, postUserFirstName: currentUserFirstName, postCreatedTimestamp: postCreatedTimestamp)
         }
     }
@@ -105,6 +112,7 @@ class AddPostViewController: UIViewController {
                 postImageRef.downloadURL { (url, error) in
                     if let metaImageURL = url?.absoluteString {
                         let imageURL = metaImageURL
+                        print("\nImageURL: \(imageURL)")
                         self.savePost(postTitle: postTitle, postDescription: postDescription, postUserUID: postUserUID, postUserFirstName: postUserFirstName, postCreatedTimestamp: postCreatedTimestamp, imageURL: imageURL)
                     }
                 }
@@ -125,7 +133,7 @@ class AddPostViewController: UIViewController {
     }
     
     //MARK: - TODO: move to PostController file
-    func savePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String, imageURL: String = "http://sjd.law.wfu.edu/files/2020/01/No-Photo-Available.jpg") {
+    func savePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String, imageURL: String = "none") {
         
         let currentUser = Auth.auth().currentUser
         
@@ -159,24 +167,20 @@ class AddPostViewController: UIViewController {
             } else {
                 print("Document added with ID: \(ref!.documentID)")
                 self.presentSavedAlert()
-                self.clearFieldsAfterPostSaved()
+                self.clearAllFields()
             }
         }
     }//end of savePost func
     
-    func clearFieldsAfterPostSaved() {
-        
-        //Add clear for image and category and location
-        
-        //maybe use protocol and delegate to reset photo to default
-        
+    func clearAllFields() {
+        self.postImageView.image = UIImage(named: "noPhotoSelected")
+        selectedImage = nil
         self.titleTextField.text = ""
         self.descriptionTextView.text = ""
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
-        self.titleTextField.text = ""
-        self.descriptionTextView.text = ""
+        clearAllFields()
     }
     
     
@@ -228,6 +232,7 @@ extension AddPostViewController: UIImagePickerControllerDelegate {
     }//end of openCamera func
     
     func openGallery() {
+        print("opening gallery")
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             DispatchQueue.main.async {
                 self.imagePicker.allowsEditing = true
@@ -243,8 +248,14 @@ extension AddPostViewController: UIImagePickerControllerDelegate {
     }//end of openGallery func
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        print("\nImage picker controller func running")
+        
         if let pickedImage = info[.originalImage] as? UIImage {
+            print("pickedImage set")
             selectedImage = pickedImage
+            postImageView.image = pickedImage
+            setUpViews()
         }
         picker.dismiss(animated: true, completion: nil)
     }//end of imagePickerController func
@@ -269,6 +280,7 @@ extension AddPostViewController: UIImagePickerControllerDelegate {
     }//end of checkCameraAuthorization func
     
     func checkPhotoLibraryAuthorization() {
+        print("\nchecking photo lib auth")
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization( { status in
@@ -296,6 +308,13 @@ extension AddPostViewController: UIImagePickerControllerDelegate {
         self.present(alert, animated: true)
     }//end of presentDeniedAlert func
 }//end of AddPostTVC photoSelector extension
+
+
+extension AddPostViewController: UINavigationControllerDelegate {
+    
+}
+
+
 
 //this dismisses the keyboard when enter is pressed on an iphone
 extension AddPostViewController: UITextFieldDelegate {
