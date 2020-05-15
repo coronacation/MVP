@@ -11,14 +11,17 @@ import Firebase
 
 class PasswordResetViewController: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
     }
     
+    //MARK: - Actions
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
         
         guard let email = emailTextField.text, emailTextField.text != "" else {return}
@@ -32,9 +35,14 @@ class PasswordResetViewController: UIViewController {
                 self.showError("Password reset email sent!")
             }
         }
-        self.presentingViewController?.dismiss(animated: false, completion:nil)
+        navigationController?.popViewController(animated: true)
     }//end of resetPasswordButtonTapped func
     
+    @IBAction func returnToLoginButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK: - Helpers
     func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1

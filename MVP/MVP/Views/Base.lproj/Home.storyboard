@@ -304,7 +304,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87a-4U-Oj3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87a-4U-Oj3" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
                                 <rect key="frame" x="109.5" y="590" width="156" height="39"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <state key="normal" title="Message">
