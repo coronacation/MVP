@@ -25,16 +25,16 @@ class PostListViewController: UIViewController {
     
     var resultsArray: [SearchableRecord] = []
     var isSearching = false
-//    var dataSource: [SearchableRecord] {
-//        return isSearching ? resultsArray : posts
-//    }
+    var dataSource: [SearchableRecord] {
+        return isSearching ? resultsArray : posts
+    }
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
         checkLocationServices()
-    //    postSearchBar.delegate = self
+        postSearchBar.delegate = self
         postSearchBar.autocapitalizationType = UITextAutocapitalizationType.none
         table.delegate = self
         table.dataSource = self
@@ -47,7 +47,7 @@ class PostListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadData()
         DispatchQueue.main.async {
-         //   self.resultsArray = self.posts
+            self.resultsArray = self.posts
             self.table.reloadData()
         }
     }
@@ -93,45 +93,44 @@ class PostListViewController: UIViewController {
     }
 }
 
-//extension PostListViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if !searchText.isEmpty {
-//            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
-//            table.reloadData()
-//        } else {
-//            resultsArray = posts
-//            table.reloadData()
-//        }
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        resultsArray = posts
-//        table.reloadData()
-//        searchBar.text = ""
-//        searchBar.resignFirstResponder()
-//    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//        isSearching = false
-//    }
-//
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        isSearching = true
-//    }
-//
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        searchBar.text = ""
-//        isSearching = false
-//    }
-//}
+extension PostListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if !searchText.isEmpty {
+            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
+        } else {
+            resultsArray = posts
+        }
+        table.reloadData()
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        resultsArray = posts
+        table.reloadData()
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isSearching = false
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearching = true
+    }
+
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        isSearching = false
+    }
+}
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return posts.count
+         return dataSource.count
      }
      
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -141,7 +140,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
          
-         let post = posts[indexPath.row]
+         let post = dataSource[indexPath.row] as? DummyPost
          cell.post = post
          
          return cell
