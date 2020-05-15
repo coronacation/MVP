@@ -67,7 +67,7 @@ class ChatListController {
         let data: [String: Any] = [
             "postOwnerUID": postOwnerUID,
             "blocked": false,
-            "otherUserUid": currentUserUid
+            "otherUserUID": currentUserUid
         ]
         
         // 3. Add chat document for currentUser in the db under Chats
