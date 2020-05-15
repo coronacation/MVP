@@ -8,12 +8,12 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
 class MyPostsListTableViewController: UITableViewController {
     
     var myPosts = [DummyPost]()
     var db: Firestore!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class MyPostsListTableViewController: UITableViewController {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double)
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double, postCLLocation: CLLocation(latitude: document.data()["postUserLatitude"] as! Double, longitude: document.data()["postUserLongitude"] as! Double))
                     
                     self.myPosts.append(dummyPost)
                     

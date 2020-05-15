@@ -25,16 +25,16 @@ class PostListViewController: UIViewController {
     
     var resultsArray: [SearchableRecord] = []
     var isSearching = false
-    var dataSource: [SearchableRecord] {
-        return isSearching ? resultsArray : posts
-    }
+//    var dataSource: [SearchableRecord] {
+//        return isSearching ? resultsArray : posts
+//    }
     
     //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
         checkLocationServices()
-        postSearchBar.delegate = self
+    //    postSearchBar.delegate = self
         postSearchBar.autocapitalizationType = UITextAutocapitalizationType.none
         table.delegate = self
         table.dataSource = self
@@ -47,7 +47,7 @@ class PostListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadData()
         DispatchQueue.main.async {
-            self.resultsArray = self.posts
+         //   self.resultsArray = self.posts
             self.table.reloadData()
         }
     }
@@ -66,7 +66,7 @@ class PostListViewController: UIViewController {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double)
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double, postCLLocation: CLLocation(latitude: document.data()["postUserLatitude"] as! Double, longitude: document.data()["postUserLongitude"] as! Double))
                     
                     //                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
                     //                                 DispatchQueue.main.async {
@@ -80,6 +80,7 @@ class PostListViewController: UIViewController {
                     //                                     }
                     //                                 }
                     //                             }
+                    print(dummyPost.postCLLocation)
                     
                     self.posts.append(dummyPost)
                 }
@@ -92,39 +93,39 @@ class PostListViewController: UIViewController {
     }
 }
 
-extension PostListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if !searchText.isEmpty {
-            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
-            table.reloadData()
-        } else {
-            resultsArray = posts
-            table.reloadData()
-        }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resultsArray = posts
-        table.reloadData()
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        isSearching = false
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearching = true
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        isSearching = false
-    }
-}
+//extension PostListViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//
+//        if !searchText.isEmpty {
+//            resultsArray = posts.filter { $0.matches(searchTerm: searchText) }
+//            table.reloadData()
+//        } else {
+//            resultsArray = posts
+//            table.reloadData()
+//        }
+//    }
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        resultsArray = posts
+//        table.reloadData()
+//        searchBar.text = ""
+//        searchBar.resignFirstResponder()
+//    }
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        isSearching = false
+//    }
+//
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        isSearching = true
+//    }
+//
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        searchBar.text = ""
+//        isSearching = false
+//    }
+//}
 
 extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     
