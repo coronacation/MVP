@@ -101,15 +101,32 @@ class PostDetailViewController: UIViewController {
         }
     }
     
+}
+
+extension PostDetailViewController: UITextFieldDelegate {
+    
     func presentNewMessageAlert(post: DummyPost) {
-        let alert = UIAlertController(title: "Send a message", message: "Press Send to let \(post.postUserFirstName) know that you're interested in this offer. If it's available, you'll receive a reply from them in the Messages tab.", preferredStyle: .alert)
+        
+        let alertMessage = "Press Send to ask \(post.postUserFirstName) if the offer is still available. If it is, you'll receive a reply from them in the Messages tab."
+        
+        let starterText = "Hi, is this still available? "
+        
+        let alert = UIAlertController(title: "Send a message", message: alertMessage, preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.delegate = self
+            textField.autocorrectionType = .yes
+            textField.autocapitalizationType = .sentences
+            textField.text = starterText
+        }
         
         let sendButton = UIAlertAction(title: "Send", style: .default) { (_) in
             print("#presentNewMessageAlert will send \(post.postDocumentID)")
         }
-        alert.addAction(sendButton)
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(sendButton)
         alert.addAction(cancelButton)
         
         present(alert, animated: true)
