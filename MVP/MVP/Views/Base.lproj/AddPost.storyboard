@@ -336,8 +336,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-by-kzb">
                                 <rect key="frame" x="0.0" y="430.5" width="375" height="187.5"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTe-8a-0Fd">
-                                <rect key="frame" x="124.5" y="571" width="126" height="29.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTe-8a-0Fd" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
+                                <rect key="frame" x="124.5" y="565.5" width="126" height="40"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -377,7 +377,6 @@
                             <constraint firstItem="513-wL-Nk8" firstAttribute="centerY" secondItem="JFa-9o-RpD" secondAttribute="centerY" multiplier="0.2635" id="B5B-kn-gaQ"/>
                             <constraint firstItem="Zyt-by-kzb" firstAttribute="top" secondItem="Boi-fu-iVs" secondAttribute="bottom" id="CkZ-UV-ual"/>
                             <constraint firstItem="n6H-RD-04w" firstAttribute="width" secondItem="513-wL-Nk8" secondAttribute="width" multiplier="0.276" id="D4U-X3-ga3"/>
-                            <constraint firstItem="fTe-8a-0Fd" firstAttribute="height" secondItem="Zyt-by-kzb" secondAttribute="height" multiplier="0.157171" id="EWI-Rl-rSC"/>
                             <constraint firstItem="n6H-RD-04w" firstAttribute="centerX" secondItem="513-wL-Nk8" secondAttribute="centerX" id="Jbb-Xm-ocK"/>
                             <constraint firstItem="n6H-RD-04w" firstAttribute="centerY" secondItem="513-wL-Nk8" secondAttribute="centerY" multiplier="1.323" id="RPO-0m-r91"/>
                             <constraint firstItem="Boi-fu-iVs" firstAttribute="width" secondItem="JFa-9o-RpD" secondAttribute="width" id="WNh-uF-u5Z"/>
@@ -392,6 +391,7 @@
                             <constraint firstItem="uvY-HJ-8O6" firstAttribute="centerX" secondItem="n6H-RD-04w" secondAttribute="centerX" id="uPy-Jl-hep"/>
                             <constraint firstItem="uvY-HJ-8O6" firstAttribute="top" secondItem="n6H-RD-04w" secondAttribute="bottom" id="v4u-qp-PBZ"/>
                             <constraint firstItem="Boi-fu-iVs" firstAttribute="top" secondItem="513-wL-Nk8" secondAttribute="bottom" id="wgI-62-DDh"/>
+                            <constraint firstItem="fTe-8a-0Fd" firstAttribute="height" secondItem="Zyt-by-kzb" secondAttribute="height" multiplier="0.213333" id="yhw-EC-Osa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFa-9o-RpD"/>
                     </view>
@@ -419,7 +419,7 @@
         <image name="noImageAvailable" width="1152" height="1440"/>
         <image name="pencil_black" width="18" height="24"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="xmark" catalog="system" width="32" height="32"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="deepPurple">
             <color red="0.12549019607843137" green="0.070588235294117646" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
