@@ -14,6 +14,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var datePostedLabel: UILabel!
+    @IBOutlet weak var postUserFirstName: UILabel!
     
     var post: DummyPost? {
         didSet{
@@ -21,8 +22,10 @@ class PostTableViewCell: UITableViewCell {
             titleLabel.text = post.postTitle
             descriptionTextView?.text = post.postDescription
             datePostedLabel.text = post.postCreatedTimestamp
+            postUserFirstName.text = post.postUserFirstName
+            postImage.image = nil
             
-            PostController.fetchDrinkImage2(post: post) { (result) in
+            PostController.shared.fetchDrinkImage2(post: post) { (result) in
                 switch result {
                     case .success(let image):
                         print("success")
@@ -53,6 +56,8 @@ class PostTableViewCell: UITableViewCell {
             //            }
         }
     }
+    
+  
     
 }
 

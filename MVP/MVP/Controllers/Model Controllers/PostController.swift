@@ -8,10 +8,13 @@
 
 import UIKit
 
-class PostController: Codable {
+class PostController {
 
+    static let shared = PostController()
     
-    static func fetchPostImage(stringURL: String, completion: @escaping (Result<UIImage, PostError>) -> Void) {
+    var imageCache = NSCache<NSURL, UIImage>()
+    
+     func fetchPostImage(stringURL: String, completion: @escaping (Result<UIImage, PostError>) -> Void) {
         
         guard let url = URL(string: stringURL) else {return}
         
@@ -25,14 +28,20 @@ class PostController: Codable {
         }.resume()
     }
     
-    static func fetchDrinkImage2(post: DummyPost, completion: @escaping (Result<UIImage, PostError>) -> Void) {
+     func fetchDrinkImage2(post: DummyPost, completion: @escaping (Result<UIImage, PostError>) -> Void) {
         guard let drinkThumbnail = URL(string:post.postImageURL) else {return completion(.failure(.noData))}
+        guard let nsurlValue = NSURL(string: post.postImageURL) else {return completion(.failure(.invalidURL))}
+        if let cachedImage = imageCache.object(forKey: nsurlValue) {
+            return completion(.success(cachedImage))
+        }
         URLSession.shared.dataTask(with: drinkThumbnail) { (data, _, error) in
             if let error = error {
                 completion(.failure(.thrown(error)))
             }
             guard let data = data else {return completion(.failure(.noData))}
             guard let image = UIImage(data: data) else {return completion(.failure(.unableToDecode))}
+            self.imageCache.setObject(image, forKey: nsurlValue)
+            
             completion(.success(image))
         }.resume()
     }

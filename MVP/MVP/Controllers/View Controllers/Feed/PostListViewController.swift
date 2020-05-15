@@ -13,7 +13,7 @@ import CoreLocation
 
 class PostListViewController: UIViewController {
     
-    var posts = [DummyPost]()
+    var myPosts = [DummyPost]()
     var db: Firestore!
     
     @IBOutlet weak var postSearchBar: UISearchBar!
@@ -23,44 +23,36 @@ class PostListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\n\nview did load ")
         db = Firestore.firestore()
         checkLocationServices()
         table.delegate = self
         table.dataSource = self
         
-        print("\n\nUser location before: \(String(describing: CurrentUserController.shared.currentUser?.location))")
-        
         if let location = locationManager.location {
             CurrentUserController.shared.setCurrentUserLocation(location: location)
         }
-        
-        print("\n\nUser location after: \(String(describing: CurrentUserController.shared.currentUser?.location))")
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("\n\nUser location after appear: \(String(describing: CurrentUserController.shared.currentUser?.location))")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        if CurrentUserController.shared.currentUser != nil {
+            loadData()
+        }
     }
     
     func loadData() {
-        
+     //   print(CurrentUserController.shared.currentUser?.location! as Any)
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             }
                 
             else {
-                self.posts = []
+                self.myPosts = []
                 for document in querySnapshot!.documents {
                     
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,                  postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int)
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String, category: document.data()["category"] as! String, postImageURL: document.data()["postImageURL"] as! String, postFlaggedCount: document.data()["flaggedCount"] as! Int, postLongitude: document.data()["postUserLongitude"] as! Double, postLatitude: document.data()["postUserLatitude"] as! Double)
                     
                     //                    PostController.fetchPostImage(stringURL: dummyPost.postImageURL) { (result) in
                     //                                 DispatchQueue.main.async {
@@ -75,12 +67,11 @@ class PostListViewController: UIViewController {
                     //                                 }
                     //                             }
                     
-                    self.posts.append(dummyPost)
-                    
+                    self.myPosts.append(dummyPost)
                 }
                 self.table.reloadData()
                 
-                print("\n\nCOUNT OF POSTS: \(self.posts.count)\n\n")
+                print("\n\nCOUNT OF POSTS: \(self.myPosts.count)\n\n")
                 
             }
         }
@@ -92,7 +83,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return posts.count
+         return myPosts.count
      }
      
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -102,7 +93,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {return UITableViewCell()}
          
-         let post = posts[indexPath.row]
+         let post = myPosts[indexPath.row]
          cell.post = post
          
          return cell
@@ -112,7 +103,7 @@ extension PostListViewController: UITableViewDataSource, UITableViewDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "toPostDetailVC" {
              if let destinationVC = segue.destination as? PostDetailViewController, let indexPath = table.indexPathForSelectedRow {
-                 let post = posts[indexPath.row]
+                 let post = myPosts[indexPath.row]
                  destinationVC.post = post
              }
          }
