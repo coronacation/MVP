@@ -41,9 +41,9 @@ class ChatListController {
     
     // MARK: - CRUD
     
-    func firstMessage( regarding post: DummyPost,
-                       firstMessage: String,
-                       completion: @escaping (Bool) -> Void ){
+    func initializeChat( regarding post: DummyPost,
+                         firstMessage: String,
+                         completion: @escaping (Bool) -> Void ){
         
         // 1. get currentUser's UID
         guard let currentUserUid = currentUser?.userUID else { return }
@@ -52,11 +52,9 @@ class ChatListController {
         let postOwnerUID = post.userUID, postID = post.postDocumentID
         
         // check for existing message to prevent spam
-        // if alreadyMessaged(regarding: post, fromUserUID: currentUserUid)
         alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
             if alreadySentMsg {
-                // print("#firstMessage: you can't message again")
-                completion(false)
+                completion(false) // user already sent a message
             } else {
                 
                 // create Thread
@@ -64,19 +62,13 @@ class ChatListController {
                     print("#alreadyMessaged received threadDocID: " + threadDocID)
                     
                     // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp) { (chatDocID) in
-                        print("created \(chatDocID)")
-                    }
+                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
                     
                     //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp) { (chatDocID) in
-                        print("created \(chatDocID)")
-                    }
+                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
                     
                     completion(true)
                 }
-                
-                
             }
         })
         
@@ -87,17 +79,12 @@ class ChatListController {
     }
     
     private func createNewChat( chatOwnerUID: String,
-                        otherUserUID: String,
-                        postOwnerUID: String,
-                        postID: String,
-                        threadID: String,
-                        lastMsg: String,
-                        lastMsgTimestamp: Timestamp,
-                        completion: @escaping (String) -> Void) {
-        
-        
-        
-        // 2. Build the structure for this ChatListItem Object
+                                otherUserUID: String,
+                                postOwnerUID: String,
+                                postID: String,
+                                threadID: String,
+                                lastMsg: String,
+                                lastMsgTimestamp: Timestamp) {
         
         let data: [String: Any] = [
             "postID": postID,
@@ -109,9 +96,9 @@ class ChatListController {
             "lastMsgTimestamp": lastMsgTimestamp
         ]
         
-        // 3. Add chat document named after the User in the db under root-level collection "Chats"
-        // 3.1 Add subcollection under User document called "chats"
-        // 3.2 Under "chats" add document with the threadID.
+        // Add chat document named after the User in the db under root-level collection "Chats"
+        // Add subcollection under User document called "chats"
+        // Under "chats" add document with the threadID.
         
         let chatDocRef = chatsCollection.document(chatOwnerUID)
             .collection("chats").document(threadID)
@@ -121,9 +108,7 @@ class ChatListController {
                 print("#ChatListController: Unable to create chat! \(error)")
                 return
             }
-        })
-        
-        completion(chatDocRef.documentID)
+        })        
     }
     
     func startListener( completion: @escaping () -> Void ) {
@@ -228,11 +213,11 @@ class ChatListController {
         chatsCollection.document(fromUserUID).collection("chats")
             .whereField("postID", isEqualTo: postID)
             .getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("#alreadyMessaged error: \(error)")
-            } else {
-                querySnapshot!.isEmpty ? completion(false) : completion (true)
-            }
+                if let error = error {
+                    print("#alreadyMessaged error: \(error)")
+                } else {
+                    querySnapshot!.isEmpty ? completion(false) : completion (true)
+                }
         }
     }
 }
