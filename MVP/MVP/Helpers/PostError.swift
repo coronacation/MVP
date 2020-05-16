@@ -13,6 +13,7 @@ enum PostError: LocalizedError {
     case thrown(Error)
     case noData
     case unableToDecode
+    case notFound
     
     var errorDescription: String? {
         switch self {
@@ -24,6 +25,8 @@ enum PostError: LocalizedError {
             return "The server responded with no data."
         case .unableToDecode:
             return "The server responded with bad data."
+        case .notFound:
+            return "There is no post with that documentID."
         }
     }
 }

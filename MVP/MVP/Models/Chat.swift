@@ -22,7 +22,7 @@ class Chat {
     
     
     // MARK: - Swift-only properties
-    var post: Post?
+    var post: DummyPost?
     var postOwner: User?
     
     
@@ -74,5 +74,27 @@ extension Chat {
                   postID: postID,
                   postOwnerUID: postOwnerUID,
                   threadID: threadID )
+        
+        self.fetchPost(postID: postID)
+        self.fetchPostOwner(postOwnerUID: postOwnerUID)
+    } // end convenience init
+    
+    func fetchPost(postID: String) {
+        DummyPost.getBy(docID: postID) { (result) in
+            switch result {
+            case .success(let postObject):
+                self.post = postObject
+            case .failure(let error):
+                print("#fetchPost failed. Post doesn't exist. Check PostExtension for details.")
+                print(error.errorDescription!)
+            }
+        }
+    }
+    
+    
+    func fetchPostOwner(postOwnerUID: String) {
+        User.getBy(uid: postOwnerUID) { (user) in
+            self.postOwner = user
+        }
     }
 }
