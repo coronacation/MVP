@@ -12,40 +12,10 @@ import FirebaseFirestore
 
 class ChatListTableViewController: UITableViewController {
     
-    // MARK: - Mock Data
-    
-    let mockOffers: [String] = [ "Hairspray",
-                                 "Toilet paper",
-                                 "Rice",
-                                 "Hand santizer",
-                                 "Canned beans",
-                                 "Face masks",
-                                 "N95",
-                                 "Lightsaber"
-    ]
-    var randomOffer: String {
-        get {
-            guard let offer = self.mockOffers.randomElement() else { return "offer fail" }
-            return offer
-        }
-    }
-    
-    
-    // MARK: - Properties
-    
-    /// Landing pad for tapping on Message button in PostDetailVC
-    var post: DummyPost?
-    
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let post = post {
-            print("hey we got a post from PostDetail")
-            print(post.postTitle)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,30 +31,8 @@ class ChatListTableViewController: UITableViewController {
     // MARK: - IBAction
     
     @IBAction func addButtonTapped(_ sender: Any) {
-        
-        // TO-DO: When wired up with final storyboard, make sure to send DocRef of Post so user can tap on it from Chat
-        
-        let postTitle = randomOffer
-        let postOwnerUid = "MLzB7miXJFhUhm7dcpJNvaSDPJx2" // Theo
-//        let postOwnerUid = "1hYi1aKFAGfzap7fUGxcA2GJIZF3") // Abigail
-//        let postOwnerUid = "2husJkuElXUWZTHumtvyj4V6Dvy1") // Natasha
-        
-        
-//        ChatListController.shared.createNewChat(postOwnerUid: postOwnerUid, postText: postTitle) { (docRef) in
-//            // 1. create new ChatList Item
-//            
-//            print(docRef.documentID)
-//            
-//            // 2. append it to the local array
-//            
-//            self.tableView.reloadData()
-//            
-//            // 3. Create a document in db under Threads
-//            //                ThreadController.shared.createThread(chatDocRef: chatDocRef)
-//            
-//            
-//            // 4. Segue to the ChatDetailVC and set the convo title
-//        }
+        print("add button tapped")
+       
     }
     
 
@@ -103,9 +51,9 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].offerOwner
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].postOwner?.firstName
         
-        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
+//        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
         
         return cell
     }

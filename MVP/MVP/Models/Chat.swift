@@ -10,20 +10,20 @@ import UIKit
 import FirebaseFirestore
 
 class Chat {
-    var offer: String
-    var offerOwner: String
+    
+    // MARK: - Properties shared with Firestore
     var blocked: Bool = false
-    var blockedByUid: String?
-    var otherUserUID: String {
-        didSet {
-            User.getBy(uid: otherUserUID) { (user) in
-                self.otherUser = user
-            }
-        }
-    }
-    var otherUser: User?
-    //    var lastMsg: String?
-    //    var lastMsgDate: Date
+    var lastMsg: String
+    var lastMsgTimestamp: Timestamp
+    var askerUID: String
+    var postID: String
+    var postOwnerUID: String
+    var threadID: String
+    
+    
+    // MARK: - Swift-only properties
+    var post: DummyPost?
+    var postOwner: User?
     
     
     
@@ -33,17 +33,22 @@ class Chat {
     ///   - offerOwner: Name of the user who made the Post
     ///   - blocked: true or false
     ///   - blockedByUid: UID of the user who initiated the block
-    ///   - otherUserUID: UID of the user who is interested in the Post
-    init(offer: String,
-         offerOwner: String,
-         blocked: Bool,
-         blockedByUid: String? = nil,
-         otherUserUID: String) {
-        self.offer = offer
-        self.offerOwner = offerOwner
+    ///   - askerUID: UID of the user who is interested in the Post
+    init( blocked: Bool,
+          lastMsg: String,
+          lastMsgTimestamp: Timestamp,
+          askerUID: String,
+          postID: String,
+          postOwnerUID: String,
+          threadID: String ) {
+        
         self.blocked = blocked
-        self.blockedByUid = blockedByUid
-        self.otherUserUID = otherUserUID
+        self.lastMsg = lastMsg
+        self.lastMsgTimestamp = lastMsgTimestamp
+        self.askerUID = askerUID
+        self.postID = postID
+        self.postOwnerUID = postOwnerUID
+        self.threadID = threadID
     }
 }
 
@@ -53,20 +58,43 @@ extension Chat {
     /// - Parameter dictionary: key/value pairs of a chat object. With Firestore, you can simply pass in DocumentRef.data().
     convenience init?(dictionary: [String:Any]) {
         
-        guard let offer = dictionary["offer"] as? String,
-            let offerOwner = dictionary["offerOwner"] as? String,
-            let blocked = dictionary["blocked"] as? Bool,
-            let otherUserUID = dictionary["otherUserUID"] as? String
+        guard let blocked = dictionary["blocked"] as? Bool,
+            let lastMsg = dictionary["lastMsg"] as? String,
+            let lastMsgTimestamp = dictionary["lastMsgTimestamp"] as? Timestamp,
+            let askerUID = dictionary["askerUID"] as? String,
+            let postID = dictionary["postID"] as? String,
+            let postOwnerUID = dictionary["postOwnerUID"] as? String,
+            let threadID = dictionary["threadID"] as? String
             else { return nil }
+                
+        self.init(blocked: blocked,
+                  lastMsg: lastMsg,
+                  lastMsgTimestamp: lastMsgTimestamp,
+                  askerUID: askerUID,
+                  postID: postID,
+                  postOwnerUID: postOwnerUID,
+                  threadID: threadID )
         
-        let blockedByUid = blocked ? dictionary["blockedByUid"] as? String : nil
-        
-        self.init(offer: offer,
-                  offerOwner: offerOwner,
-                  blocked: blocked,
-                  blockedByUid: blockedByUid,
-                  otherUserUID: otherUserUID)
+        self.fetchPost(postID: postID)
+        self.fetchPostOwner(postOwnerUID: postOwnerUID)
+    } // end convenience init
+    
+    func fetchPost(postID: String) {
+        DummyPost.getBy(docID: postID) { (result) in
+            switch result {
+            case .success(let postObject):
+                self.post = postObject
+            case .failure(let error):
+                print("#fetchPost failed. Post doesn't exist. Check PostExtension for details.")
+                print(error.errorDescription!)
+            }
+        }
     }
     
+    
+    func fetchPostOwner(postOwnerUID: String) {
+        User.getBy(uid: postOwnerUID) { (user) in
+            self.postOwner = user
+        }
+    }
 }
-
