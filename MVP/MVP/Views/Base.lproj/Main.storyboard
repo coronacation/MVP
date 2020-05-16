@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5ok-iI-CZ5">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -82,52 +82,52 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="z1I-jc-LE5" customClass="LoginViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PO6-up-eR8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-9v-uqT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="331"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PUJ-9v-uqT" secondAttribute="height" multiplier="375:300" id="000-I4-Uxb"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light_Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="abh-8o-oqa">
-                                <rect key="frame" x="0.0" y="528" width="414" height="334"/>
+                                <rect key="frame" x="0.0" y="364.5" width="375" height="302.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="372:300" id="zSj-Bq-OE6"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWV-tf-A1A" userLabel="Email underline">
-                                <rect key="frame" x="68.5" y="523.5" width="277" height="2.5"/>
+                                <rect key="frame" x="62" y="388.5" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="Wuv-Lq-K3l" userLabel="Email Icon">
-                                <rect key="frame" x="70" y="500.5" width="20.5" height="19.5"/>
+                                <rect key="frame" x="63.5" y="370" width="18.5" height="17.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ddjacobsen17@yahoo.com" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-UZ-iyE">
-                                <rect key="frame" x="105" y="501.5" width="240.5" height="21"/>
+                                <rect key="frame" x="95" y="368.5" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password124*" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D28-IF-CDO">
-                                <rect key="frame" x="111.5" y="571" width="240.5" height="21"/>
+                                <rect key="frame" x="95" y="420" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-Vu-Zq5" userLabel="Password Underline">
-                                <rect key="frame" x="68.5" y="593" width="277" height="2.5"/>
+                                <rect key="frame" x="62" y="440" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Padlock" translatesAutoresizingMaskIntoConstraints="NO" id="x17-d7-gjK">
-                                <rect key="frame" x="69" y="559.5" width="22" height="28"/>
+                                <rect key="frame" x="62.5" y="413" width="20" height="25"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvx-vI-wQz" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="672" width="173" height="44.5"/>
+                                <rect key="frame" x="109" y="495" width="157" height="40.5"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Sign In">
@@ -139,7 +139,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsL-bA-qz7" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="768" width="173" height="44.5"/>
+                                <rect key="frame" x="109" y="566.5" width="157" height="40"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Create Account">
@@ -150,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Ct-YZD">
-                                <rect key="frame" x="108" y="823" width="198" height="23.5"/>
+                                <rect key="frame" x="98" y="609" width="179" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
@@ -161,13 +161,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-JS-cye">
-                                <rect key="frame" x="69" y="611.5" width="276" height="43.5"/>
+                                <rect key="frame" x="62.5" y="450" width="250" height="39.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logox2" translatesAutoresizingMaskIntoConstraints="NO" id="Cv3-hs-WDO">
-                                <rect key="frame" x="41.5" y="44" width="331" height="331"/>
+                                <rect key="frame" x="37.5" y="0.0" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Cv3-hs-WDO" secondAttribute="height" multiplier="1:1" id="54n-im-f0h"/>
                                 </constraints>
@@ -246,56 +246,56 @@
             <objects>
                 <viewController id="5pt-be-R9P" customClass="SignUpViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q3h-7Q-bQD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="oGY-3Y-eye">
-                                <rect key="frame" x="0.0" y="44" width="414" height="331"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oGY-3Y-eye" secondAttribute="height" multiplier="375:300" id="KWg-P9-lIF"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light_Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-8e-qSW">
-                                <rect key="frame" x="0.0" y="528" width="414" height="334"/>
+                                <rect key="frame" x="0.0" y="364.5" width="375" height="302.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="372:300" id="UDZ-0c-Lln"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDI-78-orz" userLabel="Name underline">
-                                <rect key="frame" x="68.5" y="464.5" width="277" height="2.5"/>
+                                <rect key="frame" x="62" y="344.5" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COJ-0G-Weq" userLabel="Email underline">
-                                <rect key="frame" x="68.5" y="533.5" width="277" height="2.5"/>
+                                <rect key="frame" x="62" y="396" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="HDa-9P-UF4" userLabel="Email Icon">
-                                <rect key="frame" x="70" y="513" width="20.5" height="19.5"/>
+                                <rect key="frame" x="63.5" y="377.5" width="18.5" height="17.5"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="31U-U5-RB9">
-                                <rect key="frame" x="105" y="442" width="240.5" height="21.5"/>
+                                <rect key="frame" x="95" y="324.5" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXB-ND-IOh">
-                                <rect key="frame" x="105" y="581" width="240.5" height="21"/>
+                                <rect key="frame" x="95" y="427" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pq0-uR-d7J" userLabel="Password Underline">
-                                <rect key="frame" x="68.5" y="603" width="277" height="2"/>
+                                <rect key="frame" x="62" y="447" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Padlock" translatesAutoresizingMaskIntoConstraints="NO" id="pGH-H6-QVQ">
-                                <rect key="frame" x="69" y="570" width="22" height="28"/>
+                                <rect key="frame" x="62.5" y="420.5" width="20" height="25.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgD-NZ-Avz" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="680" width="173" height="44.5"/>
+                                <rect key="frame" x="109" y="501" width="157" height="40"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -313,23 +313,23 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name_card" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-AB-0NX" userLabel="Name Icon">
-                                <rect key="frame" x="69" y="438" width="27.5" height="29.5"/>
+                                <rect key="frame" x="62.5" y="325.5" width="25" height="22"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXm-rF-Djt">
-                                <rect key="frame" x="87.5" y="741.5" width="197.5" height="23.5"/>
+                                <rect key="frame" x="79.5" y="548.5" width="179" height="21"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <color key="textColor" name="gold"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ISR-Td-2Wu">
-                                <rect key="frame" x="105" y="507" width="240.5" height="25.5"/>
+                                <rect key="frame" x="95" y="376" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-dD-SMy">
-                                <rect key="frame" x="286" y="741.5" width="40" height="23.5"/>
+                                <rect key="frame" x="259.5" y="548.5" width="36" height="21"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" name="mediumPurple"/>
@@ -339,13 +339,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXI-dc-QZt">
-                                <rect key="frame" x="86.5" y="618" width="241" height="48.5"/>
+                                <rect key="frame" x="78.5" y="455" width="218" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logox2" translatesAutoresizingMaskIntoConstraints="NO" id="6xo-ei-LnW">
-                                <rect key="frame" x="41.5" y="44" width="331" height="331"/>
+                                <rect key="frame" x="37.5" y="0.0" width="300" height="300"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -435,20 +435,20 @@
             <objects>
                 <viewController storyboardIdentifier="WelcomeScreen1" id="GYB-C5-Fd7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6U0-2v-wvX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiL-03-ThD">
-                                <rect key="frame" x="123" y="124" width="168" height="51"/>
+                                <rect key="frame" x="111.5" y="91" width="152" height="38"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone_Peeps" translatesAutoresizingMaskIntoConstraints="NO" id="40M-dc-5SX">
-                                <rect key="frame" x="116" y="245" width="182" height="180"/>
+                                <rect key="frame" x="105" y="180" width="165" height="134"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX7-3d-pJC">
-                                <rect key="frame" x="58" y="517.5" width="298" height="161"/>
+                                <rect key="frame" x="52.5" y="380.5" width="270" height="119.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -463,7 +463,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36o-EI-zoS" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="744" width="173" height="55"/>
+                                <rect key="frame" x="109" y="547.5" width="157" height="41"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -481,7 +481,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="First Dot" translatesAutoresizingMaskIntoConstraints="NO" id="WmH-my-7o9">
-                                <rect key="frame" x="176" y="710" width="62" height="11.5"/>
+                                <rect key="frame" x="159.5" y="523" width="56" height="8"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -520,35 +520,35 @@
             <objects>
                 <viewController id="V5e-Dc-063" customClass="PasswordResetViewController" customModule="MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="akW-EW-wBT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="FDd-cN-9vY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="331"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FDd-cN-9vY" secondAttribute="height" multiplier="375:300" id="r00-IN-mkD"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light_Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="Uhf-aH-g5q">
-                                <rect key="frame" x="0.0" y="528" width="414" height="334"/>
+                                <rect key="frame" x="0.0" y="364.5" width="375" height="302.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Uhf-aH-g5q" secondAttribute="height" multiplier="372:300" id="fIJ-UI-hOK"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5g8-xt-8QJ" userLabel="Email underline">
-                                <rect key="frame" x="68.5" y="511.5" width="277" height="3"/>
+                                <rect key="frame" x="62" y="379.5" width="251" height="2"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n03-oF-MIf">
-                                <rect key="frame" x="105" y="489.5" width="240.5" height="21"/>
+                                <rect key="frame" x="95" y="359.5" width="218" height="19"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aa5-PZ-f9x" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="588.5" width="173" height="44.5"/>
+                                <rect key="frame" x="109" y="433" width="157" height="40.5"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Reset Password">
@@ -559,22 +559,22 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="JYP-3h-kcU" userLabel="Email Icon">
-                                <rect key="frame" x="68.5" y="490.5" width="20.5" height="20"/>
+                                <rect key="frame" x="62" y="360.5" width="18.5" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ruc-vv-Rde">
-                                <rect key="frame" x="62" y="581" width="290" height="0.0"/>
+                                <rect key="frame" x="62" y="425.5" width="251" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logox2" translatesAutoresizingMaskIntoConstraints="NO" id="j2u-j9-oJ1">
-                                <rect key="frame" x="41.5" y="44" width="331" height="331"/>
+                                <rect key="frame" x="37.5" y="0.0" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j2u-j9-oJ1" secondAttribute="height" multiplier="1:1" id="z4o-2U-DHV"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-Kg-Wud">
-                                <rect key="frame" x="108" y="669.5" width="198" height="23.5"/>
+                                <rect key="frame" x="98" y="495" width="179" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Return to Login">
@@ -638,20 +638,20 @@
             <objects>
                 <viewController id="Z00-Lo-bc3" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gfx-AH-2HU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Aid Offers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ww-zH-kEY">
-                                <rect key="frame" x="88.5" y="109" width="237" height="48.5"/>
+                                <rect key="frame" x="80" y="88.5" width="215" height="37"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laptop_woman" translatesAutoresizingMaskIntoConstraints="NO" id="by1-bE-xPo">
-                                <rect key="frame" x="96.5" y="181" width="221" height="260"/>
+                                <rect key="frame" x="87.5" y="149" width="200" height="200"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zej-6A-TZC">
-                                <rect key="frame" x="58" y="510.5" width="298" height="78"/>
+                                <rect key="frame" x="52.5" y="410" width="270" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Find aid offer posts created by people in your community.">
@@ -665,7 +665,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bg-uE-NRy" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="662" width="173" height="52"/>
+                                <rect key="frame" x="109" y="531" width="157" height="40"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -683,16 +683,16 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Second Dot" translatesAutoresizingMaskIntoConstraints="NO" id="b1I-cW-z78">
-                                <rect key="frame" x="176" y="633" width="62" height="10.5"/>
+                                <rect key="frame" x="159.5" y="507" width="56" height="8"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVi-Hw-Ou3">
-                                <rect key="frame" x="180" y="450" width="54" height="21"/>
+                                <rect key="frame" x="163" y="361" width="49" height="16"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="16"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiM-l6-BcZ">
-                                <rect key="frame" x="257.5" y="723" width="35.5" height="24.5"/>
+                                <rect key="frame" x="233.5" y="579.5" width="32" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" name="gold"/>
@@ -746,20 +746,20 @@
             <objects>
                 <viewController id="0YT-Ze-c8R" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uIA-Yi-cbT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIv-ar-GgX">
-                                <rect key="frame" x="88.5" y="109" width="237" height="48.5"/>
+                                <rect key="frame" x="80" y="88.5" width="215" height="37"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Woman_Computer_Server" translatesAutoresizingMaskIntoConstraints="NO" id="0SM-mm-e1L">
-                                <rect key="frame" x="96.5" y="181" width="221" height="260"/>
+                                <rect key="frame" x="87.5" y="149" width="200" height="200"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqR-oP-x1g">
-                                <rect key="frame" x="58" y="510.5" width="298" height="78"/>
+                                <rect key="frame" x="52.5" y="410" width="270" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Message and connect with people near you.">
@@ -773,7 +773,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvo-JN-kTe" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="120.5" y="662" width="173" height="52"/>
+                                <rect key="frame" x="109" y="531" width="157" height="40"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Next">
@@ -784,16 +784,16 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Third Dot" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-uz-Pj8">
-                                <rect key="frame" x="176" y="633" width="62" height="10.5"/>
+                                <rect key="frame" x="159.5" y="507" width="56" height="8"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id9-hK-tgt">
-                                <rect key="frame" x="180" y="450" width="54" height="21"/>
+                                <rect key="frame" x="163" y="361" width="49" height="16"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="16"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-Ij-cu9">
-                                <rect key="frame" x="257.5" y="723" width="35.5" height="24.5"/>
+                                <rect key="frame" x="233.5" y="579.5" width="32" height="19"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" name="gold"/>
@@ -847,11 +847,11 @@
             <objects>
                 <viewController id="x1e-u8-wwu" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLG-hX-aj2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63K-EF-DxV">
-                                <rect key="frame" x="0.0" y="0.0" width="377" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="377" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uPf-uF-Ubo">
                                         <rect key="frame" x="0.0" y="0.0" width="377" height="925.5"/>
@@ -881,7 +881,6 @@
                                                     <constraint firstItem="9oS-Jz-gbs" firstAttribute="width" secondItem="9lR-N5-IeT" secondAttribute="width" multiplier="0.130667" id="ACm-CO-wnw"/>
                                                     <constraint firstAttribute="bottom" secondItem="9oS-Jz-gbs" secondAttribute="bottom" id="C4d-j3-eQD"/>
                                                     <constraint firstItem="PsP-Ec-Uu6" firstAttribute="centerX" secondItem="9lR-N5-IeT" secondAttribute="centerX" id="CHm-Qp-Ljo"/>
-                                                    <constraint firstAttribute="height" constant="392" id="HNz-uZ-mtm"/>
                                                     <constraint firstItem="HJ7-t7-nFv" firstAttribute="centerY" secondItem="9lR-N5-IeT" secondAttribute="centerY" multiplier="1.3" id="P0l-2x-yj5"/>
                                                     <constraint firstItem="HJ7-t7-nFv" firstAttribute="height" secondItem="9lR-N5-IeT" secondAttribute="height" multiplier="0.510204" id="QUk-6l-Y0f"/>
                                                     <constraint firstItem="PsP-Ec-Uu6" firstAttribute="height" secondItem="9lR-N5-IeT" secondAttribute="height" multiplier="0.0943878" id="TNo-Lx-Q7a"/>
@@ -1094,7 +1093,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="Axd-b8-Uf8" kind="show" id="TYg-vS-udV"/>
+                                                            <segue destination="bLk-j4-CfS" kind="show" id="lih-fK-L1D"/>
                                                         </connections>
                                                     </button>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fourth Dot" translatesAutoresizingMaskIntoConstraints="NO" id="lyf-rZ-OPa">
@@ -1163,29 +1162,29 @@
             <objects>
                 <viewController id="Axd-b8-Uf8" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JeE-w2-jGC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mp-sM-cc9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-Cp-4gn">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="807"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="807"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTg-2c-8Hm">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="392"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Privacy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVd-UG-T69">
-                                                        <rect key="frame" x="79.5" y="93" width="255" height="37"/>
+                                                        <rect key="frame" x="72" y="93" width="231" height="37"/>
                                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="28"/>
                                                         <color key="textColor" name="deepPurple"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Woman Map" translatesAutoresizingMaskIntoConstraints="NO" id="av4-uA-900">
-                                                        <rect key="frame" x="96.5" y="155" width="221" height="200"/>
+                                                        <rect key="frame" x="87.5" y="155" width="200" height="200"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mh-an-JY5">
-                                                        <rect key="frame" x="180" y="374" width="54" height="18"/>
+                                                        <rect key="frame" x="163" y="374" width="49" height="18"/>
                                                         <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="16"/>
                                                         <color key="textColor" name="deepPurple"/>
                                                         <nil key="highlightedColor"/>
@@ -1208,10 +1207,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wo6-sg-KTu">
-                                                <rect key="frame" x="0.0" y="392" width="414" height="250"/>
+                                                <rect key="frame" x="0.0" y="392" width="375" height="250"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZO-YP-qmB">
-                                                        <rect key="frame" x="58" y="14.5" width="298" height="96.5"/>
+                                                        <rect key="frame" x="52.5" y="14.5" width="270" height="96.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="WeShare allows you to share resources and connect with people within a 15-mile radius of your location.">
@@ -1225,7 +1224,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAU-fq-6sQ">
-                                                        <rect key="frame" x="58" y="128" width="298" height="94.5"/>
+                                                        <rect key="frame" x="52.5" y="128" width="270" height="94.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="Your privacy is of utmost importance to us; therefore, WeShare will never share your exact location with anyone.">
@@ -1252,10 +1251,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEl-yV-6ce">
-                                                <rect key="frame" x="0.0" y="642" width="414" height="165"/>
+                                                <rect key="frame" x="0.0" y="642" width="375" height="165"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJY-tf-j98" customClass="RoundButton" customModule="MVP" customModuleProvider="target">
-                                                        <rect key="frame" x="120.5" y="62.5" width="173" height="40"/>
+                                                        <rect key="frame" x="109" y="62.5" width="157" height="40"/>
                                                         <color key="backgroundColor" name="deepPurple"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                         <state key="normal" title="Next">
