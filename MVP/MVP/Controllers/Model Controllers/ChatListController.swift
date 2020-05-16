@@ -107,12 +107,10 @@ class ChatListController {
         
         // 3. Add chat document named after the User in the db under root-level collection "Chats"
         // 3.1 Add subcollection under User document called "chats"
-        // 3.2 Under "chats" add document with a random ID. It must be unique.
-        // This cannot be the postID, because it's very possible that the post owner will receive multiple
-        // messages from the multiple people about the same post.
+        // 3.2 Under "chats" add document with the threadID.
         
         let chatDocRef = chatsCollection.document(chatOwnerUID)
-            .collection("chats").document()
+            .collection("chats").document(threadID)
         
         chatDocRef.setData(data, merge: false, completion: { (error) in
             if let error = error {
