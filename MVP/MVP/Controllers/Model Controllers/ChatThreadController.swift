@@ -25,19 +25,19 @@ class ChatThreadController {
     
     func createThread( postID: String,
                        postOwnerUID: String,
-                       senderUID: String,
+                       askerUID: String,
                        text: String,
                        completion: @escaping (String, Timestamp) -> Void ) {
         
         let data: [String: Any] = [
             "postID": postID,
             "postOwnerUID": postOwnerUID,
-            "senderUID": senderUID
+            "askerUID": askerUID
         ]
         
         let threadDocID = threadsCollection.addDocument(data: data)
     
-        createMessage(threadID: threadDocID.documentID, senderUID: senderUID, text: text) { (timestamp) in
+        createMessage(threadID: threadDocID.documentID, askerUID: askerUID, text: text) { (timestamp) in
             
             
             
@@ -47,7 +47,7 @@ class ChatThreadController {
     }
     
     func createMessage( threadID: String,
-                        senderUID: String,
+                        askerUID: String,
                         text: String,
                         completion: @escaping (Timestamp) -> Void ) {
         
@@ -56,7 +56,7 @@ class ChatThreadController {
         let data: [String: Any] = [
             "content": text,
             "created": timestamp,
-            "senderID": senderUID
+            "senderID": askerUID
         ]
         
         threadsCollection.document(threadID).collection("messages")
