@@ -401,6 +401,7 @@
                         <outlet property="currentUserNameLabel" destination="uvY-HJ-8O6" id="Arb-pM-K3Q"/>
                         <outlet property="currentUserProfileImageView" destination="n6H-RD-04w" id="gqT-7s-S5O"/>
                         <outlet property="descriptionTextView" destination="l8L-Hw-8OY" id="2O0-Nb-zYd"/>
+                        <outlet property="mapView" destination="Zyt-by-kzb" id="O9b-XN-Pfo"/>
                         <outlet property="postImageView" destination="rld-A6-E2m" id="k6s-ad-NUj"/>
                         <outlet property="titleTextField" destination="9qr-fA-pRc" id="8Z3-22-eqn"/>
                     </connections>

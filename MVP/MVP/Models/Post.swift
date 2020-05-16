@@ -20,9 +20,18 @@ public class DummyPost {
     let postImageURL: String
     let postFlaggedCount: Int
     var postUIImage: UIImage = #imageLiteral(resourceName: "loading")
-    let postLongitude: Double
-    let postLatitude: Double
-    let postCLLocation: CLLocation
+    var postLongitude: Double?
+    var postLatitude: Double?
+    var postCLLocation: CLLocation? {
+        get {
+            guard let postLatitude = postLatitude,
+                let postLongitude = postLongitude else {return nil}
+            return CLLocation(latitude: postLatitude, longitude: postLongitude)
+        } set {
+            postLongitude = newValue?.coordinate.longitude
+            postLatitude = newValue?.coordinate.latitude
+        }
+    }
     
     init(postTitle: String, postDescription: String, userUID: String, postUserFirstName: String, postDocumentID: String,
          postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double, postCLLocation: CLLocation) {

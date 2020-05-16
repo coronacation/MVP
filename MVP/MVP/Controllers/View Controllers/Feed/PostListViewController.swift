@@ -80,7 +80,7 @@ class PostListViewController: UIViewController {
                     //                                     }
                     //                                 }
                     //                             }
-                    print(dummyPost.postCLLocation)
+                    print("\(String(describing: dummyPost.postCLLocation))")
                     
                     self.posts.append(dummyPost)
                 }
