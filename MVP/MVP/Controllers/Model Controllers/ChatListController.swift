@@ -60,16 +60,16 @@ class ChatListController {
             } else {
                 
                 // create Thread
-                ChatThreadController.shared.createThread(senderUID: currentUserUid, text: firstMessage) { (threadDocID) in
+                ChatThreadController.shared.createThread(senderUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
                     print("#alreadyMessaged received threadDocID: " + threadDocID)
                     
                     // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) { (chatDocID) in
+                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp) { (chatDocID) in
                         print("created \(chatDocID)")
                     }
                     
                     //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) { (chatDocID) in
+                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp) { (chatDocID) in
                         print("created \(chatDocID)")
                     }
                     
@@ -86,11 +86,13 @@ class ChatListController {
         
     }
     
-    func createNewChat( chatOwnerUID: String,
+    private func createNewChat( chatOwnerUID: String,
                         otherUserUID: String,
                         postOwnerUID: String,
                         postID: String,
                         threadID: String,
+                        lastMsg: String,
+                        lastMsgTimestamp: Timestamp,
                         completion: @escaping (String) -> Void) {
         
         
@@ -102,7 +104,9 @@ class ChatListController {
             "postOwnerUID": postOwnerUID,
             "blocked": false,
             "otherUserUID": otherUserUID,
-            "threadID": threadID
+            "threadID": threadID,
+            "lastMsg": lastMsg,
+            "lastMsgTimestamp": lastMsgTimestamp
         ]
         
         // 3. Add chat document named after the User in the db under root-level collection "Chats"

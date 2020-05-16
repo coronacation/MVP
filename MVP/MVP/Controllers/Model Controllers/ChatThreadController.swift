@@ -25,27 +25,42 @@ class ChatThreadController {
     
     func createThread( senderUID: String,
                        text: String,
-                       completion: @escaping (String) -> Void ) {
-        
-        
+                       completion: @escaping (String, Timestamp) -> Void ) {
         
         let threadDocID = threadsCollection.addDocument(data: [:])
-        print("#createThread docID: " + threadDocID.documentID)
-        completion(threadDocID.documentID)
-        
-        
-        
-//        createMessage(threadID: threadDocID.documentID, senderUID: senderUID, text: text) {
-//        }
+    
+        createMessage(threadID: threadDocID.documentID, senderUID: senderUID, text: text) { (timestamp) in
+            
+            
+            
+            
+            completion(threadDocID.documentID, timestamp)
+        }
     }
     
     func createMessage( threadID: String,
                         senderUID: String,
                         text: String,
-                        completion: @escaping () -> Void ) {
+                        completion: @escaping (Timestamp) -> Void ) {
+        
         let timestamp = Timestamp()
+        
+        let data: [String: Any] = [
+            "content": text,
+            "created": timestamp,
+            "senderID": senderUID
+        ]
+        
+        threadsCollection.document(threadID).collection("messages")
+        .addDocument(data: data)
+        
+        completion(timestamp)
     }
     
     // func fetchThread( threadID: String )
+    
+    
+    // MARK: - Helpers
+    
     
 }
