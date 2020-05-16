@@ -23,12 +23,14 @@ class ChatThreadController {
     
     // MARK: - CRUD
     
-    func createThread( postOwnerUID: String,
+    func createThread( postID: String,
+                       postOwnerUID: String,
                        senderUID: String,
                        text: String,
                        completion: @escaping (String, Timestamp) -> Void ) {
         
         let data: [String: Any] = [
+            "postID": postID,
             "postOwnerUID": postOwnerUID,
             "senderUID": senderUID
         ]

@@ -28,7 +28,7 @@ struct Message {
     
     var createdDate: Date {
         get {
-            return created.dateValue()
+            return created.dateValue() // TO-DO: Put Timestamp extension in DateHelper
         }
     }
 }

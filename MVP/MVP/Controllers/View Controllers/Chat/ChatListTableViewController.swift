@@ -53,7 +53,7 @@ class ChatListTableViewController: UITableViewController {
         
         cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].offerOwner
         
-        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
+//        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
         
         return cell
     }
