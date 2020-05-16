@@ -62,10 +62,10 @@ class ChatListController {
                     print("#alreadyMessaged received threadDocID: " + threadDocID)
                     
                     // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
+                    self.createNewChat(chatOwnerUID: currentUserUid, askerUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
                     
                     //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
+                    self.createNewChat(chatOwnerUID: postOwnerUID, askerUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
                     
                     completion(true)
                 }
@@ -79,7 +79,7 @@ class ChatListController {
     }
     
     private func createNewChat( chatOwnerUID: String,
-                                otherUserUID: String,
+                                askerUID: String,
                                 postOwnerUID: String,
                                 postID: String,
                                 threadID: String,
@@ -90,7 +90,7 @@ class ChatListController {
             "postID": postID,
             "postOwnerUID": postOwnerUID,
             "blocked": false,
-            "otherUserUID": otherUserUID,
+            "askerUID": askerUID,
             "threadID": threadID,
             "lastMsg": lastMsg,
             "lastMsgTimestamp": lastMsgTimestamp
