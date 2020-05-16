@@ -39,25 +39,20 @@ class CurrentUserController {
     }
     
          // Generate a random location between 0.5 and 1.5 km of user
-        func generateRandomLocationForUser() -> MKPointAnnotation {
+        func generateRandomLocation(for user: CurrentUser) -> MKPointAnnotation {
             let annotation = MKPointAnnotation()
-    
-      //      annotation.coordinate = generateRandomCoordinatesForUser()
-
-              annotation.title = "Username"
-             annotation.subtitle = "Goods Being Offered"
+            annotation.coordinate = generateRandomCoordinates(for: user) ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+            
+            annotation.title = "Username"
+            annotation.subtitle = "Goods Being Offered"
             
             return annotation
-            // Note: Caller must add the annotation to the map using mapView.addAnnotation(//annotation's variable//)
+            // Caller must add the annotation to the map using mapView.addAnnotation(//annotation's variable//)
         }
     
-        func generateRandomCoordinatesForUser() -> CLLocationCoordinate2D? {
+        func generateRandomCoordinates(for user: CurrentUser) -> CLLocationCoordinate2D? {
             // Get the user's longitude and latitude coordinates
-            
-            guard let currentUser = currentUser, let location = currentUser.location else {return nil}
-            
-            let currentLong = location.coordinate.longitude
-            let currentLat = location.coordinate.latitude
+            guard let currentLong = user.location?.coordinate.longitude, let currentLat = user.location?.coordinate.latitude else {return nil}
 
             // 1 kilometer = 0.00900900900901° So, 1 Meter = 0.00900900900901 / 1000
             let meterCord = 0.00900900900901 / 1000
