@@ -23,11 +23,17 @@ class ChatThreadController {
     
     // MARK: - CRUD
     
-    func createThread( senderUID: String,
+    func createThread( postOwnerUID: String,
+                       senderUID: String,
                        text: String,
                        completion: @escaping (String, Timestamp) -> Void ) {
         
-        let threadDocID = threadsCollection.addDocument(data: [:])
+        let data: [String: Any] = [
+            "postOwnerUID": postOwnerUID,
+            "senderUID": senderUID
+        ]
+        
+        let threadDocID = threadsCollection.addDocument(data: data)
     
         createMessage(threadID: threadDocID.documentID, senderUID: senderUID, text: text) { (timestamp) in
             

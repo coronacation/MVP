@@ -60,7 +60,7 @@ class ChatListController {
             } else {
                 
                 // create Thread
-                ChatThreadController.shared.createThread(senderUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
+                ChatThreadController.shared.createThread(postOwnerUID: postOwnerUID, senderUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
                     print("#alreadyMessaged received threadDocID: " + threadDocID)
                     
                     // create Chat for currentUser
