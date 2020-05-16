@@ -53,7 +53,7 @@ class ChatListController {
         
         // check for existing message to prevent spam
         // if alreadyMessaged(regarding: post, fromUserUID: currentUserUid)
-        alreadyMessaged(regarding: post, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
+        alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
             if alreadySentMsg {
                 // print("#firstMessage: you can't message again")
                 completion(false)
@@ -64,11 +64,13 @@ class ChatListController {
                     print("#alreadyMessaged received threadDocID: " + threadDocID)
                     
                     // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) {
+                    self.createNewChat(chatOwnerUID: currentUserUid, otherUserUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) { (chatDocID) in
+                        print("created \(chatDocID)")
                     }
                     
                     //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) {
+                    self.createNewChat(chatOwnerUID: postOwnerUID, otherUserUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID) { (chatDocID) in
+                        print("created \(chatDocID)")
                     }
                     
                     completion(true)
@@ -89,32 +91,37 @@ class ChatListController {
                         postOwnerUID: String,
                         postID: String,
                         threadID: String,
-                        completion: @escaping () -> Void) {
+                        completion: @escaping (String) -> Void) {
         
         
         
         // 2. Build the structure for this ChatListItem Object
         
         let data: [String: Any] = [
+            "postID": postID,
             "postOwnerUID": postOwnerUID,
             "blocked": false,
             "otherUserUID": otherUserUID,
             "threadID": threadID
         ]
         
-        // 3. Add chat document for currentUser in the db under Chats
-        // 3.1 Do not send postOwner a message yet until currentUser actually sends a message
-        // 3.2 Name the document after the currentUser's UID
+        // 3. Add chat document named after the User in the db under root-level collection "Chats"
+        // 3.1 Add subcollection under User document called "chats"
+        // 3.2 Under "chats" add document with a random ID. It must be unique.
+        // This cannot be the postID, because it's very possible that the post owner will receive multiple
+        // messages from the multiple people about the same post.
         
-        chatsCollection.document(chatOwnerUID)
-            .collection("posts").document(postID)
-            .setData(data, merge: false, completion: { (error) in
-                if let error = error {
-                    print("#ChatListController: Unable to create chat! \(error)")
-                    return
-                }
-                completion()
-            })
+        let chatDocRef = chatsCollection.document(chatOwnerUID)
+            .collection("chats").document()
+        
+        chatDocRef.setData(data, merge: false, completion: { (error) in
+            if let error = error {
+                print("#ChatListController: Unable to create chat! \(error)")
+                return
+            }
+        })
+        
+        completion(chatDocRef.documentID)
     }
     
     func startListener( completion: @escaping () -> Void ) {
@@ -212,17 +219,17 @@ class ChatListController {
     
     // MARK: - Helpers
     
-    func alreadyMessaged( regarding post: DummyPost,
+    func alreadyMessaged( postID: String,
                           fromUserUID: String,
                           completion: @escaping (Bool) -> Void ) {
         
-        let postID = post.postDocumentID
-        
-        chatsCollection.document(fromUserUID).collection("posts").document(postID).getDocument { (docSnapshot, error) in
+        chatsCollection.document(fromUserUID).collection("chats")
+            .whereField("postID", isEqualTo: postID)
+            .getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("#alreadyMessaged error: \(error)")
             } else {
-                completion(docSnapshot!.exists)
+                querySnapshot!.isEmpty ? completion(false) : completion (true)
             }
         }
     }
