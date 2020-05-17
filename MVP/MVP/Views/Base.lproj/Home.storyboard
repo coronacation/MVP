@@ -43,7 +43,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWo-BQ-A7v">
                                                     <rect key="frame" x="13.5" y="15" width="348" height="106"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="pxf-Nv-r8R">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default avatar" translatesAutoresizingMaskIntoConstraints="NO" id="pxf-Nv-r8R" customClass="RoundImageView" customModule="MVP" customModuleProvider="target">
                                                             <rect key="frame" x="16.5" y="3" width="38.5" height="38.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="pxf-Nv-r8R" secondAttribute="height" multiplier="1:1" id="7Ju-DG-Aal"/>

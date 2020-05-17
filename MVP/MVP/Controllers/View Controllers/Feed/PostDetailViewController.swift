@@ -120,7 +120,7 @@ extension PostDetailViewController: UITextFieldDelegate {
             
             guard let firstMessage = alert.textFields?.first?.text, !firstMessage.isEmpty else { return }
             
-            ChatListController.shared.firstMessage(regarding: post, firstMessage: firstMessage) { (success) in
+            ChatListController.shared.initializeChat(regarding: post, firstMessage: firstMessage) { (success) in
                 self.showMessageResultAlert(success)
             }
         }

@@ -88,6 +88,7 @@ class SignUpViewController: UIViewController {
         emailTextField.delegate = self
         //  lastNameTextField.delegate = self
         firstNameTextField.delegate = self
+        errorLabel.text = "Passwords must contain a number and one of the following characters: _ ; : @ $ # ! % * ? & < >"
     }//end of setUpElements func
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message
@@ -107,7 +108,7 @@ class SignUpViewController: UIViewController {
         
         if Utilities.isPasswordValid(cleanedPassword) == false {
             // Password isn't secure enough
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+            return "Please make sure your password is at least 8 characters, and contains at least one special character and one number."
         }
         
         return nil
