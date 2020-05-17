@@ -13,7 +13,7 @@ class ChatThreadController {
     
     // MARK: - Constants
     
-    private let threadsCollection = Firestore.firestore().collection("Threads")
+    private let threadsCollection = Firestore.firestore().collection(Constants.Thread.collectionL1)
     
     
     // MARK: - Shared Instance
@@ -49,13 +49,11 @@ class ChatThreadController {
         
         let timestamp = Timestamp()
         
-        let data: [String: Any] = [
-            "content": text,
-            "created": timestamp,
-            "senderID": askerUID
-        ]
         
-        threadsCollection.document(threadID).collection("messages")
+        
+        let data: [String: Any] = Message(id: "", content: text, created: timestamp, senderID: askerUID).dictionary
+        
+        threadsCollection.document(threadID).collection(Constants.Thread.collectionL2)
         .addDocument(data: data)
         
         completion(timestamp)

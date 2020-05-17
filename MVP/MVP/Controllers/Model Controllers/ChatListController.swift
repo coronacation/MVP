@@ -13,8 +13,7 @@ class ChatListController {
     
     // MARK: - Constants
     
-    //    private let chatsCollection = Firestore.firestore().collection("Chats")
-    private let chatsCollection = Firestore.firestore().collection(Constants.Chat.collection)
+    private let chatsCollection = Firestore.firestore().collection(Constants.Chat.collectionL1)
     
     
     // MARK: - Shared Instance
@@ -98,7 +97,7 @@ class ChatListController {
         // Under "chats" add document with the threadID.
         
         let chatDocRef = chatsCollection.document(chatOwnerUID)
-            .collection("chats").document(threadID)
+            .collection(Constants.Chat.collectionL2).document(threadID)
         
         chatDocRef.setData(data, merge: false, completion: { (error) in
             if let error = error {
@@ -112,8 +111,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-            //            .collection("chats").order(by: "lastMsgTimestamp", descending: false)
-            .collection("chats").order(by: "lastMsgTimestamp")
+            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp")
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -143,38 +141,6 @@ class ChatListController {
         self.chats = []
         print("#ChatListController stopped listening")
     }
-    
-    //    func fetchChatsOfCurrentUser(_ currentUserUID: String) {
-    //        guard let currentUserUid = currentUser?.userUID else { return }
-    //
-    //        chatsCollection.document(currentUserUid)
-    //            .collection("chats")
-    //            .getDocuments { (convoQuerySnapshot, error) in
-    //                if let error = error {
-    //                    print("Error: \(error)")
-    //                    return
-    //                } else {
-    //
-    //                    guard let snapshot = convoQuerySnapshot,
-    //                        !snapshot.isEmpty
-    //                        else {
-    //                            print("#fetchChatsOfCurrentUser no chats found.")
-    //                            return
-    //                    }
-    //
-    //
-    //                    for doc in snapshot.documents {
-    //                        guard let chat = Chat(dictionary: doc.data()) else {
-    //                            print("#fetchChatsOfCurrentUser failed to init Chat")
-    //                            return
-    //                        }
-    //
-    //                        self.chats.append(chat)
-    //                    } //end for
-    //                    print("#fetchChatsOfCurrentUser 1. Built chats")
-    //                } // end else
-    //        }
-    //    } // end fetchChatsOfCurrentUser
     
     func addUser(_ user: User) {
         usersDictionary[user.uid] = user.firstName
@@ -208,7 +174,7 @@ class ChatListController {
                           fromUserUID: String,
                           completion: @escaping (Bool) -> Void ) {
         
-        chatsCollection.document(fromUserUID).collection("chats")
+        chatsCollection.document(fromUserUID).collection(Constants.Chat.collectionL2)
             .whereField("postID", isEqualTo: postID)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {
