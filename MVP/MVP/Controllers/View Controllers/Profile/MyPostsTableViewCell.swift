@@ -39,5 +39,4 @@ class MyPostsTableViewCell: UITableViewCell {
             }
         }
     }
-    
 }

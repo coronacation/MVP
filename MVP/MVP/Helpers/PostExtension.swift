@@ -14,7 +14,7 @@ extension DummyPost {
     convenience init?(dictionary: [String:Any]) {
         guard let postTitle = dictionary["postTitle"] as? String,
             let postDescription = dictionary["postDescription"] as? String,
-            let userUID = dictionary["userUID"] as? String,
+            let userUID = dictionary["postUserUID"] as? String,
             let postUserFirstName = dictionary["postUserFirstName"] as? String,
             let postDocumentID = dictionary["postDocumentID"] as? String,
             let postCreatedTimestamp = dictionary["postCreatedTimestamp"] as? String,
@@ -35,7 +35,7 @@ extension DummyPost {
                    postImageURL: postImageURL,
                    postFlaggedCount: postFlaggedCount,
                    postLongitude: postLongitude,
-                   postLatitude: postLatitude)
+                   postLatitude: postLatitude )
     }
     
     static func getBy(docID: String, completion: @escaping (Result<DummyPost,PostError>) -> Void) {

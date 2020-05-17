@@ -49,7 +49,6 @@
 		D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57620BA2460C0C000B5D417 /* ProfileViewController.swift */; };
 		D5A21D43246A420C002058A7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE1C9C9246A1C2200AA0B2D /* Roboto-Bold.ttf */; };
 		D5A21D44246A421D002058A7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACE1C9CA246A1C2200AA0B2D /* Roboto-Regular.ttf */; };
-		D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */; };
 		D5A21D4B246B3645002058A7 /* MyPostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */; };
 		D5A21D4E246B5FF0002058A7 /* MyPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */; };
 		D5CF92CA24537B470059110B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF92C924537B470059110B /* AppDelegate.swift */; };
@@ -106,7 +105,6 @@
 		D5762087245A677F00B5D417 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D57620B82460B79100B5D417 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		D57620BA2460C0C000B5D417 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsListTableViewController.swift; sourceTree = "<group>"; };
 		D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewCell.swift; sourceTree = "<group>"; };
 		D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDetailViewController.swift; sourceTree = "<group>"; };
 		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,7 +182,6 @@
 		D5A21D45246B3546002058A7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D5A21D48246B35EF002058A7 /* MyPostsListTableViewController.swift */,
 				6D5EB984246A150500579B00 /* Account+SupportViewController.swift */,
 				D57620BA2460C0C000B5D417 /* ProfileViewController.swift */,
 				D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */,
@@ -483,7 +480,6 @@
 				D56D79742468F1AD00265021 /* PostError.swift in Sources */,
 				D57620BB2460C0C000B5D417 /* ProfileViewController.swift in Sources */,
 				ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */,
-				D5A21D49246B35EF002058A7 /* MyPostsListTableViewController.swift in Sources */,
 				ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
