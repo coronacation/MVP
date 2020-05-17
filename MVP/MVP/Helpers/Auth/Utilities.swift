@@ -57,12 +57,20 @@ struct Constants {
         static let collectionL1 = "ChatsV2"
         static let collectionL2 = "chats"
         
+        static let chatOwnerUID = "chatOwnerUID"
         static let blocked = "blocked"
         static let lastMsg = "lastMsg"
         static let lastMsgTimestamp = "lastMsgTimestamp"
         static let askerUID = "askerUID"
+        static let askerFirstName = "askerFirstName"
+        static let askerLastName = "askerLastName"
+        static let askerPhotoURL = "askerPhotoURL"
         static let postID = "postID"
+        static let postTitle = "postTitle"
         static let postOwnerUID = "postOwnerUID"
+        static let postOwnerFirstName = "postOwnerFirstName"
+        static let postOwnerLastName = "postOwnerLastName"
+        static let postOwnerPhotoURL = "postOwnerPhotoURL"
         static let threadID = "threadID"
     }
     

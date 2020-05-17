@@ -44,33 +44,79 @@ class ChatListController {
                          firstMessage: String,
                          completion: @escaping (Bool) -> Void ){
         
-        // 1. get currentUser's UID
-        guard let currentUserUid = currentUser?.userUID else { return }
+        // get currentUser
+        guard let currentUser = currentUser else {
+            print("#initializeChat could not retrieve curentUser")
+            return
+        }
         
-        // grab post properties
-        let postOwnerUID = post.userUID, postID = post.postDocumentID
         
-        // check for existing message to prevent spam
-        alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
-            if alreadySentMsg {
-                completion(false) // user already sent a message
-            } else {
-                
-                // create Thread
-                ChatThreadController.shared.createThread(postID: postID, postOwnerUID: postOwnerUID, askerUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
-                    print("#alreadyMessaged received threadDocID: " + threadDocID)
+        
+        
+        let postOwnerUID = post.userUID
+        
+        User.getBy(uid: postOwnerUID) { (user) in
+            // grab postOwner properties
+            let postOwnerFirstName = user.firstName,
+            postOwnerPhotoURL = "https://cdn0.iconfinder.com/data/icons/famous-character-vol-1-colored/48/JD-15-512.png" // Deadpool
+            
+            // grab currentUser's properties
+            let askerFirstName = currentUser.firstName,
+            askerLastName = currentUser.lastName,
+            askerPhotoURL = currentUser.photoURL.absoluteString, // Batman
+            currentUserUid = currentUser.userUID
+            
+            // grab post properties
+            let postID = post.postDocumentID,
+            postTitle = post.postTitle
+            
+            // check for existing message to prevent spam
+            self.alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
+                if alreadySentMsg {
+                    completion(false) // user already sent a message
+                } else {
                     
-                    // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, askerUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
-                    
-                    //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, askerUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
-                    
-                    completion(true)
+                    // create Thread
+                    ChatThreadController.shared.createThread(postID: postID, postOwnerUID: postOwnerUID, askerUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
+                        print("#alreadyMessaged received threadDocID: " + threadDocID)
+                        
+                        // create Chat for currentUser
+                        self.createNewChat( chatOwnerUID: currentUserUid,
+                                            askerUID: currentUserUid,
+                                            askerFirstName: askerFirstName,
+                                            askerLastName: askerLastName,
+                                            askerPhotoURL: askerPhotoURL,
+                                            postID: postID,
+                                            postTitle: postTitle,
+                                            postOwnerUID: postOwnerUID,
+                                            postOwnerFirstName: postOwnerFirstName,
+                                            postOwnerLastName: "",
+                                            postOwnerPhotoURL: postOwnerPhotoURL,
+                                            threadID: threadDocID,
+                                            lastMsg: firstMessage,
+                                            lastMsgTimestamp: timestamp )
+                        
+                        //create Chat for post Owner
+                        self.createNewChat( chatOwnerUID: postOwnerUID,
+                                            askerUID: currentUserUid,
+                                            askerFirstName: askerFirstName,
+                                            askerLastName: askerLastName,
+                                            askerPhotoURL: askerPhotoURL,
+                                            postID: postID,
+                                            postTitle: postTitle,
+                                            postOwnerUID: postOwnerUID,
+                                            postOwnerFirstName: postOwnerFirstName,
+                                            postOwnerLastName: "",
+                                            postOwnerPhotoURL: postOwnerPhotoURL,
+                                            threadID: threadDocID,
+                                            lastMsg: firstMessage,
+                                            lastMsgTimestamp: timestamp )
+                        
+                        completion(true)
+                    }
                 }
-            }
-        })
-        
+            })
+        }
         
         
         // TO-DO: updateLastMsg
@@ -79,17 +125,32 @@ class ChatListController {
     
     private func createNewChat( chatOwnerUID: String,
                                 askerUID: String,
-                                postOwnerUID: String,
+                                askerFirstName: String,
+                                askerLastName: String,
+                                askerPhotoURL: String,
                                 postID: String,
+                                postTitle: String,
+                                postOwnerUID: String,
+                                postOwnerFirstName: String,
+                                postOwnerLastName: String,
+                                postOwnerPhotoURL: String,
                                 threadID: String,
                                 lastMsg: String,
                                 lastMsgTimestamp: Timestamp) {
         
-        let data: [String: Any] = Chat( lastMsg: lastMsg,
+        let data: [String: Any] = Chat( chatOwnerUID: chatOwnerUID,
+                                        lastMsg: lastMsg,
                                         lastMsgTimestamp: lastMsgTimestamp,
                                         askerUID: askerUID,
+                                        askerFirstName: askerFirstName,
+                                        askerLastName: askerLastName,
+                                        askerPhotoURL: askerPhotoURL,
                                         postID: postID,
+                                        postTitle: postTitle,
                                         postOwnerUID: postOwnerUID,
+                                        postOwnerFirstName: postOwnerFirstName,
+                                        postOwnerLastName: postOwnerLastName,
+                                        postOwnerPhotoURL: postOwnerPhotoURL,
                                         threadID: threadID ).dictionary
         
         // Add chat document named after the User in the db under root-level collection "Chats"
