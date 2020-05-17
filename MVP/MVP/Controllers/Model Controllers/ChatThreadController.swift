@@ -29,11 +29,7 @@ class ChatThreadController {
                        text: String,
                        completion: @escaping (String, Timestamp) -> Void ) {
         
-        let data: [String: Any] = [
-            "postID": postID,
-            "postOwnerUID": postOwnerUID,
-            "askerUID": askerUID
-        ]
+        let data: [String: Any] = Thread(postID: postID, postOwnerUID: postOwnerUID, askerUID: askerUID).dictionary
         
         let threadDocID = threadsCollection.addDocument(data: data)
     

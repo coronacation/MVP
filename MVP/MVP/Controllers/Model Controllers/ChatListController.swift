@@ -86,15 +86,12 @@ class ChatListController {
                                 lastMsg: String,
                                 lastMsgTimestamp: Timestamp) {
         
-        let data: [String: Any] = [
-            "postID": postID,
-            "postOwnerUID": postOwnerUID,
-            "blocked": false,
-            "askerUID": askerUID,
-            "threadID": threadID,
-            "lastMsg": lastMsg,
-            "lastMsgTimestamp": lastMsgTimestamp
-        ]
+        let data: [String: Any] = Chat( lastMsg: lastMsg,
+                          lastMsgTimestamp: lastMsgTimestamp,
+                          askerUID: askerUID,
+                          postID: postID,
+                          postOwnerUID: postOwnerUID,
+            threadID: threadID ).dictionary
         
         // Add chat document named after the User in the db under root-level collection "Chats"
         // Add subcollection under User document called "chats"
@@ -115,7 +112,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-//            .collection("chats").order(by: "lastMsgTimestamp", descending: false)
+            //            .collection("chats").order(by: "lastMsgTimestamp", descending: false)
             .collection("chats").order(by: "lastMsgTimestamp")
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
@@ -147,37 +144,37 @@ class ChatListController {
         print("#ChatListController stopped listening")
     }
     
-//    func fetchChatsOfCurrentUser(_ currentUserUID: String) {
-//        guard let currentUserUid = currentUser?.userUID else { return }
-//        
-//        chatsCollection.document(currentUserUid)
-//            .collection("chats")
-//            .getDocuments { (convoQuerySnapshot, error) in
-//                if let error = error {
-//                    print("Error: \(error)")
-//                    return
-//                } else {
-//                    
-//                    guard let snapshot = convoQuerySnapshot,
-//                        !snapshot.isEmpty
-//                        else {
-//                            print("#fetchChatsOfCurrentUser no chats found.")
-//                            return
-//                    }
-//                    
-//                    
-//                    for doc in snapshot.documents {
-//                        guard let chat = Chat(dictionary: doc.data()) else {
-//                            print("#fetchChatsOfCurrentUser failed to init Chat")
-//                            return
-//                        }
-//                        
-//                        self.chats.append(chat)
-//                    } //end for
-//                    print("#fetchChatsOfCurrentUser 1. Built chats")
-//                } // end else
-//        }
-//    } // end fetchChatsOfCurrentUser
+    //    func fetchChatsOfCurrentUser(_ currentUserUID: String) {
+    //        guard let currentUserUid = currentUser?.userUID else { return }
+    //
+    //        chatsCollection.document(currentUserUid)
+    //            .collection("chats")
+    //            .getDocuments { (convoQuerySnapshot, error) in
+    //                if let error = error {
+    //                    print("Error: \(error)")
+    //                    return
+    //                } else {
+    //
+    //                    guard let snapshot = convoQuerySnapshot,
+    //                        !snapshot.isEmpty
+    //                        else {
+    //                            print("#fetchChatsOfCurrentUser no chats found.")
+    //                            return
+    //                    }
+    //
+    //
+    //                    for doc in snapshot.documents {
+    //                        guard let chat = Chat(dictionary: doc.data()) else {
+    //                            print("#fetchChatsOfCurrentUser failed to init Chat")
+    //                            return
+    //                        }
+    //
+    //                        self.chats.append(chat)
+    //                    } //end for
+    //                    print("#fetchChatsOfCurrentUser 1. Built chats")
+    //                } // end else
+    //        }
+    //    } // end fetchChatsOfCurrentUser
     
     func addUser(_ user: User) {
         usersDictionary[user.uid] = user.firstName

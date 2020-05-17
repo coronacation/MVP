@@ -11,25 +11,25 @@ import FirebaseFirestore
 
 extension DummyPost {
     
-    convenience init?(dictionary: [String:Any]) {
-        guard let postTitle = dictionary["postTitle"] as? String,
-            let postDescription = dictionary["postDescription"] as? String,
-            let userUID = dictionary["postUserUID"] as? String,
-            let postUserFirstName = dictionary["postUserFirstName"] as? String,
-            let postDocumentID = dictionary["postDocumentID"] as? String,
-            let postCreatedTimestamp = dictionary["postCreatedTimestamp"] as? String,
-            let category = dictionary["category"] as? String,
-            let postImageURL = dictionary["postImageURL"] as? String,
-            let postFlaggedCount = dictionary["postFlaggedCount"] as? Int,
-            let postLongitude = dictionary["postLongitude"] as? Double,
-            let postLatitude = dictionary["postLatitude"] as? Double
+    convenience init?(dictionary: [String:Any], postID: String) {
+        guard let postTitle = dictionary[Constants.Post.title] as? String,
+            let postDescription = dictionary[Constants.Post.description] as? String,
+            let userUID = dictionary[Constants.Post.userUID] as? String,
+            let postUserFirstName = dictionary[Constants.Post.userFirstName
+] as? String,
+            let postCreatedTimestamp = dictionary[Constants.Post.createdTimestamp] as? String,
+            let category = dictionary[Constants.Post.category] as? String,
+            let postImageURL = dictionary[Constants.Post.imageURL] as? String,
+            let postFlaggedCount = dictionary[Constants.Post.flaggedCount] as? Int,
+            let postLongitude = dictionary[Constants.Post.userLongitude] as? Double,
+            let postLatitude = dictionary[Constants.Post.userLatitude] as? Double
             else {return nil}
         
         self.init( postTitle: postTitle,
                    postDescription: postDescription,
                    userUID: userUID,
                    postUserFirstName: postUserFirstName,
-                   postDocumentID: postDocumentID,
+                   postDocumentID: postID,
                    postCreatedTimestamp: postCreatedTimestamp,
                    category: category,
                    postImageURL: postImageURL,
@@ -54,7 +54,7 @@ extension DummyPost {
                         return completion(.failure(.noData))
                 }
                 
-                if let post = DummyPost(dictionary: data) {
+                if let post = DummyPost(dictionary: data, postID: docID) {
                     return completion(.success(post))
                 }
         }

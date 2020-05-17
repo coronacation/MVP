@@ -53,9 +53,38 @@ class Utilities {
 
 struct Constants {
     
+    struct Chat {
+        static let blocked = "blocked"
+        static let lastMsg = "lastMsg"
+        static let lastMsgTimestamp = "lastMsgTimestamp"
+        static let askerUID = "askerUID"
+        static let postID = "postID"
+        static let postOwnerUID = "postOwnerUID"
+        static let threadID = "threadID"
+    }
+    
+    struct Post {
+        static let title = "postTitle"
+        static let description = "postDescription"
+        static let userUID = "postUserUID"
+        static let userFirstName = "postUserFirstName"
+        static let userLatitude = "postUserLatitude"
+        static let userLongitude = "postUserLongitude"
+        static let createdTimestamp = "postCreatedTimestamp"
+        static let imageURL = "postImageURL"
+        static let category = "category"
+        static let flaggedCount = "flaggedCount"
+    }
+    
     struct Storyboard {
         
         static let tabBarViewController = "TabBarVC"
         
+    }
+    
+    struct Thread {
+        static let postID = "postID"
+        static let postOwnerUID = "postOwnerUID"
+        static let askerUID = "askerUID"
     }
 }
