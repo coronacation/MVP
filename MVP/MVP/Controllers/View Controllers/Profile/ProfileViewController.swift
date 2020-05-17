@@ -35,8 +35,9 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUpViews()
+        super.viewWillAppear(animated)
         loadData()
+        setUpViews()
     }
     
     //MARK: - Actions
@@ -78,11 +79,6 @@ class ProfileViewController: UIViewController {
         scrollView.delegate = self
         containerView.isHidden = true
         tableView.isScrollEnabled = false
-        
-        if tableView.visibleCells.count == 0 {
-            tableView.backgroundView = UIImageView(image: UIImage(named: "tableViewBackground"))
-            tableView.separatorStyle = .none
-        }//end of setTVCBackground stuff
     }
     
     func loadData() {
@@ -106,15 +102,12 @@ class ProfileViewController: UIViewController {
                         postLatitude: document.data()["postUserLatitude"] as! Double //,
 //                        postCLLocation: CLLocation(latitude: document.data()["postUserLatitude"] as! Double, longitude: document.data()["postUserLongitude"] as! Double)
                     )
-                    
-                    
                     self.myPosts.append(dummyPost)
-                    
                 }
                 self.tableView.reloadData()
+                self.styleTableViewBackground()
                 
                 print("\n\nCOUNT OF MYPOSTS: \(self.myPosts.count)\n\n")
-                
             }
         }//end of db.collection.getDocuments func
     }//end of loadData func
@@ -156,6 +149,15 @@ class ProfileViewController: UIViewController {
             self.tableView.isScrollEnabled = (tableView.contentOffset.y > 0)
         }
     }//end of scrollViewDidScroll func
+    
+    func styleTableViewBackground() {
+        if tableView.visibleCells.count < 1 {
+            tableView.backgroundView = UIImageView(image: UIImage(named: "tableViewBackground"))
+            tableView.separatorStyle = .none
+        } else {
+            tableView.backgroundView = nil
+        }
+    }
 }//end of ProfileViewController
 
 extension ProfileViewController: PhotoSelectorViewControllerDelegate {
