@@ -33,7 +33,6 @@ class PostDetailViewController: UIViewController {
         // unwrap post
         guard let post = post else { return }
         
-        
         // guard against a user messaging his own post
         let postOwnerUid = post.userUID
         
@@ -42,7 +41,6 @@ class PostDetailViewController: UIViewController {
                 print("Nice try, troll. You can't message yourself.")
                 return
         }
-        
         // TODO: prevent user from spamming postOwner
         //      Counter-point: Maybe that's what the Block User function is for?
         

@@ -41,12 +41,10 @@ class LoginViewController: UIViewController {
                 print("error signing in")
             }
             else {
-                print("user authenticated")
                 //set CurrentUserController.shared.currentUser to whichever user just logged in
                 let db = Firestore.firestore()
                 let usersRef = db.collection("usersV2")
                 if let userUID = Auth.auth().currentUser?.uid {
-                    print("UID grabbed: \(userUID)")
                     
                     usersRef.whereField("uid", isEqualTo: userUID).getDocuments { (querySnapshot, error) in
                         if let error = error {
@@ -58,7 +56,7 @@ class LoginViewController: UIViewController {
                                 let currentUser = CurrentUser(firstName: document.data()["firstName"] as! String, lastName: document.data()["lastName"] as! String, email: document.data()["email"] as! String, userUID: document.data()["uid"] as! String)
                                 
                                 CurrentUserController.shared.currentUser = currentUser
-                                print("\n\nCurrentUser set. API call complete")
+                                print("CurrentUser set. API call complete. UserUID: \(userUID)")
                                 self.transitionToHome()
                             }
                         }

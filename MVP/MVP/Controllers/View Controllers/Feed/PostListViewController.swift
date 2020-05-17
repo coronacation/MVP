@@ -49,6 +49,7 @@ class PostListViewController: UIViewController {
         DispatchQueue.main.async {
          //   self.resultsArray = self.posts
             self.table.reloadData()
+            print("tableview reloaded data thru dispatch queue\n")
         }
     }
     
@@ -80,13 +81,13 @@ class PostListViewController: UIViewController {
                     //                                     }
                     //                                 }
                     //                             }
-                    print(dummyPost.postCLLocation)
                     
                     self.posts.append(dummyPost)
                 }
                 self.table.reloadData()
+                print("tableview reloaded data thru load data func\n")
                 
-                print("\n\nCOUNT OF POSTS: \(self.posts.count)\n\n")
+            //    print("\nCOUNT OF POSTS: \(self.posts.count)\n\n")
                 
             }
         }

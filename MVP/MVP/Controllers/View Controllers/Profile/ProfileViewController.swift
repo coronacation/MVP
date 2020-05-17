@@ -86,15 +86,12 @@ class ProfileViewController: UIViewController {
     }
     
     func loadData() {
-        print("\n\nprofile load data running")
         db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
-            print("\n in completion")
             if let error = error {
                 print("Error getting documents: \(error)")
             }
                 
             else {
-                print("\nprofile load data ELSE running")
                 self.myPosts = []
                 for document in querySnapshot!.documents {
                     
@@ -176,7 +173,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMyPostDetail" {
+        if segue.identifier == "toMyPostDetailVC" {
             if let destinationVC = segue.destination as? MyPostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
                 let myPost = myPosts[indexPath.row]
                 destinationVC.myPost = myPost

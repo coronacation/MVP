@@ -6,8 +6,25 @@
 //  Copyright © 2020 coronacation. All rights reserved.
 //
 
+
+
+
+
+
+//DO NOT USE THIS. THIS IS NOT HOOKED UP TO ANYTHING
+
+
+
+
+
+
+
+
+
+
 import UIKit
 import Firebase
+import MapKit
 import CoreLocation
 
 class MyPostsListTableViewController: UITableViewController {
@@ -18,6 +35,7 @@ class MyPostsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         db = Firestore.firestore()
+        print("FUCK ME\n\n")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,18 +85,20 @@ class MyPostsListTableViewController: UITableViewController {
         
         let myPost = myPosts[indexPath.row]
         cell.myPost = myPost
-        
+        print("\n\nmyPost assigned to cell. title: \(myPost.postTitle)")
         return cell
     }
     
-    /*
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("\n\nSegue running")
+           if segue.identifier == "toMyPostDetailVC" {
+               if let destinationVC = segue.destination as? MyPostDetailViewController, let indexPath = tableView.indexPathForSelectedRow {
+                   let myPost = myPosts[indexPath.row]
+                print("myPost for segue title: \(myPost.postTitle)")
+                   destinationVC.myPost = myPost
+               }
+           }
+       }
 }
