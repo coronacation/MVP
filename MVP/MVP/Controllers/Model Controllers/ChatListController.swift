@@ -111,7 +111,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp")
+            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp", descending: true)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -122,8 +122,14 @@ class ChatListController {
                     switch diff.type {
                     case .added:
                         print("New chat: \(diff.document.data())")
+                        
+                        
+                        // TO-DO this doesn't work. need to sequence it so Post and User get added in time before insert
+                        
+                        
+                        
                         if let chat = Chat(dictionary: diff.document.data()) {
-                            self.chats.insert(chat, at: 0)
+                            self.chats.append(chat)
                         }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
