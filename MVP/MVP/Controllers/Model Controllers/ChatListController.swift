@@ -14,7 +14,7 @@ class ChatListController {
     // MARK: - Constants
     
     //    private let chatsCollection = Firestore.firestore().collection("Chats")
-    private let chatsCollection = Firestore.firestore().collection("ChatsV2")
+    private let chatsCollection = Firestore.firestore().collection(Constants.Chat.collection)
     
     
     // MARK: - Shared Instance
@@ -87,11 +87,11 @@ class ChatListController {
                                 lastMsgTimestamp: Timestamp) {
         
         let data: [String: Any] = Chat( lastMsg: lastMsg,
-                          lastMsgTimestamp: lastMsgTimestamp,
-                          askerUID: askerUID,
-                          postID: postID,
-                          postOwnerUID: postOwnerUID,
-            threadID: threadID ).dictionary
+                                        lastMsgTimestamp: lastMsgTimestamp,
+                                        askerUID: askerUID,
+                                        postID: postID,
+                                        postOwnerUID: postOwnerUID,
+                                        threadID: threadID ).dictionary
         
         // Add chat document named after the User in the db under root-level collection "Chats"
         // Add subcollection under User document called "chats"

@@ -54,6 +54,7 @@ class Utilities {
 struct Constants {
     
     struct Chat {
+        static let collection = "ChatsV2"
         static let blocked = "blocked"
         static let lastMsg = "lastMsg"
         static let lastMsgTimestamp = "lastMsgTimestamp"
@@ -64,6 +65,7 @@ struct Constants {
     }
     
     struct Post {
+        static let collection = "postsV3.1"
         static let title = "postTitle"
         static let description = "postDescription"
         static let userUID = "postUserUID"
@@ -83,6 +85,7 @@ struct Constants {
     }
     
     struct Thread {
+        static let collection = "Threads"
         static let postID = "postID"
         static let postOwnerUID = "postOwnerUID"
         static let askerUID = "askerUID"
