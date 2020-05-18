@@ -17,6 +17,16 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     // MARK: - Properties
     
     var currentUser = CurrentUserController.shared.currentUser!
+    var thread: Thread?
+    
+    
+    // MARK: - Landing pads
+    
+    var threadID: String?
+    var chat: Chat?
+    
+    
+    // MARK: - Maybe not
     var chatListItem: ChatListItem?
     
     
@@ -50,12 +60,24 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
         
-        loadChat()
+        loadThread()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
+//        self.viewDidAppear(animated)
         self.becomeFirstResponder()
+    }
+    
+    
+    // MARK: - Data Source
+    
+    func loadThread() {
+        guard let threadID = threadID,
+            let chat = chat
+            else { return }
+        
+        print("Received on landing pad: \(threadID) and \(chat.postTitle)")
     }
     
     

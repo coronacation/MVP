@@ -91,6 +91,12 @@ class ChatListTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? ChatDetailViewController
                 else { return }
             
+            let threadID = ChatListController.shared.chats[indexPath.row].threadID
+            let chat = ChatListController.shared.chats[indexPath.row]
+            
+            destinationVC.threadID = threadID
+            destinationVC.chat = chat
+            
 //            let user2 = ChatListController.shared.chats[indexPath.row].
             
 //            let chatListItem = ChatListController.shared.chats[indexPath.row]
