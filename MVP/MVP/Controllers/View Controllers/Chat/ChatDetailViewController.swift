@@ -48,7 +48,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         self.user2ImgUrl = "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
         
         
-        navigationItem.title = user2Object?.firstName
+        navigationItem.title = chat?.postTitle
         messageInputBar.delegate = self
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -59,25 +59,25 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
-        
-        loadThread()
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.viewDidAppear(animated)
+        super.viewDidAppear(animated)
         self.becomeFirstResponder()
-    }
-    
-    
-    // MARK: - Data Source
-    
-    func loadThread() {
-        guard let threadID = threadID,
-            let chat = chat
+        
+        guard let threadID = threadID
             else { return }
         
-        print("Received on landing pad: \(threadID) and \(chat.postTitle)")
+        ChatThreadController.shared.startListener(threadID: threadID) {
+            print("#ChatThreadController startListener")
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        ChatThreadController.shared.stopListener()
     }
     
     

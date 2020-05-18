@@ -24,7 +24,6 @@ class ChatListController {
     // MARK: - Properties
     
     var chats: [Chat] = []
-    var listener: ListenerRegistration? = nil
     var currentUser: CurrentUser? {
         didSet {
             guard let currentUser = currentUser else { return }
@@ -33,6 +32,8 @@ class ChatListController {
             usersDictionary[userUID] = currentUser.firstName
         }
     }
+    
+    private var listener: ListenerRegistration? = nil
     
     /// usersDictionary enables fast lookup of a user's firstName. key = UID. value = firstName.
     var usersDictionary: [String:String] = [:]
