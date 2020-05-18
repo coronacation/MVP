@@ -43,6 +43,10 @@ class Chat {
         return chatOwnerUID == askerUID ? postOwnerPhotoURL : askerPhotoURL
     }
     
+    var lastMsgTimeAgo: String {
+        return lastMsgTimestamp.dateValue().stringTimeAgo()
+    }
+    
     var dictionary: [String: Any] {
         get {
             return [
