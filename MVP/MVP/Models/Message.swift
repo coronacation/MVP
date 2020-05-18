@@ -12,18 +12,22 @@ import MessageKit
 
 struct Message {
     
-    var id: String
+    // MARK: - Properties shared with Firestore
+    
+    var id: String // TO-DO: Delete... maybe?
     var content: String
     var created: Timestamp
     var senderID: String
     
+    
+    // MARK: - Computed Properties
+    
     var dictionary: [String: Any] {
         
         return [
-            "id": id,
-            "content": content,
-            "created": created,
-            "senderID": senderID]
+            Constants.Message.content: content,
+            Constants.Message.created: created,
+            Constants.Message.senderID: senderID]
     }
     
     var createdDate: Date {
@@ -36,13 +40,12 @@ struct Message {
 extension Message {
     init?(dictionary: [String: Any]) {
         
-        guard let id = dictionary["id"] as? String,
-            let content = dictionary["content"] as? String,
-            let created = dictionary["created"] as? Timestamp,
-            let senderID = dictionary["senderID"] as? String
+        guard let content = dictionary[Constants.Message.content] as? String,
+            let created = dictionary[Constants.Message.created] as? Timestamp,
+            let senderID = dictionary[Constants.Message.senderID] as? String
             else {return nil}
         
-        self.init(id: id, content: content, created: created, senderID: senderID)
+        self.init(id: "", content: content, created: created, senderID: senderID)
         
     }
 }

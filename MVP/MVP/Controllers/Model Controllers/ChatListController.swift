@@ -13,8 +13,7 @@ class ChatListController {
     
     // MARK: - Constants
     
-    //    private let chatsCollection = Firestore.firestore().collection("Chats")
-    private let chatsCollection = Firestore.firestore().collection("ChatsV2")
+    private let chatsCollection = Firestore.firestore().collection(Constants.Chat.collectionL1)
     
     
     // MARK: - Shared Instance
@@ -25,7 +24,6 @@ class ChatListController {
     // MARK: - Properties
     
     var chats: [Chat] = []
-    var listener: ListenerRegistration? = nil
     var currentUser: CurrentUser? {
         didSet {
             guard let currentUser = currentUser else { return }
@@ -34,6 +32,8 @@ class ChatListController {
             usersDictionary[userUID] = currentUser.firstName
         }
     }
+    
+    private var listener: ListenerRegistration? = nil
     
     /// usersDictionary enables fast lookup of a user's firstName. key = UID. value = firstName.
     var usersDictionary: [String:String] = [:]
@@ -45,33 +45,79 @@ class ChatListController {
                          firstMessage: String,
                          completion: @escaping (Bool) -> Void ){
         
-        // 1. get currentUser's UID
-        guard let currentUserUid = currentUser?.userUID else { return }
+        // get currentUser
+        guard let currentUser = currentUser else {
+            print("#initializeChat could not retrieve curentUser")
+            return
+        }
         
-        // grab post properties
-        let postOwnerUID = post.userUID, postID = post.postDocumentID
         
-        // check for existing message to prevent spam
-        alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
-            if alreadySentMsg {
-                completion(false) // user already sent a message
-            } else {
-                
-                // create Thread
-                ChatThreadController.shared.createThread(postID: postID, postOwnerUID: postOwnerUID, askerUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
-                    print("#alreadyMessaged received threadDocID: " + threadDocID)
+        
+        
+        let postOwnerUID = post.userUID
+        
+        User.getBy(uid: postOwnerUID) { (user) in
+            // grab postOwner properties
+            let postOwnerFirstName = user.firstName,
+            postOwnerPhotoURL = "https://cdn0.iconfinder.com/data/icons/famous-character-vol-1-colored/48/JD-15-512.png" // Deadpool
+            
+            // grab currentUser's properties
+            let askerFirstName = currentUser.firstName,
+            askerLastName = currentUser.lastName,
+            askerPhotoURL = currentUser.photoURL.absoluteString, // Batman
+            currentUserUid = currentUser.userUID
+            
+            // grab post properties
+            let postID = post.postDocumentID,
+            postTitle = post.postTitle
+            
+            // check for existing message to prevent spam
+            self.alreadyMessaged(postID: postID, fromUserUID: currentUserUid, completion: { (alreadySentMsg) in
+                if alreadySentMsg {
+                    completion(false) // user already sent a message
+                } else {
                     
-                    // create Chat for currentUser
-                    self.createNewChat(chatOwnerUID: currentUserUid, askerUID: postOwnerUID, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
-                    
-                    //create Chat for post Owner
-                    self.createNewChat(chatOwnerUID: postOwnerUID, askerUID: currentUserUid, postOwnerUID: postOwnerUID, postID: postID, threadID: threadDocID, lastMsg: firstMessage, lastMsgTimestamp: timestamp)
-                    
-                    completion(true)
+                    // create Thread
+                    ChatThreadController.shared.createThread(postID: postID, postOwnerUID: postOwnerUID, askerUID: currentUserUid, text: firstMessage) { (threadDocID, timestamp) in
+                        print("#alreadyMessaged received threadDocID: " + threadDocID)
+                        
+                        // create Chat for currentUser
+                        self.createNewChat( chatOwnerUID: currentUserUid,
+                                            askerUID: currentUserUid,
+                                            askerFirstName: askerFirstName,
+                                            askerLastName: askerLastName,
+                                            askerPhotoURL: askerPhotoURL,
+                                            postID: postID,
+                                            postTitle: postTitle,
+                                            postOwnerUID: postOwnerUID,
+                                            postOwnerFirstName: postOwnerFirstName,
+                                            postOwnerLastName: "",
+                                            postOwnerPhotoURL: postOwnerPhotoURL,
+                                            threadID: threadDocID,
+                                            lastMsg: firstMessage,
+                                            lastMsgTimestamp: timestamp )
+                        
+                        //create Chat for post Owner
+                        self.createNewChat( chatOwnerUID: postOwnerUID,
+                                            askerUID: currentUserUid,
+                                            askerFirstName: askerFirstName,
+                                            askerLastName: askerLastName,
+                                            askerPhotoURL: askerPhotoURL,
+                                            postID: postID,
+                                            postTitle: postTitle,
+                                            postOwnerUID: postOwnerUID,
+                                            postOwnerFirstName: postOwnerFirstName,
+                                            postOwnerLastName: "",
+                                            postOwnerPhotoURL: postOwnerPhotoURL,
+                                            threadID: threadDocID,
+                                            lastMsg: firstMessage,
+                                            lastMsgTimestamp: timestamp )
+                        
+                        completion(true)
+                    }
                 }
-            }
-        })
-        
+            })
+        }
         
         
         // TO-DO: updateLastMsg
@@ -80,28 +126,40 @@ class ChatListController {
     
     private func createNewChat( chatOwnerUID: String,
                                 askerUID: String,
-                                postOwnerUID: String,
+                                askerFirstName: String,
+                                askerLastName: String,
+                                askerPhotoURL: String,
                                 postID: String,
+                                postTitle: String,
+                                postOwnerUID: String,
+                                postOwnerFirstName: String,
+                                postOwnerLastName: String,
+                                postOwnerPhotoURL: String,
                                 threadID: String,
                                 lastMsg: String,
                                 lastMsgTimestamp: Timestamp) {
         
-        let data: [String: Any] = [
-            "postID": postID,
-            "postOwnerUID": postOwnerUID,
-            "blocked": false,
-            "askerUID": askerUID,
-            "threadID": threadID,
-            "lastMsg": lastMsg,
-            "lastMsgTimestamp": lastMsgTimestamp
-        ]
+        let data: [String: Any] = Chat( chatOwnerUID: chatOwnerUID,
+                                        lastMsg: lastMsg,
+                                        lastMsgTimestamp: lastMsgTimestamp,
+                                        askerUID: askerUID,
+                                        askerFirstName: askerFirstName,
+                                        askerLastName: askerLastName,
+                                        askerPhotoURL: askerPhotoURL,
+                                        postID: postID,
+                                        postTitle: postTitle,
+                                        postOwnerUID: postOwnerUID,
+                                        postOwnerFirstName: postOwnerFirstName,
+                                        postOwnerLastName: postOwnerLastName,
+                                        postOwnerPhotoURL: postOwnerPhotoURL,
+                                        threadID: threadID ).dictionary
         
         // Add chat document named after the User in the db under root-level collection "Chats"
         // Add subcollection under User document called "chats"
         // Under "chats" add document with the threadID.
         
         let chatDocRef = chatsCollection.document(chatOwnerUID)
-            .collection("chats").document(threadID)
+            .collection(Constants.Chat.collectionL2).document(threadID)
         
         chatDocRef.setData(data, merge: false, completion: { (error) in
             if let error = error {
@@ -115,8 +173,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-//            .collection("chats").order(by: "lastMsgTimestamp", descending: false)
-            .collection("chats").order(by: "lastMsgTimestamp")
+            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp", descending: true)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -127,8 +184,14 @@ class ChatListController {
                     switch diff.type {
                     case .added:
                         print("New chat: \(diff.document.data())")
+                        
+                        
+                        // TO-DO this doesn't work. need to sequence it so Post and User get added in time before insert
+                        
+                        
+                        
                         if let chat = Chat(dictionary: diff.document.data()) {
-                            self.chats.insert(chat, at: 0)
+                            self.chats.append(chat)
                         }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
@@ -147,63 +210,51 @@ class ChatListController {
         print("#ChatListController stopped listening")
     }
     
-//    func fetchChatsOfCurrentUser(_ currentUserUID: String) {
-//        guard let currentUserUid = currentUser?.userUID else { return }
-//        
-//        chatsCollection.document(currentUserUid)
-//            .collection("chats")
-//            .getDocuments { (convoQuerySnapshot, error) in
-//                if let error = error {
-//                    print("Error: \(error)")
-//                    return
-//                } else {
-//                    
-//                    guard let snapshot = convoQuerySnapshot,
-//                        !snapshot.isEmpty
-//                        else {
-//                            print("#fetchChatsOfCurrentUser no chats found.")
-//                            return
-//                    }
-//                    
-//                    
-//                    for doc in snapshot.documents {
-//                        guard let chat = Chat(dictionary: doc.data()) else {
-//                            print("#fetchChatsOfCurrentUser failed to init Chat")
-//                            return
-//                        }
-//                        
-//                        self.chats.append(chat)
-//                    } //end for
-//                    print("#fetchChatsOfCurrentUser 1. Built chats")
-//                } // end else
-//        }
-//    } // end fetchChatsOfCurrentUser
-    
     func addUser(_ user: User) {
         usersDictionary[user.uid] = user.firstName
     }
     
-    func updateLastMsg(chatListItem: ChatListItem, lastMsgDocRef: DocumentReference, messageText: String, messageTime: Timestamp) {
+    func updateLastMsg( threadID: String,
+                        askerUID: String,
+                        postOwnerUID: String,
+                        lastMsg: String,
+                        lastMsgTimestamp: Timestamp ) {
         
-        // update local ChatListItem
-        var tempItem = chatListItem
-        tempItem.lastMsg = messageText
-        tempItem.lastTime = messageTime.description
+        let lastMsgData: [String: Any] = [
+            Constants.Chat.lastMsg: lastMsg,
+            Constants.Chat.lastMsgTimestamp: lastMsgTimestamp
+        ]
         
+        // update asker
+        chatsCollection.document(askerUID)
+            .collection(Constants.Chat.collectionL2).document(threadID).updateData(lastMsgData)
         
-        // update Firestore
-        
-        let chatRef = chatListItem.chatRef
-        let data: [String : Any] = [ "lastMsgDocRef" : lastMsgDocRef,
-                                     "lastMsg" : messageText,
-                                     "lastTime" : messageTime ]
-        
-        chatRef.updateData(data) { (error) in
-            if let error = error {
-                print("#ChatListItem: Error in updateLastMsg: \(error)")
-            }
-        }
+        // update postOwner
+        chatsCollection.document(postOwnerUID)
+            .collection(Constants.Chat.collectionL2).document(threadID).updateData(lastMsgData)
     }
+    
+//    func updateLastMsg(chatListItem: ChatListItem, lastMsgDocRef: DocumentReference, messageText: String, messageTime: Timestamp) {
+//
+//        // update local ChatListItem
+//        var tempItem = chatListItem
+//        tempItem.lastMsg = messageText
+//        tempItem.lastTime = messageTime.description
+//
+//
+//        // update Firestore
+//
+//        let chatRef = chatListItem.chatRef
+//        let data: [String : Any] = [ "lastMsgDocRef" : lastMsgDocRef,
+//                                     "lastMsg" : messageText,
+//                                     "lastTime" : messageTime ]
+//
+//        chatRef.updateData(data) { (error) in
+//            if let error = error {
+//                print("#ChatListItem: Error in updateLastMsg: \(error)")
+//            }
+//        }
+//    }
     
     // MARK: - Helpers
     
@@ -211,7 +262,7 @@ class ChatListController {
                           fromUserUID: String,
                           completion: @escaping (Bool) -> Void ) {
         
-        chatsCollection.document(fromUserUID).collection("chats")
+        chatsCollection.document(fromUserUID).collection(Constants.Chat.collectionL2)
             .whereField("postID", isEqualTo: postID)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {

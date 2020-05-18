@@ -35,6 +35,7 @@
 		ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047AF24660868002F2CA3 /* ChatListItem.swift */; };
 		ACD047B424661C34002F2CA3 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047B324661C33002F2CA3 /* ChatListController.swift */; };
 		ACE1883624646F2E008CC86A /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE1883524646F2E008CC86A /* UserExtension.swift */; };
+		ACE6737A2470FDAE0065256F /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE673792470FDAE0065256F /* Thread.swift */; };
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
 		D56D79722468F15200265021 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D79712468F15200265021 /* PostController.swift */; };
@@ -92,6 +93,7 @@
 		ACE1883524646F2E008CC86A /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
 		ACE1C9C9246A1C2200AA0B2D /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ACE1C9CA246A1C2200AA0B2D /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		ACE673792470FDAE0065256F /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
 		B4FC19AE417711957313A323 /* Pods-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.release.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.release.xcconfig"; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				ACEF808C245A149B009459FF /* Category.swift */,
 				AC23ABCA245A8C0C002D7764 /* Message.swift */,
 				AC9135BF245CCD5C006562AA /* Chat.swift */,
+				ACE673792470FDAE0065256F /* Thread.swift */,
 				ACD047AF24660868002F2CA3 /* ChatListItem.swift */,
 			);
 			path = Models;
@@ -464,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D316B49246E583F000EA687 /* RoundButton.swift in Sources */,
+				ACE6737A2470FDAE0065256F /* Thread.swift in Sources */,
 				D5762084245A456600B5D417 /* LoginViewController.swift in Sources */,
 				6D4A8A662458D32700F69923 /* PostListViewController.swift in Sources */,
 				D56D79762468F20C00265021 /* PostTableViewCell.swift in Sources */,
@@ -670,7 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66J9D7PXPT;
+				DEVELOPMENT_TEAM = 6QY69PUF72;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,7 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66J9D7PXPT;
+				DEVELOPMENT_TEAM = 6QY69PUF72;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -51,9 +51,9 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         
-        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].postOwner?.firstName
+        cell.textLabel?.text = ChatListController.shared.chats[indexPath.row].otherUserFirstName
         
-//        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].offer
+        cell.detailTextLabel?.text = ChatListController.shared.chats[indexPath.row].lastMsg + "\n" + ChatListController.shared.chats[indexPath.row].lastMsgTimeAgo
         
         return cell
     }
@@ -90,6 +90,12 @@ class ChatListTableViewController: UITableViewController {
                 //                let destinationVC = segue.destination as? ChatViewController
                 let destinationVC = segue.destination as? ChatDetailViewController
                 else { return }
+            
+            let threadID = ChatListController.shared.chats[indexPath.row].threadID
+            let chat = ChatListController.shared.chats[indexPath.row]
+            
+            destinationVC.threadID = threadID
+            destinationVC.chat = chat
             
 //            let user2 = ChatListController.shared.chats[indexPath.row].
             

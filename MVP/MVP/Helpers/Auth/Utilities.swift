@@ -53,9 +53,60 @@ class Utilities {
 
 struct Constants {
     
+    struct Chat {
+        static let collectionL1 = "ChatsV2"
+        static let collectionL2 = "chats"
+        
+        static let chatOwnerUID = "chatOwnerUID"
+        static let blocked = "blocked"
+        static let lastMsg = "lastMsg"
+        static let lastMsgTimestamp = "lastMsgTimestamp"
+        static let askerUID = "askerUID"
+        static let askerFirstName = "askerFirstName"
+        static let askerLastName = "askerLastName"
+        static let askerPhotoURL = "askerPhotoURL"
+        static let postID = "postID"
+        static let postTitle = "postTitle"
+        static let postOwnerUID = "postOwnerUID"
+        static let postOwnerFirstName = "postOwnerFirstName"
+        static let postOwnerLastName = "postOwnerLastName"
+        static let postOwnerPhotoURL = "postOwnerPhotoURL"
+        static let threadID = "threadID"
+    }
+    
+    struct Message {
+         static let content = "content"
+         static let created = "created"
+         static let senderID = "senderID"
+    }
+    
+    struct Post {
+        static let collection = "postsV3.1"
+        
+        static let title = "postTitle"
+        static let description = "postDescription"
+        static let userUID = "postUserUID"
+        static let userFirstName = "postUserFirstName"
+        static let userLatitude = "postUserLatitude"
+        static let userLongitude = "postUserLongitude"
+        static let createdTimestamp = "postCreatedTimestamp"
+        static let imageURL = "postImageURL"
+        static let category = "category"
+        static let flaggedCount = "flaggedCount"
+    }
+    
     struct Storyboard {
         
         static let tabBarViewController = "TabBarVC"
         
+    }
+    
+    struct Thread {
+        static let collectionL1 = "Threads"
+        static let collectionL2 = "messages"
+        
+        static let postID = "postID"
+        static let postOwnerUID = "postOwnerUID"
+        static let askerUID = "askerUID"
     }
 }

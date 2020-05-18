@@ -17,6 +17,16 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     // MARK: - Properties
     
     var currentUser = CurrentUserController.shared.currentUser!
+    var thread: Thread?
+    
+    
+    // MARK: - Landing pads
+    
+    var threadID: String?
+    var chat: Chat?
+    
+    
+    // MARK: - Maybe not
     var chatListItem: ChatListItem?
     
     
@@ -27,7 +37,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     
     private var chatDocReference: DocumentReference?
     
-    var messages: [Message] = []
+    
     
     
     // MARK: - Lifecycle Methods
@@ -38,7 +48,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         self.user2ImgUrl = "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
         
         
-        navigationItem.title = user2Object?.firstName
+        navigationItem.title = chat?.postTitle
         messageInputBar.delegate = self
         navigationItem.largeTitleDisplayMode = .never
         maintainPositionOnKeyboardFrameChanged = true
@@ -49,13 +59,43 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
-        
-        loadChat()
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.becomeFirstResponder()
+        
+        guard let threadID = threadID else { return }
+        
+        ChatThreadController.shared.startListener(threadID: threadID) {
+            self.messagesCollectionView.reloadData()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        ChatThreadController.shared.stopListener()
+    }
+    
+    
+    // MARK: - Collections View Data Source
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        
+        return ChatThreadController.shared.messages[indexPath.section]
+        
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        
+        if ChatThreadController.shared.messages.count == 0 {
+            print("No messages to display")
+            return 0
+        } else {
+            return ChatThreadController.shared.messages.count
+        }
     }
     
     
@@ -148,7 +188,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     
     private func insertNewMessage(_ message: Message) {
         
-        messages.append(message)
+//        messages.append(message)
         messagesCollectionView.reloadData()
         
         DispatchQueue.main.async {
@@ -188,21 +228,8 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         
     }
     
-    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        
-        return messages[indexPath.section]
-        
-    }
     
-    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        
-        if messages.count == 0 {
-            print("No messages to display")
-            return 0
-        } else {
-            return messages.count
-        }
-    }
+    
     
     
     // MARK: - MessagesLayoutDelegate
@@ -243,23 +270,39 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
-        let message = Message(id: UUID().uuidString,
-                              content: text,
-                              created: Timestamp(),
-                              senderID: currentUser.userUID)
-        
-        insertNewMessage(message)
-//        save(message, completion: )
-        save(message) { (lastMsgDocRef, messageText, timestamp) in
-            // save lastMsgDocRef in Chat document in Firestore
+        if let chat = chat,
+            let threadID = threadID {
             
-            guard let chatListItem = self.chatListItem else { return }
             
-            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: messageText, messageTime: timestamp)
+            ChatThreadController.shared.sendMessage(askerUID: chat.askerUID,
+                                                    postOwnerUID: chat.postOwnerUID,
+                                                    threadID: threadID,
+                                                    senderUID: currentUser.userUID,
+                                                    text: text)
+            
+            
+            
+            
+            //        let message = Message(id: "",
+            //                              content: text,
+            //                              created: Timestamp(),
+            //                              senderID: currentUser.userUID)
+            
+            //        insertNewMessage(message)
+            //        save(message, completion: )
+            //        save(message) { (lastMsgDocRef, messageText, timestamp) in
+            //            // save lastMsgDocRef in Chat document in Firestore
+            //
+            //            guard let chatListItem = self.chatListItem else { return }
+            //
+            //            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: messageText, messageTime: timestamp)
+            //        }
+            
+            inputBar.inputTextView.text = ""
+            messagesCollectionView.reloadData()
+            messagesCollectionView.scrollToBottom(animated: true)
+        } else {
+            print("error: something's wrong with either chat or threadID. chat = \(chat). threadID = \(threadID)")
         }
-        
-        inputBar.inputTextView.text = ""
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToBottom(animated: true)
     }
 }
