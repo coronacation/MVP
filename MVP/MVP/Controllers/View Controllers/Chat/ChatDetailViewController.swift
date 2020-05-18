@@ -37,7 +37,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     
     private var chatDocReference: DocumentReference?
     
-    var messages: [Message] = []
+    
     
     
     // MARK: - Lifecycle Methods
@@ -66,11 +66,10 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         super.viewDidAppear(animated)
         self.becomeFirstResponder()
         
-        guard let threadID = threadID
-            else { return }
+        guard let threadID = threadID else { return }
         
         ChatThreadController.shared.startListener(threadID: threadID) {
-            print("#ChatThreadController startListener")
+            self.messagesCollectionView.reloadData()
         }
     }
     
@@ -78,6 +77,25 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         super.viewDidDisappear(animated)
         
         ChatThreadController.shared.stopListener()
+    }
+    
+    
+    // MARK: - Collections View Data Source
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        
+        return ChatThreadController.shared.messages[indexPath.section]
+        
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        
+        if ChatThreadController.shared.messages.count == 0 {
+            print("No messages to display")
+            return 0
+        } else {
+            return ChatThreadController.shared.messages.count
+        }
     }
     
     
@@ -170,7 +188,7 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
     
     private func insertNewMessage(_ message: Message) {
         
-        messages.append(message)
+//        messages.append(message)
         messagesCollectionView.reloadData()
         
         DispatchQueue.main.async {
@@ -210,21 +228,8 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         
     }
     
-    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        
-        return messages[indexPath.section]
-        
-    }
     
-    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        
-        if messages.count == 0 {
-            print("No messages to display")
-            return 0
-        } else {
-            return messages.count
-        }
-    }
+    
     
     
     // MARK: - MessagesLayoutDelegate
