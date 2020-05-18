@@ -41,25 +41,39 @@ class ChatThreadController {
         
         let threadDocID = threadsCollection.addDocument(data: data)
     
-        createMessage(threadID: threadDocID.documentID, askerUID: askerUID, text: text) { (timestamp) in
-            
-            
-            
+        addMessage(threadID: threadDocID.documentID, senderUID: askerUID, text: text) { (timestamp) in
             
             completion(threadDocID.documentID, timestamp)
         }
     }
     
-    func createMessage( threadID: String,
-                        askerUID: String,
-                        text: String,
-                        completion: @escaping (Timestamp) -> Void ) {
+    func sendMessage( askerUID: String,
+                      postOwnerUID: String,
+                      threadID: String,
+                      senderUID: String,
+                      text: String ) {
+        addMessage( threadID: threadID,
+                    senderUID: senderUID,
+                    text: text) { (timestamp) in
+                        ChatListController.shared.updateLastMsg(
+                            threadID: threadID,
+                            askerUID: askerUID,
+                            postOwnerUID: postOwnerUID,
+                            lastMsg: text,
+                            lastMsgTimestamp: timestamp )
+        }
+    }
+    
+    private func addMessage( threadID: String,
+                             senderUID: String,
+                             text: String,
+                             completion: @escaping (Timestamp) -> Void ) {
         
         let timestamp = Timestamp()
         
         
         
-        let data: [String: Any] = Message(id: "", content: text, created: timestamp, senderID: askerUID).dictionary
+        let data: [String: Any] = Message(id: "", content: text, created: timestamp, senderID: senderUID).dictionary
         
         threadsCollection.document(threadID).collection(Constants.Thread.collectionL2)
         .addDocument(data: data)
@@ -70,7 +84,7 @@ class ChatThreadController {
     func startListener( threadID: String, completion: @escaping () -> Void ) {
         
         self.listener = threadsCollection.document(threadID)
-            .collection(Constants.Thread.collectionL2).order(by: Constants.Message.created, descending: true)
+            .collection(Constants.Thread.collectionL2).order(by: Constants.Message.created)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatThreadController: Error fetching messages: \(error!)")

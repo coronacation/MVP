@@ -214,27 +214,47 @@ class ChatListController {
         usersDictionary[user.uid] = user.firstName
     }
     
-    func updateLastMsg(chatListItem: ChatListItem, lastMsgDocRef: DocumentReference, messageText: String, messageTime: Timestamp) {
+    func updateLastMsg( threadID: String,
+                        askerUID: String,
+                        postOwnerUID: String,
+                        lastMsg: String,
+                        lastMsgTimestamp: Timestamp ) {
         
-        // update local ChatListItem
-        var tempItem = chatListItem
-        tempItem.lastMsg = messageText
-        tempItem.lastTime = messageTime.description
+        let lastMsgData: [String: Any] = [
+            Constants.Chat.lastMsg: lastMsg,
+            Constants.Chat.lastMsgTimestamp: lastMsgTimestamp
+        ]
         
+        // update asker
+        chatsCollection.document(askerUID)
+            .collection(Constants.Chat.collectionL2).document(threadID).updateData(lastMsgData)
         
-        // update Firestore
-        
-        let chatRef = chatListItem.chatRef
-        let data: [String : Any] = [ "lastMsgDocRef" : lastMsgDocRef,
-                                     "lastMsg" : messageText,
-                                     "lastTime" : messageTime ]
-        
-        chatRef.updateData(data) { (error) in
-            if let error = error {
-                print("#ChatListItem: Error in updateLastMsg: \(error)")
-            }
-        }
+        // update postOwner
+        chatsCollection.document(postOwnerUID)
+            .collection(Constants.Chat.collectionL2).document(threadID).updateData(lastMsgData)
     }
+    
+//    func updateLastMsg(chatListItem: ChatListItem, lastMsgDocRef: DocumentReference, messageText: String, messageTime: Timestamp) {
+//
+//        // update local ChatListItem
+//        var tempItem = chatListItem
+//        tempItem.lastMsg = messageText
+//        tempItem.lastTime = messageTime.description
+//
+//
+//        // update Firestore
+//
+//        let chatRef = chatListItem.chatRef
+//        let data: [String : Any] = [ "lastMsgDocRef" : lastMsgDocRef,
+//                                     "lastMsg" : messageText,
+//                                     "lastTime" : messageTime ]
+//
+//        chatRef.updateData(data) { (error) in
+//            if let error = error {
+//                print("#ChatListItem: Error in updateLastMsg: \(error)")
+//            }
+//        }
+//    }
     
     // MARK: - Helpers
     

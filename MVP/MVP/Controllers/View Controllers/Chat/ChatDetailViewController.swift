@@ -270,23 +270,39 @@ extension ChatDetailViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         
-        let message = Message(id: UUID().uuidString,
-                              content: text,
-                              created: Timestamp(),
-                              senderID: currentUser.userUID)
-        
-        insertNewMessage(message)
-//        save(message, completion: )
-        save(message) { (lastMsgDocRef, messageText, timestamp) in
-            // save lastMsgDocRef in Chat document in Firestore
+        if let chat = chat,
+            let threadID = threadID {
             
-            guard let chatListItem = self.chatListItem else { return }
             
-            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: messageText, messageTime: timestamp)
+            ChatThreadController.shared.sendMessage(askerUID: chat.askerUID,
+                                                    postOwnerUID: chat.postOwnerUID,
+                                                    threadID: threadID,
+                                                    senderUID: currentUser.userUID,
+                                                    text: text)
+            
+            
+            
+            
+            //        let message = Message(id: "",
+            //                              content: text,
+            //                              created: Timestamp(),
+            //                              senderID: currentUser.userUID)
+            
+            //        insertNewMessage(message)
+            //        save(message, completion: )
+            //        save(message) { (lastMsgDocRef, messageText, timestamp) in
+            //            // save lastMsgDocRef in Chat document in Firestore
+            //
+            //            guard let chatListItem = self.chatListItem else { return }
+            //
+            //            ChatListController.shared.updateLastMsg(chatListItem: chatListItem, lastMsgDocRef: lastMsgDocRef, messageText: messageText, messageTime: timestamp)
+            //        }
+            
+            inputBar.inputTextView.text = ""
+            messagesCollectionView.reloadData()
+            messagesCollectionView.scrollToBottom(animated: true)
+        } else {
+            print("error: something's wrong with either chat or threadID. chat = \(chat). threadID = \(threadID)")
         }
-        
-        inputBar.inputTextView.text = ""
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToBottom(animated: true)
     }
 }
