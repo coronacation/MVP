@@ -198,7 +198,8 @@ class ChatListController {
                         
                         if let chat = Chat(dictionary: diff.document.data()) {
                             if let index = self.chats.firstIndex(of: chat) {
-                                self.chats[index] = chat
+                                self.chats.remove(at: Int(index))
+                                self.chats.insert(chat, at: 0)
                             }
                         }
                         
