@@ -195,6 +195,13 @@ class ChatListController {
                         }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
+                        
+                        if let chat = Chat(dictionary: diff.document.data()) {
+                            if let index = self.chats.firstIndex(of: chat) {
+                                self.chats[index] = chat
+                            }
+                        }
+                        
                     case .removed:
                         print("Removed chat: \(diff.document.data())")
                     }
