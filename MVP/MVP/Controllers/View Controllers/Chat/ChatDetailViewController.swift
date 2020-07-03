@@ -70,6 +70,8 @@ class ChatDetailViewController: MessagesViewController, MessagesDataSource, Mess
         
         ChatThreadController.shared.startListener(threadID: threadID) {
             self.messagesCollectionView.reloadData()
+            
+            self.messagesCollectionView.scrollToBottom()
         }
     }
     
