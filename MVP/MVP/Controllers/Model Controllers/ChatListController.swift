@@ -173,7 +173,7 @@ class ChatListController {
         guard let currentUserUid = currentUser?.userUID else { return }
         
         self.listener = chatsCollection.document(currentUserUid)
-            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp", descending: true)
+            .collection(Constants.Chat.collectionL2).order(by: "lastMsgTimestamp", descending: false)
             .addSnapshotListener { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("#ChatListController: Error fetching conversations: \(error!)")
@@ -191,10 +191,18 @@ class ChatListController {
                         
                         
                         if let chat = Chat(dictionary: diff.document.data()) {
-                            self.chats.append(chat)
+                            self.chats.insert(chat, at: 0)
                         }
                     case .modified:
                         print("Modified chat: \(diff.document.data())")
+                        
+                        if let chat = Chat(dictionary: diff.document.data()) {
+                            if let index = self.chats.firstIndex(of: chat) {
+                                self.chats.remove(at: Int(index))
+                                self.chats.insert(chat, at: 0)
+                            }
+                        }
+                        
                     case .removed:
                         print("Removed chat: \(diff.document.data())")
                     }

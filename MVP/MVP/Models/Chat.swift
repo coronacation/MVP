@@ -188,3 +188,10 @@ extension Chat {
         }
     }
 }
+
+// MARK: - Equatable
+extension Chat: Equatable {
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
+        return lhs.threadID == rhs.threadID
+    }
+}
