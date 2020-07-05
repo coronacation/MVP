@@ -109,7 +109,7 @@
 		D57620BA2460C0C000B5D417 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D5A21D4A246B3645002058A7 /* MyPostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewCell.swift; sourceTree = "<group>"; };
 		D5A21D4D246B5FF0002058A7 /* MyPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostDetailViewController.swift; sourceTree = "<group>"; };
-		D5CF92C624537B470059110B /* MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5CF92C624537B470059110B /* WeShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CF92C924537B470059110B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5CF92CB24537B470059110B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D5CF92D024537B470059110B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		D5CF92C724537B470059110B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5CF92C624537B470059110B /* MVP.app */,
+				D5CF92C624537B470059110B /* WeShare.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 			);
 			name = MVP;
 			productName = MVP;
-			productReference = D5CF92C624537B470059110B /* MVP.app */;
+			productReference = D5CF92C624537B470059110B /* WeShare.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -680,8 +680,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "0.0.1-alpha";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.MVP;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WeShare;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -700,8 +701,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "0.0.1-alpha";
 				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.MVP;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = WeShare;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
