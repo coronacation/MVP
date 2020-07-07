@@ -1,6 +1,6 @@
 # How to Version
 
-Once you're happy with develop branch
+Once you're happy with develop branch and you're ready to release a new version, `git pull` and open in Xcode.
 
 ## Summary
 
