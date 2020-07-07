@@ -103,6 +103,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="avatarImageView" destination="B1H-DY-tPs" id="ibd-3i-E6c"/>
                                     <outlet property="firstNameLabel" destination="w1y-nS-TGP" id="uu3-XJ-8iX"/>
                                     <outlet property="lastMessageLabel" destination="pg4-W0-hgs" id="eKQ-fk-V2f"/>
                                     <outlet property="offerLabel" destination="kWp-i7-QJs" id="dES-g3-MSb"/>

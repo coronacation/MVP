@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatListTableViewCell: UITableViewCell {
     
@@ -20,6 +21,9 @@ class ChatListTableViewCell: UITableViewCell {
             offerLabel.text = chat.postTitle
             lastMessageLabel.text = chat.lastMsg
             timeAgoLabel.text = chat.lastMsgTimeAgo
+            SDWebImageManager.shared.loadImage(with: URL(string: chat.otherUserPhotoURL), options: .highPriority, progress: nil) { (image, _, _, _, _, _) in
+                self.avatarImageView.image = image
+            }
         }
     }
     
@@ -30,6 +34,7 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var offerLabel: UILabel!
     @IBOutlet weak var lastMessageLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     
     
