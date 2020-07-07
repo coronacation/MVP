@@ -27,10 +27,10 @@
 		AC24CD1E246DBD8A00119EA5 /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */; };
 		AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE502459E6B300C8D3A6 /* Post.swift */; };
 		AC48CE532459E6B300C8D3A6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48CE512459E6B300C8D3A6 /* User.swift */; };
+		AC5E9B7124B43D3000EFE86D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC5E9B7024B43D3000EFE86D /* GoogleService-Info.plist */; };
 		AC81A0F0246AFFA500BFCB06 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81A0EF246AFFA500BFCB06 /* DateHelper.swift */; };
 		AC8D624A246F328800C70212 /* ChatThreadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D6249246F328800C70212 /* ChatThreadController.swift */; };
 		AC9135C0245CCD5C006562AA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9135BF245CCD5C006562AA /* Chat.swift */; };
-		AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */; };
 		ACBA106C2470A9B500C40333 /* PostExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA106B2470A9B500C40333 /* PostExtension.swift */; };
 		ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047AF24660868002F2CA3 /* ChatListItem.swift */; };
 		ACD047B424661C34002F2CA3 /* ChatListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD047B324661C33002F2CA3 /* ChatListController.swift */; };
@@ -84,10 +84,10 @@
 		AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatListTableViewController.swift; path = Chat/ChatListTableViewController.swift; sourceTree = "<group>"; };
 		AC48CE502459E6B300C8D3A6 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AC48CE512459E6B300C8D3A6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AC5E9B7024B43D3000EFE86D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC81A0EF246AFFA500BFCB06 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		AC8D6249246F328800C70212 /* ChatThreadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThreadController.swift; sourceTree = "<group>"; };
 		AC9135BF245CCD5C006562AA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACBA106B2470A9B500C40333 /* PostExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostExtension.swift; path = MVP/Helpers/PostExtension.swift; sourceTree = SOURCE_ROOT; };
 		ACD047AF24660868002F2CA3 /* ChatListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItem.swift; sourceTree = "<group>"; };
 		ACD047B324661C33002F2CA3 /* ChatListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListController.swift; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				D5CF92DE24537B910059110B /* Models */,
 				D5CF92E324537BDD0059110B /* Helpers */,
 				D5CF92DD24537B870059110B /* Resources */,
-				AC9A766B24574D4600AB1906 /* GoogleService-Info.plist */,
+				AC5E9B7024B43D3000EFE86D /* GoogleService-Info.plist */,
 				D5CF92D724537B570059110B /* Info.plist */,
 			);
 			path = MVP;
@@ -409,9 +409,9 @@
 				D5A21D44246A421D002058A7 /* Roboto-Regular.ttf in Resources */,
 				D5CF92D624537B570059110B /* LaunchScreen.storyboard in Resources */,
 				D5A21D43246A420C002058A7 /* Roboto-Bold.ttf in Resources */,
-				AC9A766C24574D4600AB1906 /* GoogleService-Info.plist in Resources */,
 				6D27DA842469C84100DBDEA2 /* Home.storyboard in Resources */,
 				D5CF92D324537B570059110B /* Assets.xcassets in Resources */,
+				AC5E9B7124B43D3000EFE86D /* GoogleService-Info.plist in Resources */,
 				6D4A8A642458D07600F69923 /* AddPost.storyboard in Resources */,
 				6D4A8A6B2458D64300F69923 /* Profile.storyboard in Resources */,
 				D5CF92D124537B470059110B /* Main.storyboard in Resources */,
