@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>462251790622-0ng4ti39m6580srib459kk1oc766bh4m.apps.googleusercontent.com</string>
+	<string>462251790622-oiff5q7lqi9qkp4i512peqmoaam6u8ds.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.462251790622-0ng4ti39m6580srib459kk1oc766bh4m</string>
+	<string>com.googleusercontent.apps.462251790622-oiff5q7lqi9qkp4i512peqmoaam6u8ds</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCwfKX7FiPgyYeeO9-VryWdrjuefezqkOs</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.coronacation.MVP</string>
+	<string>com.coronacation.weshare</string>
 	<key>PROJECT_ID</key>
 	<string>coronacation-dev</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:462251790622:ios:627fc5829b6b3e50a3390f</string>
+	<string>1:462251790622:ios:c801b7d9cc7f3dcfa3390f</string>
 	<key>DATABASE_URL</key>
 	<string>https://coronacation-dev.firebaseio.com</string>
 </dict>
