@@ -77,6 +77,7 @@
 		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6DB4AB90246E288100BC76AB /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
 		AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
+		AC22A55C24B1B88300CED815 /* WeShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeShare.entitlements; sourceTree = "<group>"; };
 		AC23ABC6245A82F9002D7764 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		AC23ABCA245A8C0C002D7764 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatDetailViewController.swift; path = Chat/ChatDetailViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		D5CF92C824537B470059110B /* MVP */ = {
 			isa = PBXGroup;
 			children = (
+				AC22A55C24B1B88300CED815 /* WeShare.entitlements */,
 				D5CF92E224537BBC0059110B /* Views */,
 				D5CF92DF24537B9B0059110B /* Controllers */,
 				D5CF92DE24537B910059110B /* Models */,
@@ -673,15 +675,17 @@
 			baseConfigurationReference = 0B9123E355416978A5129ABF /* Pods-MVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MVP/WeShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6QY69PUF72;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "0.0.1-alpha";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.MVP;
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.weshare;
 				PRODUCT_NAME = WeShare;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -693,16 +697,18 @@
 			baseConfigurationReference = B4FC19AE417711957313A323 /* Pods-MVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MVP/WeShare.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6QY69PUF72;
 				INFOPLIST_FILE = MVP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = "0.0.1-alpha";
-				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.MVP;
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coronacation.weshare;
 				PRODUCT_NAME = WeShare;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
