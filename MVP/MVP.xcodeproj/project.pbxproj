@@ -38,6 +38,7 @@
 		ACE6737A2470FDAE0065256F /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE673792470FDAE0065256F /* Thread.swift */; };
 		ACEF808D245A149B009459FF /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF808C245A149B009459FF /* Category.swift */; };
 		ACEF8091245A1A3A009459FF /* TestPostCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */; };
+		ACF5309B24B420A4004D87A6 /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5309A24B420A4004D87A6 /* ChatListTableViewCell.swift */; };
 		D56D79722468F15200265021 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D79712468F15200265021 /* PostController.swift */; };
 		D56D79742468F1AD00265021 /* PostError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D79732468F1AD00265021 /* PostError.swift */; };
 		D56D79762468F20C00265021 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D79752468F20C00265021 /* PostTableViewCell.swift */; };
@@ -97,6 +98,7 @@
 		ACE673792470FDAE0065256F /* Thread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		ACEF808C245A149B009459FF /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPostCategoryViewController.swift; sourceTree = "<group>"; };
+		ACF5309A24B420A4004D87A6 /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatListTableViewCell.swift; path = Chat/ChatListTableViewCell.swift; sourceTree = "<group>"; };
 		B4FC19AE417711957313A323 /* Pods-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.release.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.release.xcconfig"; sourceTree = "<group>"; };
 		D56D79712468F15200265021 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		D56D79732468F1AD00265021 /* PostError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostError.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */,
 				AC24CD1B246DBD8A00119EA5 /* ChatListTableViewController.swift */,
+				ACF5309A24B420A4004D87A6 /* ChatListTableViewCell.swift */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				ACD047B024660868002F2CA3 /* ChatListItem.swift in Sources */,
 				D5762080245A44D700B5D417 /* Utilities.swift in Sources */,
 				AC48CE522459E6B300C8D3A6 /* Post.swift in Sources */,
+				ACF5309B24B420A4004D87A6 /* ChatListTableViewCell.swift in Sources */,
 				AC24CD1E246DBD8A00119EA5 /* ChatListTableViewController.swift in Sources */,
 				ACEF808D245A149B009459FF /* Category.swift in Sources */,
 				D57620742458DE8F00B5D417 /* AddPostViewController.swift in Sources */,
