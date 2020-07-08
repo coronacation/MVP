@@ -24,7 +24,7 @@ https://help.twitter.com/en/using-twitter/blocking-and-unblocking-accounts
 
 For most apps that are just starting out, it is not feasible to have a full-time moderator. When the community reaches maturity, volunteer moderators could be appointed. If an app has incoming revenue, someone could be hired to serve in this role.
 
-For this app, the community will play a necessary role in moderating content.
+For these reasons, the community will play a necessary role in moderating content.
 
 ### Rule 1
 
@@ -32,11 +32,55 @@ If a user receives 3 blocks, each from a unique user, they are permanently banne
 
 ### Rule 2
 
-If a user receives 5 reportings, each from a unique user, about any of their offers, they are permanently banned from using the app.
+If a user receives 3 reportings, each from a unique user, about any of their offers, they are permanently banned from using the app.
+
+
+## App Rules
+
+1. No money should be exchanged - virtual or physical. The purpose of this app is to support charity and goodwill to our neighbors. There are other apps that allow you to sell your goods; this is not one of those.
+2. No services. Goods and supplies only. 
+3. 
+
+## Valid goods
+
+Overall guidelines on validity of a good:
+
+*answering yes to any 1 of these questions means it is valid*
+
+- Is it essential to a person's survival like food or water?
+- Can it be used to clean or sanitize a person's home?
+- Can a person use it to keep themselves or their family clean and hygienic?
+- Can it enhance health & safety? Examples: face masks, hand sanitizer
+
+A few examples of valid goods are:
+
+- Household supplies
+- Cleaning supplies
+- Kitchen supplies
+- Baby supplies
+- Cloth facial masks
+- Disposable facial masks
+- Hand sanitizer
+- Unexpired, canned food 
+- Bottled, non-alcoholic drinks
+
+Examples of invalid goods are
+- Weapons of any kind
+- Prescription drugs
+- Over-the-counter drugs
+- Illegal drugs
+- Alcoholic beverages
+- CBD-based products
+- Furniture
+- 
+
 
 ## Report Categories
 
-
+- Soliciting service, not product
+- Invalid goods (see Valid goods)
+- Weapons / drugs
+- 
 
 
 ## Questions to ask about App Promises
@@ -70,10 +114,10 @@ Other ideas
 
 ### App Promises
 
-1. The chat conversation is disabled. Neither user can send new messages to each other.
+1. All chat conversations between A and B are disabled. Neither user can send new messages to each other.
 2. User A can choose to delete the chat conversation they had with B, if they wish. It is critical that deletion be a distinct action from blocking, because it is plausible user A may wish to take screenshots of the offending parts of the conversation before deleting.
 3. If User A has offers in the home feed, these offers will be hidden from User B to prevent new incoming messages.
-4. User A is notified that someone has blocked them. See below for escalation messages.
+4. User B is notified that someone has blocked them. See below for escalation messages.
 
 ## Scenario 2: B receives 3 blocks
 
@@ -99,14 +143,31 @@ App Promises during a Ban
 
 ### Story
 
-1. B posts an offer that is deemed offensive to A
-2. A reports B and 
+1. B posts an offer
+2. A is disturbed by B's offer and files a report
+3. A chooses a category and submits the report
+4. B now has 1 new report on their record
+
+### App Promises
+
+- The offending offer will be hidden from User A's view and no one else's
+- All users will carry a list of posts to hide from their own Home feed
+- If User B posts a *new* offer - regardless of whether or not there is offending language in it, the offer will show up in User A's Home feed. User A can use the reporting feature again on this new offer.
+- All users will carry a list of reportings against their posts
+- Once that reportings list reaches a count of 3 unique users, the user is expected to be banned from the app. That user's posts will be deleted, so they will never surface again in the Home feed.
 
 ### Reporting Categories
 
 - Offensive
 - Inappropriate
+- Threating
+- Invalid
 
+## Scenario 4: Admin bans a user
+
+Admins of our app have access to all reportings.
+
+In very serious cases, admins will have the ability to permanently ban a user. Given the severity of the offense, the admin need not wait for 3 strikes. The admin can ban a user after just 1 single offense.
 
 ## Shortcomings
 
