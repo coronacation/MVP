@@ -119,11 +119,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Chat" id="8S2-e3-3KX">
                         <barButtonItem key="backBarButtonItem" title="Back" id="re7-az-han"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSU-zh-huY">
-                            <connections>
-                                <action selector="addButtonTapped:" destination="C1G-1s-3Vx" id="S47-Cq-93u"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Hh-yb-9Qp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
