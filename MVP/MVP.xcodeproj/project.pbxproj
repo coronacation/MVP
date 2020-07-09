@@ -21,6 +21,7 @@
 		6D9A0E21246094AB00245184 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A0E20246094AB00245184 /* MapViewController.swift */; };
 		6DB4AB91246E288100BC76AB /* SearchableRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB4AB90246E288100BC76AB /* SearchableRecord.swift */; };
 		AC00BEAF2465B5A200016CD2 /* ChatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */; };
+		AC1E8E3824B7C5BD001D8A8A /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E8E3724B7C5BD001D8A8A /* TopAlignedLabel.swift */; };
 		AC23ABC7245A82F9002D7764 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC23ABC6245A82F9002D7764 /* Chat.storyboard */; };
 		AC23ABCB245A8C0C002D7764 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC23ABCA245A8C0C002D7764 /* Message.swift */; };
 		AC24CD1D246DBD8A00119EA5 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24CD1A246DBD8A00119EA5 /* ChatDetailViewController.swift */; };
@@ -78,6 +79,7 @@
 		6D9A0E20246094AB00245184 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6DB4AB90246E288100BC76AB /* SearchableRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableRecord.swift; sourceTree = "<group>"; };
 		AC00BEAE2465B5A200016CD2 /* ChatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatExtension.swift; sourceTree = "<group>"; };
+		AC1E8E3724B7C5BD001D8A8A /* TopAlignedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = "MVP/Controllers/View Controllers/Custom Views/TopAlignedLabel.swift"; sourceTree = SOURCE_ROOT; };
 		AC22A55C24B1B88300CED815 /* WeShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeShare.entitlements; sourceTree = "<group>"; };
 		AC23ABC6245A82F9002D7764 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		AC23ABCA245A8C0C002D7764 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -162,8 +164,10 @@
 		6D9A0E2224609B0B00245184 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				AC1E8E3724B7C5BD001D8A8A /* TopAlignedLabel.swift */,
 			);
-			path = "Custom Views";
+			name = "Custom Views";
+			path = "../../Views/Custom Views";
 			sourceTree = "<group>";
 		};
 		D576207B245A446300B5D417 /* Auth */ = {
@@ -301,6 +305,7 @@
 				D5A21D45246B3546002058A7 /* Profile */,
 				D5A21D47246B357D002058A7 /* Chat */,
 				D576207B245A446300B5D417 /* Auth */,
+				6D9A0E2224609B0B00245184 /* Custom Views */,
 				6D877E382459F4EE004C860D /* PhotoSelectorViewController.swift */,
 				ACEF8090245A1A3A009459FF /* TestPostCategoryViewController.swift */,
 				D5762087245A677F00B5D417 /* TabBarViewController.swift */,
@@ -326,7 +331,6 @@
 				6D4A8A622458D07600F69923 /* AddPost.storyboard */,
 				6D27DA822469C84100DBDEA2 /* Home.storyboard */,
 				D5CF92CF24537B470059110B /* Main.storyboard */,
-				6D9A0E2224609B0B00245184 /* Custom Views */,
 				AC23ABC6245A82F9002D7764 /* Chat.storyboard */,
 			);
 			path = Views;
@@ -506,6 +510,7 @@
 				AC9135C0245CCD5C006562AA /* Chat.swift in Sources */,
 				ACBA106C2470A9B500C40333 /* PostExtension.swift in Sources */,
 				D5CF92CC24537B470059110B /* SceneDelegate.swift in Sources */,
+				AC1E8E3824B7C5BD001D8A8A /* TopAlignedLabel.swift in Sources */,
 				D5762082245A44F500B5D417 /* SignUpViewController.swift in Sources */,
 				D5762088245A677F00B5D417 /* TabBarViewController.swift in Sources */,
 				D5A21D4B246B3645002058A7 /* MyPostsTableViewCell.swift in Sources */,
