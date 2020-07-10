@@ -17,7 +17,7 @@ extension DummyPost {
             let userUID = dictionary[Constants.Post.userUID] as? String,
             let postUserFirstName = dictionary[Constants.Post.userFirstName
 ] as? String,
-            let postCreatedTimestamp = dictionary[Constants.Post.createdTimestamp] as? String,
+            let postCreatedTimestamp = dictionary[Constants.Post.createdTimestamp] as? Timestamp,
             let category = dictionary[Constants.Post.category] as? String,
             let postImageURL = dictionary[Constants.Post.imageURL] as? String,
             let postFlaggedCount = dictionary[Constants.Post.flaggedCount] as? Int,

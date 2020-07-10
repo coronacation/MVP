@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController {
                     let dummyPost = DummyPost(postTitle: document.data()["postTitle"] as! String,
                                               postDescription: document.data()["postDescription"] as! String,
                                               userUID: document.data()["postUserUID"] as! String, postUserFirstName: document.data()["postUserFirstName"] as! String, postDocumentID: "\(document.documentID)",
-                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! String,
+                        postCreatedTimestamp: document.data()["postCreatedTimestamp"] as! Timestamp,
                         category: document.data()["category"] as! String,
                         postImageURL: document.data()["postImageURL"] as! String,
                         postFlaggedCount: document.data()["flaggedCount"] as! Int,

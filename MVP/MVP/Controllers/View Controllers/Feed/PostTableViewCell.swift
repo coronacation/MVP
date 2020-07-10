@@ -12,7 +12,7 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: TopAlignedLabel!
     @IBOutlet weak var datePostedLabel: UILabel!
     @IBOutlet weak var postUserFirstName: UILabel!
     
@@ -21,7 +21,7 @@ class PostTableViewCell: UITableViewCell {
             guard let post = post else {return}
             titleLabel.text = post.postTitle
             descriptionTextView?.text = post.postDescription
-            datePostedLabel.text = post.postCreatedTimestamp
+            datePostedLabel.text = post.postCreatedTimestamp.dateValue().stringShort()
             postUserFirstName.text = post.postUserFirstName
             postImage.image = nil
             

@@ -22,7 +22,7 @@ class MyPostsTableViewCell: UITableViewCell {
             myPostTitleLabel.text = myPost.postTitle
             myPostDescriptionTextView?.text = myPost.postDescription
             myPostCategoryLabel.text = "Category: \(myPost.category)"
-            myPostTimestampLabel.text = myPost.postCreatedTimestamp
+            myPostTimestampLabel.text = myPost.postCreatedTimestamp.dateValue().stringShort()
             
             PostController.shared.fetchDrinkImage2(post: myPost) { (result) in
                 switch result {

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseFirestore.FIRTimestamp
 
 public class DummyPost {
     let postTitle: String
@@ -15,7 +16,7 @@ public class DummyPost {
     let userUID: String
     let postUserFirstName: String
     let postDocumentID: String
-    let postCreatedTimestamp: String
+    let postCreatedTimestamp: Timestamp
     let category: String
     let postImageURL: String
     let postFlaggedCount: Int
@@ -25,7 +26,7 @@ public class DummyPost {
     var postCLLocation: CLLocation
     
     init(postTitle: String, postDescription: String, userUID: String, postUserFirstName: String, postDocumentID: String,
-         postCreatedTimestamp: String, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double) {
+         postCreatedTimestamp: Timestamp, category: String, postImageURL: String, postFlaggedCount: Int, postLongitude: Double, postLatitude: Double) {
         self.postTitle = postTitle
         self.postDescription = postDescription
         self.userUID = userUID
