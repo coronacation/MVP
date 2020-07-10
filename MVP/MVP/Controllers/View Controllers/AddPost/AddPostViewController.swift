@@ -114,7 +114,7 @@ class AddPostViewController: UIViewController {
         let storageReference = Storage.storage().reference()
         let authUser = Auth.auth().currentUser
         guard let postUserUID = authUser?.uid else {return}
-        let postImageRef = storageReference.child("users").child(authUser!.uid).child("\(authUser!.uid)-postImage.jpg")
+        let postImageRef = storageReference.child("users").child(authUser!.uid).child("postImage-\(UUID().uuidString).jpg")
         let uploadMetaData = StorageMetadata()
         uploadMetaData.contentType = "image/jpeg"
         
