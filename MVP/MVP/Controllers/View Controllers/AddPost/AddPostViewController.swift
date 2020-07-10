@@ -63,7 +63,7 @@ class AddPostViewController: UIViewController {
         
         //      var imageURL = "no image"
         
-        let postCreatedTimestamp = timestamp()
+        let postCreatedTimestamp = Timestamp()
         
         let authUser = Auth.auth().currentUser
         
@@ -108,7 +108,7 @@ class AddPostViewController: UIViewController {
     }
     
     //MARK: - Helpers
-    func grabImageURLAndSavePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String) {
+    func grabImageURLAndSavePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: Timestamp) {
         
         guard let imageData = selectedImage!.jpegData(compressionQuality: 0.6) else {return}
         let storageReference = Storage.storage().reference()
@@ -141,22 +141,18 @@ class AddPostViewController: UIViewController {
     }
     
     //MARK: - TODO: Create a DateFormatterExtension file?
-    func timestamp() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/Y"
-        let formattedDate = dateFormatter.string(from: Date())
-        
-        return formattedDate
-    }
+//    func timestamp() -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "M/d/Y"
+//        let formattedDate = dateFormatter.string(from: Date())
+//
+//        return formattedDate
+//    }
     
     //MARK: - TODO: move to PostController file
-    func savePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: String, imageURL: String = "none") {
+    func savePost(postTitle: String, postDescription: String, postUserUID: String, postUserFirstName: String, postCreatedTimestamp: Timestamp, imageURL: String = "none") {
         
         let authUser = Auth.auth().currentUser
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/Y"
-        let formattedDate = dateFormatter.string(from: Date())
         
         guard let currentUserFirstName = currentUser?.firstName, let currentUserLatitude = currentUser?.latitude, let currentUserLongitude = currentUser?.longitude else {return}
         
@@ -169,7 +165,7 @@ class AddPostViewController: UIViewController {
             "postUserFirstName": "\(currentUserFirstName)",
             "postUserLatitude": currentUserLatitude,
             "postUserLongitude": currentUserLongitude,
-            "postCreatedTimestamp": "\(formattedDate)",
+            "postCreatedTimestamp": postCreatedTimestamp,
             "postImageURL" : "\(imageURL)",
             "category": "none",
             "flaggedCount": 0

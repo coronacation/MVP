@@ -21,7 +21,7 @@ class PostTableViewCell: UITableViewCell {
             guard let post = post else {return}
             titleLabel.text = post.postTitle
             descriptionTextView?.text = post.postDescription
-            datePostedLabel.text = post.postCreatedTimestamp
+            datePostedLabel.text = post.postCreatedTimestamp.dateValue().stringShort()
             postUserFirstName.text = post.postUserFirstName
             postImage.image = nil
             
