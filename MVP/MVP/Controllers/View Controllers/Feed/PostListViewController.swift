@@ -56,7 +56,9 @@ class PostListViewController: UIViewController {
     //MARK: - Helpers
     func loadData() {
         //   print(CurrentUserController.shared.currentUser?.location! as Any)
-        db.collection("postsV3.1").getDocuments() { (querySnapshot, error) in
+        db.collection("postsV3.1")
+        .order(by: "postCreatedTimestamp", descending: true)
+            .getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             }
