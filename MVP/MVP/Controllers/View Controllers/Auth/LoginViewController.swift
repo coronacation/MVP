@@ -77,8 +77,6 @@ class LoginViewController: UIViewController {
         errorLabel.alpha = 0
         
         // Style the elements
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
         Utilities.styleFilledButton(loginButton)
         
         emailTextField.delegate = self
