@@ -127,8 +127,11 @@
                                 <rect key="frame" x="70" y="466.66666666666669" width="20" height="25"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvx-vI-wQz" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                <rect key="frame" x="120.33333333333333" y="706" width="173.33333333333337" height="44.666666666666629"/>
+                                <rect key="frame" x="120" y="615.33333333333337" width="174" height="43.666666666666629"/>
                                 <color key="backgroundColor" name="deepPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jvx-vI-wQz" secondAttribute="height" multiplier="4:1" id="vVy-0J-cKK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,8 +142,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsL-bA-qz7" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                <rect key="frame" x="120.33333333333333" y="806.66666666666663" width="173.33333333333337" height="44.666666666666629"/>
+                                <rect key="frame" x="120" y="705.33333333333337" width="174" height="43.333333333333371"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IsL-bA-qz7" secondAttribute="height" multiplier="4:1" id="VCY-mI-aez"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" name="deepPurple"/>
@@ -150,7 +156,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Ct-YZD">
-                                <rect key="frame" x="108.33333333333333" y="864" width="197.33333333333337" height="23.333333333333371"/>
+                                <rect key="frame" x="108.33333333333333" y="808.66666666666663" width="197.33333333333337" height="23.333333333333371"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
@@ -161,7 +167,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-JS-cye">
-                                <rect key="frame" x="69" y="642.33333333333337" width="276" height="43.666666666666629"/>
+                                <rect key="frame" x="69" y="506.66666666666669" width="276" height="43.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -176,20 +182,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="j4c-UZ-iyE" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.0633333" id="0Cd-ig-PuZ"/>
-                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.133333" id="2eB-je-7zs"/>
                             <constraint firstItem="j4c-UZ-iyE" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.581333" id="4Wj-Ag-Thd"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.00666667" id="6l7-am-re4"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="centerX" secondItem="Ivp-fW-76B" secondAttribute="centerX" id="8vU-dy-Jkl"/>
                             <constraint firstItem="LAd-Ct-YZD" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.07" id="AcF-Q7-vo6"/>
+                            <constraint firstItem="IsL-bA-qz7" firstAttribute="bottom" secondItem="LAd-Ct-YZD" secondAttribute="bottom" multiplier="0.9" id="B6K-fx-bbC"/>
+                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="width" secondItem="Ivp-fW-76B" secondAttribute="width" multiplier="0.42" id="DNd-nw-KI4"/>
                             <constraint firstItem="2RP-JS-cye" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.130584" id="DSS-OK-BSp"/>
-                            <constraint firstItem="LAd-Ct-YZD" firstAttribute="centerY" secondItem="abh-8o-oqa" secondAttribute="centerY" multiplier="1.201" id="FjU-61-WBA"/>
                             <constraint firstItem="abh-8o-oqa" firstAttribute="width" secondItem="PO6-up-eR8" secondAttribute="width" id="ID9-1W-y6e"/>
-                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="centerY" secondItem="abh-8o-oqa" secondAttribute="centerY" multiplier="0.999" id="IT0-bZ-QcK"/>
                             <constraint firstItem="Cv3-hs-WDO" firstAttribute="width" secondItem="PUJ-9v-uqT" secondAttribute="width" multiplier="0.8" id="JGv-jj-zvS"/>
                             <constraint firstItem="LAd-Ct-YZD" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="K5e-iT-pHN"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="bottom" secondItem="Cv3-hs-WDO" secondAttribute="bottom" multiplier="1.18" id="KVX-6U-HrG"/>
                             <constraint firstItem="PUJ-9v-uqT" firstAttribute="top" secondItem="PO6-up-eR8" secondAttribute="top" constant="44" id="KVh-94-DmH"/>
-                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="LAU-mZ-A84"/>
+                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="centerX" secondItem="PO6-up-eR8" secondAttribute="centerX" id="LAU-mZ-A84"/>
                             <constraint firstItem="LAd-Ct-YZD" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.477333" id="LCX-t3-B6c"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="width" secondItem="PO6-up-eR8" secondAttribute="width" multiplier="0.669333" id="M3v-Qx-dvT"/>
                             <constraint firstItem="abh-8o-oqa" firstAttribute="centerX" secondItem="Ivp-fW-76B" secondAttribute="centerX" id="Mao-kv-rPH"/>
@@ -198,19 +203,17 @@
                             <constraint firstItem="D28-IF-CDO" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.581333" id="NoX-Cp-AiM"/>
                             <constraint firstItem="Cv3-hs-WDO" firstAttribute="centerX" secondItem="PUJ-9v-uqT" secondAttribute="centerX" id="Ntn-7K-aZP"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="NyT-b4-dEx"/>
-                            <constraint firstItem="IsL-bA-qz7" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.418667" id="OwH-Ts-gM9"/>
-                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.418667" id="Owh-k9-mhE"/>
+                            <constraint firstItem="IsL-bA-qz7" firstAttribute="width" secondItem="Ivp-fW-76B" secondAttribute="width" multiplier="0.42" id="OwH-Ts-gM9"/>
                             <constraint firstItem="PUJ-9v-uqT" firstAttribute="width" secondItem="PO6-up-eR8" secondAttribute="width" id="P6H-NN-bfd"/>
-                            <constraint firstItem="IsL-bA-qz7" firstAttribute="centerY" secondItem="abh-8o-oqa" secondAttribute="centerY" multiplier="1.137" id="TmV-E7-eEb"/>
-                            <constraint firstItem="IsL-bA-qz7" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="UUY-u8-1h1"/>
-                            <constraint firstItem="2RP-JS-cye" firstAttribute="centerY" secondItem="abh-8o-oqa" secondAttribute="centerY" multiplier="0.911" id="Vtp-p6-zGZ"/>
+                            <constraint firstItem="IsL-bA-qz7" firstAttribute="centerX" secondItem="Ivp-fW-76B" secondAttribute="centerX" id="UUY-u8-1h1"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="top" secondItem="x17-d7-gjK" secondAttribute="bottom" constant="2" id="WOR-3F-Rni"/>
+                            <constraint firstItem="Ivp-fW-76B" firstAttribute="bottom" secondItem="LAd-Ct-YZD" secondAttribute="bottom" constant="30" id="X1A-3E-YK9"/>
                             <constraint firstItem="Cv3-hs-WDO" firstAttribute="centerY" secondItem="PUJ-9v-uqT" secondAttribute="centerY" id="Ym3-2Z-nvx"/>
-                            <constraint firstItem="IsL-bA-qz7" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.133333" id="ZUn-9D-dOK"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="height" secondItem="PO6-up-eR8" secondAttribute="height" multiplier="0.0029985" id="c6O-lc-dus"/>
                             <constraint firstItem="2RP-JS-cye" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.666667" id="fBd-Ov-Det"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="top" secondItem="Wuv-Lq-K3l" secondAttribute="bottom" constant="2" id="gXY-1e-nfA"/>
                             <constraint firstItem="D28-IF-CDO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j4c-UZ-iyE" secondAttribute="leading" id="ghc-nz-Lke"/>
+                            <constraint firstItem="2RP-JS-cye" firstAttribute="bottom" secondItem="Mdt-Vu-Zq5" secondAttribute="bottom" multiplier="1.11" id="hjp-cE-i7D"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="top" secondItem="D28-IF-CDO" secondAttribute="bottom" constant="1" id="mZ6-KU-Rm2"/>
                             <constraint firstItem="abh-8o-oqa" firstAttribute="bottom" secondItem="PO6-up-eR8" secondAttribute="bottom" id="n1b-Po-HUn"/>
                             <constraint firstItem="x17-d7-gjK" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" multiplier="0.3867" id="pvn-O3-jMe"/>
@@ -219,6 +222,7 @@
                             <constraint firstItem="Wuv-Lq-K3l" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" multiplier="0.3867" id="uar-eC-iyQ"/>
                             <constraint firstItem="D28-IF-CDO" firstAttribute="height" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="0.0633333" id="vR5-xV-ck3"/>
                             <constraint firstItem="2RP-JS-cye" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="vRd-pD-rQV"/>
+                            <constraint firstItem="Jvx-vI-wQz" firstAttribute="bottom" secondItem="IsL-bA-qz7" secondAttribute="bottom" multiplier="0.88" id="wW7-N2-O09"/>
                             <constraint firstItem="j4c-UZ-iyE" firstAttribute="trailing" secondItem="mWV-tf-A1A" secondAttribute="trailing" id="z9j-DK-3h5"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="bottom" secondItem="mWV-tf-A1A" secondAttribute="bottom" multiplier="1.12" id="zOf-lP-294"/>
                         </constraints>
