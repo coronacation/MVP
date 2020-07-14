@@ -92,7 +92,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Light_Subtract" translatesAutoresizingMaskIntoConstraints="NO" id="abh-8o-oqa">
-                                <rect key="frame" x="0.0" y="528" width="414" height="334"/>
+                                <rect key="frame" x="0.0" y="562" width="414" height="334"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="height" multiplier="372:300" id="zSj-Bq-OE6"/>
@@ -127,7 +127,7 @@
                                 <rect key="frame" x="70" y="466.66666666666669" width="20" height="25"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvx-vI-wQz" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                <rect key="frame" x="120.33333333333333" y="672" width="173.33333333333337" height="44.666666666666629"/>
+                                <rect key="frame" x="120.33333333333333" y="706" width="173.33333333333337" height="44.666666666666629"/>
                                 <color key="backgroundColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Sign In">
@@ -139,7 +139,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsL-bA-qz7" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                <rect key="frame" x="120.33333333333333" y="768" width="173.33333333333337" height="44.666666666666629"/>
+                                <rect key="frame" x="120.33333333333333" y="806.66666666666663" width="173.33333333333337" height="44.666666666666629"/>
                                 <color key="backgroundColor" name="mediumPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                 <state key="normal" title="Create Account">
@@ -150,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Ct-YZD">
-                                <rect key="frame" x="108.33333333333333" y="823" width="197.33333333333337" height="23.333333333333371"/>
+                                <rect key="frame" x="108.33333333333333" y="864" width="197.33333333333337" height="23.333333333333371"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
@@ -161,7 +161,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RP-JS-cye">
-                                <rect key="frame" x="69" y="611.33333333333337" width="276" height="43.666666666666629"/>
+                                <rect key="frame" x="69" y="642.33333333333337" width="276" height="43.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -188,7 +188,7 @@
                             <constraint firstItem="Cv3-hs-WDO" firstAttribute="width" secondItem="PUJ-9v-uqT" secondAttribute="width" multiplier="0.8" id="JGv-jj-zvS"/>
                             <constraint firstItem="LAd-Ct-YZD" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="K5e-iT-pHN"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="bottom" secondItem="Cv3-hs-WDO" secondAttribute="bottom" multiplier="1.18" id="KVX-6U-HrG"/>
-                            <constraint firstItem="PUJ-9v-uqT" firstAttribute="top" secondItem="Ivp-fW-76B" secondAttribute="top" id="KVh-94-DmH"/>
+                            <constraint firstItem="PUJ-9v-uqT" firstAttribute="top" secondItem="PO6-up-eR8" secondAttribute="top" constant="44" id="KVh-94-DmH"/>
                             <constraint firstItem="Jvx-vI-wQz" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" id="LAU-mZ-A84"/>
                             <constraint firstItem="LAd-Ct-YZD" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.477333" id="LCX-t3-B6c"/>
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="width" secondItem="PO6-up-eR8" secondAttribute="width" multiplier="0.669333" id="M3v-Qx-dvT"/>
@@ -212,7 +212,7 @@
                             <constraint firstItem="mWV-tf-A1A" firstAttribute="top" secondItem="Wuv-Lq-K3l" secondAttribute="bottom" constant="2" id="gXY-1e-nfA"/>
                             <constraint firstItem="D28-IF-CDO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j4c-UZ-iyE" secondAttribute="leading" id="ghc-nz-Lke"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="top" secondItem="D28-IF-CDO" secondAttribute="bottom" constant="1" id="mZ6-KU-Rm2"/>
-                            <constraint firstItem="abh-8o-oqa" firstAttribute="bottom" secondItem="Ivp-fW-76B" secondAttribute="bottom" id="n1b-Po-HUn"/>
+                            <constraint firstItem="abh-8o-oqa" firstAttribute="bottom" secondItem="PO6-up-eR8" secondAttribute="bottom" id="n1b-Po-HUn"/>
                             <constraint firstItem="x17-d7-gjK" firstAttribute="centerX" secondItem="abh-8o-oqa" secondAttribute="centerX" multiplier="0.3867" id="pvn-O3-jMe"/>
                             <constraint firstItem="PUJ-9v-uqT" firstAttribute="centerX" secondItem="Ivp-fW-76B" secondAttribute="centerX" id="rIA-ej-dlp"/>
                             <constraint firstItem="Mdt-Vu-Zq5" firstAttribute="width" secondItem="abh-8o-oqa" secondAttribute="width" multiplier="0.669333" id="uSe-iw-st2"/>
