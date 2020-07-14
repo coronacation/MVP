@@ -137,10 +137,10 @@
                                 <rect key="frame" x="120" y="518.33333333333337" width="174" height="302.66666666666663"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvx-vI-wQz" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="174" height="43.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="54.333333333333336"/>
                                         <color key="backgroundColor" name="deepPurple"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Jvx-vI-wQz" secondAttribute="height" multiplier="4:1" id="vVy-0J-cKK"/>
+                                            <constraint firstAttribute="width" secondItem="Jvx-vI-wQz" secondAttribute="height" multiplier="4:1.25" id="vVy-0J-cKK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                         <state key="normal" title="Sign In">
@@ -152,10 +152,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsL-bA-qz7" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136.66666666666663" width="174" height="43.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="136.66666666666663" width="174" height="54.333333333333343"/>
                                         <color key="backgroundColor" name="mediumPurple"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="IsL-bA-qz7" secondAttribute="height" multiplier="4:1" id="VCY-mI-aez"/>
+                                            <constraint firstAttribute="width" secondItem="IsL-bA-qz7" secondAttribute="height" multiplier="4:1.25" id="VCY-mI-aez"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                         <state key="normal" title="Create Account">
@@ -300,8 +300,11 @@
                                 <rect key="frame" x="70" y="489.33333333333331" width="20" height="24.999999999999943"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgD-NZ-Avz" customClass="RoundButton" customModule="WeShare" customModuleProvider="target">
-                                <rect key="frame" x="120.33333333333333" y="593.33333333333337" width="173.33333333333337" height="44.333333333333371"/>
+                                <rect key="frame" x="120" y="590" width="174" height="54.333333333333371"/>
                                 <color key="backgroundColor" name="deepPurple"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mgD-NZ-Avz" secondAttribute="height" multiplier="4:1.25" id="kt2-x0-r9S"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Sign Up">
@@ -357,9 +360,8 @@
                         <constraints>
                             <constraint firstItem="31U-U5-RB9" firstAttribute="height" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="0.0633333" id="1Af-N9-Wmg"/>
                             <constraint firstItem="rDI-78-orz" firstAttribute="top" secondItem="4Er-AB-0NX" secondAttribute="bottom" constant="-3" id="2At-ri-mOu"/>
-                            <constraint firstItem="mgD-NZ-Avz" firstAttribute="width" secondItem="Sfg-8e-qSW" secondAttribute="width" multiplier="0.418667" id="2oq-2z-hxJ"/>
                             <constraint firstItem="Sfg-8e-qSW" firstAttribute="centerX" secondItem="u0m-aI-hRc" secondAttribute="centerX" id="37e-2P-1jT"/>
-                            <constraint firstItem="mgD-NZ-Avz" firstAttribute="bottom" secondItem="sXI-dc-QZt" secondAttribute="bottom" multiplier="1.1" id="4Tx-84-tgW"/>
+                            <constraint firstItem="mgD-NZ-Avz" firstAttribute="bottom" secondItem="sXI-dc-QZt" secondAttribute="bottom" multiplier="1.111" id="4Tx-84-tgW"/>
                             <constraint firstItem="pq0-uR-d7J" firstAttribute="top" secondItem="pGH-H6-QVQ" secondAttribute="bottom" constant="1" id="4WB-io-Zgv"/>
                             <constraint firstItem="COJ-0G-Weq" firstAttribute="height" secondItem="q3h-7Q-bQD" secondAttribute="height" multiplier="0.0029985" id="7oH-xr-Lr6"/>
                             <constraint firstItem="Sfg-8e-qSW" firstAttribute="width" secondItem="q3h-7Q-bQD" secondAttribute="width" id="8XE-fg-HD5"/>
@@ -371,6 +373,7 @@
                             <constraint firstItem="31U-U5-RB9" firstAttribute="trailing" secondItem="rDI-78-orz" secondAttribute="trailing" id="Cgk-j5-hXZ"/>
                             <constraint firstItem="pXB-ND-IOh" firstAttribute="leading" secondItem="31U-U5-RB9" secondAttribute="leading" id="DAw-aV-Uhq"/>
                             <constraint firstItem="dfB-dD-SMy" firstAttribute="centerY" secondItem="RXm-rF-Djt" secondAttribute="centerY" id="GMM-Wl-Vcp"/>
+                            <constraint firstItem="mgD-NZ-Avz" firstAttribute="width" secondItem="q3h-7Q-bQD" secondAttribute="width" multiplier="0.42" id="GQ9-Yl-ZHd"/>
                             <constraint firstItem="sXI-dc-QZt" firstAttribute="height" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="0.14433" id="Ihf-tg-xsV"/>
                             <constraint firstItem="RXm-rF-Djt" firstAttribute="bottom" secondItem="u0m-aI-hRc" secondAttribute="bottom" multiplier="0.9" id="JgY-i4-4hl"/>
                             <constraint firstItem="rDI-78-orz" firstAttribute="width" secondItem="q3h-7Q-bQD" secondAttribute="width" multiplier="0.669333" id="JsM-hn-5eP"/>
@@ -393,7 +396,6 @@
                             <constraint firstItem="pq0-uR-d7J" firstAttribute="centerX" secondItem="Sfg-8e-qSW" secondAttribute="centerX" id="bmH-ME-tHX"/>
                             <constraint firstItem="oGY-3Y-eye" firstAttribute="centerX" secondItem="u0m-aI-hRc" secondAttribute="centerX" id="bv9-C5-RVV"/>
                             <constraint firstItem="ISR-Td-2Wu" firstAttribute="width" secondItem="q3h-7Q-bQD" secondAttribute="width" multiplier="0.581333" id="cSo-dU-loO"/>
-                            <constraint firstItem="mgD-NZ-Avz" firstAttribute="height" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="0.133333" id="cT7-63-xxU"/>
                             <constraint firstItem="pXB-ND-IOh" firstAttribute="height" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="0.0633333" id="dOw-eR-AIe"/>
                             <constraint firstItem="mgD-NZ-Avz" firstAttribute="centerX" secondItem="Sfg-8e-qSW" secondAttribute="centerX" id="e9i-Fx-GDz"/>
                             <constraint firstItem="RXm-rF-Djt" firstAttribute="height" secondItem="Sfg-8e-qSW" secondAttribute="height" multiplier="0.07" id="emd-ZU-k1F"/>
