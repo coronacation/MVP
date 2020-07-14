@@ -76,9 +76,6 @@ class LoginViewController: UIViewController {
         // Hide the error label
         errorLabel.alpha = 0
         
-        // Style the elements
-        Utilities.styleFilledButton(loginButton)
-        
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
