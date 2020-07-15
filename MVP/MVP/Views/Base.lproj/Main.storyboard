@@ -110,7 +110,7 @@
                                 <rect key="frame" x="68.333333333333329" y="391.66666666666669" width="20" height="18"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ddjacobsen17@yahoo.com" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j4c-UZ-iyE">
-                                <rect key="frame" x="99.333333333333329" y="390" width="246.33333333333337" height="20.666666666666686"/>
+                                <rect key="frame" x="99.333333333333329" y="390.33333333333331" width="246.33333333333337" height="20.333333333333314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="deepPurple"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
